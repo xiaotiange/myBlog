@@ -27,6 +27,13 @@ public class Admin extends Controller{
         }
         render();
     }
+    public static void delete(Long id){
+        if(id != null){
+            Post post=Post.findById(id);
+            post.delete();
+        }
+        index();
+    }
     public static void save(Long id,String title, String content, String tags){
         Post post;
            if(id == null){

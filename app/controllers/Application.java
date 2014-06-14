@@ -36,7 +36,6 @@ public class Application extends Controller {
             @Required(message="A message is required") String content,
             @Required(message="Please type the code") String code,
             String randomID) {
-        
         Post post = Post.findById(postId);
         if(!Play.id.equals("test")) {
             validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again");

@@ -5,6 +5,7 @@
 #{list items:posts, as: 'post' }
       <p class="post ${post_parity}">
                  <a href="@{Admin.form(post.id)}">${post.title}</a>
+                 <a href="@{Admin.delete(post.id)}">delete</a>
       </p>
 #{/list}
 
