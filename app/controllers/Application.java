@@ -25,6 +25,7 @@ public class Application extends Controller {
         String randomID=Codec.UUID();
         render(post,randomID);
     }
+    
     public static void index() {
         Post frontPost=Post.find("order by postedAt desc").first();
         List<Post> olderPosts=Post.find("order by postedAt desc").from(1).fetch(10);
@@ -38,7 +39,7 @@ public class Application extends Controller {
             String randomID) {
         Post post = Post.findById(postId);
         if(!Play.id.equals("test")) {
-            validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again");
+            validation.equals(code.toUpperCase(), Cache.get(randomID).toString().toUpperCase()).message("Invalid code. Please type it again");
         }
         if(validation.hasErrors()){
             render("Application/show.html",post);
