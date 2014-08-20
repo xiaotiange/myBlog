@@ -1,3 +1,6 @@
+package job;
+
+
 import models.*;
 import play.jobs.*;
 import play.test.*;
@@ -13,3 +16,4 @@ public class Bootstrap extends Job{
         }
     }
 }
+

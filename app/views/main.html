@@ -4,40 +4,91 @@
     <head>
         <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
+        <!-- 新 controllers.job.Bootstrap 核心 CSS 文件 -->
+        <link rel="stylesheet" href="@{'public/bootstrap/css/bootstrap.min.css'}" />
+
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link href="@{'public/stylesheets/carousel.css'}" rel="stylesheet">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js'}"></script>
+
         #{get 'moreScripts' /}
     </head>
+    <body role="document">
+
+
     <body>
-    
-      <div id="header">
-           <div id="logo">
-                yabe
-           </div>
-           <ul id="tools">
-               <li>
-                      <a href="@{Admin.index()}">Log in to write something</a>
-               </li>
-           </ul>
-           <div id="title">
-                <span class="about">About this blog</span>
-                <h1><a href="@{Application.index()}">${blogTitle}</a></h1>
-                <h2>${blogBaseline}</h2>
+    <div class="navbar-wrapper">
+        <div class="container">
+
+            <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">bingo</a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">Nav header</li>
+                                    <li><a href="#">Separated link</a></li>
+                                    <li><a href="#">One more separated link</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#">Default</a>
+                            </li>
+                            <li>
+                                <a href="#">Static top</a>
+                            </li>
+                            <li class="active">
+                                <a href="#">登录 | 注册</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-      </div>
-      
-    
-       <div id="main">
-        #{doLayout /}
+
+        </div>
+    </div>
+
+    <div id="header">
+        <div id="logo">
+            yabe. <span>administration</span>
+        </div>
+        <ul id="tools">
+            <li>
+                <a href="@{Secure.logout()}">Log out</a>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+                      #{doLayout /}
         </div>
         
         <p id="footer">
-            Yabe is a (not that) powerful blog engine built with the 
-            <a href="http://www.playframework.org">Play framework</a>
-            as a tutorial application.
+                         Yabe is a (not that) powerful blog engine built with the 
+                       <a href="http://www.playframework.org">Play framework</a>
+                        as a tutorial application.
         </p>
         
     </body>
