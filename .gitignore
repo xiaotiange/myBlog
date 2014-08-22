@@ -30,15 +30,4 @@ excelExport
 logs/
 .idea
 modules
-nohup
-nohup.outn解决方案文件、配置文件  
-*.mdb  
-*.ldb  
-*.sln  
-*.config  
-  
-  
-#过滤文件夹Debug,Release,obj  
-Debug/  
-Release/  
-obj/ 
+nohup 
