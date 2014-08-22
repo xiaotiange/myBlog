@@ -2,21 +2,61 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82f6c226-9764-444d-8450-cee04c6dae4c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/bingo_favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/logo.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/bingo/bingohome.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/bingohome.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/images/favicon.png" afterPath="$PROJECT_DIR$/public/img/favicon.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/jquery-1.4.2.min.js" afterPath="$PROJECT_DIR$/public/js/jquery-1.4.2.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/jquery-1.6.4.min.js" afterPath="$PROJECT_DIR$/public/js/jquery-1.6.4.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/carousel.css" afterPath="$PROJECT_DIR$/public/css/carousel.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/crud.css" afterPath="$PROJECT_DIR$/public/css/crud.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/main.css" afterPath="$PROJECT_DIR$/public/css/main.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/secure.css" afterPath="$PROJECT_DIR$/public/css/secure.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin.html" afterPath="$PROJECT_DIR$/app/views/admin.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/Bootstrap" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/Bootstrap" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_module_crud__conf_routes" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_module_crud__conf_routes" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Admin" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Admin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Application" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Application" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$Exclude" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$Exclude" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$For" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$For" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$Hidden" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$Hidden" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$ObjectType$ObjectField" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$ObjectType$ObjectField" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$ObjectType" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$ObjectType" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Check" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Check" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Comments" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Comments" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.PlayDocumentation" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.PlayDocumentation" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Posts" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Posts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Secure$Security" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Secure$Security" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Secure" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Secure" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Security" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Security" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Tags" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Tags" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Users" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Users" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/helpers.CheatSheetHelper$3" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/helpers.CheatSheetHelper$3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/helpers.CheatSheetHelper" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/helpers.CheatSheetHelper" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Comment" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Comment" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Post" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Post" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/models.User" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/models.User" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/Bootstrap.class" afterPath="$PROJECT_DIR$/tmp/classes/Bootstrap.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/Admin.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/Admin.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/Application.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/Application.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/CRUD$Exclude.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/CRUD$Exclude.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/CRUD$For.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/CRUD$For.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/CRUD$Hidden.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/CRUD$Hidden.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/CRUD$ObjectType$ObjectField.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/CRUD$ObjectType$ObjectField.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/CRUD$ObjectType.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/CRUD$ObjectType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/CRUD.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/CRUD.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/Check.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/Check.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/Comments.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/Comments.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/PlayDocumentation.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/PlayDocumentation.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/Posts.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/Posts.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/Secure$Security.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/Secure$Security.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/Secure.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/Secure.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/Security.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/Security.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/Tags.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/Tags.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/controllers/Users.class" afterPath="$PROJECT_DIR$/tmp/classes/controllers/Users.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/helpers/CheatSheetHelper$3.class" afterPath="$PROJECT_DIR$/tmp/classes/helpers/CheatSheetHelper$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/helpers/CheatSheetHelper.class" afterPath="$PROJECT_DIR$/tmp/classes/helpers/CheatSheetHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/models/Comment.class" afterPath="$PROJECT_DIR$/tmp/classes/models/Comment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/models/Post.class" afterPath="$PROJECT_DIR$/tmp/classes/models/Post.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/models/Tag.class" afterPath="$PROJECT_DIR$/tmp/classes/models/Tag.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/classes/models/User.class" afterPath="$PROJECT_DIR$/tmp/classes/models/User.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/main.html" afterPath="$PROJECT_DIR$/app/views/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_errors_500.html" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_errors_500.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_main.html" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_module_crud__app_views_tags_crud_types.tag" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_module_crud__app_views_tags_crud_types.tag" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_play__framework_templates_tags_500.html" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_play__framework_templates_tags_500.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Tag" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Tag" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yabe.iws" afterPath="$PROJECT_DIR$/yabe.iws" />
     </list>
     <ignored path="yabe.iws" />
@@ -78,7 +118,7 @@
       <file leaf-file-name="main.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="50" selection-start="3226" selection-end="3226" vertical-scroll-proportion="0.7883959">
+            <state line="21" column="10" selection-start="854" selection-end="854" vertical-scroll-proportion="0.35836178">
               <folding />
             </state>
           </provider>
@@ -526,7 +566,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="50" selection-start="3226" selection-end="3226" vertical-scroll-proportion="0.7883959">
+        <state line="21" column="10" selection-start="854" selection-end="854" vertical-scroll-proportion="0.35836178">
           <folding />
         </state>
       </provider>
