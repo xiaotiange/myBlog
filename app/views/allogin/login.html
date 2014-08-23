@@ -1,0 +1,62 @@
+#{extends 'main.html' /}
+#{set title:"登录页面" /}
+
+<style type="text/css">
+    .container{
+        width: 960px;
+        margin: 0 auto;
+    }
+
+    .right{
+        text-align: right;
+    }
+    .login-table tr td{
+       padding: 10px 10px;
+    }
+    .login-table tbody tr td{
+        position: relative;
+    }
+    .tip{
+        margin-left: -30px;
+    }
+    .success{
+        color:#3c763d;
+    }
+    .failure{
+        color: #ff0000;
+    }
+
+</style>
+
+<div class="container">
+    <table border="0" class="login-table" cellspacing="0" width="80%">
+        <tbody>
+        <tr>
+            <td class="right">用户名：</td>
+            <td>
+                <input type="text" class="username"  size="30"  placeholder="请输入用户名" >
+                <span class="tip user-tip glyphicon glyphicon-ok has-success"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="right">密码：</td>
+            <td>
+                <input type="text" class="password" size="30"  placeholder="请输入密码" >
+                <span class="tip pwd-top glyphicon glyphicon-ok "></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="right">验证码：</td>
+            <td>
+                <input type="text" class="password" size="30"  placeholder="请输入验证码" >
+                <span class="tip chap-tip glyphicon glyphicon-ok "></span>
+                <span><img class="img" src="/Application/captcha?id=${randomID}" /></span>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="hidden" name="randomID" class="randomID" value="${randomID}" /></td>
+            <td> <span class="btn btn-primary" type="button">登录</span> </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
