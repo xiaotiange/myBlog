@@ -16,13 +16,10 @@
     .login-table tbody tr td{
         position: relative;
     }
-    .tip{
-        margin-left: -30px;
-    }
-    .success{
+    .glyphicon-ok{
         color:#3c763d;
     }
-    .failure{
+    .glyphicon-error{
         color: #ff0000;
     }
 
@@ -35,21 +32,21 @@
             <td class="right">用户名：</td>
             <td>
                 <input type="text" class="username"  size="30"  placeholder="请输入用户名" >
-                <span class="tip user-tip glyphicon glyphicon-ok has-success"></span>
+                <span class="user-tip glyphicon glyphicon-ok has-success"></span>
             </td>
         </tr>
         <tr>
             <td class="right">密码：</td>
             <td>
                 <input type="text" class="password" size="30"  placeholder="请输入密码" >
-                <span class="tip pwd-top glyphicon glyphicon-ok "></span>
+                <span class="pwd-top glyphicon glyphicon-ok "></span>
             </td>
         </tr>
         <tr>
             <td class="right">验证码：</td>
             <td>
                 <input type="text" class="password" size="30"  placeholder="请输入验证码" >
-                <span class="tip chap-tip glyphicon glyphicon-ok "></span>
+                <span class="chap-tip glyphicon glyphicon-ok "></span>
                 <span><img class="img" src="/Application/captcha?id=${randomID}" /></span>
             </td>
         </tr>
@@ -60,3 +57,13 @@
         </tbody>
     </table>
 </div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        yabe.gcs("/public/js/login.js?_v=1", function () {
+            yabe.Login.init.doInit($('.container'));
+        });
+    });
+
+</script>
