@@ -2,37 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82f6c226-9764-444d-8450-cee04c6dae4c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/show.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/result/TMResult.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eclipse/classes/result/TMResult$TMListResult.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eclipse/classes/result/TMResult.class" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/webmain.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/docs.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/jquery-ui-1.9.1.custom.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/jquery-1.4.2.min.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/bingohome.js" afterPath="$PROJECT_DIR$/public/js/Math.uuid.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eclipse/classes/controllers/Application.class" afterPath="$PROJECT_DIR$/eclipse/classes/controllers/Application.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_module_crud__conf_routes" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_module_crud__conf_routes" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Admin" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Admin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Application" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Application" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$Exclude" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$Exclude" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$For" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$For" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$Hidden" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$Hidden" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$ObjectType$ObjectField" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$ObjectType$ObjectField" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$ObjectType" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD$ObjectType" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.CRUD" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Check" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Check" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.PlayDocumentation" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.PlayDocumentation" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Secure$Security" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Secure$Security" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Secure" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Secure" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Security" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Security" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/helpers.CheatSheetHelper$3" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/helpers.CheatSheetHelper$3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/helpers.CheatSheetHelper" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/helpers.CheatSheetHelper" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Comment" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Comment" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Post" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Post" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/models.User" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/models.User" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Application.java" afterPath="$PROJECT_DIR$/app/controllers/Application.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Application/show.html" afterPath="$PROJECT_DIR$/app/views/Application/show.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/main.html" afterPath="$PROJECT_DIR$/app/views/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/main.css" afterPath="$PROJECT_DIR$/public/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/show.js" afterPath="$PROJECT_DIR$/public/js/show.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_Application_show.html" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_Application_show.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_bingo_bingohome.html" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_bingo_bingohome.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_main.html" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_module_crud__app_views_tags_crud_types.tag" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_module_crud__app_views_tags_crud_types.tag" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Tag" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Tag" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yabe.iws" afterPath="$PROJECT_DIR$/yabe.iws" />
     </list>
     <ignored path="yabe.iws" />
@@ -94,27 +78,45 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="26" selection-start="782" selection-end="782" vertical-scroll-proportion="-10.0">
+            <state line="6" column="24" selection-start="137" selection-end="137" vertical-scroll-proportion="-3.75">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="webmain.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/webmain.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="70" column="0" selection-start="2735" selection-end="2761" vertical-scroll-proportion="-28.5">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/Application/show.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="26" selection-start="1484" selection-end="1484" vertical-scroll-proportion="0.8122867">
+            <state line="0" column="0" selection-start="0" selection-end="50" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="show.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/show.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="26" selection-start="447" selection-end="447" vertical-scroll-proportion="0.0">
+            <state line="116" column="58" selection-start="3555" selection-end="3555" vertical-scroll-proportion="1.7774086">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Math.uuid.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/Math.uuid.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="79" selection-start="1198" selection-end="1198" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#0#154#0" expanded="false" />
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,10 +140,14 @@
         <option value="$PROJECT_DIR$/public/javascripts/bingohome.js" />
         <option value="$PROJECT_DIR$/app/views/admin.html" />
         <option value="$PROJECT_DIR$/public/stylesheets/carousel.css" />
+        <option value="$PROJECT_DIR$/public/css/show.css" />
         <option value="$PROJECT_DIR$/app/views/bingo/bingohome.html" />
+        <option value="$PROJECT_DIR$/public/js/Math.uuid.js" />
+        <option value="$PROJECT_DIR$/public/css/main.css" />
+        <option value="$PROJECT_DIR$/app/views/Application/show.html" />
+        <option value="$PROJECT_DIR$/app/views/webmain.html" />
         <option value="$PROJECT_DIR$/app/views/main.html" />
         <option value="$PROJECT_DIR$/public/js/show.js" />
-        <option value="$PROJECT_DIR$/app/views/Application/show.html" />
       </list>
     </option>
   </component>
@@ -179,6 +185,30 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yabe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yabe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -255,6 +285,76 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yabe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yabe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yabe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yabe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yabe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yabe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yabe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yabe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yabe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -290,29 +390,27 @@
               <option name="myItemId" value="yabe" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yabe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="yabe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="yabe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -332,6 +430,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/js" />
       <recent name="$PROJECT_DIR$/public/images" />
       <recent name="$PROJECT_DIR$/public/stylesheets" />
       <recent name="$PROJECT_DIR$/app/views" />
@@ -567,65 +666,100 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/img/favicon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Application/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/admin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="92" selection-start="598" selection-end="598" vertical-scroll-proportion="-3.25" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/bingohome.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/img/bingo_favicon.ico">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/carousel.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="414" selection-end="414" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/bingo/bingohome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="67" selection-start="371" selection-end="371" vertical-scroll-proportion="0.017321017" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/Comments/list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/jquery-ui-1.9.1.custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-3.235955" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Posts/show.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/tags/display.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="79" selection-start="1770" selection-end="1770" vertical-scroll-proportion="-30.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Application/listTagged.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Admin/form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/docs.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/bingo/bingohome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="16" selection-start="586" selection-end="586" vertical-scroll-proportion="-9.375" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/jquery-1.6.4.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="20046" selection-start="20114" selection-end="20114" vertical-scroll-proportion="0.016853932">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/Math.uuid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="79" selection-start="1198" selection-end="1198" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="260" column="0" selection-start="4149" selection-end="4600" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Application/show.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="50" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/webmain.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="0" selection-start="2735" selection-end="2761" vertical-scroll-proportion="-28.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="26" selection-start="782" selection-end="782" vertical-scroll-proportion="-10.0">
+        <state line="6" column="24" selection-start="137" selection-end="137" vertical-scroll-proportion="-3.75">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="45" selection-start="1695" selection-end="1695" vertical-scroll-proportion="0.6312292">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/show.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="26" selection-start="447" selection-end="447" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#154#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Application/show.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="26" selection-start="1484" selection-end="1484" vertical-scroll-proportion="0.8122867">
+        <state line="116" column="58" selection-start="3555" selection-end="3555" vertical-scroll-proportion="1.7774086">
           <folding />
         </state>
       </provider>

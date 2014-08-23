@@ -1,6 +1,24 @@
 #{extends 'main.html' /}
 #{set title:post.title /}
 
+<style type="text/css">
+    .submit{
+       cursor: pointer;
+    }
+    .img{
+        cursor: pointer;
+    }
+    .red{
+        color: #ff0000;
+        font-size: 14px;
+    }
+    .green{
+        color: green;
+        font-size: 14px;
+    }
+
+</style>
+
 <ul id="pagination">
     #{if post.previous()}
         <li id="previous">
@@ -18,10 +36,6 @@
     #{/if}
 </ul>
 
-#{if flash.success}
-   <p class="success">${flash.success}</p>
-#{/if}
-
 #{display post:post,as:'full' /}
 
 <h3>Post a comment</h3>
@@ -30,16 +44,18 @@
     <p>
         <label for="author">Your name: </label>
         <input type="text" name="author" class="author" id="author" />
+        <span class="author-blank"></span>
     </p>
     <p>
         <label for="content">Your message: </label>
-        <textarea name="content" id="content" class="content"></textarea>
+        <textarea name="content" id="content" class="content"></textarea> <span class="content-blank"></span>
     </p>
     <p>
         <label for="code">Please type the code below: </label>
-        <img class="img" src="@{Application.captcha(randomID)}" />
+        <img class="img" src="/Application/captcha?id=${randomID}" />
         <br />
         <input type="text" name="code" class="code" id="code" size="18" value="" />
+        <span class="code-blank"></span>
         <input type="hidden" name="randomID" class="randomID" value="${randomID}" />
    </p>
     <p>
@@ -49,10 +65,12 @@
 
 
 <script type="text/javascript">
-        $(document).ready(function () {
-            yabe.gcs("/js/show.js?_v=1", function () {
-                yabe.ShowInfo.init.doInit($('.post-comment'), ${post.id});
-            });
+
+    $(document).ready(function () {
+        yabe.gcs("/public/js/show.js?_v=1", function () {
+            yabe.ShowInfo.init.doInit($('.post-comment'), ${post.id});
         });
+    });
+
 </script>
 

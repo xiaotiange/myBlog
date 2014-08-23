@@ -20,20 +20,49 @@ var yabe = yabe || {};
     ShowInfo.init = $.extend({
         doInit: function(container,postId){
 
-            alert("ok");
-
             ShowInfo.container = container;
 
-            container.find(".submit").unbind().click(function(){
-                ShowInfo.show.dosubmit(container, postId);
+            container.find(".author").unbind().keydown(function(event) {
+                if (event.keyCode == 13) {//按回车
+                    ShowInfo.submit.dosubmit(container, postId);
+                }
             });
 
+            container.find(".content").unbind().keydown(function(event) {
+                if (event.keyCode == 13) {//按回车
+                    ShowInfo.submit.dosubmit(container, postId);
+                }
+            });
+
+            container.find(".img").unbind().click(function(){
+                ShowInfo.show.showNewCaotcha(container);
+            });
+
+            container.find(".code").unbind().keydown(function(event) {
+                if (event.keyCode == 13) {//按回车
+                    ShowInfo.submit.dosubmit(container, postId);
+                }
+            });
+
+            container.find(".submit").unbind().click(function(){
+                ShowInfo.submit.dosubmit(container, postId);
+            });
 
         },
         getContainer: function() {
             return ShowInfo.container;
         }
     }, ShowInfo.init);
+
+    ShowInfo.show = ShowInfo.show || {};
+    ShowInfo.show = $.extend({
+       showNewCaotcha: function(container){
+           var randomID = Math.uuid();
+           container.find(".randomID").val(randomID);
+           container.find(".img").attr("src","/Application/captcha?id="+randomID);
+       }
+
+    }, ShowInfo.show);
 
     ShowInfo.submit = ShowInfo.submit || {};
     ShowInfo.submit = $.extend({
@@ -49,11 +78,12 @@ var yabe = yabe || {};
                 success: function (dataJson) {
 
                     if(dataJson.isOk == false){
-                        alert(dataJson.msg);
+                         alert(dataJson.msg);
+                        return;
                     }
                     alert(dataJson.msg);
 
-                    window.location.onload;
+                    window.location.reload();
                 }
             })
 
@@ -66,20 +96,28 @@ var yabe = yabe || {};
             var code = container.find(".code").val();
             var randomID = container.find(".randomID").val();
 
-            if(author == ""){
-               alert("请输入评价人！");
-                return;
-            }
-            if(content == ""){
-               alert("请输入评价！");
-                return;
-            }
-            if(code == ""){
-               alert("请输入验证码！");
-                return;
-            }
-
             var param = {};
+
+            if(author.trim() == ""){
+                container.find(".author-blank").addClass("red");
+                container.find(".author-blank").html("请输入评价人！");
+                return;
+            }
+            container.find(".author-blank").html("");
+
+            if(code.trim() == ""){
+                container.find(".code-blank").addClass("red");
+                container.find(".code-blank").html("请输入评价！");
+                return;
+            }
+            container.find(".code-blank").html("");
+
+            if(code.trim() == ""){
+                container.find(".code-blank").addClass("red");
+                container.find(".code-blank").html("请输入验证码！");
+                return;
+            }
+            container.find(".code-blank").html("");
 
             param.author = author;
             param.content = content;

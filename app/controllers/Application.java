@@ -11,6 +11,9 @@ import sun.java2d.loops.RenderCache;
 
 import java.util.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.ciaosir.client.utils.JsonUtil;
 
 import models.*;
@@ -22,6 +25,8 @@ public class Application extends ControllerUtils {
         renderArgs.put("blogBaseline", Play.configuration.getProperty("blog.baseline"));
     }
     
+    private static final Logger log = LoggerFactory.getLogger(Application.class);
+            
     public static void show(Long id){
         Post post=Post.findById(id);
         String randomID=Codec.UUID();
@@ -36,7 +41,8 @@ public class Application extends ControllerUtils {
 
     public static void postComment(Long postId, String author,String content, String code,String randomID) {
         Post post = Post.findById(postId);
-              
+           
+        log.info("code is:"+code+" and cache is: "+Cache.get(randomID).toString());
         if(code.equalsIgnoreCase(Cache.get(randomID).toString())){
             post.addComment(author, content);
             Cache.delete(randomID); 
@@ -47,9 +53,10 @@ public class Application extends ControllerUtils {
     }
     
     public static void captcha(String id){
+        Cache.delete(id);
         Images.Captcha captcha=Images.captcha();
         String code=captcha.getText("#E4EAFD");
-        Cache.set(id, code, "10mn"); 
+        Cache.set(id, code, "3mn"); 
         renderBinary(captcha);
     }
     

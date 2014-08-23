@@ -18,7 +18,9 @@ body {
     position: relative;
 }
 
-
+a{
+    cursor: pointer;
+}
 
 #logo {
     display: block;
