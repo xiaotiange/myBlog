@@ -2,88 +2,100 @@
 var yabe = yabe || {};
 ((function($, window){
 
-    yabe.Login = {};
+    yabe.Register = {};
 
-    yabe.Login = yabe.Login || {};
+    yabe.Register = yabe.Register || {};
 
-    var Login = yabe.Login;
+    var Register = yabe.Register;
 
-    Login.init = Login.init || {};
-    Login.init = $.extend({
+    Register.init = Register.init || {};
+    Register.init = $.extend({
         doInit: function(container){
 
-            Login.container = container;
+            Register.container = container;
 
-            Login.event.setStaticEvent(container);
+            Register.event.setStaticEvent(container);
 
         },
         getContainer: function() {
-            return Login.container;
+            return Register.container;
         }
-    }, Login.init);
+    }, Register.init);
 
-    Login.event = Login.event || {};
-    Login.event = $.extend({
+    Register.event = Register.event || {};
+    Register.event = $.extend({
         setStaticEvent: function(container){
 
             container.find(".username").unbind().keydown(function(event) {
                 if (event.keyCode == 13) {//按回车
-                    Login.submit.dosubmit(container);
+                    Register.submit.dosubmit(container);
                 }
             });
 
             container.find(".password").unbind().keydown(function(event) {
                 if (event.keyCode == 13) {//按回车
-                    Login.submit.dosubmit(container);
+                    Register.submit.dosubmit(container);
+                }
+            });
+
+            container.find(".password1").unbind().keydown(function(event) {
+                if (event.keyCode == 13) {//按回车
+                    Register.submit.dosubmit(container);
+                }
+            });
+
+            container.find(".emial").unbind().keydown(function(event) {
+                if (event.keyCode == 13) {//按回车
+                    Register.submit.dosubmit(container);
                 }
             });
 
             container.find(".captcha").unbind().click(function(){
-                Login.show.showNewCaotcha(container);
+                Register.show.showNewCaotcha(container);
             });
 
             container.find(".code").unbind().keydown(function(event) {
                 if (event.keyCode == 13) {//按回车
-                    Login.submit.dosubmit(container);
+                    Register.submit.dosubmit(container);
                 }
             });
 
             container.find(".submit").unbind().click(function(){
-                Login.submit.dosubmit(container);
+                Register.submit.dosubmit(container);
             });
 
         }
 
-    }, Login.event);
+    }, Register.event);
 
-    Login.show = Login.show || {};
-    Login.show = $.extend({
+    Register.show = Register.show || {};
+    Register.show = $.extend({
         showNewCaotcha: function(container){
             var randomID = Math.uuid();
             container.find(".randomID").val(randomID);
             container.find(".captcha").attr("src","/Application/captcha?id="+randomID);
         }
 
-    }, Login.show);
+    }, Register.show);
 
-    Login.submit = Login.submit || {};
-    Login.submit = $.extend({
+    Register.submit = Register.submit || {};
+    Register.submit = $.extend({
         dosubmit: function(container){
 
-            var param =  Login.submit.getParameter();
+            var param =  Register.submit.getParameter();
 
             $.ajax({
                 type: 'post',
-                url: '/ALLogin/doLogin',
+                url: '/ALLogin/doRegister',
                 data: param,
                 success: function (dataJson) {
 
                     if(dataJson.isOk == false){
-                         alert(dataJson.msg);
-                        location.reload();
+                        alert(dataJson.msg);
+                        return;
                     }
-
-                    location.href = '/Application/index';
+                    alert(dataJson.msg+" 请登录！");
+                    location.href = '/ALLogin/index';
 
                 }
             })
@@ -91,9 +103,11 @@ var yabe = yabe || {};
         },
         getParameter: function(){
 
-            var container = Login.init.getContainer();
+            var container = Register.init.getContainer();
             var username = container.find(".username").val();
             var password = container.find(".password").val();
+            var password1 = container.find(".password1").val();
+            var email = container.find(".email").val();
             var code = container.find(".code").val();
             var randomID = container.find(".randomID").val();
 
@@ -104,9 +118,18 @@ var yabe = yabe || {};
                 return;
             }
 
-
             if(password.trim() == ""){
                 alert("请输入密码！");
+                return;
+            }
+
+            if(password1.trim() != password.trim()){
+                alert("输入两次密码不同！");
+                return;
+            }
+
+            if(email.trim() == ""){
+                alert("请输入邮箱！");
                 return;
             }
 
@@ -118,13 +141,14 @@ var yabe = yabe || {};
             param.username = username.trim();
             param.password = password.trim();
             param.code = code.trim();
+            param.email = email.trim();
             param.randomID =randomID.trim();
 
             return param;
 
         }
 
-    }, Login.submit);
+    }, Register.submit);
 
 
 

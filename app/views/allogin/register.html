@@ -2,26 +2,20 @@
 #{set title:"登录页面" /}
 
 <style type="text/css">
-    .login-table tr td{
-       padding: 10px 10px;
+
+    .reg-table tr td{
+        padding: 10px 10px;
     }
-    .login-table tbody tr td{
+    .reg-table tbody tr td{
         position: relative;
     }
-    .glyphicon-ok{
-        color:#3c763d;
-        margin-left: -30px;
-    }
-    .glyphicon-remove{
-        color: #ff0000;
-        margin-left: -30px;
-    }
+
 </style>
 
-<div class="container">
+<div class="container reg-container">
     <div class="row">
         <div class="left-div col-md-6">
-            <table border="0" class="login-table" cellspacing="0" width="100%">
+            <table border="0" class="reg-table" cellspacing="0" width="100%">
                 <tbody>
                 <tr>
                     <td class="right">用户名：</td>
@@ -38,6 +32,20 @@
                     </td>
                 </tr>
                 <tr>
+                    <td class="right">密码：</td>
+                    <td>
+                        <input type="password" class="password1" size="30"  placeholder="请再次输入密码" >
+                        <span class="pwd1-tip glyphicon "></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="right">邮箱：</td>
+                    <td>
+                        <input type="text" class="email" size="30"  placeholder="请输入邮箱" >
+                        <span class="email-tip glyphicon "></span>
+                    </td>
+                </tr>
+                <tr>
                     <td class="right">验证码：</td>
                     <td>
                         <input type="text" class="code" size="30"  placeholder="请输入验证码" >
@@ -47,27 +55,26 @@
                 </tr>
                 <tr>
                     <td><input type="hidden" name="randomID" class="randomID" value="${randomID}" /></td>
-                    <td> <span class="btn btn-primary submit" type="button">登录</span> </td>
+                    <td> <span class="btn btn-primary submit" type="button">注册</span> </td>
                 </tr>
                 </tbody>
             </table>
         </div>
 
         <div class="right-div col-md-5">
-            <div>还没有bingo帐号？</div>
-            <a class="registor_now" href="/ALLogin/register">立即注册 >>></a>
+            <div>已有bingo帐号？</div>
+            <a class="registor_now" href="/ALLogin/index">直接登录 >>></a>
             <div class="login_others">使用以下帐号直接登录:</div>
             <a class="icon_wb" title="使用新浪微博帐号登录" target="_blank" href="http://www.lagou.com/ologin/auth/sina.html"></a>
             <a class="icon_qq" title="使用腾讯QQ帐号登录" target="_blank" href="http://www.lagou.com/ologin/auth/qq.html"></a>
         </div>
     </div>
 </div>
-
 <script type="text/javascript">
 
     $(document).ready(function () {
-        yabe.gcs("/public/js/login.js?_v=2", function () {
-            yabe.Login.init.doInit($('.container'));
+        yabe.gcs("/public/js/register.js?_v=2", function () {
+            yabe.Register.init.doInit($('.reg-container'));
         });
     });
 

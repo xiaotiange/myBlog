@@ -1,11 +1,14 @@
-package controllers.crud;
+package controllers;
+import org.codehaus.groovy.control.customizers.SecureASTCustomizer;
+
 import controllers.CRUD;
 import controllers.Check;
 import controllers.Secure;
+
 import play.*;
 import play.mvc.*;
 @Check("admin")
 @With(Secure.class)
-public class Tags extends CRUD{
+public class Users extends CRUD{
 
 }

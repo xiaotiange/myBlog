@@ -20,33 +20,18 @@ public class ControllerUtils extends Controller {
     private static final Logger log = LoggerFactory.getLogger(ControllerUtils.class);
 
     public static final String TAG = "ControllerUtils";
- /*   
-    static void renderLoginFail(boolean isForAjax, boolean isForQt, String message) {
+ 
+    static void renderLoginFail(String message) {
 
-        if (isForAjax == false) {
-            if (isForQt == false) {
-                redirectToSalesLogin(request.url);
-            } else {
-                redirectToQtLogin(request.url);
-            }
-            
-        }
+        redirectToLogin(request.url);
         
-        ALResult res = new ALResult(false, message, null);
-        
-        res.setNeedWarnLogin(true);
-        
-        renderJSON(JsonUtil.getJson(res));
     }
    
-    static void redirectToSalesLogin(String redirectURL) {
+    static void redirectToLogin(String redirectURL) {
         ALLogin.index(redirectURL);
     }
     
-    static void redirectToQtLogin(String redirectURL) {
-        QTLogin.index(redirectURL);
-    }
-   */ 
+  
     static void renderError(String message) {
         ALResult res = new ALResult(false, message, null);
         

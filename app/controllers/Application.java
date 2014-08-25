@@ -18,12 +18,12 @@ import com.ciaosir.client.utils.JsonUtil;
 
 import models.*;
 
-public class Application extends ControllerUtils {
-    @Before
-    static void addDefaults() {
-        renderArgs.put("blogTitle", Play.configuration.getProperty("blog.title"));
-        renderArgs.put("blogBaseline", Play.configuration.getProperty("blog.baseline"));
-    }
+public class Application extends CheckUserLogin {
+//    @Before
+//    static void addDefaults() {
+//        renderArgs.put("blogTitle", Play.configuration.getProperty("blog.title"));
+//        renderArgs.put("blogBaseline", Play.configuration.getProperty("blog.baseline"));
+//    }
     
     private static final Logger log = LoggerFactory.getLogger(Application.class);
             
@@ -36,9 +36,10 @@ public class Application extends ControllerUtils {
     public static void index() {
         Post frontPost=Post.find("order by postedAt desc").first();
         List<Post> olderPosts=Post.find("order by postedAt desc").from(1).fetch(10);
+     
         render(frontPost,olderPosts);
     }
-
+    
     public static void postComment(Long postId, String author,String content, String code,String randomID) {
         Post post = Post.findById(postId);
            
@@ -46,17 +47,17 @@ public class Application extends ControllerUtils {
         if(code.equalsIgnoreCase(Cache.get(randomID).toString())){
             post.addComment(author, content);
             Cache.delete(randomID); 
-            renderSuccess("评论成功");
+            ControllerUtils.renderSuccess("评论成功");
         }else{
-            renderError("验证码错误！");  
+            ControllerUtils.renderError("验证码错误！");  
         }
     }
-    
+     
     public static void captcha(String id){
         Cache.delete(id);
         Images.Captcha captcha=Images.captcha();
         String code=captcha.getText("#E4EAFD");
-        Cache.set(id, code, "3mn"); 
+        Cache.set(id, code, "10mn"); 
         renderBinary(captcha);
     }
     

@@ -13,7 +13,7 @@ GET      /admin/myPosts/{id}                                    Admin.form
 GET      /admin/new                                                     Admin.form
 POST    /admin/myPosts/{id}                                  Admin.save
 POST    /admin/new                                                    Admin.save
-
+GET      /myHome                                                        MyHome.index
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
