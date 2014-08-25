@@ -71,6 +71,9 @@ var yabe = yabe || {};
         dosubmit: function(container){
 
             var param =  Login.submit.getParameter();
+            if(param==null){
+                return;
+            }
 
             $.ajax({
                 type: 'post',
@@ -80,7 +83,7 @@ var yabe = yabe || {};
 
                     if(dataJson.isOk == false){
                          alert(dataJson.msg);
-                        location.reload();
+                         return;
                     }
 
                     location.href = '/Application/index';
@@ -101,18 +104,18 @@ var yabe = yabe || {};
 
             if(username.trim() == ""){
                 alert("请输入用户名！");
-                return;
+                return null;
             }
 
 
             if(password.trim() == ""){
                 alert("请输入密码！");
-                return;
+                return null;
             }
 
             if(code.trim() == ""){
                 alert("请输入验证码！");
-                return;
+                return null;
             }
 
             param.username = username.trim();

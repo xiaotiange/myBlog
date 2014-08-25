@@ -594,3 +594,13 @@ tr.odd {
     height: 54px;
     width: 54px;
 }
+
+/** 图标 正确和错误 **/
+.glyphicon-ok{
+    color:#3c763d;
+    margin-left: -30px;
+}
+.glyphicon-remove{
+    color: #ff0000;
+    margin-left: -30px;
+}

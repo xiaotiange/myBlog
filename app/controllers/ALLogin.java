@@ -38,7 +38,7 @@ public class ALLogin extends ControllerUtils {
     }
     
     private static void checkCaptcha( String code, String randomID){
-        if(code.equalsIgnoreCase(Cache.get(randomID).toString())){
+        if(!StringUtils.isBlank(code) && !StringUtils.isBlank(randomID) && code.equalsIgnoreCase(Cache.get(randomID).toString())){
             Cache.delete(randomID);          
         }else{
             renderError("验证码错误！");  

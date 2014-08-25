@@ -1,5 +1,12 @@
+function isValidMail(mail) {
+    var filter  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return (filter.test(mail));
+}
 
 var yabe = yabe || {};
+
+yabe.Util =  yabe.Util || {};
+yabe.Util.isValidMail = isValidMail;
 ((function($, window){
 
     yabe.Register = {};
@@ -44,7 +51,7 @@ var yabe = yabe || {};
                 }
             });
 
-            container.find(".emial").unbind().keydown(function(event) {
+            container.find(".email").unbind().keydown(function(event) {
                 if (event.keyCode == 13) {//按回车
                     Register.submit.dosubmit(container);
                 }
@@ -83,6 +90,9 @@ var yabe = yabe || {};
         dosubmit: function(container){
 
             var param =  Register.submit.getParameter();
+            if(param==null){
+               return;
+            }
 
             $.ajax({
                 type: 'post',
@@ -115,27 +125,31 @@ var yabe = yabe || {};
 
             if(username.trim() == ""){
                 alert("请输入用户名！");
-                return;
+                return null;
             }
 
             if(password.trim() == ""){
                 alert("请输入密码！");
-                return;
+                return null;
             }
 
             if(password1.trim() != password.trim()){
                 alert("输入两次密码不同！");
-                return;
+                return null;
             }
 
             if(email.trim() == ""){
                 alert("请输入邮箱！");
-                return;
+                return null;
+            }
+            if(!yabe.Util.isValidMail(email)){
+                alert("请输入合法的邮箱！");
+                return null;
             }
 
             if(code.trim() == ""){
                 alert("请输入验证码！");
-                return;
+                return null;
             }
 
             param.username = username.trim();
