@@ -100,17 +100,17 @@ var yabe = yabe || {};
 
             if(author.trim() == ""){
                 container.find(".author-blank").addClass("red");
-                container.find(".author-blank").html("请输入评价人！");
+                container.find(".author-blank").html("请输入名字！");
                 return;
             }
             container.find(".author-blank").html("");
 
-            if(code.trim() == ""){
-                container.find(".code-blank").addClass("red");
-                container.find(".code-blank").html("请输入评价！");
+            if(content.trim() == ""){
+                container.find(".content-blank").addClass("red");
+                container.find(".content-blank").html("请输入评论！");
                 return;
             }
-            container.find(".code-blank").html("");
+            container.find(".content-blank").html("");
 
             if(code.trim() == ""){
                 container.find(".code-blank").addClass("red");

@@ -21,7 +21,7 @@ public class ControllerUtils extends Controller {
 
     public static final String TAG = "ControllerUtils";
  
-    static void renderLoginFail(String message) {
+    static void renderLoginFail() {
 
         redirectToLogin(request.url);
         

@@ -41,6 +41,12 @@ public class Application extends CheckUserLogin {
     }
     
     public static void postComment(Long postId, String author,String content, String code,String randomID) {
+        
+        User user = connect();
+        if(user == null){
+            ControllerUtils.renderSuccess("请登录后再发表评论！");
+        }
+        
         Post post = Post.findById(postId);
            
         log.info("code is:"+code+" and cache is: "+Cache.get(randomID).toString());

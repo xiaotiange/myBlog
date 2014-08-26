@@ -68,7 +68,7 @@ public class CheckUserLogin extends Controller {
         User user = (User) request.args.get(USER_ARG_KEY);
         
         if (user == null) {
-            ControllerUtils.renderLoginFail("找不到用户，您尚未登录，请先登录！");
+            return null;
         }
         
         return user;
