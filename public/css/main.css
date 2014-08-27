@@ -604,3 +604,23 @@ tr.odd {
     color: #ff0000;
     margin-left: -30px;
 }
+
+/*打分、好评的图标*/
+.rate-icon {
+    background: url("/public/img/icon_v2.gif") no-repeat scroll 1000px 1000px rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    padding-left: 20px;
+    width: 30px;
+}
+.rate-ok {
+    background-position: -237px -104px;
+}
+.rate-normal {
+    background-position: -236px -244px;
+}
+.rate-bad {
+    background-position: -237px -174px;
+    padding-left: 22px;
+}
