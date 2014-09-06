@@ -6,7 +6,11 @@ html, body {
 }
 
 body {
-    width: 960px;
+    width: 100%;
+    margin: auto;
+}
+.main{
+    width: 1000px;
     margin: auto;
 }
 
@@ -354,12 +358,17 @@ form label {
 /** Footer **/
 
 #footer {
-    border-top: 1px solid #45597A;
-    font-size: 70%;
-    padding: 10px 30px;
-    text-align: center;
-    color: #869AB1;
-    margin-top: 30px;
+    position: fixed;
+    bottom: 0px;
+    background: #f5f4f2;
+    border-top: 1px solid #e2e4e6;
+    padding-top: 23px;
+    font-size: 12px;
+    color: #8e999d;
+    line-height: 1.6;
+    padding-bottom: 27px;
+    padding-top: 27px;
+}
 }
 
 #footer a {
@@ -623,4 +632,17 @@ tr.odd {
 .rate-bad {
     background-position: -237px -174px;
     padding-left: 22px;
+}
+
+/*按钮*/
+.big-btn{
+   background-color: #3385ff;
+   height: 40px;
+   padding:10px 20px;
+   color: #ffffff;
+   font-size: 16px;
+    cursor: pointer;
+}
+input[type="text"]:focus{
+    border: 1px solid #2d78f4;
 }

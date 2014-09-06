@@ -69,6 +69,10 @@ var yabe = yabe || {};
         dosubmit: function(container, postId){
 
             var param =  ShowInfo.submit.getParameter();
+            if(param==null){
+                return;
+            }
+
             param.postId = postId;
 
             $.ajax({
@@ -101,21 +105,21 @@ var yabe = yabe || {};
             if(author.trim() == ""){
                 container.find(".author-blank").addClass("red");
                 container.find(".author-blank").html("请输入名字！");
-                return;
+                return null;
             }
             container.find(".author-blank").html("");
 
             if(content.trim() == ""){
                 container.find(".content-blank").addClass("red");
                 container.find(".content-blank").html("请输入评论！");
-                return;
+                return null;
             }
             container.find(".content-blank").html("");
 
             if(code.trim() == ""){
                 container.find(".code-blank").addClass("red");
                 container.find(".code-blank").html("请输入验证码！");
-                return;
+                return null;
             }
             container.find(".code-blank").html("");
 

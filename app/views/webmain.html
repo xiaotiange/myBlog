@@ -4,7 +4,11 @@
 <head>
     <title>#{get 'title' /}</title>
     <meta charset="${_response_encoding}">
-    <!-- 新 controllers.job.Bootstrap 核心 CSS 文件 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <link rel="stylesheet" href="@{'public/bootstrap/css/bootstrap.min.css'}" />
     <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,7 +16,7 @@
 
     <link rel="stylesheet" media="screen" href="@{'/public/css/main.css'}">
 #{get 'moreStyles' /}
-*{<link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">  }*
+
     <link rel="shortcut icon" type="image/png" href="@{'/public/img/bingo_favicon.ico'}">
     <script src="@{'/public/js/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
     <script src="@{'/public/js/Math.uuid.js'}" type="text/javascript" charset="${_response_encoding}"></script>
