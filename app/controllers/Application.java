@@ -62,7 +62,7 @@ public class Application extends CheckUserLogin {
     public static void captcha(String id){
         Cache.delete(id);
         Images.Captcha captcha=Images.captcha();
-        String code=captcha.getText("#E4EAFD");
+        String code=captcha.getText("#666666");
         Cache.set(id, code, "10mn"); 
         renderBinary(captcha);
     }

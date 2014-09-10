@@ -2,6 +2,9 @@
 #{set title:"登录页面" /}
 
 <style type="text/css">
+    .login-container{
+
+    }
     .login-table tr td{
        padding: 10px 10px;
     }
@@ -10,9 +13,9 @@
     }
 </style>
 
-<div class="container">
+<div class="container-div login-container">
     <div class="row">
-        <div class="left-div col-md-6">
+        <div class="left-div col-md-7">
             <table border="0" class="login-table" cellspacing="0" width="100%">
                 <tbody>
                 <tr>
@@ -39,7 +42,7 @@
                 </tr>
                 <tr>
                     <td><input type="hidden" name="randomID" class="randomID" value="${randomID}" /></td>
-                    <td> <span class="btn btn-primary submit" type="button">登录</span> </td>
+                    <td> <span class="big-btn submit" type="button">登录</span> </td>
                 </tr>
                 </tbody>
             </table>
@@ -59,7 +62,7 @@
 
     $(document).ready(function () {
         yabe.gcs("/public/js/login.js?_v=2", function () {
-            yabe.Login.init.doInit($('.container'));
+            yabe.Login.init.doInit($('.login-container'));
         });
     });
 
