@@ -28,12 +28,10 @@ public class CheckUserLogin extends Controller {
     private final static String USER_ARG_KEY = "_user_";
    
  
-    @Before
+    @Before(unless = { "Application.index",
+            "ALLogin.index","ALLogin.register"})
     static void check(){
         User user = checkIsLogin();
-        if(user != null){
-            renderArgs.put("user", user);
-        }
     }
     
     static User checkIsLogin() {
@@ -47,14 +45,16 @@ public class CheckUserLogin extends Controller {
         String sid = ALLogin.getSidFromCookie();
         
         if (StringUtils.isEmpty(sid)) {
-          return null;
+            //ControllerUtils.renderLoginFail();
+            return null;
         }
         
         String ip = ControllerUtils.getRemoteIp();
         user = LoginUserGetAction.fetchUserBySid(sid, ip);
         
         if (user == null) {
-           return null;
+           // ControllerUtils.renderLoginFail();
+            return null;
         }
         
         ALLogin.putSidToCookie(sid);     

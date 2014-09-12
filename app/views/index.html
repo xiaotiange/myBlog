@@ -22,11 +22,9 @@
                 </ul>
             </div>
             <div class="user-nav">
-                #{if user}
-                    <div class="has-login">
+                    <div class="has-login" style="display:none;">
                         <div class="user-op-info-link" style="overflow: hidden;text-align: center;">
-                            <span class="arrow"></span>
-                            <a href="#">${user?.email}</a>
+                            <span href="#" class="user-name"></span>
                         </div>
                         <div class="user-hidden-info" style="display: none;">
                             <a href="/Home/index">我的空间</a>
@@ -35,12 +33,10 @@
                             <a href="/ALLogin/doLogout">退出</a>
                         </div>
                     </div>
-                #{/if}
-                #{else}
-                    <div class="not-login">
+                    <div class="not-login" style="display: none;">
                         <a href="@{ALLogin.index()}">登录</a>|<a href="@{ALLogin.register()}">注册</a>
                     </div>
-                #{/else}
+
 
                 </ul>
             </div>
