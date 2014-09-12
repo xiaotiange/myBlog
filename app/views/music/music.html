@@ -1,0 +1,14 @@
+#{extends 'index.html' /}
+#{set title:"听音乐"/}
+
+
+<div class="container-div">
+<form action="@@{MusicAdmin.addMusic()}" method="post" enctype="multipart/form-data">
+#{if message}
+    <div style="text-align: center;"><span class="red">${message}</span></div>
+#{/if}
+    <input id="musicFile" value="" type="file" name="musicFile" />
+
+    <input type="submit" value="添加">
+</form>
+</div>

@@ -263,7 +263,7 @@ h3 span {
 	left: -4px;
 }
 
-/** Form **/
+/** Form
 
 form {
     padding: 10px;
@@ -303,7 +303,7 @@ form label {
     color: #aaa;
     margin-bottom: 3px;
 }
-
+ **/
 #captcha{
     display: block;
     height: 50px;  
