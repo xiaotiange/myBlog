@@ -104,8 +104,7 @@ yabe.Util.isValidMail = isValidMail;
                         alert(dataJson.msg);
                         return;
                     }
-                    alert(dataJson.msg+" 请登录！");
-                    location.href = '/ALLogin/index';
+                    location.href = '/Application/index';
 
                 }
             })

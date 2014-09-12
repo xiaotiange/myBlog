@@ -34,7 +34,7 @@ $(document).ready(function() {
                         var userName = userJson.email;
 
                         container.find('.has-login .user-name').html(userName);
-                        UserLoginInfo.show.showLogin(container);
+                        //UserLoginInfo.show.showLogin(container);
                     } else {
                         container.find('.not-login').show();
                         container.find('.has-login').remove();

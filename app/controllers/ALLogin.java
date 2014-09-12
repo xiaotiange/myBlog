@@ -32,8 +32,8 @@ public class ALLogin extends ControllerUtils {
         String ip = ControllerUtils.getRemoteIp();        
         ALResult<ALSession> loginRes = UserLoginRegAction.userLogin(username, password, ip);
         
-        trySetCookie(loginRes);                
-        renderSuccess("登录成功");
+        trySetCookie(loginRes);  
+        renderResultJson(loginRes);
         
     }
     
