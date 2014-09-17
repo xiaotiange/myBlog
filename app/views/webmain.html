@@ -14,14 +14,16 @@
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" media="screen" href="@{'/public/css/main.css'}">
+    *{<link rel="stylesheet" media="screen" href="@{'/public/css/main.css'}">  }*
 #{get 'moreStyles' /}
 
     <link rel="shortcut icon" type="image/png" href="@{'/public/img/logo-48-48.ico'}">
-    <script src="@{'/public/js/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+    <script src="/public/Music/Js/jquery.js"></script>
+    <script src="/public/Music/Js/jquery-ui.js"></script>
     <script src="@{'/public/js/Math.uuid.js'}" type="text/javascript" charset="${_response_encoding}"></script>
-    <script src="@{'/public/bootstrap/js/bootstrap.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
     <script src="/public/js/jquery-ui-1.9.1.custom.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/public/js/jquery.tmpl.js" type="text/javascript" charset="utf-8"></script>
     <script src="/public/js/loadready.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
 
@@ -77,6 +79,7 @@
 <body>
 <div>
 #{doLayout /}
+ #{get 'moreScripts' /}
 </div>
 
 

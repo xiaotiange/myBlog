@@ -1,14 +1,42 @@
 #{extends 'index.html' /}
 #{set title:"听音乐"/}
 
+<link rel="stylesheet" type="text/css" href="/public/Music/Css/tplayer.css" />
+<link rel="stylesheet" type="text/css" href="/public/Music/Plugins/FontAwesome4.1/css/font-awesome.min.css" />
+<script src="/public/Music/Js/jquery-ui.js"></script>
+<script src="/public/Music/Js/addMusic.js"></script>
+<script src="/public/Music/Js/tPlayer.js"></script>
+
+<style type="text/css">
+    .input-div input{
+        display: inline-block;
+    }
+    .file-name{
+        height:40px;
+        border:1px solid #cdcdcd;
+        width:300px;
+    }
+    .file{
+        margin-left: -400px;
+        width: 400px;
+        height:40px;
+        filter:alpha(opacity:0);
+        opacity: 0;
+    }
+</style>
 
 <div class="container-div">
 <form action="@@{MusicAdmin.addMusic()}" method="post" enctype="multipart/form-data">
 #{if message}
     <div style="text-align: center;"><span class="red">${message}</span></div>
 #{/if}
-    <input id="musicFile" value="" type="file" name="musicFile" />
+    <div class="input-div">
+    <input type='text' name='textfield' id='textfield' class='file-name' />
+    <span class='big-btn'>浏览...</span>
+    <input type="file" name="musicFile" class="file" id="musicFile" size="28" onchange="document.getElementById('textfield').value=this.value" />
 
-    <input type="submit" value="添加">
+    <input type="submit" class="big-btn submit-btn" value="添加">
+    </div>
 </form>
+
 </div>

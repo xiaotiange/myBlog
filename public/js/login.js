@@ -86,7 +86,8 @@ var yabe = yabe || {};
                          return;
                     }
 
-                    location.href = '/Application/index';
+                    var redirectURL = container.find(".redirect-url-hidden").val();
+                    Login.redir.afterLoginSuccess(redirectURL);
 
                 }
             })
@@ -129,7 +130,16 @@ var yabe = yabe || {};
 
     }, Login.submit);
 
-
+    Login.redir = Login.redir || {};
+    Login.redir = $.extend({
+        afterLoginSuccess: function(redirectURL) {
+            if(redirectURL === undefined || redirectURL == null || redirectURL == '') {
+                location.href = '/';
+            } else {
+                location.href = redirectURL;
+            }
+        }
+    }, Login.redir);
 
 
 })(jQuery, window));

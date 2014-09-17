@@ -20,6 +20,7 @@
     background: #3385ff;
     color: #fff;
     text-decoration: none;
+    list-style-type: none;
 }
 
 .search-bar{

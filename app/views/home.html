@@ -1,0 +1,84 @@
+#{extends 'webmain.html' /}
+#{set title:"美食屋" /}
+
+
+<link rel="stylesheet" type="text/css" href="/public/home/css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="/public/home/css/demo.css" />
+
+
+<link rel="stylesheet" type="text/css" href="/public/home/css/tabs.css" />
+<link rel="stylesheet" type="text/css" href="/public/home/css/tabstyles.css" />
+
+<script src="/public/home/js/modernizr.custom.js"></script>
+<div class="container">
+
+    <section>
+        <div class="tabs tabs-style-iconbox">
+            <nav>
+                <ul>
+                    <li><a href="#section-bar-1" class="icon icon-home"><span>Home</span></a></li>
+                    <li><a href="#section-bar-2" class="glyphicon glyphicon-gift"><span>Gift</span></a></li>
+                    <li><a href="#section-bar-3" class="glyphicon glyphicon-headphones"><span>music</span></a></li>
+                    <li><a href="#section-bar-4" class="icon icon-upload"><span>Upload</span></a></li>
+                    <li><a href="#section-bar-5" class="glyphicon glyphicon-user"><span>mime</span></a></li>
+                </ul>
+            </nav>
+            <div class="content-wrap">
+                <section id="section-bar-1">
+                    <div class="hide-btn"><a class="hide-text" href="/MusicAdmin/index">听音乐</a></div>
+                </section>
+                <section id="section-bar-2">
+                    <div class="hide-btn"><a class="hide-text" href="/MusicAdmin/index">听音乐</a></div>
+                </section>
+                <section id="section-bar-3">
+                    <div class="hide-btn"><a class="hide-text" href="/MusicAdmin/index">随心听</a></div>
+                </section>
+                <section id="section-bar-4">
+                    <div class="hide-btn"><a class="hide-text" href="/MusicAdmin/index">分享心情</a></div>
+                </section>
+                <section id="section-bar-5">
+                    <div class="hide-btn"><a class="hide-text" href="/UserCenter/myMusic">我的音乐</a></div>
+                </section>
+            </div><!-- /content -->
+        </div><!-- /tabs -->
+    </section>
+    <section class="second">
+        <div class="tabs tabs-style-iconbox">
+            <nav>
+                <ul>
+                    <li><img src="/public/img/music/music_1.jpg" alt="" width="400px" height="300px"></li>
+                    <li><img src="/public/img/music/music_1.jpg" alt="" width="400px" height="300px"></li>
+                    <li><img src="/public/img/music/music_1.jpg" alt="" width="400px" height="300px"></li>
+                </ul>
+            </nav>
+         </div>
+    </section>
+
+    <section class="third">
+        <div class="tabs tabs-style-bar">
+            <nav>
+
+            </nav>
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="tabs tabs-style-bar">
+            <nav>
+
+            </nav>
+        </div>
+    </section>
+
+</div>
+
+<script type="text/javascript" src="/public/home/js/cbpFWTabs.js"></script>
+<script type="text/javascript">
+    (function() {
+
+        [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+            new CBPFWTabs( el );
+        });
+
+    })();
+</script>

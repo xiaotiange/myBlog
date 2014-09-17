@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Random;
 
 import models.Music;
@@ -18,6 +19,7 @@ import org.slf4j.LoggerFactory;
 
 
 import play.Play;
+import result.ALResult;
 
 public class MusicAdmin extends CheckUserLogin {
     
@@ -68,12 +70,31 @@ public class MusicAdmin extends CheckUserLogin {
             render("/music/music.html",message);  
         }
         
-        Music.saveMusic(user.fullname, filename, musicFile.getAbsolutePath());
+        Music.saveMusic(user.id , user.fullname, filename, musicFile.getAbsolutePath());
         log.info(musicFile.getAbsolutePath());
         message="恭喜亲，添加成功！";
         log.info("Add Music Success!!!");
         render("/music/music.html",message);  
+            
+    }
+    
+    public static void queryMyMusic(){
+        User user = connect();
+        if(user==null){
+            ControllerUtils.renderError("亲，请先登录吧！");        
+        }
         
+        List<Music> musicList = Music.findListByUserId(user.id);
+        
+        ControllerUtils.renderResultJson(musicList);
+        
+    }
+    
+    public static void queryMusic(){
+
+        List<Music> musicList = Music.findAll();
+        
+        ControllerUtils.renderResultJson(musicList);
         
     }
 

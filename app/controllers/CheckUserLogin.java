@@ -21,17 +21,15 @@ import play.mvc.Controller;
 import result.ALResult;
 import utils.PlayUtil;
 
-public class CheckUserLogin extends Controller {
+public class CheckUserLogin extends BaseController {
 
     private static final Logger log = LoggerFactory.getLogger(CheckUserLogin.class);
     
     private final static String USER_ARG_KEY = "_user_";
    
- 
-    @Before(unless = { "Application.index",
-            "ALLogin.index","ALLogin.register"})
+   @Before
     static void check(){
-        User user = checkIsLogin();
+        checkIsLogin();
     }
     
     static User checkIsLogin() {
@@ -53,7 +51,7 @@ public class CheckUserLogin extends Controller {
         user = LoginUserGetAction.fetchUserBySid(sid, ip);
         
         if (user == null) {
-           // ControllerUtils.renderLoginFail();
+          // ControllerUtils.renderLoginFail();
             return null;
         }
         

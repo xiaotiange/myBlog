@@ -16,9 +16,9 @@ import utils.PlayUtil;
 
 public class ALLogin extends ControllerUtils {
 
-    public static void index(String url){
+    public static void index(String requestUrl){
         String randomID=Codec.UUID();
-        render("/allogin/login.html", randomID, url);
+        render("/allogin/login.html", randomID, requestUrl);
     }
     
     public static void register(String url){
