@@ -28,17 +28,12 @@ public class MusicAdmin extends CheckUserLogin {
     private static final String MusicFolderPrefix = Play.configuration.getProperty("music.savefilepath",
             "/data/music");
     
-    public static void index(){
-        render("/music/music.html");
-    }
-    
-    public static void addMusic(File musicFile){
-        String message="";
-        if(musicFile ==  null){
-            message="亲，请先添加音乐文件！";
-            render("/music/music.html",message);  
+    public static void index(File musicFile){
+        if(musicFile==null){
+            render("/music/music.html"); 
         }
-               
+        String message="";
+   
         User user = connect();
         if(user==null){
             message="亲，登录后才可以添加哦！";

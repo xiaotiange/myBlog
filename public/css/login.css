@@ -1,0 +1,100 @@
+.dialog-table tbody tr td{
+    padding: 10px 0px;
+    padding-left: 40px;
+    position: relative;
+}
+.dialog{
+    margin: 200px auto;
+    width: 650px;
+    border: 0;
+}
+.reg-dialog{
+    width: 410px;
+    margin: 200px auto;
+    border: 0;
+}
+.dialog-header{
+    height: 50px;
+    background: #2cc185;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+.dialog-body{
+    background: #f0f0f0;
+    padding: 20px 10px;
+    overflow: hidden;
+}
+.left-div{
+    float: left;
+    width: 60%;
+}
+.dialog-body input{
+    height: 40px;
+    width: 300px;
+    border: 1px solid #2cc185;
+    padding: 10px 40px;
+    font-size: 18px;
+}
+p.dialog-btn{
+    margin: 0;
+    height: 40px;
+    width: 300px;
+    text-align: center;
+    padding: 8px 0;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.small-dialog-btn{
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 50px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.green-dialog-btn{
+    background: #2cc185;
+}
+.red-dialog-btn{
+    background: #c9394a;
+}
+.right-div{
+    float: right;
+    width: 40%;
+    padding: 30px 40px;
+    font-size: 16px;
+}
+.login-dialog-table{
+    border-right: 1px solid #ccc;
+}
+
+.login-icon{
+    margin-left: -295px;
+    color: #444;
+}
+
+button.close{
+    border: 2px solid #ffffff;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    font-size: 25px;
+}
+button.close:hover{
+    background: #fff;
+}
+
+.ui-widget-header{
+    height: 50px;
+    background: #2cc185;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+.ui-button-text{
+
+}

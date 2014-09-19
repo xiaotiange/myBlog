@@ -1,76 +1,70 @@
-
+function isValidMail(mail) {
+    var filter  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return (filter.test(mail));
+}
 var yabe = yabe || {};
+
+yabe.Util =  yabe.Util || {};
+yabe.Util.isValidMail = isValidMail;
+
 ((function($, window){
 
-    yabe.Login = {};
+    yabe.LoginRegister = {};
 
-    yabe.Login = yabe.Login || {};
+    yabe.LoginRegister = yabe.LoginRegister || {};
 
-    var Login = yabe.Login;
+    var LoginRegister = yabe.LoginRegister;
 
-    Login.init = Login.init || {};
-    Login.init = $.extend({
+    LoginRegister.init = LoginRegister.init || {};
+    LoginRegister.init = $.extend({
         doInit: function(container){
-
-            Login.container = container;
-
-            Login.event.setStaticEvent(container);
-
-        },
-        getContainer: function() {
-            return Login.container;
+           /*
+           container.find(".to-login-btn").unbind().click(function(){
+               LoginRegister.submit.toLogin();
+           });
+             */
+            LoginRegister.event.setStaticEvent();
         }
-    }, Login.init);
+    }, LoginRegister.init);
 
-    Login.event = Login.event || {};
-    Login.event = $.extend({
-        setStaticEvent: function(container){
+    LoginRegister.event = LoginRegister.event || {};
+    LoginRegister.event = $.extend({
+        setStaticEvent: function() {
+            var l_container = $('.login-container');
+            var r_container = $('.reg-container');
 
-            container.find(".username").unbind().keydown(function(event) {
-                if (event.keyCode == 13) {//按回车
-                    Login.submit.dosubmit(container);
-                }
-            });
+            $('#register-container').on('show.bs.modal', function () {
+                r_container.find("input").unbind().keydown(function(event) {
+                    if (event.keyCode == 13) {//按回车
+                        LoginRegister.submit.doRegsubmit(r_container);
+                    }
+                });
 
-            container.find(".password").unbind().keydown(function(event) {
-                if (event.keyCode == 13) {//按回车
-                    Login.submit.dosubmit(container);
-                }
-            });
+                r_container.find(".reg-submit").unbind().click(function(){
+                    LoginRegister.submit.doRegsubmit(r_container);
+                });
+            })
 
-            container.find(".captcha").unbind().click(function(){
-                Login.show.showNewCaotcha(container);
-            });
+            $('#login-container').on('show.bs.modal', function () {
+                l_container.find("input").unbind().keydown(function(event) {
+                    if (event.keyCode == 13) {//按回车
+                        LoginRegister.submit.doLoginsubmit(l_container);
+                    }
+                });
 
-            container.find(".code").unbind().keydown(function(event) {
-                if (event.keyCode == 13) {//按回车
-                    Login.submit.dosubmit(container);
-                }
-            });
-
-            container.find(".submit").unbind().click(function(){
-                Login.submit.dosubmit(container);
-            });
+                l_container.find(".login-submit").unbind().click(function(){
+                    LoginRegister.submit.doLoginsubmit(l_container);
+                });
+            })
 
         }
+    }, LoginRegister.event);
 
-    }, Login.event);
+    LoginRegister.submit = LoginRegister.submit || {};
+    LoginRegister.submit = $.extend({
+        doLoginsubmit: function(container){
 
-    Login.show = Login.show || {};
-    Login.show = $.extend({
-        showNewCaotcha: function(container){
-            var randomID = Math.uuid();
-            container.find(".randomID").val(randomID);
-            container.find(".captcha").attr("src","/Application/captcha?id="+randomID);
-        }
-
-    }, Login.show);
-
-    Login.submit = Login.submit || {};
-    Login.submit = $.extend({
-        dosubmit: function(container){
-
-            var param =  Login.submit.getParameter();
+            var param =  LoginRegister.submit.getloginParameter(container);
             if(param==null){
                 return;
             }
@@ -82,24 +76,45 @@ var yabe = yabe || {};
                 success: function (dataJson) {
 
                     if(dataJson.isOk == false){
-                         alert(dataJson.msg);
-                         return;
+                        alert(dataJson.msg);
+                        return;
                     }
 
-                    var redirectURL = container.find(".redirect-url-hidden").val();
-                    Login.redir.afterLoginSuccess(redirectURL);
+                    container.find(".close").click();
+                    location.reload();
+                }
+            })
+
+
+        },
+        doRegsubmit: function(container){
+
+            var param =  LoginRegister.submit.getRegParameter(container);
+            if(param==null){
+                return;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/ALLogin/doRegister',
+                data: param,
+                success: function (dataJson) {
+
+                    if(dataJson.isOk == false){
+                        alert(dataJson.msg);
+                        return;
+                    }
+                    container.find(".close").click();
+                    location.href = '/Application/index';
 
                 }
             })
 
         },
-        getParameter: function(){
+        getloginParameter: function(container){
 
-            var container = Login.init.getContainer();
             var username = container.find(".username").val();
             var password = container.find(".password").val();
-            var code = container.find(".code").val();
-            var randomID = container.find(".randomID").val();
 
             var param = {};
 
@@ -108,38 +123,57 @@ var yabe = yabe || {};
                 return null;
             }
 
+            if(password.trim() == ""){
+                alert("请输入密码！");
+                return null;
+            }
+
+            param.username = username.trim();
+            param.password = password.trim();
+
+            return param;
+        },
+        getRegParameter: function(container){
+            var username = container.find(".username").val();
+            var password = container.find(".password").val();
+            var password1 = container.find(".password1").val();
+            var email = container.find(".email").val();
+
+            var param = {};
+
+            if(username.trim() == ""){
+                alert("请输入用户名！");
+                return null;
+            }
 
             if(password.trim() == ""){
                 alert("请输入密码！");
                 return null;
             }
 
-            if(code.trim() == ""){
-                alert("请输入验证码！");
+            if(password1.trim() != password.trim()){
+                alert("输入两次密码不同！");
+                return null;
+            }
+
+            if(email.trim() == ""){
+                alert("请输入邮箱！");
+                return null;
+            }
+            if(!yabe.Util.isValidMail(email)){
+                alert("请输入合法的邮箱！");
                 return null;
             }
 
             param.username = username.trim();
             param.password = password.trim();
-            param.code = code.trim();
-            param.randomID =randomID.trim();
-
+            param.email = email.trim();
             return param;
 
         }
 
-    }, Login.submit);
 
-    Login.redir = Login.redir || {};
-    Login.redir = $.extend({
-        afterLoginSuccess: function(redirectURL) {
-            if(redirectURL === undefined || redirectURL == null || redirectURL == '') {
-                location.href = '/';
-            } else {
-                location.href = redirectURL;
-            }
-        }
-    }, Login.redir);
+    }, LoginRegister.submit);
 
 
 })(jQuery, window));

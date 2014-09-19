@@ -34,7 +34,7 @@ $(document).ready(function() {
                         var userName = userJson.fullname;
 
                         container.find('.has-login .user-name').html(userName);
-                        //UserLoginInfo.show.showLogin(container);
+                        UserLoginInfo.show.doshow();
                     } else {
                         container.find('.not-login').show();
                         container.find('.has-login').remove();
@@ -47,18 +47,19 @@ $(document).ready(function() {
 
     UserLoginInfo.show = UserLoginInfo.show || {};
     UserLoginInfo.show = $.extend({
-        showLogin: function(container) {
+        doshow: function() {
+            var container = $(".header");
+            var usertable=container.find(".user-nav");
+            var user = container.find(".exit-btn");
 
-            var loginObj = container.find(".has-login");
-            var uinfo=loginObj.find(".user-hidden-info");
-            loginObj.hover(function(){
-                uinfo.show();
+            usertable.hover(function(){
+                user.show();
             },function(){
-                uinfo.hide();
+                user.hide();
+
             });
+
         }
-
-
     }, UserLoginInfo.show);
 
 })(jQuery,window));

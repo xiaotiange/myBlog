@@ -27,7 +27,7 @@ public class Music extends Model {
     public String filePath;
     
     @Required
-    public Long createTs;
+    public Date  createTs;
     
 
     public Music(Long userId, String username, String filaName, String filePath) {
@@ -35,7 +35,7 @@ public class Music extends Model {
         this.filaName = filaName;
         this.filePath = filePath;
         this.userId = userId;
-        this.createTs = System.currentTimeMillis();
+        this.createTs =  new Date();
     }
     
     public  static Music saveMusic(Long userId, String username, String filaName, String filePath){

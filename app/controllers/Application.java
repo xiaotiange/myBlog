@@ -34,10 +34,8 @@ public class Application extends CheckUserLogin {
     }
     
     public static void index() {
-        Post frontPost=Post.find("order by postedAt desc").first();
-        List<Post> olderPosts=Post.find("order by postedAt desc").from(1).fetch(10);
-     
-        render("/home.html",frontPost,olderPosts);
+
+        render("/home.html");
     }
     
     public static void postComment(Long postId, String author,String content, String code,String randomID) {

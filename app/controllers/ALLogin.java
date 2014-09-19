@@ -26,8 +26,8 @@ public class ALLogin extends ControllerUtils {
         render("/allogin/register.html", randomID, url);
     }
     
-    public static void doLogin(String username, String password, String code, String randomID){
-        checkCaptcha(code, randomID); 
+    public static void doLogin(String username, String password){
+       // checkCaptcha(code, randomID); 
         
         String ip = ControllerUtils.getRemoteIp();        
         ALResult<ALSession> loginRes = UserLoginRegAction.userLogin(username, password, ip);
@@ -36,7 +36,7 @@ public class ALLogin extends ControllerUtils {
         renderResultJson(loginRes);
         
     }
-    
+    /*
     private static void checkCaptcha( String code, String randomID){
         if(!StringUtils.isBlank(code) && !StringUtils.isBlank(randomID) && code.equalsIgnoreCase(Cache.get(randomID).toString())){
             Cache.delete(randomID);          
@@ -44,9 +44,9 @@ public class ALLogin extends ControllerUtils {
             renderError("验证码错误！");  
         }
     }
-    
-  public static void doRegister(String username, String password,String email, String code, String randomID){
-      checkCaptcha(code, randomID); 
+    */
+  public static void doRegister(String username, String password,String email){
+     // checkCaptcha(code, randomID); 
       
       String ip = ControllerUtils.getRemoteIp();
       ALResult<ALSession> registerRes = UserLoginRegAction.userRegister(username, password, email, ip);

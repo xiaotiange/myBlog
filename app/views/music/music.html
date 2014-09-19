@@ -3,40 +3,125 @@
 
 <link rel="stylesheet" type="text/css" href="/public/Music/Css/tplayer.css" />
 <link rel="stylesheet" type="text/css" href="/public/Music/Plugins/FontAwesome4.1/css/font-awesome.min.css" />
-<script src="/public/Music/Js/jquery-ui.js"></script>
-<script src="/public/Music/Js/addMusic.js"></script>
-<script src="/public/Music/Js/tPlayer.js"></script>
+
 
 <style type="text/css">
+    .container-div{
+        min-height: 960px;
+    }
+    .add-music-form{
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+    }
+    .input-div{
+        border: 1px solid #fff;
+        width: 400px;
+        margin: 0 auto;
+        text-align: left;
+        display: inline-block;
+        overflow: hidden;
+        height: 35px;
+    }
     .input-div input{
         display: inline-block;
+        padding: 3px 10px;
     }
     .file-name{
-        height:40px;
-        border:1px solid #cdcdcd;
+        height:30px;
+        border:0;
         width:300px;
+        background:none;
+        font-size: 16px;
     }
     .file{
-        margin-left: -400px;
+        clear: both;
+        float: left;
+        cursor: pointer;
+        margin-top: -50px;
         width: 400px;
-        height:40px;
+        height:35px;
         filter:alpha(opacity:0);
         opacity: 0;
+        border: 1px solid #c9394a;
+    }
+    .menu-nav{
+        position: fixed;
+        float: left;
+        width: 60px;
+        margin-left: -60px;
+        z-index: 99999;
+    }
+    .menu-nav ul li{
+        display: block;
+        list-style-type: none;
+        background: rgba(255,255,255,0.4);
+        padding: 15px 5px;
+    }
+    .menu-nav ul li:hover{
+        background: #2cc185;
+        color: #ffffff;
+    }
+    .menu-nav ul li a{
+        color: #c9394a;
+        font-size: 16px;
+        text-decoration: none;
+    }
+    .menu-nav ul li a:hover{
+        color: #ffffff;
+    }
+    p.view{
+        width: 95px;
+        height: 40px;
+        background: #2cc185;
+        color: #ffffff;
+        font-size: 16px;
+        padding: 5px 20px;
+        float: right;
     }
 </style>
 
 <div class="container-div">
-<form action="@@{MusicAdmin.addMusic()}" method="post" enctype="multipart/form-data">
-#{if message}
-    <div style="text-align: center;"><span class="red">${message}</span></div>
-#{/if}
-    <div class="input-div">
-    <input type='text' name='textfield' id='textfield' class='file-name' />
-    <span class='big-btn'>浏览...</span>
-    <input type="file" name="musicFile" class="file" id="musicFile" size="28" onchange="document.getElementById('textfield').value=this.value" />
+    <div class="menu-nav">
+        <ul>
+            <li><a href="#">欧美</a></li>
+            <li><a href="#">日韩</a></li>
+            <li><a href="#">港台</a></li>
+            <li><a href="#">内地</a></li>
 
-    <input type="submit" class="big-btn submit-btn" value="添加">
+        </ul>
     </div>
-</form>
+    <div class="add-music-form">
+        <form action="@@{MusicAdmin.index()}" method="post" enctype="multipart/form-data">
+        #{if message}
+            <div style="text-align: center;"><span class="red">${message}</span></div>
+        #{/if}
+            <div class="input-div" style="">
+                <input type='text' name='textfield' id='textfield' class='file-name' />
+                <p class='view'>浏览...</p>
+                <input type="file" name="musicFile" class="file" id="musicFile" size="28" onchange="document.getElementById('textfield').value=this.value" />
+            </div>
+
+            <span class='big-btn submit-btn' style="position:absolute;top: 0px;margin-left: 5px;height: 35px">添加</span>
+        </form>
+    </div>
+
+    <div class="listen-music">
+        <span class="big-btn play-btn">播放音乐</span>
+        <audio id="video1">
+            <source src="/public/Music/Media/new_message.mp3" type="audio/mp3">
+            <source src="/public/Music/Media/new_message.wav" type="audio/wav">
+        </audio>
+    </div>
 
 </div>
+
+<script type="text/javascript">
+    var myVideo=document.getElementById("video1");
+
+    $(".play-btn").unbind().click(function(){
+        myVideo.play();
+    });
+
+
+</script>

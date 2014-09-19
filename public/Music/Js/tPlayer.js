@@ -32,9 +32,8 @@ function initAudio(elem) {
 		
 $(document).ready(function(){
 		var dur, durM, val, mus, elem, prog;		
-		var Pl = 0;
-		$('#playlist ul li a').unbind().click(function(){
-            alert("no.1");
+		var Pl = 0;		
+		$('#playlist ul li a').click(function(){
 				$('#t_title_info').animate({top: "-1.5em",opacity: "hide"}, 0);
 				initAudio($(this).parent("li"));
 				$('#error').text('');

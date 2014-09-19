@@ -12,7 +12,7 @@ public class UserCenter extends CheckUserLogin {
     public static void myMusic(){
         User user = checkIsLogin();
         if(user ==null){
-            ControllerUtils.renderLoginFail();
+            render("/home.html");
         }
         render("/music/myMusic.html");
     }

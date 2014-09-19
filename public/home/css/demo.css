@@ -40,16 +40,27 @@ a:hover, a:focus {
 .container > section {
 	font-size: 1.25em;
 	min-height: 100%;
-    margin-bottom: 10px;
 }
 
-.container > section:first-child {
+.container > section.header {
+    position: relative;
+    background: #ffffff;
+    z-index: 999;
+}
+
+.container > section.header .tab nav ul li a:hover{
+    background: #2cc185;
+    color:#2cc185;
+
+}
+
+.container > section.first{
     padding: 5em 0;
     background: url("/public/img/music/music_3.jpg") no-repeat center -400px;
 }
 
 .container > section.second{
-    background: #eef1f2;
+    background: #fff;
     min-height: 200px;
 }
 
@@ -60,12 +71,12 @@ a:hover, a:focus {
 }
 
 .container > section.third{
-    background: #fff;
+    background: #eef1f2;
     min-height: 400px;
 }
 
 .container > section.footer{
-    background: #eef1f2;
+    background: #fff;
     min-height: 200px;
 }
 

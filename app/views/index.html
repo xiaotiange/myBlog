@@ -1,51 +1,189 @@
 #{extends 'webmain.html' /}
 #{set title:"美食屋" /}
 
-<link rel="stylesheet" href="/public/css/index.css" />
-
+<link rel="stylesheet" type="text/css" href="/public/home/css/tabs.css" />
+<link rel="stylesheet" type="text/css" href="/public/css/index.css" />
+<link rel="stylesheet" type="text/css" href="/public/css/login.css" />
 <style type="text/css">
-    .glyphicon{
-        width: 55px;
-        height: 25px;
-        padding: 5px 20px;
-        color: #3385ff;
-    }
+
 </style>
-<div class="foot-house">
-    <div id="header">
-        <div class="header-bar main">
-            <div class="logo">
-                <a href="/">美食屋美食屋美食屋</a>
-            </div>
-            <div class="search-bar">
-                <input type="text" class="search-input">
-                <div class="search-btn">搜索</div>
-            </div>
-            <div>
-                <ul>
-                    <li><a href="/">首页</a></li>
-                    <li><a href="/MusicAdmin/index" class="glyphicon glyphicon-headphones">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
-                    <li><a href="/">菜单</a></li>
-                    <li><a href="/">我的美食</a></li>
-                </ul>
-            </div>
-            <div class="user-nav">
-                    <div class="has-login" style="display:none;">
-                        <span href="#" class="user-name"></span>|<a href="/ALLogin/doLogout">退出</a>
-                    </div>
-                    <div class="not-login" style="display: none;">
-                        <a href="@{ALLogin.index()}">登录</a>|<a href="@{ALLogin.register()}">注册</a>
-                    </div>
-                </ul>
-            </div>
+
+<div class="container">
+        <div class="header">
+             <div class="main">
+                 <div class="main-logo">
+                     <img src="/public/img/logo.png" width="50px" height="50px" alt="嗨音乐">
+                 </div>
+                 <div class="main-nav">
+                     <ul>
+                         <li>
+                             <a href="/">美食屋美食</a>
+                         </li>
+                         <li><a href="/">首页</a></li>
+                         <li><a href="/MusicAdmin/index" class="glyphicon glyphicon-headphones"></a></li>
+                         <li><a href="/">菜单</a></li>
+                         <li><a href="#">我的美食</a></li>
+                     </ul>
+                 </div>
+                 <div class="right-nav">
+                     <ul>
+                         <li class="user-nav">
+                             <div class="has-login" style="display:none;">
+                                 <a href="#" class="user-name"></a>
+                                 <ul class="exit-btn" style="display: none;">
+                                     <li><a href="/ALLogin/doLogout">退出</a></li>
+                                 </ul>
+                             </div>
+                             <div class="not-login" style="display: none;">
+                                 <a class="light-btn to-login-btn" data-toggle="modal"
+                                    data-target="#login-container"登录</a>
+                             </div>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
         </div>
-    </div>
+    <div class="back-image"></div>
+        <div class="dialog login-container modal fade" id="login-container" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+
+            <div class="dialog-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <span class="myModalLabel">登录</span>
+            </div>
+            <div class="dialog-body modal-body">
+                <div class="left-div">
+                    <table border="0" class="dialog-table login-dialog-table" cellspacing="0" width="100%">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <input type="text" class="username" name="username" size="30"  placeholder="请输入用户名" >
+                                <span class="login-icon glyphicon glyphicon-user">|</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="password" class="password" name="password" size="30"  placeholder="请输入密码" >
+                                <span class="login-icon glyphicon glyphicon-lock">|</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <p class="dialog-btn green-dialog-btn login-submit" >登录</p> </td>
+                        </tr>
+                        <tr>
+                            <td> <p class="dialog-btn red-dialog-btn reg-btn" data-toggle="modal"
+                                    data-target="#register-container"  data-dismiss="modal">立即注册</p> </td>
+                        </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="right-div">
+                    <div class="right-div-body">
+                        <div>还没有bingo帐号？</div>
+                        <span class="green" style="cursor: pointer;" data-toggle="modal"
+                           data-target="#register-container"  data-dismiss="modal">立即注册</span>
+                        <div class="login_others">使用以下帐号直接登录:</div>
+                        <a class="icon_wb" title="使用新浪微博帐号登录" target="_blank" href="http://www.lagou.com/ologin/auth/sina.html"></a>
+                        <a class="icon_qq" title="使用腾讯QQ帐号登录" target="_blank" href="http://www.lagou.com/ologin/auth/qq.html"></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    <div class="reg-dialog reg-container modal fade" id="register-container" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="dialog-header">
+            <button type="button" class="close"
+                    data-dismiss="modal" aria-hidden="true">
+                &times;
+            </button>
+            <span>注册</span>
+        </div>
+        <div class="dialog-body">
+            <table border="0" class="dialog-table" cellspacing="0" width="100%">
+                <tbody>
+                <tr>
+                    <td>
+                        <input type="text" class="username" name="username"  size="30"  placeholder="请输入用户名" >
+                        <span class="login-icon glyphicon glyphicon-user">|</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" class="password" name="password" size="30"  placeholder="请输入密码" >
+                        <span class="login-icon glyphicon glyphicon-lock">|</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" class="password1" size="30"  placeholder="请再次输入密码" >
+                        <span class="login-icon glyphicon glyphicon-lock">|</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="email" size="30" name="email"  placeholder="请输入邮箱" >
+                        <span class="login-icon glyphicon glyphicon-envelope">|</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                         <span class="small-dialog-btn red-dialog-btn reg-btn" data-toggle="modal"
+                               data-target="#login-container" data-dismiss="modal">返回登录</span>
+                        <span class="small-dialog-btn green-dialog-btn reg-submit">注册</span>
+                    </td>
+                </tr>
+                <tr>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+     </div>
+
     <div id="container" class="main">
-        #{doLayout /}
+    #{doLayout /}
     </div>
 
     <div id="footer">
+        <div class="mian">
+            <div class="footer-sns">
+                <a class="footer-sns-weibo hide-text" title="新浪微博" target="_blank" href="#">新浪微博</a>
+                <a class="footer-sns-weixin" title="微信" target="_blank" href="#"></a>
+                <a class="footer-sns-qqweibo hide-text" title="腾讯微博" target="_blank" href="#">腾讯微博</a>
+                <a class="footer-sns-qzone hide-text" title="QQ空间" target="_blank" href="#">QQ空间</a>
+            </div>
 
+            <div class="footer-link">
+                <a title="友情链接" target="_blank" href="http://douban.fm/">豆瓣电台</a>
+                <a title="友情链接" target="_blank" href="http://music.baidu.com">酷我音乐</a>
+                <a title="友情链接" target="_blank" href="http://www.kuwo.cn/">酷我音乐</a>
+                <a title="友情链接" target="_blank" href="http://y.qq.com/#type=index">QQ音乐</a>
+                <a title="友情链接" target="_blank" href="http://www.yinyuetai.com/">音悦台</a>
+                <a title="友情链接" target="_blank" href="http://www.imooc.com">慕课网</a>
+            </div>
+
+            <div class="footer-copyright">
+                © 2014 happy.oppa.com 六巨头企业文化有限公司
+            </div>
+        </div>
     </div>
-
 </div>
+
+<script type="text/javascript">
+
+    yabe.gcs("/public/js/jquery-ui-1.9.1.custom.js", function () {
+        yabe.gcs("/public/js/login.js", function () {
+            $(document).ready(function(){
+                yabe.LoginRegister.init.doInit($('.right-nav'));
+            })
+        })
+    })
+
+</script>
