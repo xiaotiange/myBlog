@@ -33,7 +33,7 @@ public class ALLogin extends ControllerUtils {
         ALResult<ALSession> loginRes = UserLoginRegAction.userLogin(username, password, ip);
         
         trySetCookie(loginRes);  
-        renderResultJson(loginRes);
+        renderALResult(loginRes);
         
     }
     /*
@@ -52,7 +52,7 @@ public class ALLogin extends ControllerUtils {
       ALResult<ALSession> registerRes = UserLoginRegAction.userRegister(username, password, email, ip);
       
       trySetCookie(registerRes);     
-      renderSuccess("注册成功");
+      renderALResult(registerRes);
         
     }
 

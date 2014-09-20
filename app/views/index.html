@@ -22,7 +22,7 @@
                          <li><a href="/">首页</a></li>
                          <li><a href="/MusicAdmin/index" class="glyphicon glyphicon-headphones"></a></li>
                          <li><a href="/">菜单</a></li>
-                         <li><a href="#">我的美食</a></li>
+                         <li><a href="/MusicAdmin/myHouse">我的音乐</a></li>
                      </ul>
                  </div>
                  <div class="right-nav">
@@ -35,8 +35,7 @@
                                  </ul>
                              </div>
                              <div class="not-login" style="display: none;">
-                                 <a class="light-btn to-login-btn" data-toggle="modal"
-                                    data-target="#login-container"登录</a>
+                                 <a class="light-btn to-login-btn">登录</a>
                              </div>
                          </li>
                      </ul>
@@ -44,108 +43,7 @@
              </div>
         </div>
     <div class="back-image"></div>
-        <div class="dialog login-container modal fade" id="login-container" tabindex="-1" role="dialog"
-             aria-labelledby="myModalLabel" aria-hidden="true">
 
-            <div class="dialog-header">
-                <button type="button" class="close"
-                        data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <span class="myModalLabel">登录</span>
-            </div>
-            <div class="dialog-body modal-body">
-                <div class="left-div">
-                    <table border="0" class="dialog-table login-dialog-table" cellspacing="0" width="100%">
-                        <tbody>
-                        <tr>
-                            <td>
-                                <input type="text" class="username" name="username" size="30"  placeholder="请输入用户名" >
-                                <span class="login-icon glyphicon glyphicon-user">|</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="password" class="password" name="password" size="30"  placeholder="请输入密码" >
-                                <span class="login-icon glyphicon glyphicon-lock">|</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> <p class="dialog-btn green-dialog-btn login-submit" >登录</p> </td>
-                        </tr>
-                        <tr>
-                            <td> <p class="dialog-btn red-dialog-btn reg-btn" data-toggle="modal"
-                                    data-target="#register-container"  data-dismiss="modal">立即注册</p> </td>
-                        </tr>
-                        </tbody>
-
-                    </table>
-                </div>
-
-                <div class="right-div">
-                    <div class="right-div-body">
-                        <div>还没有bingo帐号？</div>
-                        <span class="green" style="cursor: pointer;" data-toggle="modal"
-                           data-target="#register-container"  data-dismiss="modal">立即注册</span>
-                        <div class="login_others">使用以下帐号直接登录:</div>
-                        <a class="icon_wb" title="使用新浪微博帐号登录" target="_blank" href="http://www.lagou.com/ologin/auth/sina.html"></a>
-                        <a class="icon_qq" title="使用腾讯QQ帐号登录" target="_blank" href="http://www.lagou.com/ologin/auth/qq.html"></a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    <div class="reg-dialog reg-container modal fade" id="register-container" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="dialog-header">
-            <button type="button" class="close"
-                    data-dismiss="modal" aria-hidden="true">
-                &times;
-            </button>
-            <span>注册</span>
-        </div>
-        <div class="dialog-body">
-            <table border="0" class="dialog-table" cellspacing="0" width="100%">
-                <tbody>
-                <tr>
-                    <td>
-                        <input type="text" class="username" name="username"  size="30"  placeholder="请输入用户名" >
-                        <span class="login-icon glyphicon glyphicon-user">|</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="password" class="password" name="password" size="30"  placeholder="请输入密码" >
-                        <span class="login-icon glyphicon glyphicon-lock">|</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="password" class="password1" size="30"  placeholder="请再次输入密码" >
-                        <span class="login-icon glyphicon glyphicon-lock">|</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="text" class="email" size="30" name="email"  placeholder="请输入邮箱" >
-                        <span class="login-icon glyphicon glyphicon-envelope">|</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                         <span class="small-dialog-btn red-dialog-btn reg-btn" data-toggle="modal"
-                               data-target="#login-container" data-dismiss="modal">返回登录</span>
-                        <span class="small-dialog-btn green-dialog-btn reg-submit">注册</span>
-                    </td>
-                </tr>
-                <tr>
-
-                </tr>
-                </tbody>
-            </table>
-        </div>
-     </div>
 
     <div id="container" class="main">
     #{doLayout /}

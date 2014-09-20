@@ -8282,7 +8282,7 @@ $.widget("ui.dialog", {
 		autoOpen: true,
 		buttons: {},
 		closeOnEscape: true,
-		closeText: "close",
+		closeText: "×",
 		dialogClass: "",
 		draggable: true,
 		hide: null,
@@ -8379,8 +8379,9 @@ $.widget("ui.dialog", {
 				})
 				.appendTo( uiDialogTitlebar );
 
-			( this.uiDialogTitlebarCloseText = $( "<span>" ) )
-				.addClass( "ui-icon ui-icon-closethick" )
+			( this.uiDialogTitlebarCloseText = $( "<button>" ) )
+				.addClass( "close close-tip" )
+                .attr("type","button")
 				.text( options.closeText )
 				.appendTo( uiDialogTitlebarClose );
 

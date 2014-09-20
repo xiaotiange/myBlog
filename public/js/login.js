@@ -18,160 +18,259 @@ yabe.Util.isValidMail = isValidMail;
     LoginRegister.init = LoginRegister.init || {};
     LoginRegister.init = $.extend({
         doInit: function(container){
-           /*
+
            container.find(".to-login-btn").unbind().click(function(){
                LoginRegister.submit.toLogin();
            });
-             */
-            LoginRegister.event.setStaticEvent();
+
         }
     }, LoginRegister.init);
 
-    LoginRegister.event = LoginRegister.event || {};
-    LoginRegister.event = $.extend({
-        setStaticEvent: function() {
-            var l_container = $('.login-container');
-            var r_container = $('.reg-container');
 
-            $('#register-container').on('show.bs.modal', function () {
-                r_container.find("input").unbind().keydown(function(event) {
-                    if (event.keyCode == 13) {//按回车
-                        LoginRegister.submit.doRegsubmit(r_container);
-                    }
-                });
-
-                r_container.find(".reg-submit").unbind().click(function(){
-                    LoginRegister.submit.doRegsubmit(r_container);
-                });
-            })
-
-            $('#login-container').on('show.bs.modal', function () {
-                l_container.find("input").unbind().keydown(function(event) {
-                    if (event.keyCode == 13) {//按回车
-                        LoginRegister.submit.doLoginsubmit(l_container);
-                    }
-                });
-
-                l_container.find(".login-submit").unbind().click(function(){
-                    LoginRegister.submit.doLoginsubmit(l_container);
-                });
-            })
-
-        }
-    }, LoginRegister.event);
 
     LoginRegister.submit = LoginRegister.submit || {};
     LoginRegister.submit = $.extend({
-        doLoginsubmit: function(container){
+        toLogin: function(){
 
-            var param =  LoginRegister.submit.getloginParameter(container);
-            if(param==null){
-                return;
-            }
+            $('.login-dialog-body').remove();
 
-            $.ajax({
-                type: 'post',
-                url: '/ALLogin/doLogin',
-                data: param,
-                success: function (dataJson) {
+            var dialogHtml = '' +
+                ' <div class="login-dialog-body dialog-body">'+
+                '<div class="left-div">'+
+                '<table border="0" class="dialog-table login-dialog-table" cellspacing="0" width="100%"> '+
+                '  <tbody> '+
+                '      <tr>  '+
+                '         <td> '+
+                '              <span class="red error-tip glyphicon glyphicon-remove" style="display: none;"></span> '+
+                '          </td>   '+
+                '     </tr> '+
+                '      <tr>  '+
+                '         <td> '+
+                '          <input type="text" class="username" name="username" size="30"  placeholder="请输入用户名" > '+
+                '              <span class="login-icon glyphicon glyphicon-user">|</span> '+
+                '          </td>   '+
+                '     </tr> '+
+                '   <tr> '+
+                '      <td>  '+
+                '          <input type="password" class="password" name="password" size="30"  placeholder="请输入密码" > '+
+                '             <span class="login-icon glyphicon glyphicon-lock">|</span> '+
+                '        </td>  '+
+                '  </tr>  '+
+                '    <tr> '+
+                '      <td> <p class="dialog-btn green-dialog-btn login-submit">登录</p> </td>  '+
+                '  </tr>  '+
+                '    <tr> '+
+                '       <td> <p class="dialog-btn red-dialog-btn to-reg-btn" >立即注册</p> </td>  '+
+                '     </tr> '+
+                '  </tbody> '+
 
-                    if(dataJson.isOk == false){
-                        alert(dataJson.msg);
-                        return;
-                    }
+                '   </table> '+
+                '  </div> '+
 
-                    container.find(".close").click();
-                    location.reload();
+                ' <div class="right-div">  '+
+                '    <div class="right-div-body">  '+
+                '         <div>还没有bingo帐号？</div>   '+
+                '        <span class="green to-reg-btn" style="cursor: pointer;">立即注册</span> '+
+                '        <div class="login_others">使用以下帐号直接登录:</div>  '+
+                '        <a class="icon_wb" title="使用新浪微博帐号登录" target="_blank" href="http://www.lagou.com/ologin/auth/sina.html"></a> '+
+                '        <a class="icon_qq" title="使用腾讯QQ帐号登录" target="_blank" href="http://www.lagou.com/ologin/auth/qq.html"></a> '+
+                '    </div>  '+
+                '  </div> '+
+                ' </div> '+'';
+
+            var dialogObj = $(dialogHtml);
+
+            var submitCallback = function(container) {
+                var username = container.find(".username").val();
+                var password = container.find(".password").val();
+
+                if(username.trim() == ""){
+                    container.find(".error-tip").html("请输入用户名！").show();
+                    return;
                 }
-            })
-
-
-        },
-        doRegsubmit: function(container){
-
-            var param =  LoginRegister.submit.getRegParameter(container);
-            if(param==null){
-                return;
-            }
-
-            $.ajax({
-                type: 'post',
-                url: '/ALLogin/doRegister',
-                data: param,
-                success: function (dataJson) {
-
-                    if(dataJson.isOk == false){
-                        alert(dataJson.msg);
-                        return;
-                    }
-                    container.find(".close").click();
-                    location.href = '/Application/index';
-
+                if(password.trim() == ""){
+                    container.find(".error-tip").html("请输入密码！").show();
+                    return;
                 }
-            })
+                var param = {};
+                param.username = username.trim();
+                param.password = password.trim();
+
+                $.ajax({
+                    type: 'post',
+                    url: '/ALLogin/doLogin',
+                    data: param,
+                    success: function (dataJson) {
+
+                        if(dataJson.isOk == false){
+                            container.find(".error-tip").html(dataJson.msg).show();
+                            return;
+                        }
+
+                        dialogObj.dialog('close');
+                        location.reload();
+                    }
+                });
+
+            }
+
+            dialogObj.dialog({
+                modal: true,
+                bgiframe: true,
+                height: 350,
+                width: 650,
+                title : '登录',
+                autoOpen: false,
+                resizable: false,
+                zIndex: 6003
+            });
+            dialogObj.dialog('open');
+            var l_container = $('.login-dialog-body');
+            l_container.find("input").unbind().keydown(function(event) {
+                if (event.keyCode == 13) {//按回车
+                    submitCallback(l_container);
+                }
+            });
+
+            l_container.find(".login-submit").unbind().click(function(){
+                submitCallback(l_container);
+            });
+
+            l_container.find(".to-reg-btn").unbind().click(function(){
+                dialogObj.dialog('close');
+                LoginRegister.submit.toRegister();
+            });
 
         },
-        getloginParameter: function(container){
+        toRegister: function(){
 
-            var username = container.find(".username").val();
-            var password = container.find(".password").val();
+            $('.reg-dialog-body').remove();
 
-            var param = {};
+            var dialogHtml = '' +
+                '  <div class="reg-dialog-body dialog-body">                                            '+
+                '  <table border="0" class="dialog-table" cellspacing="0" width="100%">       '+
+                '   <tbody>                                                                   '+
+                '      <tr>  '+
+                '         <td> '+
+                '              <span class="red error-tip glyphicon glyphicon-remove" style="display: none;"></span> '+
+                '          </td>   '+
+                '     </tr> '+
+                '       <tr>                                                                 '+
+                '           <td>                                                            '+
+                '               <input type="text" class="username" name="username"  size="30"  placeholder="请输入用户名" >  '+
+                '                   <span class="login-icon glyphicon glyphicon-user">|</span> '+
+                '               </td>      '+
+                '           </tr>         '+
+                '           <tr>          '+
+                '               <td>       '+
+                '                   <input type="password" class="password" name="password" size="30"  placeholder="请输入密码" > '+
+                '                       <span class="login-icon glyphicon glyphicon-lock">|</span>                           '+
+                '                   </td>                                                                                     '+
+                '               </tr>                                                                                            '+
+                '               <tr>                                                                                           '+
+                '                   <td>                                                                                     '+
+                '                       <input type="password" class="password1" size="30"  placeholder="请再次输入密码" >     '+
+                '                           <span class="login-icon glyphicon glyphicon-lock">|</span>      '+
+                '                       </td>                                                             '+
+                '                   </tr>                                                               '+
+                '                   <tr>                                                              '+
+                '                       <td>                                                        '+
+                '                           <input type="text" class="email" size="30" name="email"  placeholder="请输入邮箱" >   '+
+                '                               <span class="login-icon glyphicon glyphicon-envelope">|</span> '+
+                '                           </td>       '+
+                '                       </tr>         '+
+                '                       <tr>        '+
+                '                           <td>  '+
+                '                               <span class="small-dialog-btn red-dialog-btn to-login-btn" >返回登录</span>        '+
+                '                               <span class="small-dialog-btn green-dialog-btn reg-submit">注册</span>  '+
+                '                           </td>      '+
+                '                       </tr>        '+
+                '                       <tr>       '+
+                '                                '+
+                '                       </tr>  '+
+                '                   </tbody> '+
+                '               </table>  '+
+                '           </div>'+'';
 
-            if(username.trim() == ""){
-                alert("请输入用户名！");
-                return null;
+            var dialogObj = $(dialogHtml);
+
+
+            var submitCallback = function(container) {
+                var username = container.find(".username").val();
+                var password = container.find(".password").val();
+                var password1 = container.find(".password1").val();
+                var email = container.find(".email").val();
+                if(username.trim() == ""){
+                    container.find(".error-tip").html("请输入用户名！").show();
+                    return null;
+                }
+                if(password.trim() == ""){
+                    container.find(".error-tip").html("请输入密码！").show();
+                    return null;
+                }
+                if(password1.trim() != password.trim()){
+                    container.find(".error-tip").html("输入两次密码不同！").show();
+                    return null;
+                }
+                if(email.trim() == ""){
+                    container.find(".error-tip").html("请输入邮箱！").show();
+                    return null;
+                }
+                if(!yabe.Util.isValidMail(email)){
+                    container.find(".error-tip").html("请输入合法邮箱！").show();
+                    return null;
+                }
+
+                var param = {};
+                param.username = username.trim();
+                param.password = password.trim();
+                param.email = email.trim();
+
+                $.ajax({
+                    type: 'post',
+                    url: '/ALLogin/doRegister',
+                    data: param,
+                    success: function (dataJson) {
+
+                        if(dataJson.isOk == false){
+                            container.find(".error-tip").html(dataJson.msg).show();
+                            return;
+                        }
+                        dialogObj.dialog('close');
+                        location.reload();
+
+                    }
+                })
             }
 
-            if(password.trim() == ""){
-                alert("请输入密码！");
-                return null;
-            }
+            dialogObj.dialog({
+                modal: true,
+                bgiframe: true,
+                width: 400,
+                title : '注册',
+                autoOpen: false,
+                resizable: false,
+                zIndex: 6003
+            });
+            dialogObj.dialog('open');
 
-            param.username = username.trim();
-            param.password = password.trim();
+            var r_container = $('.reg-dialog-body');
 
-            return param;
-        },
-        getRegParameter: function(container){
-            var username = container.find(".username").val();
-            var password = container.find(".password").val();
-            var password1 = container.find(".password1").val();
-            var email = container.find(".email").val();
+            r_container.find("input").unbind().keydown(function(event) {
+                if (event.keyCode == 13) {//按回车
+                    submitCallback(r_container);
+                }
+            });
 
-            var param = {};
+            r_container.find(".reg-submit").unbind().click(function(){
+                submitCallback(r_container);
+            });
 
-            if(username.trim() == ""){
-                alert("请输入用户名！");
-                return null;
-            }
-
-            if(password.trim() == ""){
-                alert("请输入密码！");
-                return null;
-            }
-
-            if(password1.trim() != password.trim()){
-                alert("输入两次密码不同！");
-                return null;
-            }
-
-            if(email.trim() == ""){
-                alert("请输入邮箱！");
-                return null;
-            }
-            if(!yabe.Util.isValidMail(email)){
-                alert("请输入合法的邮箱！");
-                return null;
-            }
-
-            param.username = username.trim();
-            param.password = password.trim();
-            param.email = email.trim();
-            return param;
-
+            r_container.find(".to-login-btn").unbind().click(function(){
+                dialogObj.dialog('close');
+                LoginRegister.submit.toLogin();
+            });
         }
-
 
     }, LoginRegister.submit);
 
