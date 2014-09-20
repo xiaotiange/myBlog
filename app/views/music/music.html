@@ -1,10 +1,7 @@
 #{extends 'index.html' /}
 #{set title:"听音乐"/}
 
-<link rel="stylesheet" type="text/css" href="/public/Music/Css/tplayer.css" />
-<link rel="stylesheet" type="text/css" href="/public/Music/Plugins/FontAwesome4.1/css/font-awesome.min.css" />
-
-
+<link rel="stylesheet" href="/public/music/css/stylesheets/style.css">
 <style type="text/css">
     .container-div{
         min-height: 960px;
@@ -28,7 +25,7 @@
         padding: 3px 10px;
     }
     .file-name{
-        height:30px;
+        height:35px;
         border:0;
         width:300px;
         background:none;
@@ -38,9 +35,9 @@
         clear: both;
         float: left;
         cursor: pointer;
-        margin-top: -50px;
+        margin-top: -45px;
         width: 400px;
-        height:35px;
+        height:38px;
         filter:alpha(opacity:0);
         opacity: 0;
         border: 1px solid #c9394a;
@@ -51,6 +48,9 @@
         width: 60px;
         margin-left: -60px;
         z-index: 99999;
+    }
+    .menu-nav ul{
+       padding: 0;
     }
     .menu-nav ul li{
         display: block;
@@ -71,12 +71,13 @@
         color: #ffffff;
     }
     p.view{
-        width: 95px;
-        height: 40px;
+        width: 94px;
+        height: 35px;
         background: #2cc185;
         color: #ffffff;
         font-size: 16px;
-        padding: 5px 20px;
+        padding-top: 6px;
+        padding-left: 28px;
         float: right;
     }
 </style>
@@ -98,30 +99,66 @@
         #{/if}
             <div class="input-div" style="">
                 <input type='text' name='textfield' id='textfield' class='file-name' />
-                <p class='view'>浏览...</p>
+                <p class='view'>浏览</p>
                 <input type="file" name="musicFile" class="file" id="musicFile" size="28" onchange="document.getElementById('textfield').value=this.value" />
             </div>
 
-            <span class='big-btn submit-btn' style="position:absolute;top: 0px;margin-left: 5px;height: 35px">添加</span>
+            <span class='big-btn add-submit-btn' style="position:absolute;margin-left: 5px;height: 35px;bottom: 4px;">添加</span>
         </form>
     </div>
 
     <div class="listen-music">
-        <span class="big-btn play-btn">播放音乐</span>
-        <audio id="video1">
-            <source src="/public/Music/Media/new_message.mp3" type="audio/mp3">
-            <source src="/public/Music/Media/new_message.wav" type="audio/wav">
-        </audio>
+        <div class="my-music-div">
+            <div id="player">
+                <div class="cover"></div>
+                <div class="ctrl">
+                    <div class="tag">
+                        <strong>Title</strong>
+                        <span class="artist">Artist</span>
+                        <span class="album">Album</span>
+                    </div>
+                    <div class="control">
+                        <div class="left">
+                            <div class="rewind icon"></div>
+                            <div class="playback icon"></div>
+                            <div class="fastforward icon"></div>
+                        </div>
+                        <div class="volume right">
+                            <div class="glyphicon glyphicon-volume-up mute left"></div>
+                            <div class="slider left">
+                                <div class="pace"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <div class="slider">
+                            <div class="loaded"></div>
+                            <div class="pace"></div>
+                        </div>
+                        <div class="timer left">0:00</div>
+                        <div class="right">
+                            <div class="repeat icon"></div>
+                            <div class="shuffle icon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="playlist">
+                <ul class="my-music-ul">
+
+                </ul>
+            </div>
+        </div>
+
+
     </div>
 
 </div>
 
+<script src="/public/music/js/script.js"></script>
 <script type="text/javascript">
-    var myVideo=document.getElementById("video1");
-
-    $(".play-btn").unbind().click(function(){
-        myVideo.play();
-    });
-
-
+       $(".add-submit-btn").unbind().click(function(){
+           $(".add-music-form").find("form").submit();
+       });
 </script>

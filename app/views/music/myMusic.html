@@ -3,7 +3,9 @@
 
 <link rel="stylesheet" href="/public/music/css/stylesheets/style.css">
 <style type="text/css">
-
+    .my-music-div{
+        min-height: 700px;
+    }
 </style>
 
 <div class="my-music-div">
@@ -22,7 +24,7 @@
                     <div class="fastforward icon"></div>
                 </div>
                 <div class="volume right">
-                    <div class="mute icon left"></div>
+                    <div class="glyphicon glyphicon-volume-up mute left"></div>
                     <div class="slider left">
                         <div class="pace"></div>
                     </div>
@@ -49,16 +51,16 @@
     </div>
 </div>
 
+<script src="/public/music/js/script.js"></script>
 <script type="text/x-jquery-tmpl" id="myMusicLiTmpl">
-    <li t_cover="" t_artist="{{= filaName}}" t_name="{{= filaName}}">
-        <a class="this-music" href="#">{{= filaName}}</a>
-        <audio preload="none">
-            <source musicId="{{= id}}" type="audio/mp3">
-        </audio>
+    <li class="glyphicon playing glyphicon-music">{{= songname}}
+        <span class="right glyphicon glyphicon-remove" style="width: 20px;padding-top: 5px;">&nbsp;</span>
+        <span class="right glyphicon glyphicon-heart" style="width: 20px;padding-top: 5px;">&nbsp;</span>
+        <span class="right glyphicon glyphicon-remove" style="width: 20px;padding-top: 5px;" title="删除">&nbsp;</span>
     </li>
 </script>
 
-<script src="/public/music/js/script.js"></script>
+
 <script type="text/javascript">
 
     $(document).ready(function () {

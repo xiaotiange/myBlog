@@ -9,31 +9,31 @@
 title: '德国第一装甲师进行曲',
 artist: '德国',
 album: '德国第一装甲师进行曲.mp3',
-cover:'./img/1.jpg',
-mp3: './mp3/deguo.mp3',
+cover:'/public/music/img/1.jpg',
+mp3: '/public/music/mp3/deguo.mp3',
 ogg: ''
 },
 {
 title: '亡灵序曲',
 artist: '魔兽世界',
 album: '魔兽世界 - 亡灵序曲.mp3',
-cover: './img/2.jpg',
-mp3: './mp3/The Dawn.mp3',
+cover: '/public/music/img/2.jpg',
+mp3: '/public/music/mp3/The Dawn.mp3',
 ogg: ''
 },
 {
 title: 'chenparty dj.mp3',
 artist: '德国童声',
 album: 'chenparty 超好听的德国童声 dj.mp3',
-cover: './img/3.jpg',
-mp3: './mp3/chenparty dj.mp3',
+cover: '/public/music/img/3.jpg',
+mp3: '/public/music/mp3/chenparty dj.mp3',
 ogg: ''
 },];
 
 	// Load playlist
 	for (var i=0; i<playlist.length; i++){
 		var item = playlist[i];
-		$('#playlist').append('<li>'+item.artist+' - '+item.title+'</li>');
+		$('#playlist ul').append('<li class="glyphicon">'+item.artist+' - '+item.title+'<span class="right glyphicon glyphicon-remove remove" title="删除" style="width: 20px;padding-top: 5px;">&nbsp;</span></li>');
 	}
 
 	var time = new Date(),
@@ -50,7 +50,7 @@ ogg: ''
 
 	var pause = function(){
 		audio.pause();
-		$('.playback').removeClass('playing');
+		$('.playback').removeClass('playing glyphicon-music');
 		clearInterval(updateProgress);
 		isPlaying = false;
 	}
@@ -91,7 +91,7 @@ ogg: ''
 	$('.volume .slider').slider({max: 1, min: 0, step: 0.01, value: volume, slide: function(event, ui){
 		setVolume(ui.value);
 		$(this).addClass('enable');
-		$('.mute').removeClass('enable');
+		$('.mute').removeClass('enable glyphicon-volume-off');
 	}, stop: function(){
 		$(this).removeClass('enable');
 	}}).children('.pace').css('width', volume * 100 + '%');
@@ -99,12 +99,18 @@ ogg: ''
 	$('.mute').click(function(){
 		if ($(this).hasClass('enable')){
 			setVolume($(this).data('volume'));
-			$(this).removeClass('enable');
+			$(this).removeClass('enable glyphicon-volume-off');
+            $(this).addClass('glyphicon-volume-up');
 		} else {
-			$(this).data('volume', audio.volume).addClass('enable');
+			$(this).data('volume', audio.volume).addClass('enable glyphicon-volume-off');
+            $(this).data('volume', audio.volume).removeClass('glyphicon-volume-up');
 			setVolume(0);
 		}
 	});
+
+    $('.remove').click(function(){
+      $(this).parent().remove();
+    });
 
 	// Switch track
 	var switchTrack = function(i){
@@ -168,7 +174,7 @@ ogg: ''
 		
 		$('.cover').html('<img src="'+item.cover+'" alt="'+item.album+'">');
 		$('.tag').html('<strong>'+item.title+'</strong><span class="artist">'+item.artist+'</span><span class="album">'+item.album+'</span>');
-		$('#playlist li').removeClass('playing').eq(i).addClass('playing');
+		$('#playlist li').removeClass('playing glyphicon-music').eq(i).addClass('playing glyphicon-music');
 		audio = newaudio[0];
 		audio.volume = $('.mute').hasClass('enable') ? 0 : volume;
 		audio.addEventListener('progress', beforeLoad, false);
