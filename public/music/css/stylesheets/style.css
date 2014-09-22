@@ -234,20 +234,16 @@ a {
 }
 
 #playlist {
-    background: rgba(40,44,42,0.05);
+    background: #2cc185;
   width: 900px;
   margin: 0 auto 50px;
   padding: 10px 15px;
   list-style: none;
   position: relative;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
+
 }
 #playlist li {
+    background: #fff;
   color: #2cc185;
   font-size: 14px;
   line-height: 2;
