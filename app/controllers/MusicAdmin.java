@@ -1,15 +1,8 @@
 package controllers;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 import models.Music;
 import models.User;
@@ -18,11 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import action.MusicAction;
-
-
-
-import play.Play;
-import result.ALResult;
 
 public class MusicAdmin extends CheckUserLogin {
     
@@ -50,8 +38,9 @@ public class MusicAdmin extends CheckUserLogin {
             message="对不起，添加失败！";
             render("/music/music.html",message);  
         }
-               
-        Music.saveMusic(user.id , user.fullname, filename, musicFile.getAbsolutePath());
+        HashMap<String, String> infoMap = null;//MusicAction.getDetailInfo(musicFile);
+         
+        Music.saveMusic(user.id , user.fullname, filename, musicFile.getAbsolutePath(),infoMap);
 
         message="恭喜亲，添加成功！";
         log.info("Add Music Success!!!");

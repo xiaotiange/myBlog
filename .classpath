@@ -132,6 +132,6 @@
 	<classpathentry kind="lib" path="/home/bigexibo/tool/play-1.2.6/framework/lib/signpost-core-1.2.jar"/>
 	<classpathentry kind="lib" path="/home/bigexibo/tool/play-1.2.6/framework/lib/commons-fileupload-1.2.2.jar"/>
 	<classpathentry kind="lib" path="/home/bigexibo/tool/play-1.2.6/framework/lib/hibernate-validator-4.1.0.Final.jar"/>
-	<classpathentry kind="lib" path="/home/bigexibo/下载/myid3.jar"/>
+	<classpathentry kind="lib" path="lib/myid3.jar"/>
 	<classpathentry kind="output" path="eclipse/classes"/>
 </classpath>

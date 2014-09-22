@@ -33,7 +33,7 @@ ogg: ''
 	// Load playlist
 	for (var i=0; i<playlist.length; i++){
 		var item = playlist[i];
-		$('#playlist ul').append('<li class="glyphicon">'+item.artist+' - '+item.title+'<span class="right glyphicon glyphicon-remove remove" title="删除" style="width: 20px;padding-top: 5px;">&nbsp;</span></li>');
+		$('#playlist ul').append('<li class="glyphicon">'+item.artist+' - '+item.title+'<span class="right glyphicon glyphicon-remove remove" musicId='+i+' title="删除" style="width: 20px;padding-top: 5px;">&nbsp;</span></li>');
 	}
 
 	var time = new Date(),
@@ -107,10 +107,6 @@ ogg: ''
 			setVolume(0);
 		}
 	});
-
-    $('.remove').click(function(){
-      $(this).parent().remove();
-    });
 
 	// Switch track
 	var switchTrack = function(i){
@@ -241,4 +237,14 @@ ogg: ''
 			$(this).addClass('enable');
 		}
 	});
+    $('.remove').click(function(){
+        var musicId = $(this).attr("musicId");
+        if(musicId==currentTrack){
+            ++currentTrack;
+            switchTrack(currentTrack);
+        }
+        playlist.splice(musicId+1,1);
+        $(this).parent().remove();
+
+    });
 })(jQuery);
