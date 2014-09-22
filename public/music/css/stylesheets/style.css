@@ -275,3 +275,13 @@ a {
     padding-left: 5px;
 }
 
+#playlist li span.right {
+    margin-left: 10px;
+    width: 20px;
+    padding-top: 5px;
+}
+#playlist li span.right:hover {
+    color: red;
+}
+
+

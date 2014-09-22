@@ -51,22 +51,15 @@
     </div>
 </div>
 
-<script src="/public/music/js/script.js"></script>
+
 <script type="text/x-jquery-tmpl" id="myMusicLiTmpl">
-    <li class="glyphicon playing glyphicon-music">{{= songname}}
-        <span class="right glyphicon glyphicon-remove" style="width: 20px;padding-top: 5px;">&nbsp;</span>
-        <span class="right glyphicon glyphicon-heart" style="width: 20px;padding-top: 5px;">&nbsp;</span>
-        <span class="right glyphicon glyphicon-remove" musicId="{{= id}}" style="width: 20px;padding-top: 5px;" title="删除">&nbsp;</span>
+    <li class="glyphicon playing glyphicon-music">{{= songTitle }} - {{= singer}}
+        <span class="right glyphicon glyphicon-remove" musicId="{{= id}}" title="删除">&nbsp;</span>
+        <span class="right glyphicon glyphicon-download" musicId="{{= id}}"  title="下载">&nbsp;</span>
+        <span class="right glyphicon glyphicon-plus"  musicId="{{= id}}" title="添加">&nbsp;</span>
+        <span class="right glyphicon glyphicon-heart" musicId="{{= id}}"  title="喜欢">&nbsp;</span>
     </li>
 </script>
 
 
-<script type="text/javascript">
-
-    $(document).ready(function () {
-        yabe.gcs("/public/js/music/getmusic.js", function () {
-           // yabe.GetMusic.init.doInit($('.my-music-div'));
-        });
-    });
-
-</script>
+<script src="/public/js/music/script.js"></script>

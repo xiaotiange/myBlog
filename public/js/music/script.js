@@ -4,37 +4,50 @@
 		shuffle = localStorage.shuffle || 'false',
 		continous = true,
 		autoplay = true,
-		playlist = [
-		{
-title: '德国第一装甲师进行曲',
-artist: '德国',
-album: '德国第一装甲师进行曲.mp3',
-cover:'/public/music/img/1.jpg',
-mp3: '/public/music/mp3/deguo.mp3',
-ogg: ''
-},
-{
-title: '亡灵序曲',
-artist: '魔兽世界',
-album: '魔兽世界 - 亡灵序曲.mp3',
-cover: '/public/music/img/2.jpg',
-mp3: '/public/music/mp3/The Dawn.mp3',
-ogg: ''
-},
-{
-title: 'chenparty dj.mp3',
-artist: '德国童声',
-album: 'chenparty 超好听的德国童声 dj.mp3',
-cover: '/public/music/img/3.jpg',
-mp3: '/public/music/mp3/chenparty dj.mp3',
-ogg: ''
-},];
+		playlist=[];
 
-	// Load playlist
-	for (var i=0; i<playlist.length; i++){
-		var item = playlist[i];
-		$('#playlist ul').append('<li class="glyphicon">'+item.artist+' - '+item.title+'<span class="right glyphicon glyphicon-remove remove" musicId='+i+' title="删除" style="width: 20px;padding-top: 5px;">&nbsp;</span></li>');
-	}
+    var loadingMusic = function(){
+        var ulObj = $(".my-music-ul");
+
+        $.ajax({
+            type: 'post',
+            url: '/MusicAdmin/queryMusic',
+            data: {},
+            success: function (dataJson) {
+
+                if(dataJson.isOk==false){
+                    alert(dataJson.msg);
+                    return;
+                }
+                var musicJsonArray = dataJson.res;
+                playlist =  musicJsonArray.slice(0);
+
+                ulObj.html("");
+                if (musicJsonArray === undefined || musicJsonArray == null || musicJsonArray.length <= 0) {
+                    var trHtml = '' +
+                        '<li style="text-align: center;vertical-align: middle;font-size: 16px;padding-top: 8px;">' +
+                        "亲还没有自己的音乐哦！去上传吧，去标记吧，去收藏吧！" +
+                        '</li>' +
+                        '';
+
+                    ulObj.html(trHtml);
+
+                    return;
+                }
+
+                var liObjs = $("#myMusicLiTmpl").tmpl(musicJsonArray);
+
+                ulObj.html(liObjs);
+
+                loadMusic(currentTrack);
+
+            }
+        });
+
+    }
+
+    loadingMusic();
+
 
 	var time = new Date(),
 		currentTrack = shuffle === 'true' ? time.getTime() % playlist.length : 0,
@@ -165,11 +178,12 @@ ogg: ''
 
 	// Load track
 	var loadMusic = function(i){
-		var item = playlist[i],
-			newaudio = $('<audio>').html('<source src="'+item.mp3+'"><source src="'+item.ogg+'">').appendTo('#player');
+		var item = playlist[i];
+
+        var	newaudio = $('<audio>').html('<source src="'+"/MusicAdmin/getMusic?musicId="+item.id+'">').appendTo('#player');
 		
-		$('.cover').html('<img src="'+item.cover+'" alt="'+item.album+'">');
-		$('.tag').html('<strong>'+item.title+'</strong><span class="artist">'+item.artist+'</span><span class="album">'+item.album+'</span>');
+		$('.cover').html('<img src="/public/music/img/1.jpg" alt="'+item.album+'">');
+		$('.tag').html('<strong>'+item.songTitle+'</strong><span class="artist">'+item.singer+'</span><span class="album">'+item.album+'</span>');
 		$('#playlist li').removeClass('playing glyphicon-music').eq(i).addClass('playing glyphicon-music');
 		audio = newaudio[0];
 		audio.volume = $('.mute').hasClass('enable') ? 0 : volume;
@@ -179,7 +193,7 @@ ogg: ''
 		audio.addEventListener('ended', ended, false);
 	}
 
-	loadMusic(currentTrack);
+
 	$('.playback').on('click', function(){
 		if ($(this).hasClass('playing')){
 			pause();

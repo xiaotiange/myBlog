@@ -23,6 +23,9 @@ public class MusicAdmin extends CheckUserLogin {
         if(musicFile==null){
             render("/music/music.html"); 
         }
+        if (!musicFile.getName().toLowerCase().endsWith(".mp3"))
+            render("/music/music.html","要输入mp3文件才可以哦，亲！"); 
+        
         String message="";
    
         User user = connect();
@@ -38,7 +41,7 @@ public class MusicAdmin extends CheckUserLogin {
             message="对不起，添加失败！";
             render("/music/music.html",message);  
         }
-        HashMap<String, String> infoMap = null;//MusicAction.getDetailInfo(musicFile);
+        HashMap<String, String> infoMap = MusicAction.getMusicInfo(musicFile);
          
         Music.saveMusic(user.id , user.fullname, filename, musicFile.getAbsolutePath(),infoMap);
 

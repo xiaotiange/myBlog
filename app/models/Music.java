@@ -28,7 +28,7 @@ public class Music extends Model {
     public String filePath;
     
     @Required
-    public Date  createTs;//添加歌曲时间
+    public Long  createTs;//添加歌曲时间
     
     @Required
     public String  songTitle;
@@ -59,7 +59,7 @@ public class Music extends Model {
         this.singer = map.get(musicInfo.singer);
         this.album = map.get(musicInfo.album);
         this.year = map.get(musicInfo.year);
-        this.createTs =  new Date();
+        this.createTs =  System.currentTimeMillis();
     }
     
     public  static Music saveMusic(Long userId, String username, String filaName, 
