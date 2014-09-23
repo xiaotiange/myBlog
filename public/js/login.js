@@ -108,7 +108,7 @@ yabe.Util.isValidMail = isValidMail;
                         }
 
                         dialogObj.dialog('close');
-                        location.reload();
+                        location.href = "/MusicAdmin/myHouse"
                     }
                 });
 
@@ -237,7 +237,7 @@ yabe.Util.isValidMail = isValidMail;
                             return;
                         }
                         dialogObj.dialog('close');
-                        location.reload();
+                        location.href = "/MusicAdmin/myHouse"
 
                     }
                 })

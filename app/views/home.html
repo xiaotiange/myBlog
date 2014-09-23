@@ -20,7 +20,7 @@
                     <li><a href="#section-bar-2" class="glyphicon glyphicon-gift"><span>Gift</span></a></li>
                     <li><a href="#section-bar-3" class="glyphicon glyphicon-headphones"><span>music</span></a></li>
                     <li><a href="#section-bar-4" class="icon icon-upload"><span>Upload</span></a></li>
-                    <li><a href="#section-bar-5" class="glyphicon glyphicon-user"><span>mime</span></a></li>
+                    <li><a href="" class="glyphicon glyphicon-user my-music"><span>mime</span></a></li>
                 </ul>
             </nav>
             <div class="content-wrap">
@@ -37,7 +37,7 @@
                     <div class="hide-btn"><a class="hide-text" href="/MusicAdmin/index">分享心情</a></div>
                 </section>
                 <section id="section-bar-5">
-                    <div class="hide-btn"><a class="hide-text" href="/UserCenter/myMusic">我的音乐</a></div>
+                    <div class="hide-btn"><a class="hide-text my-music">我的音乐</a></div>
                 </section>
             </div><!-- /content -->
         </div><!-- /tabs -->
@@ -91,6 +91,32 @@
         [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
             new CBPFWTabs( el );
         });
+
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+      $(".my-music").unbind().click(function(){
+          checkLogin();
+      });
+
+      var checkLogin = function(){
+          $.ajax({
+              type: 'post',
+              url: '/AllUser/getUser',
+              data: {},
+              success: function (dataJson) {
+
+                  var isOk = dataJson.isOk;
+
+                  if(isOk==false){
+                      yabe.LoginRegister.submit.toLogin();
+                      return;
+                  }
+                  location.href = "/MusicAdmin/myHouse"
+              }
+          })
+      }
 
     })();
 </script>

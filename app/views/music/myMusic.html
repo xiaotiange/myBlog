@@ -19,9 +19,9 @@
             </div>
             <div class="control">
                 <div class="left">
-                    <div class="rewind icon"></div>
-                    <div class="playback icon"></div>
-                    <div class="fastforward icon"></div>
+                    <div class="rewind glyphicon glyphicon-backward"></div>
+                    <div class="playback glyphicon glyphicon-pause"></div>
+                    <div class="fastforward glyphicon glyphicon-forward""></div>
                 </div>
                 <div class="volume right">
                     <div class="glyphicon glyphicon-volume-up mute left"></div>
@@ -37,8 +37,8 @@
                 </div>
                 <div class="timer left">0:00</div>
                 <div class="right">
-                    <div class="repeat icon"></div>
-                    <div class="shuffle icon"></div>
+                    <div class="repeat glyphicon glyphicon-retweet" title="单曲循环"><span class="repeat-tip">1</span></div>
+                    <div class="shuffle glyphicon glyphicon-random"></div>
                 </div>
             </div>
         </div>
@@ -54,10 +54,10 @@
 
 <script type="text/x-jquery-tmpl" id="myMusicLiTmpl">
     <li class="glyphicon playing glyphicon-music">{{= songTitle }} - {{= singer}}
-        <span class="right glyphicon glyphicon-remove" musicId="{{= id}}" title="删除">&nbsp;</span>
-        <span class="right glyphicon glyphicon-download" musicId="{{= id}}"  title="下载">&nbsp;</span>
-        <span class="right glyphicon glyphicon-plus"  musicId="{{= id}}" title="添加">&nbsp;</span>
-        <span class="right glyphicon glyphicon-heart" musicId="{{= id}}"  title="喜欢">&nbsp;</span>
+        <span class="right glyphicon glyphicon-trash remove"  title="删除">&nbsp;</span>
+        <span class="right glyphicon glyphicon-download-alt download"  title="下载">&nbsp;</span>
+        <span class="right glyphicon glyphicon-plus plus" style="font-size:13px;padding-top:11px;"  title="添加">&nbsp;</span>
+        <span class="right glyphicon glyphicon-heart heart" title="喜欢">&nbsp;</span>
     </li>
 </script>
 
