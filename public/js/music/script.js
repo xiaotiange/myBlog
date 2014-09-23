@@ -134,7 +134,6 @@
                 currentTrack = i;
             }
 
-            $('audio').remove();
             loadMusic(currentTrack);
             if (isPlaying == true) play();
         }
@@ -184,7 +183,10 @@
         var loadMusic = function(i){
             var item = playlist[i];
 
-            var	newaudio = $('<audio>').html('<source src="'+"/MusicAdmin/getMusic?musicId="+item.id+'" type="audio/mpeg">').appendTo('#player');
+            var	newaudio = $('.audio');
+            newaudio.html("");
+            var shtml = '<source src = "/MusicAdmin/getMusic?musicId='+item.id+'" type="audio/mpeg">'
+            newaudio.html(shtml);
 
             $('.cover').html('<img src="/public/img/logo.png" alt="'+item.album+'">');
             $('.tag').html('<strong>'+item.songTitle+'</strong><span class="artist">'+item.singer+'</span><span class="album">'+item.album+'</span>');
@@ -232,21 +234,23 @@
             $('.repeat-tip').show();
         } else if (repeat == 2){
             $('.repeat').addClass('all');
-            $('.repeat-tip').hide();
         } else{
-            $('.repeat-tip').hide();
+
         }
 
         $('.repeat').unbind().click(function(){
             if ($(this).hasClass('once')){
                 repeat = localStorage.repeat = 2;
                 $(this).removeClass('once').addClass('all');
+                $('.repeat-tip').hide();
             } else if ($(this).hasClass('all')){
                 repeat = localStorage.repeat = 0;
                 $(this).removeClass('all');
+                $('.repeat-tip').hide();
             } else {
                 repeat = localStorage.repeat = 1;
                 $(this).addClass('once');
+                $('.repeat-tip').show();
             }
             if ($('.shuffle').hasClass('enable')){
                 shuffle = localStorage.shuffle = 'false';
@@ -263,10 +267,11 @@
                 $(this).addClass('enable');
             }
 
-            if ($(repeat).hasClass('all') || $(repeat).hasClass('once')){
+            if ($('.repeat').hasClass('all') || $('.repeat').hasClass('once')){
                 repeat = localStorage.repeat = 0;
-                $(repeat).removeClass('all');
-                $(repeat).removeClass('once');
+                $('.repeat').removeClass('all');
+                $('.repeat').removeClass('once');
+                $('.repeat-tip').hide();
             }
 
         });
