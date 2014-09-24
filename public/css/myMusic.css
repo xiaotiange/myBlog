@@ -81,9 +81,14 @@ a {
   display: block;
   text-overflow: ellipsis;
 }
+#player .ctrl .tag{
+    text-align: left;
+    margin-left: 15px;
+}
 #player .ctrl .tag span {
   font-size: 12px;
   margin-top: 5px;
+
 }
 #player .ctrl .glyphicon {
   background-repeat: no-repeat;
@@ -158,14 +163,6 @@ a {
 #player .ctrl .progress .repeat.once {
     position: relative;
 }
-.repeat-tip{
-    position: absolute;
-    font-size: 13px;
-    font-weight: bolder;
-    left: 2px;
-    top: -3px;
-}
-
 .slider {
   background: #fff;
   height: 8px;
