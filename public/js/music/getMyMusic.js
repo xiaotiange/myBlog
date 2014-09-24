@@ -11,7 +11,7 @@
 
         $.ajax({
             type: 'post',
-            url: '/MusicAdmin/queryMyMusic',
+            url: '/MusicAdmin/queryMusic',
             data: {},
             success: function (dataJson) {
 

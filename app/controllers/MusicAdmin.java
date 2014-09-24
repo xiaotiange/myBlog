@@ -19,6 +19,9 @@ public class MusicAdmin extends CheckUserLogin {
     public static void myHouse(){
         render("/music/myMusic.html");
     }
+    public static void uploadMusic(){
+        render("/music/upload.html");
+    }
     public static void index(File musicFile){
         if(musicFile==null){
             render("/music/music.html"); 
