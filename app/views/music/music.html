@@ -1,85 +1,10 @@
 #{extends 'index.html' /}
 #{set title:"听音乐"/}
 
-<link rel="stylesheet" href="/public/music/css/stylesheets/style.css">
+<link rel="stylesheet" href="@{'public/css/music.css'}" />
+<link rel="stylesheet" href="/public/css/myMusic.css">
 <style type="text/css">
-    .container-div{
-        min-height: 960px;
-    }
-    .add-music-form{
-        overflow: hidden;
-        position: relative;
-        text-align: center;
-    }
-    .input-div{
-        border: 1px solid #fff;
-        width: 400px;
-        margin: 0 auto;
-        text-align: left;
-        display: inline-block;
-        overflow: hidden;
-        height: 35px;
-    }
-    .input-div input{
-        display: inline-block;
-        padding: 3px 10px;
-    }
-    .file-name{
-        height:35px;
-        border:0;
-        width:300px;
-        background:none;
-        font-size: 16px;
-    }
-    .file{
-        clear: both;
-        float: left;
-        cursor: pointer;
-        margin-top: -45px;
-        width: 400px;
-        height:38px;
-        filter:alpha(opacity:0);
-        opacity: 0;
-        border: 1px solid #c9394a;
-    }
-    .menu-nav{
-        position: fixed;
-        float: left;
-        width: 60px;
-        margin-left: -60px;
-        z-index: 99999;
-    }
-    .menu-nav ul{
-       padding: 0;
-    }
-    .menu-nav ul li{
-        display: block;
-        list-style-type: none;
-        background: rgba(255,255,255,0.4);
-        padding: 15px 5px;
-    }
-    .menu-nav ul li:hover{
-        background: #2cc185;
-        color: #ffffff;
-    }
-    .menu-nav ul li a{
-        color: #c9394a;
-        font-size: 16px;
-        text-decoration: none;
-    }
-    .menu-nav ul li a:hover{
-        color: #ffffff;
-    }
-    p.view{
-        width: 94px;
-        height: 35px;
-        background: #2cc185;
-        color: #ffffff;
-        font-size: 16px;
-        padding-top: 6px;
-        padding-left: 28px;
-        float: right;
-    }
+
 </style>
 
 <div class="container-div">
@@ -92,27 +17,63 @@
 
         </ul>
     </div>
-    <div class="add-music-form">
-        <form action="@@{MusicAdmin.index()}" method="post" enctype="multipart/form-data">
-        #{if message}
-            <div style="text-align: center;"><span class="red">${message}</span></div>
-        #{/if}
-            <div class="input-div" style="">
-                <input type='text' name='textfield' id='textfield' class='file-name' />
-                <p class='view'>浏览</p>
-                <input type="file" name="musicFile" class="file" id="musicFile" size="28" onchange="document.getElementById('textfield').value=this.value" />
+
+    <div class="my-music-div">
+        <div id="player">
+            <div class="cover"></div>
+            <div class="ctrl">
+                <div class="tag">
+                    <strong>Title</strong>
+                    <span class="artist">Artist</span>
+                    <span class="album">Album</span>
+                </div>
+                <div class="control">
+                    <div class="left">
+                        <div class="rewind glyphicon glyphicon-step-backward"></div>
+                        <div class="playback glyphicon glyphicon-pause"></div>
+                        <div class="fastforward glyphicon glyphicon-step-forward"></div>
+                    </div>
+                    <div class="volume right">
+                        <div class="glyphicon glyphicon-volume-up mute left"></div>
+                        <div class="slider left">
+                            <div class="pace"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="slider">
+                        <div class="loaded"></div>
+                        <div class="pace"></div>
+                    </div>
+                    <div class="timer left">0:00</div>
+                    <div class="right">
+                        <div class="repeat-all glyphicon glyphicon-retweet" title="全部循环"></div>
+                        <div class="repeat-once glyphicon glyphicon-retweet" title="单曲循环"><span class="repeat-tip">1</span></div>
+                        <div class="shuffle glyphicon glyphicon-random"></div>
+                    </div>
+                </div>
             </div>
+            <audio class="audio" autoplay>
 
-            <span class='big-btn add-submit-btn' style="position:absolute;margin-left: 5px;height: 35px;bottom: 4px;">添加</span>
-        </form>
+            </audio>
+        </div>
+
+        <div id="playlist">
+            <ul class="my-music-ul">
+
+            </ul>
+        </div>
     </div>
-
-
 </div>
 
-
-<script type="text/javascript">
-       $(".add-submit-btn").unbind().click(function(){
-           $(".add-music-form").find("form").submit();
-       });
+<script type="text/x-jquery-tmpl" id="myMusicLiTmpl">
+    <li class="glyphicon playing glyphicon-music">{{= songTitle }} - {{= singer}}
+        <span class="right glyphicon glyphicon-trash remove"  title="删除">&nbsp;</span>
+        <span class="right glyphicon glyphicon-download-alt download"  title="下载"></span>
+        <span class="right glyphicon glyphicon-plus plus" style="font-size:13px;padding-top:11px;"  title="添加">&nbsp;</span>
+        <span class="right glyphicon glyphicon-heart heart" title="喜欢">&nbsp;</span>
+    </li>
 </script>
+
+
+<script src="/public/js/music/getMusic.js"></script>

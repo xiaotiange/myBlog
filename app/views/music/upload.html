@@ -1,0 +1,42 @@
+#{extends 'index.html' /}
+#{set title:"音乐分享"/}
+
+<link rel="stylesheet" href="@{'public/css/music.css'}" />
+<style type="text/css">
+
+</style>
+
+<div class="container-div">
+    <div class="menu-nav">
+        <ul>
+            <li><a href="#">欧美</a></li>
+            <li><a href="#">日韩</a></li>
+            <li><a href="#">港台</a></li>
+            <li><a href="#">内地</a></li>
+
+        </ul>
+    </div>
+    <div class="add-music-form">
+        <form action="@@{MusicAdmin.index()}" method="post" enctype="multipart/form-data">
+        #{if message}
+            <div style="text-align: center;"><span class="red">${message}</span></div>
+        #{/if}
+            <div class="input-div" style="">
+                <input type='text' name='textfield' id='textfield' class='file-name' />
+                <p class='view'>浏览</p>
+                <input type="file" name="musicFile" class="file" id="musicFile" size="28" onchange="document.getElementById('textfield').value=this.value" />
+            </div>
+
+            <span class='big-btn add-submit-btn' style="position:absolute;margin-left: 5px;height: 35px;bottom: 4px;">添加</span>
+        </form>
+    </div>
+
+
+</div>
+
+
+<script type="text/javascript">
+    $(".add-submit-btn").unbind().click(function(){
+        $(".add-music-form").find("form").submit();
+    });
+</script>

@@ -13,31 +13,15 @@
 <div class="container">
 
     <section class="first">
-        <div class="tabs tabs-style-iconbox">
-            <nav>
+        <div class="tabs first-tab">
+            <nav style="opacity: 0;">
                 <ul>
-                    <li><a href="#section-bar-1" class="icon icon-home"><span>Home</span></a></li>
-                    <li><a href="#section-bar-2" class="glyphicon glyphicon-gift"><span>Gift</span></a></li>
-                    <li><a href="#section-bar-3" class="glyphicon glyphicon-headphones"><span>music</span></a></li>
-                    <li><a href="#section-bar-4" class="icon icon-upload"><span>Upload</span></a></li>
-                    <li><a href="" class="glyphicon glyphicon-user my-music"><span>mime</span></a></li>
+                    <li><a href="#section-bar-1" class="glyphicon glyphicon-headphones"><span>随心听</span></a></li>
                 </ul>
             </nav>
             <div class="content-wrap">
                 <section id="section-bar-1">
                     <div class="hide-btn"><a class="hide-text" href="/MusicAdmin/index">听音乐</a></div>
-                </section>
-                <section id="section-bar-2">
-                    <div class="hide-btn"><a class="hide-text" href="/MusicAdmin/index">听音乐</a></div>
-                </section>
-                <section id="section-bar-3">
-                    <div class="hide-btn"><a class="hide-text" href="/MusicAdmin/index">随心听</a></div>
-                </section>
-                <section id="section-bar-4">
-                    <div class="hide-btn"><a class="hide-text" href="/MusicAdmin/index">分享心情</a></div>
-                </section>
-                <section id="section-bar-5">
-                    <div class="hide-btn"><a class="hide-text my-music">我的音乐</a></div>
                 </section>
             </div><!-- /content -->
         </div><!-- /tabs -->
@@ -46,9 +30,9 @@
         <div class="tabs tabs-style-iconbox">
             <nav>
                 <ul>
-                    <li><img src="/public/img/music/music_1.jpg" alt="" width="400px" height="300px"></li>
-                    <li><img src="/public/img/music/music_1.jpg" alt="" width="400px" height="300px"></li>
-                    <li><img src="/public/img/music/music_1.jpg" alt="" width="400px" height="300px"></li>
+                    <li><span href="#" class="glyphicon glyphicon-headphones"><p>音乐随心听</p></span></li>
+                    <li><span href="#" class="glyphicon glyphicon-download-alt"><p>自由下载</p></span></li>
+                    <li><span href="#" class="glyphicon glyphicon-upload"><p>分享上传</p></span></li>
                 </ul>
             </nav>
          </div>
@@ -91,32 +75,6 @@
         [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
             new CBPFWTabs( el );
         });
-
-    })();
-</script>
-<script type="text/javascript">
-    (function() {
-      $(".my-music").unbind().click(function(){
-          checkLogin();
-      });
-
-      var checkLogin = function(){
-          $.ajax({
-              type: 'post',
-              url: '/AllUser/getUser',
-              data: {},
-              success: function (dataJson) {
-
-                  var isOk = dataJson.isOk;
-
-                  if(isOk==false){
-                      yabe.LoginRegister.submit.toLogin();
-                      return;
-                  }
-                  location.href = "/MusicAdmin/myHouse"
-              }
-          })
-      }
 
     })();
 </script>

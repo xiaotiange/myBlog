@@ -184,9 +184,7 @@
 }
 
 .content-wrap section .hide-btn{
-    position: absolute;
-    right: 100px;
-    bottom: 50px;
+    margin: 150px auto;
 }
 
 .content-wrap section div a {

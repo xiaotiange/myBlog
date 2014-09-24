@@ -19,9 +19,26 @@ yabe.Util.isValidMail = isValidMail;
     LoginRegister.init = $.extend({
         doInit: function(container){
 
-           container.find(".to-login-btn").unbind().click(function(){
-               LoginRegister.submit.toLogin();
+           container.find(".to-my-home").unbind().click(function(){
+               $.ajax({
+                   type: 'post',
+                   url: '/AllUser/getUser',
+                   data: {},
+                   success: function (dataJson) {
+
+                       var isOk = dataJson.isOk;
+
+                       if(isOk==false){
+                           LoginRegister.submit.toLogin();
+                           return;
+                       }
+                       location.href = "/MusicAdmin/myHouse"
+                   }
+               })
            });
+            container.find(".to-login-btn").unbind().click(function(){
+                LoginRegister.submit.toLogin();
+            });
 
         }
     }, LoginRegister.init);

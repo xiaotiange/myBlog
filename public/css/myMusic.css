@@ -110,6 +110,11 @@ a {
 
 }
 
+#player .ctrl .control .left{
+    margin-left: 10px;
+
+}
+
 #player .ctrl .control .volume .mute {
    cursor: pointer;
 }
@@ -139,26 +144,26 @@ a {
     padding-top: 5px;
     font-size: 14px;
 }
-#player .ctrl .progress .repeat, #player .ctrl .progress .shuffle {
+#player .ctrl .progress .repeat-all,
+#player .ctrl .progress .repeat-once,
+#player .ctrl .progress .shuffle {
   background-position: center bottom;
     opacity: 1;
 }
 
-#player .ctrl .progress .repeat.once, #player .ctrl .progress .repeat.all {
+#player .ctrl .progress .repeat-once.once, #player .ctrl .progress .repeat-all.all {
     opacity: 1;
+    color: green;
 }
 #player .ctrl .progress .repeat.once {
     position: relative;
-    color: green;
 }
 .repeat-tip{
     position: absolute;
-    color: #ffffff;
     font-size: 13px;
     font-weight: bolder;
     left: 2px;
     top: -3px;
-    display: none;
 }
 
 .slider {

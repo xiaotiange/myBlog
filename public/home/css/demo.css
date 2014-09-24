@@ -55,8 +55,13 @@ a:hover, a:focus {
 }
 
 .container > section.first{
-    padding: 5em 0;
+    min-height: 600px;
     background: url("/public/img/music/music_3.jpg") no-repeat center -400px;
+}
+
+.container > section.first .first-tab{
+    background: rgba(255,255,255,0.6);
+    min-height: 600px;
 }
 
 .container > section.second{
@@ -66,8 +71,11 @@ a:hover, a:focus {
 
 .container > section ul li span{
    margin-top: 50px;
-   margin-bottom: 30px;
-   font-size: 100px;
+   font-size: 50px;
+}
+
+.container > section ul li span p{
+    font-size: 18px;
 }
 
 .container > section.third{

@@ -1,0 +1,77 @@
+.container-div{
+    min-height: 960px;
+}
+.add-music-form{
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+.input-div{
+    border: 1px solid #fff;
+    width: 400px;
+    margin: 0 auto;
+    text-align: left;
+    display: inline-block;
+    overflow: hidden;
+    height: 35px;
+}
+.input-div input{
+    display: inline-block;
+    padding: 3px 10px;
+}
+.file-name{
+    height:35px;
+    border:0;
+    width:300px;
+    background:none;
+    font-size: 16px;
+}
+.file{
+    clear: both;
+    float: left;
+    cursor: pointer;
+    margin-top: -45px;
+    width: 400px;
+    height:38px;
+    filter:alpha(opacity:0);
+    opacity: 0;
+    border: 1px solid #c9394a;
+}
+.menu-nav{
+    position: fixed;
+    float: left;
+    width: 60px;
+    margin-left: -60px;
+    z-index: 99999;
+}
+.menu-nav ul{
+    padding: 0;
+}
+.menu-nav ul li{
+    display: block;
+    list-style-type: none;
+    background: rgba(255,255,255,0.4);
+    padding: 15px 5px;
+}
+.menu-nav ul li:hover{
+    background: #2cc185;
+    color: #ffffff;
+}
+.menu-nav ul li a{
+    color: #c9394a;
+    font-size: 16px;
+    text-decoration: none;
+}
+.menu-nav ul li a:hover{
+    color: #ffffff;
+}
+p.view{
+    width: 94px;
+    height: 35px;
+    background: #2cc185;
+    color: #ffffff;
+    font-size: 16px;
+    padding-top: 6px;
+    padding-left: 28px;
+    float: right;
+}

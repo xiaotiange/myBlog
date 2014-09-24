@@ -199,6 +199,7 @@
             audio.addEventListener('ended', ended, false);
         }
 
+        loadMusic(currentTrack);
 
         $('.playback').unbind().click(function(){
             if ($(this).hasClass('playing')){
@@ -230,33 +231,45 @@
 
         if (shuffle === 'true') $('.shuffle').addClass('enable');
         if (repeat == 1){
-            $('.repeat').addClass('once');
-            $('.repeat-tip').show();
+            $('.repeat-once').addClass('once');
         } else if (repeat == 2){
-            $('.repeat').addClass('all');
-        } else{
-
+            $('.repeat-all').addClass('all');
         }
 
-        $('.repeat').unbind().click(function(){
-            if ($(this).hasClass('once')){
-                repeat = localStorage.repeat = 2;
-                $(this).removeClass('once').addClass('all');
-                $('.repeat-tip').hide();
-            } else if ($(this).hasClass('all')){
+        $('.repeat-all').unbind().click(function(){
+            if ($(this).hasClass('all')){
                 repeat = localStorage.repeat = 0;
                 $(this).removeClass('all');
-                $('.repeat-tip').hide();
             } else {
+                repeat = localStorage.repeat = 2;
+                $(this).addClass('all');
+            }
+            $('.repeat-once').removeClass('once');
+            hideShuffle();
+        });
+
+        $('.repeat-once').unbind().click(function(){
+            if ($(this).hasClass('once')){
+                repeat = localStorage.repeat = 0;
+                $(this).removeClass('once');
+            }else {
                 repeat = localStorage.repeat = 1;
                 $(this).addClass('once');
-                $('.repeat-tip').show();
             }
+            $('.repeat-all').removeClass('all');
+            hideShuffle();
+        });
+        var hideShuffle = function(){
             if ($('.shuffle').hasClass('enable')){
                 shuffle = localStorage.shuffle = 'false';
                 $('.shuffle').removeClass('enable');
             }
-        });
+        }
+        var hideRepeat = function(){
+                repeat = localStorage.repeat = 0;
+                $('.repeat-all').removeClass('all');
+                $('.repeat-once').removeClass('once');
+        }
 
         $('.shuffle').unbind().click(function(){
             if ($(this).hasClass('enable')){
@@ -266,13 +279,7 @@
                 shuffle = localStorage.shuffle = 'true';
                 $(this).addClass('enable');
             }
-
-            if ($('.repeat').hasClass('all') || $('.repeat').hasClass('once')){
-                repeat = localStorage.repeat = 0;
-                $('.repeat').removeClass('all');
-                $('.repeat').removeClass('once');
-                $('.repeat-tip').hide();
-            }
+            hideRepeat();
 
         });
         $('.remove').unbind().click(function(){
