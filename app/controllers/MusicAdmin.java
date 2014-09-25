@@ -34,7 +34,7 @@ public class MusicAdmin extends CheckUserLogin {
         User user = connect();
         if(user==null){
             message="亲，登录后才可以添加哦！";
-            render("/music/music.html",message);  
+            render("/music/upload.html",message);  
         }
         String filename = musicFile.getName();
         
