@@ -16,11 +16,20 @@ public class User extends Model {
     @Required
     public String fullname;
     public boolean isAdmin;
+       
+    public String headerImage;
 
     public User(String email, String password, String fullname) {
         this.email = email;
         this.fullname = fullname;
         this.password = password;
+    }
+    
+    public User(String email, String password, String fullname, String headerImage) {
+        this.email = email;
+        this.fullname = fullname;
+        this.password = password;
+        this.headerImage = headerImage;
     }
     
     public static User connect(String email ,String password){
@@ -37,6 +46,12 @@ public class User extends Model {
     
     public  static User saveUser(String email, String password, String fullname){
         User user = new User(email, password, fullname);
+        user.save();
+        return user;
+    }
+    
+    public  static User saveUser(User user, String headerImage){
+        user.headerImage = headerImage;
         user.save();
         return user;
     }

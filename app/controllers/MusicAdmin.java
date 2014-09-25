@@ -37,8 +37,9 @@ public class MusicAdmin extends CheckUserLogin {
             render("/music/upload.html",message);  
         }
         String filename = musicFile.getName();
+        String userid = user.id+"";
         
-        musicFile = MusicAction.saveMusicFile(musicFile, user.fullname);
+        musicFile = MusicAction.saveMusicFile(musicFile, userid);
         
         if(musicFile==null){
             message="对不起，添加失败！";
