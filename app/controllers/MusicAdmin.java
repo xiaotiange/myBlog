@@ -19,15 +19,15 @@ public class MusicAdmin extends CheckUserLogin {
     public static void myHouse(){
         render("/music/myMusic.html");
     }
-    public static void uploadMusic(){
-        render("/music/upload.html");
+    public static void index(){
+        render("/music/music.html");
     }
-    public static void index(File musicFile){
+    public static void uploadMusic(File musicFile){
         if(musicFile==null){
-            render("/music/music.html"); 
+            render("/music/upload.html"); 
         }
         if (!musicFile.getName().toLowerCase().endsWith(".mp3"))
-            render("/music/music.html","要输入mp3文件才可以哦，亲！"); 
+            render("/music/upload.html","要输入mp3文件才可以哦，亲！"); 
         
         String message="";
    
@@ -42,7 +42,7 @@ public class MusicAdmin extends CheckUserLogin {
         
         if(musicFile==null){
             message="对不起，添加失败！";
-            render("/music/music.html",message);  
+            render("/music/upload.html",message);  
         }
         HashMap<String, String> infoMap = MusicAction.getMusicInfo(musicFile);
          
@@ -50,7 +50,7 @@ public class MusicAdmin extends CheckUserLogin {
 
         message="恭喜亲，添加成功！";
         log.info("Add Music Success!!!");
-        render("/music/music.html",message);  
+        render("/music/upload.html",message);  
             
     }
     
