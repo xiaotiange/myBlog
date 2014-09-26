@@ -40,4 +40,10 @@ public class Tag extends Model implements Comparable<Tag> {
         return result;
         }
     
+    public static List<Map> getMusicNum() {
+        List<Map> result = Tag.find(
+        "select new map(t.name as tag, count(m.id) as pound) from Music m join m.tags as t group by t.name order by t.name"
+        ).fetch();
+        return result;
+        }
 }

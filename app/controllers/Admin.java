@@ -8,7 +8,7 @@ import models.*;
 @With(Secure.class)
 public class Admin extends Controller{
 
-    @Before
+
     static void setConnectedUser(){
         if(Security.isConnected()){
             User user=User.find("byEmail", Security.connected()).first();

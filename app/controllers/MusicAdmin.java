@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import models.Music;
+import models.Tag;
 import models.User;
 
 import org.slf4j.Logger;
@@ -42,17 +43,50 @@ public class MusicAdmin extends CheckUserLogin {
         musicFile = MusicAction.saveMusicFile(musicFile, userid);
         
         if(musicFile==null){
-            message="对不起，添加失败！";
+            message="添加失败，请重试！";
             render("/music/upload.html",message);  
         }
         HashMap<String, String> infoMap = MusicAction.getMusicInfo(musicFile);
          
-        Music.saveMusic(user.id , user.fullname, filename, musicFile.getAbsolutePath(),infoMap);
-
+        Music music = Music.saveMusic(user.id , user.fullname, filename, musicFile.getAbsolutePath(),infoMap);
+             
+        if(music==null){
+            message="添加失败，请重试！";
+            render("/music/upload.html",message);  
+        }
         message="恭喜亲，添加成功！";
         log.info("Add Music Success!!!");
-        render("/music/upload.html",message);  
+        
+        render("/music/upload.html",message,music);  
             
+    }
+    
+    public static void updateMusic(Long musicId,String tags){
+        User user = checkUser();      
+        Music music = Music.findById(musicId);
+        
+        if(music==null){
+            ControllerUtils.renderError("亲，歌曲不存在了，可能已经删除了！");     
+        }
+        
+        if(!user.id.equals(music.userId)){
+            ControllerUtils.renderError("亲，这不是你的歌曲哦！");     
+        }
+        
+        music.tags.clear();
+        
+        tags = tags.replace("，", ",");
+        for(String tag : tags.split(",")) {
+            if(tag.trim().length() > 0){
+                music.tags.add(Tag.findOrCreateByName(tag));
+            }
+        }
+        
+        music.save();
+        
+        if(music==null) ControllerUtils.renderError("修改错误，请重试！");
+        
+        ControllerUtils.renderSuccess("修改成功！");
     }
     
     public static void getMusic(Long musicId) {
@@ -73,12 +107,18 @@ public class MusicAdmin extends CheckUserLogin {
          */
     }
     
-    public static void queryMyMusic(){
+    private static User checkUser(){
         User user = connect();
         if(user==null){
             ControllerUtils.renderError("亲，请先登录吧！");        
         }
+        return user;
+    } 
+    
+    public static void queryMyMusic(){
         
+        User user = checkUser();
+      
         List<Music> musicList = Music.findListByUserId(user.id);
         
         ControllerUtils.renderResultJson(musicList);
