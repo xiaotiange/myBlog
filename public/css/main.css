@@ -100,7 +100,7 @@ body {
 
 #footer{
     background: #333;
-    height: 100px;
+    height: 200px;
     min-width: 100%;
 }
 .footer-sns{
@@ -157,7 +157,7 @@ body {
 
 .footer-link{
     width: 900px;
-    padding: 25px 0;
+    padding: 30px 0 10px 0;
     margin: 0 auto;
     text-align: center;
     border-bottom: 1px solid #f4f7f8;
@@ -172,7 +172,7 @@ body {
 }
 
 .footer-copyright{
-    padding: 20px 0 25px;
+    padding: 20px 0 35px;
     text-align: center;
     color: #b4bbbf;
 }

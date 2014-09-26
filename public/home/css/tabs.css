@@ -183,11 +183,16 @@
 	line-height: 1;
 }
 
-.content-wrap section .hide-btn{
-    margin: 150px auto;
+.hide-btn{
+    margin: 250px auto;
 }
 
-.content-wrap section div a {
+.hide-text{
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.listen-btn{
     text-decoration: none;
     color: #fff;
     font-size: 30px;
@@ -201,14 +206,10 @@
     -webkit-transition: .15s;
     -o-transition: .15s;
 }
-.content-wrap section div a:hover {
-    background: #43CD80;
-}
-
-.hide-text{
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
+.listen-btn:hover{
+    color: white;
+    text-decoration: none;
+    opacity: 0.9;
 }
 
 /* Fallback */
