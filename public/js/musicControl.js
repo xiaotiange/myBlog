@@ -189,7 +189,7 @@ var repeat = localStorage.repeat || 0,
                 }
             });
             $('#playlist li').each(function(){
-                $(this).unbind().click(function(){
+                $(this).unbind().dblclick(function(){
                     var _i = $(this).index()
                     switchTrack(_i);
                 });
