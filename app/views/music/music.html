@@ -37,9 +37,9 @@
                 </div>
                 <div class="timer left">0:00</div>
                 <div class="right">
-                    <div class="repeat-all glyphicon glyphicon-retweet" title="全部循环"></div>
-                    <div class="repeat-once glyphicon glyphicon-repeat" title="单曲循环"><span class="repeat-tip">1</span></div>
-                    <div class="shuffle glyphicon glyphicon-random" title="随机播放"></div>
+                    <div class="repeat-all glyphicon glyphicon-retweet" data-toggle="tooltip" title="全部循环"></div>
+                    <div class="repeat-once glyphicon glyphicon-repeat" data-toggle="tooltip" title="单曲循环"><span class="repeat-tip">1</span></div>
+                    <div class="shuffle glyphicon glyphicon-random" data-toggle="tooltip" title="随机播放"></div>
                 </div>
             </div>
         </div>
@@ -58,13 +58,12 @@
 
 <script type="text/x-jquery-tmpl" id="myMusicLiTmpl">
     <li class="glyphicon playing glyphicon-music">{{= songTitle }} - {{= singer}}
-        <span class="right glyphicon glyphicon-trash remove"  title="删除">&nbsp;</span>
-        <a class="right" href="/MusicAdmin/getMusic?musicId={{= id}}" target="_blank"><span class="glyphicon glyphicon-download-alt download"  title="下载"></span></a>
-        <span class="right glyphicon glyphicon-plus plus" style="font-size:14px;"  title="添加"></span>
-        <span class="right glyphicon glyphicon-heart heart" title="喜欢">&nbsp;</span>
+        <span class="right glyphicon glyphicon-trash remove"  data-toggle="tooltip" title="删除">&nbsp;</span>
+        <a class="right" href="/MusicAdmin/getMusic?musicId={{= id}}" data-toggle="tooltip" title="下载" target="_blank"><span class="glyphicon glyphicon-download-alt download"></span></a>
+        <span class="right glyphicon glyphicon-plus plus" style="font-size:14px;"  data-toggle="tooltip"  title="添加"></span>
+        <span class="right glyphicon glyphicon-heart heart"  data-toggle="tooltip" title="喜欢">&nbsp;</span>
     </li>
 </script>
 
-
-
 <script src="/public/js/music/getMusic.js"></script>
+

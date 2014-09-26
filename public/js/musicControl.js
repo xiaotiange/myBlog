@@ -155,7 +155,7 @@ var repeat = localStorage.repeat || 0,
                 newaudio.html(shtml);
 
                 $('.cover').html('<img src="/public/img/logo.png" alt="'+item.album+'">');
-                $('.tag').html('<strong>'+item.songTitle+'</strong><span class="artist">'+item.singer+'</span><span class="album">'+item.album+'</span>');
+                $('.tag').html('<strong>'+item.songTitle+'</strong><span class="artist">'+item.singer+'</span><span class="album">《'+item.album+'》</span>');
                 $('#playlist li').removeClass('playing glyphicon-music').eq(i).addClass('playing glyphicon-music');
                 audio = newaudio[0];
                 audio.volume = $('.mute').hasClass('enable') ? 0 : volume;
@@ -259,6 +259,8 @@ var repeat = localStorage.repeat || 0,
                     switchTrack(currentTrack);
                 }
             });
+
+            $("[data-toggle='tooltip']").tooltip();
 
         }
     }, MusicControl.control);
