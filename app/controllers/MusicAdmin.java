@@ -127,7 +127,7 @@ public class MusicAdmin extends CheckUserLogin {
     
     public static void queryMusic(){
 
-        List<Music> musicList = Music.findAll();
+        List<Music> musicList = Music.all().from(0).fetch(50);
         
         ControllerUtils.renderResultJson(musicList);
         

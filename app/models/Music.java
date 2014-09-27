@@ -90,7 +90,7 @@ public class Music extends Model {
     }
     
     public static List<Music> findListByUserId(Long userId){
-        List<Music> musicList = Music.find("byUserId", userId).fetch();
+        List<Music> musicList = Music.find("byUserId", userId).from(0).fetch(50);
         return musicList;
     }
 }
