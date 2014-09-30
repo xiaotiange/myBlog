@@ -71,7 +71,9 @@
             <div class="music-info-detail">
                 <table class="info-table" style="border-bottom: 1px solid #f0f0f0;">
                     <tr>
-                        <td><span>歌名：</span></td>
+                        <td><span>歌名：</span>
+                        <input class="musicId" style="display: none;" value="${music?.id}">
+                        </td>
                         <td style="width: 300px;"><span>${music?.songTitle}</span></td>
                         <td><span>歌手：</span></td>
                         <td style="width: 300px;"><span>${music?.singer}</span></td>
@@ -96,6 +98,9 @@
                         <td><span class="other-tag-tab" style="display: none;color: #333;">
                     <input type="text" class="tags-input">(请用逗号隔开)</span>
                         </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="padding-top: 10px;"> <span class='big-btn save-submit-btn'>保存</span></td>
                     </tr>
                 </table>
             </div>
@@ -123,4 +128,42 @@
             $('.other-tag-tab').toggle();
         }
     });
+    $('.save-submit-btn').unbind().click(function(){
+        var container = $('.container-div');
+        var paramData = {};
+        var tagList = [];
+
+        var checkedObjs = container.find('.music-tag-tab');
+        checkedObjs.each(function() {
+            tagList.push($(this).attr('tag'));
+        });
+
+        if(container.find('.other-tag-tab').is(':checked') == true){
+            var otherTags = container.find(".tags-input").val();
+            tagList.push(otherTags);
+        }
+
+        var tags = tagList.join(",");
+        paramData.tags = tags;
+        paramData.musicId = $('.musicId').val();
+
+        $.ajax({
+            type: 'post',
+            url: '/MusicAdmin/updateMusic',
+            data: paramData,
+            success: function (dataJson) {
+
+                if(dataJson.isOk == false){
+                    alert(dataJson.msg);
+                    return;
+                }
+                alert(dataJson.msg);
+                location.reload();
+            }
+        });
+
+    });
+
+
+
 </script>
