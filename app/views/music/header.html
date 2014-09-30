@@ -1,0 +1,56 @@
+#{extends 'index.html' /}
+#{set title:"我的小屋"/}
+
+<link rel="stylesheet" href="/public/css/myMusic.css">
+<link href="/public/upload/css/main.css" rel="stylesheet" type="text/css" />
+<link href="/public/upload/css/jquery.Jcrop.min.css" rel="stylesheet" type="text/css" />
+
+<script src="/public/upload/js/jquery.min.js"></script>
+<script src="/public/upload/js/jquery.Jcrop.min.js"></script>
+<script src="/public/upload/js/script.js"></script>
+<style type="text/css">
+    #preview{
+        border: 1px solid #999;
+    }
+</style>
+
+<div class="demo" style="min-height: 700px">
+    <div class="bheader"><h2>头像上传</h2></div>
+    <div class="bbody">
+
+
+        <form id="upload_form" enctype="multipart/form-data" method="post" action="/UserCenter/RefreshHeadPhoto" onsubmit="return checkForm()">
+
+            <input type="hidden" id="x1" name="x1" />
+            <input type="hidden" id="y1" name="y1" />
+            <input type="hidden" id="x2" name="x2" />
+            <input type="hidden" id="y2" name="y2" />
+
+            <h4>请选择图像文件</h4>
+            <div><input type="file" name="image_file" id="image_file"  /></div>
+
+            <div class="error"></div>
+        #{if imessage}
+            <div style="text-align: center;"><span class="red">${imessage}</span></div>
+        #{/if}
+            <div class="step2">
+                <h4>请选择需要截图的部位,然后按上传</h4>
+
+                <p class="img">
+                    <img id="preview" name="imageFile"/>
+                </p>
+
+                <div class="info">
+                    <label>文件大小</label> <input type="text" id="filesize" name="filesize" />
+                    <label>类型</label> <input type="text" id="filetype" name="filetype" />
+                    <label>图像尺寸</label> <input type="text" id="filedim" name="filedim" />
+                    <label>宽度</label> <input type="text" id="w" name="w" />
+                    <label>高度</label> <input type="text" id="h" name="h" />
+                </div>
+
+                <input type="submit" value="上传" />
+            </div>
+        </form>
+    </div>
+</div>
+

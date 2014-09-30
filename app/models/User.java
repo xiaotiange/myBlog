@@ -1,6 +1,10 @@
 package models;
 
+import java.io.File;
+
 import javax.persistence.Entity;
+
+import org.apache.commons.lang3.StringUtils;
 
 import play.data.validation.Email;
 import play.data.validation.Required;
@@ -51,6 +55,13 @@ public class User extends Model {
     }
     
     public  static User saveUser(User user, String headerImage){
+        String path = user.headerImage;
+        if(!StringUtils.isEmpty(path.trim())){
+            File file = new File(path);
+            if(file.exists()){
+             file.delete();
+            }
+        }    
         user.headerImage = headerImage;
         user.save();
         return user;

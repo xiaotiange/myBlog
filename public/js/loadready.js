@@ -32,8 +32,16 @@ $(document).ready(function() {
                         container.find('.has-login').show();
 
                         var userName = userJson.fullname;
-
+                        var headerimg = userJson.headerImage;
                         container.find('.has-login .user-name').html(userName);
+
+                        if(headerimg === undefined || headerimg=="" || headerimg==null){
+                            $(".user-head-photo").attr("src","/public/img/logo.png");
+                        }else{
+                          $(".user-head-photo").attr("src","/UserCenter/getHeaderImg");
+                        }
+
+
                         UserLoginInfo.show.doshow();
                     } else {
                         container.find('.not-login').show();
