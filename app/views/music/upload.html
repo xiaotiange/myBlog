@@ -74,15 +74,15 @@
                         <td><span>歌名：</span>
                         <input class="musicId" style="display: none;" value="${music?.id}">
                         </td>
-                        <td style="width: 300px;"><span>${music?.songTitle}</span></td>
+                        <td style="width: 300px;"><input class="artister-input" value="${music?.songTitle}"></td>
                         <td><span>歌手：</span></td>
-                        <td style="width: 300px;"><span>${music?.singer}</span></td>
+                        <td style="width: 300px;"><input class="singer-input" value="${music?.singer}"></td>
                     </tr>
                     <tr>
                         <td><span>文件名：</span></td>
-                        <td style="width: 300px;"><span>${music?.filaName}</span></td>
+                        <td style="width: 300px;"><input class="fileName-input" value="${music?.filaName}"></td>
                         <td><span>专辑：</span></td>
-                        <td style="width: 300px;"><span>${music?.album}</span></td>
+                        <td style="width: 300px;"><input class="album-input" value="${music?.album}"></td>
 
                     </tr>
                 </table>
@@ -128,24 +128,33 @@
             $('.other-tag-tab').toggle();
         }
     });
+
     $('.save-submit-btn').unbind().click(function(){
         var container = $('.container-div');
         var paramData = {};
         var tagList = [];
 
-        var checkedObjs = container.find('.music-tag-tab');
+        var checkedObjs = container.find('.current-tab');
         checkedObjs.each(function() {
-            tagList.push($(this).attr('tag'));
+            if($(this).attr('tag')!=""){
+                tagList.push($(this).attr('tag'));
+            }
         });
 
-        if(container.find('.other-tag-tab').is(':checked') == true){
-            var otherTags = container.find(".tags-input").val();
+        if($('.other-tab').hasClass("current-tab")){
+            var otherTags = container.find('.tags-input').val();
             tagList.push(otherTags);
         }
 
         var tags = tagList.join(",");
+        alert(tags);
         paramData.tags = tags;
         paramData.musicId = $('.musicId').val();
+        paramData.songTitle = container.find('.artister-input').val();
+        paramData.singer = container.find('.singer-input').val();
+        paramData.fileName = container.find('.fileName-input').val();
+        paramData.album = container.find('.album-input').val();
+
 
         $.ajax({
             type: 'post',

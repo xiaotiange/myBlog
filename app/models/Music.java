@@ -57,7 +57,7 @@ public class Music extends Model {
     }
     
     public Music tagItWith(String name) {
-        tags.add(Tag.findOrCreateByName(name));
+        this.tags.add(Tag.findOrCreateByName(name));
         return this;
     }
     
@@ -67,6 +67,13 @@ public class Music extends Model {
                 ).bind("tags", tags).bind("size", tags.length).fetch();
     }
 
+    public Music(String songTitle,String singer, String album,String fileName) {
+        this.songTitle = songTitle;
+        this.singer = singer;
+        this.album = album;
+        this.filaName = fileName;
+    }
+    
     public Music(Long userId, String username, String filaName, 
             String filePath, HashMap<String, String> map) {
         this.username = username;

@@ -61,7 +61,8 @@ public class MusicAdmin extends CheckUserLogin {
             
     }
     
-    public static void updateMusic(Long musicId,String tags){
+    public static void updateMusic(Long musicId,String tags,
+            String songTitle, String singer, String fileName, String album){
         User user = checkUser();      
         Music music = Music.findById(musicId);
         
@@ -81,7 +82,11 @@ public class MusicAdmin extends CheckUserLogin {
                 music.tags.add(Tag.findOrCreateByName(tag));
             }
         }
-        
+        log.error(music.tags.toString());
+        music.songTitle = songTitle;
+        music.singer = singer;
+        music.album = album;
+        music.filaName = fileName;
         music.save();
         
         if(music==null) ControllerUtils.renderError("修改错误，请重试！");
