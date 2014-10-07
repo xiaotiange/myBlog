@@ -2,13 +2,14 @@
     // Settings
     var playlist=[];
 
+    var param = {};
     var loadingMusic = function(){
         var ulObj = $(".my-music-ul");
 
         $.ajax({
             type: 'post',
-            url: '/MusicAdmin/queryMusic',
-            data: {},
+            url: '/MusicAdmin/queryChooseMusic',
+            data: param,
             success: function (dataJson) {
 
                 if(dataJson.isOk==false){
@@ -42,6 +43,14 @@
 
     }
 
+    param.tags = "日韩";
     loadingMusic();
+
+    $('.tag-select').unbind().click(function(){
+        var tags = $(this).attr("tag");
+        param.tags = tags;
+
+        loadingMusic();
+    });
 
 })(jQuery);

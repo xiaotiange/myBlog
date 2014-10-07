@@ -137,6 +137,12 @@ public class MusicAdmin extends CheckUserLogin {
         ControllerUtils.renderResultJson(musicList);
         
     }
+    
+    public static void queryChooseMusic(String tags){
+        List<Music> musicList = Music.findTaggedWith(tags);
+        
+        ControllerUtils.renderResultJson(musicList);
+    }
 
 
 }
