@@ -110,8 +110,10 @@ a:hover{
 
 /*login & register page*/
 .container-div{
-    color: rgba(40,44,42,0.05);
+    background: rgba(40,44,42,0.05);
     margin: 20px auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 .not-login{
     margin-top: 10px;
@@ -133,7 +135,11 @@ a:hover{
 
 }
 
-
+#playlist{
+    max-height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 /*  music info details*/
 
 .tag-tab{

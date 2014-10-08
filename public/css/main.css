@@ -96,12 +96,15 @@ body {
     font-size: 14px;
 }
 
+
 /*footer icon*/
 
 #footer{
     background: #333;
     height: 200px;
     min-width: 100%;
+    position: absolute;
+    bottom: 0px;
 }
 .footer-sns{
     padding-top: 30px;
