@@ -23,6 +23,10 @@ public class MusicAdmin extends CheckUserLogin {
     public static void index(){
         render("/music/music.html");
     }
+    public static void DetailsInfo(Long musicId){
+        Music music = Music.findById(musicId);
+        render("/music/musicDetails.html",music);
+    }
     public static void uploadMusic(File musicFile){
         if(musicFile==null){
             render("/music/upload.html"); 

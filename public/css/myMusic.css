@@ -263,7 +263,6 @@ a {
     left: -30px;
 }
 #playlist a{
-    display:block;
     color:#fff;
     text-decoration:none;
     line-height: 40px;
@@ -284,7 +283,7 @@ a {
     width: 20px;
     font-size: 13px;
 }
-#playlist li a.right:hover {
+#playlist li a:hover {
    color: green;
 }
 #playlist li span.right:hover {
