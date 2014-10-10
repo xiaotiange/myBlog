@@ -157,6 +157,10 @@ a:hover{
     border:1px solid #2cc185;
     color: #2cc185;
 }
+.avtive-tab{
+    border:1px solid #2cc185;
+    color: #2cc185;
+}
 .music-info{
     margin: 10px 20px;
     padding: 10px;
