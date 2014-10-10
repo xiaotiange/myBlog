@@ -52,6 +52,7 @@
                 </td>
             </tr>
             <tr>
+
                 <td colspan="6" style="padding-top: 10px;"> <span class='big-btn save-submit-btn'>保存</span></td>
             </tr>
         </table>
@@ -94,6 +95,11 @@
             tagList.push(otherTags);
         }
 
+        if(tagList.length<=0){
+             alert("请先选择需要添加的标签！");
+            return;
+        }
+
         var tags = tagList.join(",");
         alert(tags);
         paramData.tags = tags;
@@ -111,10 +117,10 @@
             success: function (dataJson) {
 
                 if(dataJson.isOk == false){
-                    alert(dataJson.msg);
+                    alert(dataJson.msg)
                     return;
                 }
-                alert(dataJson.msg);
+                alert(dataJson.msg)
                 location.reload();
             }
         });

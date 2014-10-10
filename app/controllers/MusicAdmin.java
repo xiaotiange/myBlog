@@ -154,5 +154,20 @@ public class MusicAdmin extends CheckUserLogin {
         ControllerUtils.renderResultJson(musicList);
     }
 
-
+    public static void deleteMusic(Long musicId){
+        Music music = Music.findById(musicId);
+        if(music == null){
+            ControllerUtils.renderError("找不到该歌曲");       
+        }
+            
+        File file = MusicAction.getMusicFile(music.filePath);
+        
+        if(file.exists()){
+            file.delete();
+        }
+        
+        ControllerUtils.renderSuccess("删除成功");   
+        
+    }
+    
 }
