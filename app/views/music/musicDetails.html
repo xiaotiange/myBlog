@@ -2,7 +2,9 @@
 #{set title:"嗨音乐"/}
 
 <style type="text/css">
-
+    .music-info{
+        background: #fff;
+    }
 </style>
 
 #{if music}
@@ -14,15 +16,15 @@
                 <td><span>歌名：</span>
                     <input class="musicId" style="display: none;" value="${music?.id}">
                 </td>
-                <td style="width: 300px;"><input class="artister-input" value="${music?.songTitle}"></td>
+                <td style="width: 300px;"><input  type="text" class="artister-input" value="${music?.songTitle}"></td>
                 <td><span>歌手：</span></td>
-                <td style="width: 300px;"><input class="singer-input" value="${music?.singer}"></td>
+                <td style="width: 300px;"><input  type="text" class="singer-input" value="${music?.singer}"></td>
             </tr>
             <tr>
                 <td><span>文件名：</span></td>
-                <td style="width: 300px;"><input class="fileName-input" value="${music?.filaName}"></td>
+                <td style="width: 300px;"><input  type="text" class="fileName-input" value="${music?.filaName}"></td>
                 <td><span>专辑：</span></td>
-                <td style="width: 300px;"><input class="album-input" value="${music?.album}"></td>
+                <td style="width: 300px;"><input  type="text" class="album-input" value="${music?.album}"></td>
 
             </tr>
         </table>
@@ -30,11 +32,21 @@
         <div class="title" style="margin-bottom: 15px;">音乐类型设置</div>
         <table class="info-table">
             <tr>
+                #{if music.tags}
+                    <td><span class="title">标签</span></td>
+                    #{list items:music.tags, as:'tag'}
+                        <td><span class="tag-tab current-tab" tag="${tag}">${tag}</span></td>
+                    #{/list}
+                #{/if}
+            </tr>
+            <tr>
+
+                <td><span class="title">修改标签</span></td>
                 <td><span class="tag-tab music-tag-tab" tag="日韩">日韩</span></td>
                 <td><span class="tag-tab music-tag-tab" tag="欧美">欧美</span></td>
                 <td><span class="tag-tab music-tag-tab" tag="国语">国语</span> </td>
                 <td><span class="tag-tab music-tag-tab" tag="港台">港台</span></td>
-                <td><span class="tag-tab other-tab" tag="">其他</span> </td>
+                <td><span class="tag-tab music-tag-tab other-tab" tag="">其他</span> </td>
                 <td><span class="other-tag-tab" style="display: none;color: #333;">
                     <input type="text" class="tags-input">(请用逗号隔开)</span>
                 </td>
@@ -46,3 +58,69 @@
     </div>
 </div>
 #{/if}
+
+
+<script type="text/javascript">
+
+    $(".other-tab").unbind().click(function(){
+        $('.other-tag-tab').toggle();
+    });
+    $('.music-tag-tab').unbind().click(function(){
+        if($(this).hasClass("current-tab")){
+            $(this).removeClass("current-tab")
+        }else{
+            $(this).addClass("current-tab")
+        }
+
+        if($(this).hasClass("other-tab")){
+            $('.other-tag-tab').toggle();
+        }
+    });
+
+    $('.save-submit-btn').unbind().click(function(){
+        var container = $('.music-info');
+        var paramData = {};
+        var tagList = [];
+
+        var checkedObjs = container.find('.current-tab');
+        checkedObjs.each(function() {
+            if($(this).attr('tag')!=""){
+                tagList.push($(this).attr('tag'));
+            }
+        });
+
+        if($('.other-tab').hasClass("current-tab")){
+            var otherTags = container.find('.tags-input').val();
+            tagList.push(otherTags);
+        }
+
+        var tags = tagList.join(",");
+        alert(tags);
+        paramData.tags = tags;
+        paramData.musicId = $('.musicId').val();
+        paramData.songTitle = container.find('.artister-input').val();
+        paramData.singer = container.find('.singer-input').val();
+        paramData.fileName = container.find('.fileName-input').val();
+        paramData.album = container.find('.album-input').val();
+
+
+        $.ajax({
+            type: 'post',
+            url: '/MusicAdmin/updateMusic',
+            data: paramData,
+            success: function (dataJson) {
+
+                if(dataJson.isOk == false){
+                    alert(dataJson.msg);
+                    return;
+                }
+                alert(dataJson.msg);
+                location.reload();
+            }
+        });
+
+    });
+
+
+
+</script>

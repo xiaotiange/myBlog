@@ -8,7 +8,7 @@
 
         $.ajax({
             type: 'post',
-            url: '/MusicAdmin/queryChooseMusic',
+            url: '/MusicAdmin/queryMyChooseMusic',
             data: param,
             success: function (dataJson) {
 
@@ -43,7 +43,7 @@
 
     }
 
-    param.tags = "日韩";
+    param.tags = "";
     loadingMusic();
 
     $('.tag-select').unbind().click(function(){

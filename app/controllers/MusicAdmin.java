@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import models.Music;
 import models.Tag;
 import models.User;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,8 +62,8 @@ public class MusicAdmin extends CheckUserLogin {
         }
         message="恭喜亲，添加成功！";
         log.info("Add Music Success!!!");
-        
-        render("/music/upload.html",message,music);  
+        boolean isOk = true;
+        render("/music/upload.html",music,isOk);  
             
     }
     
@@ -124,11 +126,15 @@ public class MusicAdmin extends CheckUserLogin {
         return user;
     } 
     
-    public static void queryMyMusic(){
+    public static void queryMyChooseMusic(String tags){
         
         User user = checkUser();
-      
-        List<Music> musicList = Music.findListByUserId(user.id);
+        List<Music> musicList = new ArrayList<Music>();
+        if(StringUtils.isEmpty(tags)){
+           musicList = Music.findListByUserId(user.id); 
+        }else{
+            musicList = Music.findMyMusicTaggedWith(user.id, tags);
+        }     
         
         ControllerUtils.renderResultJson(musicList);
         

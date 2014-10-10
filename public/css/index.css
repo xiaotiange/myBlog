@@ -151,8 +151,7 @@ a:hover{
     color: #333;
 }
 .tag-tab:hover{
-    border:1px solid #2cc185;
-    color: #2cc185;
+
 }
 .current-tab{
     border:1px solid #2cc185;
@@ -174,6 +173,10 @@ a:hover{
 }
 .info-table tr td{
     padding: 5px 10px;
+}
+
+.info-table tr td input[type="text"]{
+    width: 250px;
 }
 
 
