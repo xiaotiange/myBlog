@@ -69,7 +69,9 @@
 
 <script type="text/x-jquery-tmpl" id="myMusicLiTmpl">
     <li class="glyphicon playing glyphicon-music" title="双击播放">
-        <a href="/MusicAdmin/DetailsInfo?musicId={{= id}}">{{= songTitle }}</a> <span class="singer">- {{= singer}}</span>
+        <span style="width:250px"><a href="/MusicAdmin/DetailsInfo?musicId={{= id}}">{{= songTitle }}</a> </span>
+        <span class="singer" style="width:200px">- {{= singer}}</span>
+
         <span class="right glyphicon glyphicon-trash remove"  data-toggle="tooltip"  title="删除">&nbsp;</span>
     *{<a class="right" href="/MusicAdmin/getMusic?musicId={{= id}}" data-toggle="tooltip" title="下载" target="_blank">
             <span class="glyphicon glyphicon-download-alt download"></span></a>}*
