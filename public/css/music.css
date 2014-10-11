@@ -36,10 +36,12 @@
     border: 1px solid #c9394a;
 }
 .menu-nav{
-    position: fixed;
     float: left;
-    width: 60px;
-    margin-left: -60px;
+    width: 100px;
+    background: #fff;
+    border-right: 2px solid #999;
+    height: 100%;
+    margin-left: 0px;
     z-index: 99999;
 }
 .menu-nav ul{

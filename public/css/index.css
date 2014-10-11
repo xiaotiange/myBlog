@@ -10,6 +10,10 @@ a:hover{
 }
 /* header */
 .header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     background:#333;
     height: 60px;
     float: left;
@@ -104,16 +108,24 @@ a:hover{
 /* #container*/
 
 #container{
-    margin-top: -300px;
-    text-align: center;
+    position: absolute;
+    top: 60px;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    border-top: 2px solid red;
+    width: 100%;
+    background: #efefef;
+    max-height: 100%;
+    overflow: hidden;;
 }
 
 /*login & register page*/
 .container-div{
+    height: 100%;
     background: rgba(40,44,42,0.05);
-    margin: 20px auto;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
 }
 .not-login{
     margin-top: 10px;
@@ -184,4 +196,12 @@ a:hover{
 }
 
 
-
+.footer{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 60px;
+    right: 0;
+    left: 0;
+    background: #333;
+}
