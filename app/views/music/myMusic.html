@@ -7,6 +7,28 @@
   .tag-select{
       cursor: pointer;
   }
+  .my-music-div{
+      width: 80%;
+      float: left;
+      overflow-x: hidden;
+      overflow-y: auto;
+  }
+  .my-music-info{
+     float: left;
+     height: 100%;
+     background: #e0e0e0;
+     border-left: 2px solid #999;
+     overflow: hidden;
+  }
+  #player {
+     width: 100%;
+  }
+  #playlist {
+    width: 100%;
+      border-top: 2px solid #fff;
+      overflow: hidden;
+  }
+
 </style>
 
 <div class="container-div">
@@ -60,24 +82,41 @@
         </div>
 
         <div id="playlist">
-            <ul class="my-music-ul">
+
+            <div class="music-title">
+               <span class="left" style="width: 30%">歌名</span>
+                <span class="left" style="width: 30%">歌手</span>
+                <span class="left" style="width: 30%">专辑</span>
+                <span class="left" style="width: 10%">操作</span>
+            </div>
+            <ul class="my-music-ul" >
 
             </ul>
+
+
         </div>
     </div>
 
+    <div class="my-music-info">
+
+    </div>
 </div>
 
 <script type="text/x-jquery-tmpl" id="myMusicLiTmpl">
-    <li class="glyphicon playing glyphicon-music" title="双击播放">
-        <span style="width:450px"><a href="/MusicAdmin/DetailsInfo?musicId={{= id}}" target="_blank">{{= songTitle }}</a> </span>
-        <span class="singer" style="width:200px">- {{= singer}}</span>
+    <li class="glyphicon playing glyphicon-music"  title="双击播放">
+        <span class="left" style="width:30%;"><a href="/MusicAdmin/DetailsInfo?musicId={{= id}}" target="_blank">{{= songTitle }}</a> </span>
+        <span class="singer left" style="width:30%">{{= singer}}</span>
+        <span class="album left" style="width:30%">{{= album}}</span>
 
-        <span class="right glyphicon glyphicon-trash remove"  data-toggle="tooltip"  title="删除">&nbsp;</span>
-    *{<a class="right" href="/MusicAdmin/getMusic?musicId={{= id}}" data-toggle="tooltip" title="下载" target="_blank">
+        <span class="left" style="width:10%">
+            <span class="left glyphicon glyphicon-trash remove"  data-toggle="tooltip"  title="删除">&nbsp;</span>
+        *{<a class="left" href="/MusicAdmin/getMusic?musicId={{= id}}" data-toggle="tooltip" title="下载" target="_blank">
             <span class="glyphicon glyphicon-download-alt download"></span></a>}*
-        <span class="right glyphicon glyphicon-plus plus" style="font-size:13px;padding-top:11px;"   data-toggle="tooltip" title="添加">&nbsp;</span>
-        <span class="right glyphicon glyphicon-heart heart"  data-toggle="tooltip" title="喜欢">&nbsp;</span>
+        <span class="left glyphicon glyphicon-plus plus" style="font-size:13px;padding-top:11px;"   data-toggle="tooltip" title="添加">&nbsp;</span>
+        <span class="left glyphicon glyphicon-heart heart"  data-toggle="tooltip" title="喜欢">&nbsp;</span>
+
+        </span>
+
     </li>
 </script>
 

@@ -147,8 +147,8 @@ a:hover{
 
 }
 
-#playlist{
-    max-height: 500px;
+.my-music-div{
+    height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
 }
