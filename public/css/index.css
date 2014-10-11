@@ -203,5 +203,5 @@ a:hover{
     height: 60px;
     right: 0;
     left: 0;
-    background: #333;
+    background: rgba(50,50,50,0.25);
 }
