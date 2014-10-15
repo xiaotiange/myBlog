@@ -8,7 +8,7 @@
       cursor: pointer;
   }
   .my-music-div{
-      width: 70%;
+      width: 80%;
       float: left;
       overflow-x: hidden;
       overflow-y: auto;
@@ -24,15 +24,67 @@
      width: 100%;
   }
   #playlist {
-    width: 100%;
+      width: 100%;
+      border-top: 2px solid #fff;
+      overflow: hidden;
+      background: #fff;
+      color:#fff;
+      font-size: 16px;
+      margin:0px auto;
+      list-style-type: none;
       border-top: 2px solid #fff;
       overflow: hidden;
   }
+  .my-music-ul{
+      width: 100%;
+  }
 
+  #playlist ul{
+      overflow: hidden;
+      margin-left: 0;
+  }
+
+  #playlist ul li{
+      width: 16.6%;
+      height: 350px;
+      overflow: hidden;
+      display: inline-block;
+  }
+  .music-play-div{
+      position: relative;
+      margin-top: -300px;
+      height: 300px;
+      background: rgba(0,0,0,0.6);
+      color: #ffffff;
+      text-align: left;
+      padding-top: 5px;
+      display: none;
+  }
+  .music-info-div{
+      overflow: hidden;
+  }
+  .music-play-div .play{
+      height: 50px;
+      overflow: hidden;
+      margin-top: 125px;
+      text-align: center;
+  }
+
+  .play-music{
+      cursor: pointer;
+  }
+  .isPlaying{
+      display: block;
+  }
+
+  p{
+      margin: 0;
+      color: #333;
+  }
 </style>
 
 <div class="container-div">
-    <div class="menu-nav" style="width: 13%;">
+    <div class="menu-nav">
         <ul>
             <li><span class="tag-select" tag="欧美">欧美</span></li>
             <li><span class="tag-select" tag="日韩">日韩</span></li>
@@ -41,8 +93,8 @@
 
         </ul>
     </div>
-    <div class="my-music-div">
-        <div id="player">
+    <div class="my-music-div" style="background: #fff;">
+        <div id="player" style="display: none;">
             <div class="cover"></div>
             <div class="ctrl">
                 <div class="tag">
@@ -83,13 +135,7 @@
 
         <div id="playlist">
 
-            <div class="music-title">
-               <span class="left" style="width: 30%">歌名</span>
-                <span class="left" style="width: 30%">歌手</span>
-                <span class="left" style="width: 30%">专辑</span>
-                <span class="left" style="width: 10%">操作</span>
-            </div>
-            <ul class="my-music-ul" >
+            <ul class="my-music-ul" style="margin-top: 15px;">
 
             </ul>
 
@@ -103,22 +149,27 @@
 </div>
 
 <script type="text/x-jquery-tmpl" id="myMusicLiTmpl">
-    <li class="glyphicon playing glyphicon-music"  title="双击播放">
-        <span class="left" style="width:30%;"><a href="/MusicAdmin/DetailsInfo?musicId={{= id}}" target="_blank">{{= songTitle }}</a> </span>
-        <span class="singer left" style="width:30%">{{= singer}}</span>
-        <span class="album left" style="width:30%">{{= album}}</span>
-
-        <span class="left" style="width:10%">
-            <span class="left glyphicon glyphicon-trash remove"  data-toggle="tooltip"  title="删除">&nbsp;</span>
-        *{<a class="left" href="/MusicAdmin/getMusic?musicId={{= id}}" data-toggle="tooltip" title="下载" target="_blank">
-            <span class="glyphicon glyphicon-download-alt download"></span></a>}*
-        <span class="left glyphicon glyphicon-plus plus" style="font-size:13px;padding-top:11px;"   data-toggle="tooltip" title="添加">&nbsp;</span>
-        <span class="left glyphicon glyphicon-heart heart"  data-toggle="tooltip" title="喜欢">&nbsp;</span>
-
-        </span>
+    <li class="unit">
+        <div class="info" style="width:90%;height:300px;margin:0 auto;">
+            <div class="img-div" style="width:100%;height:300px;">
+                <img src="{{= imgPath}}" width="100%" height="100%" alt="{{= songTitle}}">
+                <div class="music-play-div">
+                     <div class="play">
+                         <span class="play-music glyphicon glyphicon-play" style="font-size:30px;"></span>
+                     </div>
+                </div>
+            </div>
+            <div class="music-info-div">
+                <p>{{= songTitle}}</p>
+                <p>{{= singer}}</p>
+            </div>
+        </div>
 
     </li>
 </script>
 
 
 <script src="/public/js/music/getMyMusic.js"></script>
+<script type="text/javascript">
+
+</script>

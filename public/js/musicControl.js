@@ -172,6 +172,17 @@ var repeat = localStorage.repeat || 0,
 
             loadMusic(currentTrack);
 
+            $(".img-div").unbind().hover(function(){
+                var parent = $(this).parent();
+                parent.find(".music-play-div").show();
+                   },
+                function(){
+                    var parent = $(this).parent();
+                    parent.find(".music-play-div").hide();
+                });
+
+
+
             $('.playback').unbind().click(function(){
                 if ($(this).hasClass('playing')){
                     pause();
@@ -199,7 +210,17 @@ var repeat = localStorage.repeat || 0,
                     switchTrack(_i);
                 });
             });
-            ;
+
+            $('#playlist li').each(function(){
+                var container = $(this);
+                var _i = $(this).index()
+                container.find(".play-music").unbind().click(function(){
+                    $(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
+
+                    switchTrack(_i);
+                });
+            });
+
             if (shuffle === 'true') $('.shuffle').addClass('enable');
             if (repeat == 1){
                 $('.repeat-once').addClass('once');

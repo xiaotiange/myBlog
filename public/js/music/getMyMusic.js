@@ -32,6 +32,15 @@
                     return;
                 }
 
+                $(musicJsonArray).each(function(index, item) {
+                    if(item.imgPath ===undefined ||item.imgPath ==null || item.imgPath ==""){
+                        item.imgPath = "/public/img/logo.png";
+                    }else{
+                        item.imgPath = "/MusicAdmin/getMusicImage?musicId="+item.id;
+                    }
+
+                });
+
                 var liObjs = $("#myMusicLiTmpl").tmpl(musicJsonArray);
 
                 ulObj.html(liObjs);

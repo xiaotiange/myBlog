@@ -42,6 +42,7 @@
     height: 100%;
     margin-left: 0px;
     z-index: 99999;
+    background: rgba(0, 0, 0, 0.60);
 }
 .menu-nav ul{
     padding: 0;
@@ -49,7 +50,6 @@
 .menu-nav ul li{
     display: block;
     list-style-type: none;
-    background: rgba(255,255,255,0.4);
     padding: 15px 5px;
 }
 .menu-nav ul li:hover{
