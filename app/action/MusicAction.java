@@ -58,10 +58,7 @@ public class MusicAction {
     
     public static File getMusicImgFile(Music music) {
         if (music.imgPath == null) {
-            File file = new File(music.filePath);
-            String imagePath = getMusicImage(file,music.filePath);
-            music.imgPath = imagePath;
-            music.save();
+          return null;
         }
         
         File file = new File(music.imgPath);
