@@ -14,10 +14,19 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Vector;
 
+import models.Music;
+
 import org.apache.commons.lang3.StringUtils;
 import org.cmc.music.myid3.id3v2.MyID3v2;
 import org.cmc.music.myid3.id3v2.MyID3v2FrameText;
 import org.cmc.music.myid3.id3v2.MyID3v2Read;
+import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
+import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
+import org.jaudiotagger.audio.mp3.MP3File;
+import org.jaudiotagger.tag.TagException;
+import org.jaudiotagger.tag.id3.AbstractID3v2Frame;
+import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
+import org.jaudiotagger.tag.id3.framebody.FrameBodyAPIC;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,6 +48,23 @@ public class MusicAction {
         }
         
         File file = new File(filePath);
+        if (file.exists() == false) {
+            return null;
+        }
+        
+        return file;
+        
+    }
+    
+    public static File getMusicImgFile(Music music) {
+        if (music.imgPath == null) {
+            File file = new File(music.filePath);
+            String imagePath = getMusicImage(file,music.filePath);
+            music.imgPath = imagePath;
+            music.save();
+        }
+        
+        File file = new File(music.imgPath);
         if (file.exists() == false) {
             return null;
         }
@@ -76,6 +102,43 @@ public class MusicAction {
         System.out.println(map.get("TIT2"));
     }
     */
+    
+
+    public static String getMusicImage(File sourceFile,String imgpath){
+
+        MP3File mp3file = null;
+        FileOutputStream fos = null;
+        String imagePath = "";
+            try {
+                mp3file = new MP3File(sourceFile);
+                AbstractID3v2Tag tag = mp3file.getID3v2Tag();  
+                AbstractID3v2Frame frame = (AbstractID3v2Frame) tag.getFrame("APIC");  
+                FrameBodyAPIC body = (FrameBodyAPIC) frame.getBody();  
+                byte[] imageData = body.getImageData();  
+                 
+                int index = imgpath.indexOf(sourceFile.getName());
+                imagePath = imgpath.subSequence(0, index)+sourceFile.getName()+".jpg";
+
+                fos = new FileOutputStream(imagePath);  
+                fos.write(imageData);  
+                fos.close();
+                return imagePath;
+            } catch (IOException e) {              
+                log.error(e.getMessage(), e);
+                return "";
+            } catch (TagException e) {
+                log.error(e.getMessage(), e);
+                return "";
+            } catch (ReadOnlyFileException e) {
+                log.error(e.getMessage(), e);
+                return "";
+            } catch (InvalidAudioFrameException e) {
+                log.error(e.getMessage(), e);
+                return "";
+            }
+    
+              
+    }
     public static HashMap getMusicInfo(File file){
         MyID3v2 info = new MyID3v2();
         byte bytes[] = null;

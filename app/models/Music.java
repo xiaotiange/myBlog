@@ -49,6 +49,9 @@ public class Music extends Model {
     @ManyToMany(cascade=CascadeType.PERSIST)
     public Set<Tag> tags;
     
+    
+    public String  imgPath;
+    
     public static class musicInfo {
         private static final String songTitle = "TIT2";//歌名标识
         private static final String singer = "TPE1";//歌手标识
@@ -81,10 +84,11 @@ public class Music extends Model {
     }
     
     public Music(Long userId, String username, String filaName, 
-            String filePath, HashMap<String, String> map) {
+            String filePath,String imgPath, HashMap<String, String> map) {
         this.username = username;
         this.filaName = filaName;
         this.filePath = filePath;
+        this.imgPath = imgPath;
         this.userId = userId;
         this.tags = new TreeSet<Tag>();
         this.songTitle = map.get(musicInfo.songTitle);
@@ -95,8 +99,8 @@ public class Music extends Model {
     }
     
     public  static Music saveMusic(Long userId, String username, String filaName, 
-            String filePath,HashMap<String, String> infoMap){
-        Music music = new Music(userId, username, filaName, filePath,infoMap);
+            String filePath,String imgPath, HashMap<String, String> infoMap){
+        Music music = new Music(userId, username, filaName, filePath,imgPath, infoMap);
         
         music.save();
         return music;

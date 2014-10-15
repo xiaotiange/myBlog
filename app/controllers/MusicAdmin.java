@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +11,9 @@ import models.Tag;
 import models.User;
 
 import org.apache.commons.lang3.StringUtils;
+import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
+import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
+import org.jaudiotagger.tag.TagException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,7 +33,7 @@ public class MusicAdmin extends CheckUserLogin {
         Music music = Music.findById(musicId);
         render("/music/musicDetails.html",music);
     }
-    public static void uploadMusic(File musicFile){
+    public static void uploadMusic(File musicFile) throws IOException, TagException, ReadOnlyFileException, InvalidAudioFrameException{
         if(musicFile==null){
             render("/music/upload.html"); 
         }
@@ -52,9 +56,12 @@ public class MusicAdmin extends CheckUserLogin {
             message="添加失败，请重试！";
             render("/music/upload.html",message);  
         }
+        String musicPath =  musicFile.getAbsolutePath();
+        String imagePath = MusicAction.getMusicImage(musicFile, musicPath);
+        
         HashMap<String, String> infoMap = MusicAction.getMusicInfo(musicFile);
          
-        Music music = Music.saveMusic(user.id , user.fullname, filename, musicFile.getAbsolutePath(),infoMap);
+        Music music = Music.saveMusic(user.id , user.fullname, filename, musicPath,imagePath,infoMap);
              
         if(music==null){
             message="添加失败，请重试！";
@@ -108,6 +115,8 @@ public class MusicAdmin extends CheckUserLogin {
             return;
         }
         
+        
+        
         renderBinary(file, music.filaName);
         
         /*
@@ -116,6 +125,17 @@ public class MusicAdmin extends CheckUserLogin {
          *  前端歌曲链接：
          *  <source source="/MusicAdmin/getMusic?musicId=musicId" type="audio/mp3">
          */
+    }
+    
+    public static void getMusicImage(Long musicId) {
+        Music music = Music.findById(musicId);        
+        File file = MusicAction.getMusicImgFile(music);
+        
+        if (file == null) {
+            return;
+        }
+                      
+        renderBinary(file);
     }
     
     private static User checkUser(){
