@@ -35,35 +35,7 @@
     opacity: 0;
     border: 1px solid #c9394a;
 }
-.menu-nav{
-    float: left;
-    width: 60px;
-    border-right: 2px solid #999;
-    height: 100%;
-    margin-left: 0px;
-    z-index: 99999;
-    background: rgba(0, 0, 0, 0.60);
-}
-.menu-nav ul{
-    padding: 0;
-}
-.menu-nav ul li{
-    display: block;
-    list-style-type: none;
-    padding: 15px 5px;
-}
-.menu-nav ul li:hover{
-    background: #2cc185;
-    color: #ffffff;
-}
-.menu-nav ul li a{
-    color: #c9394a;
-    font-size: 16px;
-    text-decoration: none;
-}
-.menu-nav ul li a:hover{
-    color: #ffffff;
-}
+
 p.view{
     width: 94px;
     height: 35px;
@@ -78,19 +50,8 @@ p.view{
 .tag-select{
     cursor: pointer;
 }
-.my-music-div{
-    width: 80%;
-    float: left;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-.my-music-info{
-    float: left;
-    height: 100%;
-    background: #e0e0e0;
-    border-left: 2px solid #999;
-    overflow: hidden;
-}
+
+
 #player {
     width: 100%;
 }
@@ -116,17 +77,17 @@ p.view{
 }
 
 #playlist ul li{
-    width: 200px;
-    height: 250px;
-    margin-left: 30px;
-    margin-top: 30px;
+    width: 230px;
+    height: 400px;
+    margin-left: 15px;
+    margin-top: 15px;
     overflow: hidden;
     display: inline-block;
 }
 .music-play-div{
     position: relative;
-    margin-top: -200px;
-    height: 200px;
+    margin-top: -340px;
+    height: 340px;
     background: rgba(0,0,0,0.6);
     color: #ffffff;
     text-align: left;
@@ -137,9 +98,9 @@ p.view{
     overflow: hidden;
 }
 .music-play-div .play{
-    height: 50px;
+    height: 40px;
     overflow: hidden;
-    margin-top: 75px;
+    margin-top: 150px;
     text-align: center;
 }
 

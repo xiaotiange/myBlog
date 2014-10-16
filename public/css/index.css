@@ -121,6 +121,52 @@ a:hover{
     overflow: hidden;;
 }
 
+.menu-nav{
+    float: left;
+    width: 60px;
+    border-right: 2px solid #999;
+    height: 100%;
+    margin-left: 0px;
+    text-align: center;
+    z-index: 99999;
+    background: #3b464d;
+}
+.menu-nav ul{
+    padding: 0;
+}
+.menu-nav ul li{
+    display: block;
+    list-style-type: none;
+    padding: 15px 5px;
+}
+.menu-nav ul li:hover{
+    background: #2cc185;
+    color: #ffffff;
+}
+.menu-nav ul li a{
+    color: #c9394a;
+    font-size: 16px;
+    text-decoration: none;
+}
+.menu-nav ul li a:hover{
+    color: #ffffff;
+}
+
+.my-music-div{
+    width: 85%;
+    float: left;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.my-music-info{
+    float: left;
+    height: 100%;
+    background: #e0e0e0;
+    border-left: 2px solid #999;
+    overflow: hidden;
+}
+
 /*login & register page*/
 .container-div{
     height: 100%;
@@ -149,6 +195,7 @@ a:hover{
 
 .my-music-div{
     height: 100%;
+    background: #fff;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -203,5 +250,5 @@ a:hover{
     height: 60px;
     right: 0;
     left: 0;
-    background: rgba(50,50,50,0.25);
+    background: #108d4e;
 }
