@@ -1,82 +1,100 @@
 #{extends 'index.html' /}
-#{set title:"听音乐"/}
+#{set title:"我的小屋"/}
 
+<link rel="stylesheet" href="@{'public/css/music.css'}" />
 <link rel="stylesheet" href="/public/css/myMusic.css">
 <style type="text/css">
 
+
 </style>
 
-<div class="my-music-div">
-    <div id="player">
-        <div class="cover"></div>
-        <div class="ctrl">
-            <div class="tag">
-                <strong>Title</strong>
-                <span class="artist">Artist</span>
-                <span class="album">Album</span>
-            </div>
-            <div class="control">
-                <div class="left">
-                    <div class="rewind glyphicon glyphicon-step-backward"></div>
-                    <div class="playback glyphicon glyphicon-pause"></div>
-                    <div class="fastforward glyphicon glyphicon-step-forward"></div>
-                </div>
-                <div class="volume right">
-                    <div class="glyphicon glyphicon-volume-up mute left"></div>
-                    <div class="slider left">
-                        <div class="pace"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="progress">
-                <div class="slider">
-                    <div class="loaded"></div>
-                    <div class="pace"></div>
-                </div>
-                <div class="timer left">0:00</div>
-                <div class="right">
-                    <div class="repeat-all glyphicon glyphicon-retweet" data-toggle="tooltip" title="全部循环"></div>
-                    <div class="repeat-once glyphicon glyphicon-repeat" data-toggle="tooltip" title="单曲循环"><span class="repeat-tip">1</span></div>
-                    <div class="shuffle glyphicon glyphicon-random" data-toggle="tooltip" title="随机播放"></div>
-                </div>
-            </div>
-        </div>
-        <audio class="audio" autoplay>
-
-        </audio>
-    </div>
-
-    <div id="playlist">
-        <div class="music-title">
-            <span class="left" style="width: 30%">歌名</span>
-            <span class="left" style="width: 30%">歌手</span>
-            <span class="left" style="width: 30%">专辑</span>
-            <span class="left" style="width: 10%">操作</span>
-        </div>
-        <ul class="my-music-ul">
+<div class="container-div">
+    <div class="menu-nav">
+        <ul>
+            <li><span class="tag-select" tag="欧美">欧美</span></li>
+            <li><span class="tag-select" tag="日韩">日韩</span></li>
+            <li><span class="tag-select" tag="港台">港台</span></li>
+            <li><span class="tag-select" tag="国语">国语</span></li>
 
         </ul>
     </div>
+    <div class="my-music-div" style="background: #fff;">
+        <div id="player" style="display: none;">
+            <div class="cover"></div>
+            <div class="ctrl">
+                <div class="tag">
+                    <strong>Title</strong>
+                    <span class="artist">Artist</span>
+                    <span class="album">Album</span>
+                </div>
+                <div class="control">
+                    <div class="left">
+                        <div class="rewind glyphicon glyphicon-step-backward"></div>
+                        <div class="playback glyphicon glyphicon-pause"></div>
+                        <div class="fastforward glyphicon glyphicon-step-forward"></div>
+                    </div>
+                    <div class="volume right">
+                        <div class="glyphicon glyphicon-volume-up mute left"></div>
+                        <div class="slider left">
+                            <div class="pace"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="slider">
+                        <div class="loaded"></div>
+                        <div class="pace"></div>
+                    </div>
+                    <div class="timer left">0:00</div>
+                    <div class="right">
+                        <div class="repeat-all glyphicon glyphicon-retweet" data-toggle="tooltip" title="全部循环"></div>
+                        <div class="repeat-once glyphicon glyphicon-repeat" data-toggle="tooltip" title="单曲循环"><span class="repeat-tip">1</span></div>
+                        <div class="shuffle glyphicon glyphicon-random" data-toggle="tooltip" title="随机播放">></div>
+                    </div>
+                </div>
+            </div>
+            <audio class="audio" autoplay>
+
+            </audio>
+        </div>
+
+        <div id="playlist">
+
+            <ul class="my-music-ul" style="margin-top: 15px;">
+
+            </ul>
+
+
+        </div>
+    </div>
+
+    <div class="my-music-info">
+
+    </div>
 </div>
 
-
 <script type="text/x-jquery-tmpl" id="myMusicLiTmpl">
-    <li class="glyphicon playing glyphicon-music" title="双击播放">
-        <span class="left" style="width:30%;"><a href="/MusicAdmin/DetailsInfo?musicId={{= id}}" target="_blank">{{= songTitle }}</a> </span>
-        <span class="singer left" style="width:30%">{{= singer}}</span>
-        <span class="album left" style="width:30%">{{= album}}</span>
-
-        <span class="left" style="width:10%">
-            <span class="left glyphicon glyphicon-trash remove"  data-toggle="tooltip"  title="删除">&nbsp;</span>
-        *{<a class="left" href="/MusicAdmin/getMusic?musicId={{= id}}" data-toggle="tooltip" title="下载" target="_blank">
-            <span class="glyphicon glyphicon-download-alt download"></span></a>}*
-        <span class="left glyphicon glyphicon-plus plus" style="font-size:13px;padding-top:11px;"   data-toggle="tooltip" title="添加">&nbsp;</span>
-        <span class="left glyphicon glyphicon-heart heart"  data-toggle="tooltip" title="喜欢">&nbsp;</span>
-
-        </span>
+    <li class="unit">
+        <div class="info" style="width:100%;height:100%;margin:0 auto;">
+            <div class="img-div" style="width:100%;height:200px;">
+                <img src="{{= imgPath}}" width="100%" height="100%" alt="{{= songTitle}}">
+                <div class="music-play-div">
+                    <div class="play">
+                        <span class="play-music glyphicon glyphicon-play" style="font-size:30px;"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="song-info" style="height:50px;overflow:hidden;">
+                <span class="songTitle">{{= songTitle}}</span>
+                <span class="singer">{{= singer}}</span>
+            </div>
+        </div>
 
     </li>
 </script>
 
-<script src="/public/js/music/getMusic.js"></script>
 
+<script src="/public/js/music/getMusic.js"></script>
+<script type="text/javascript">
+
+</script>

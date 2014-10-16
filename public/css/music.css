@@ -74,3 +74,84 @@ p.view{
     padding-left: 28px;
     float: right;
 }
+
+.tag-select{
+    cursor: pointer;
+}
+.my-music-div{
+    width: 80%;
+    float: left;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.my-music-info{
+    float: left;
+    height: 100%;
+    background: #e0e0e0;
+    border-left: 2px solid #999;
+    overflow: hidden;
+}
+#player {
+    width: 100%;
+}
+#playlist {
+    width: 100%;
+    border-top: 2px solid #fff;
+    overflow: hidden;
+    background: #fff;
+    color:#fff;
+    font-size: 16px;
+    margin:0px auto;
+    list-style-type: none;
+    border-top: 2px solid #fff;
+    overflow: hidden;
+}
+.my-music-ul{
+    width: 100%;
+}
+
+#playlist ul{
+    overflow: hidden;
+    margin-left: 0;
+}
+
+#playlist ul li{
+    width: 200px;
+    height: 250px;
+    margin-left: 30px;
+    margin-top: 30px;
+    overflow: hidden;
+    display: inline-block;
+}
+.music-play-div{
+    position: relative;
+    margin-top: -200px;
+    height: 200px;
+    background: rgba(0,0,0,0.6);
+    color: #ffffff;
+    text-align: left;
+    padding-top: 5px;
+    display: none;
+}
+.music-info-div{
+    overflow: hidden;
+}
+.music-play-div .play{
+    height: 50px;
+    overflow: hidden;
+    margin-top: 75px;
+    text-align: center;
+}
+
+.play-music{
+    cursor: pointer;
+}
+.isPlaying{
+    display: block;
+}
+.song-info span{
+    display: block;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}

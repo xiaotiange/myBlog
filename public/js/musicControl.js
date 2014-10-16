@@ -161,7 +161,8 @@ var repeat = localStorage.repeat || 0,
                 }
 
                 $('.tag').html('<strong>'+item.songTitle+'</strong><span class="artist">'+item.singer+'</span><span class="album">《'+item.album+'》</span>');
-                $('#playlist li').removeClass('playing glyphicon-music').eq(i).addClass('playing glyphicon-music');
+
+                $('#playlist li').eq(i).find('.music-play-div').addClass('isPlaying');
                 audio = newaudio[0];
                 audio.volume = $('.mute').hasClass('enable') ? 0 : volume;
                 audio.addEventListener('progress', beforeLoad, false);
@@ -178,7 +179,13 @@ var repeat = localStorage.repeat || 0,
                    },
                 function(){
                     var parent = $(this).parent();
-                    parent.find(".music-play-div").hide();
+                    var thisdiv = parent.find(".music-play-div");
+                    if(thisdiv.hasClass("isPlaying")){
+
+                    }else{
+                        parent.find(".music-play-div").hide();
+                    }
+
                 });
 
 
@@ -215,11 +222,38 @@ var repeat = localStorage.repeat || 0,
                 var container = $(this);
                 var _i = $(this).index()
                 container.find(".play-music").unbind().click(function(){
-                    $(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
+                    if(container.find(".music-play-div").hasClass("isPlaying")){
+                        if($(this).hasClass("glyphicon-play")){
+                            $(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
+                            play();
+                        }else{
+                            $(this).removeClass("glyphicon-pause").addClass("glyphicon-play");
+                            pause();
+                        }
+                    }else{
+                        closeOtherPlay();
+                        $(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
+                        container.find(".music-play-div").addClass("isPlaying");
+                        switchTrack(_i);
+                    }
 
-                    switchTrack(_i);
                 });
             });
+
+            var closeOtherPlay = function(){
+                $('#playlist li').each(function(){
+
+                    var thisObj = $(this).find(".music-play-div");
+                    if(thisObj.hasClass("isPlaying")){
+                        thisObj.removeClass("isPlaying");
+                        thisObj.find(".play-music").removeClass("glyphicon-pause").addClass("glyphicon-play");
+                        thisObj.hide();
+
+                    }
+
+                });
+
+            };
 
             if (shuffle === 'true') $('.shuffle').addClass('enable');
             if (repeat == 1){

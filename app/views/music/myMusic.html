@@ -4,83 +4,8 @@
 <link rel="stylesheet" href="@{'public/css/music.css'}" />
 <link rel="stylesheet" href="/public/css/myMusic.css">
 <style type="text/css">
-  .tag-select{
-      cursor: pointer;
-  }
-  .my-music-div{
-      width: 80%;
-      float: left;
-      overflow-x: hidden;
-      overflow-y: auto;
-  }
-  .my-music-info{
-     float: left;
-     height: 100%;
-     background: #e0e0e0;
-     border-left: 2px solid #999;
-     overflow: hidden;
-  }
-  #player {
-     width: 100%;
-  }
-  #playlist {
-      width: 100%;
-      border-top: 2px solid #fff;
-      overflow: hidden;
-      background: #fff;
-      color:#fff;
-      font-size: 16px;
-      margin:0px auto;
-      list-style-type: none;
-      border-top: 2px solid #fff;
-      overflow: hidden;
-  }
-  .my-music-ul{
-      width: 100%;
-  }
 
-  #playlist ul{
-      overflow: hidden;
-      margin-left: 0;
-  }
 
-  #playlist ul li{
-      width: 16.6%;
-      height: 350px;
-      overflow: hidden;
-      display: inline-block;
-  }
-  .music-play-div{
-      position: relative;
-      margin-top: -300px;
-      height: 300px;
-      background: rgba(0,0,0,0.6);
-      color: #ffffff;
-      text-align: left;
-      padding-top: 5px;
-      display: none;
-  }
-  .music-info-div{
-      overflow: hidden;
-  }
-  .music-play-div .play{
-      height: 50px;
-      overflow: hidden;
-      margin-top: 125px;
-      text-align: center;
-  }
-
-  .play-music{
-      cursor: pointer;
-  }
-  .isPlaying{
-      display: block;
-  }
-
-  p{
-      margin: 0;
-      color: #333;
-  }
 </style>
 
 <div class="container-div">
@@ -150,8 +75,8 @@
 
 <script type="text/x-jquery-tmpl" id="myMusicLiTmpl">
     <li class="unit">
-        <div class="info" style="width:90%;height:300px;margin:0 auto;">
-            <div class="img-div" style="width:100%;height:300px;">
+        <div class="info" style="width:100%;height:100%;margin:0 auto;">
+            <div class="img-div" style="width:100%;height:200px;">
                 <img src="{{= imgPath}}" width="100%" height="100%" alt="{{= songTitle}}">
                 <div class="music-play-div">
                      <div class="play">
@@ -159,9 +84,9 @@
                      </div>
                 </div>
             </div>
-            <div class="music-info-div">
-                <p>{{= songTitle}}</p>
-                <p>{{= singer}}</p>
+            <div class="song-info" style="height:50px;overflow:hidden;">
+                <span class="songTitle">{{= songTitle}}</span>
+                <span class="singer">{{= singer}}</span>
             </div>
         </div>
 
