@@ -123,13 +123,13 @@ a:hover{
 
 .menu-nav{
     float: left;
-    width: 60px;
+    width: 70px;
     border-right: 2px solid #999;
     height: 100%;
     margin-left: 0px;
     text-align: center;
     z-index: 99999;
-    background: #3b464d;
+    background: #333;
 }
 .menu-nav ul{
     padding: 0;
@@ -137,15 +137,13 @@ a:hover{
 .menu-nav ul li{
     display: block;
     list-style-type: none;
-    padding: 15px 5px;
 }
 .menu-nav ul li:hover{
-    background: #2cc185;
-    color: #ffffff;
+
 }
 .menu-nav ul li a{
-    color: #c9394a;
-    font-size: 16px;
+    color: #2cc185;
+    font-size: 13px;
     text-decoration: none;
 }
 .menu-nav ul li a:hover{
@@ -251,4 +249,7 @@ a:hover{
     right: 0;
     left: 0;
     background: #108d4e;
+}
+.ok-sign-color{
+    color: #4cb6cb
 }

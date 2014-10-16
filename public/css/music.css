@@ -79,8 +79,8 @@ p.view{
 #playlist ul li{
     width: 230px;
     height: 400px;
-    margin-left: 15px;
-    margin-top: 15px;
+    margin-left: 10px;
+    margin-top: 10px;
     overflow: hidden;
     display: inline-block;
 }
@@ -88,7 +88,7 @@ p.view{
     position: relative;
     margin-top: -340px;
     height: 340px;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.75);
     color: #ffffff;
     text-align: left;
     padding-top: 5px;
@@ -114,5 +114,25 @@ p.view{
     display: block;
     color: #333;
     margin: 0;
+    padding: 0;
+}
+.target-tag{
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    height: 20px;
+    line-height: 20px;
+}
+.target-tag span{
+    cursor: pointer;
+}
+.top-target-tag{
+    margin-left: 10px;
+}
+.top-target-tag span{
+    font-size: 9px;
+    color: #4cb6cb;
+    margin-right: -5px;
     padding: 0;
 }

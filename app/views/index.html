@@ -5,10 +5,39 @@
 <link rel="stylesheet" type="text/css" href="/public/css/index.css" />
 <script src="/public/js/musicControl.js" type="text/javascript" charset="utf-8"></script>
 <style type="text/css">
-
-    .main-nav ul li:before{
-        position:absolute;
-        left:0px;
+     .menu-nav ul li a{
+        position: relative;
+        padding: 0;
+        font-size: 11px;
+        text-align: center;
+        height: 50px;
+        width:70px;
+        overflow-y: hidden;
+        border: none;
+        display: block;
+        margin-top:0px;
+    }
+     .menu-nav ul li a i{
+        width: auto;
+        float: none;
+        display: block;
+        font-size: 15px;
+        margin: 0;
+        line-height: 50px;
+        border: none !important;
+        -webkit-transition: margin-top 0.2s;
+        transition: margin-top 0.2s;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+     .menu-nav ul li a span {
+         background: rgba(255,255,255,0.05);
+        display: table-cell;
+        vertical-align: middle;
+        height: 50px;
+        width: 70px;
+        padding: 0 5px;
     }
 </style>
 
@@ -25,7 +54,7 @@
                          </li>
                          <li><a href="/MusicAdmin/index" class="glyphicon glyphicon-headphones"></a></li>
                          <li><a href="/MusicAdmin/uploadMusic">音乐分享</a></li>
-                         <li><a class="to-my-home">我的音乐</a></li>
+                         <li><a class="to-my-home" href="javascript:void(0)">我的音乐</a></li>
                      </ul>
                  </div>
                  <div class="right-nav">
@@ -52,10 +81,24 @@
         <div class="container-div">
             <div class="menu-nav">
                 <ul>
-                    <li><span class="tag-select" tag="欧美">欧美</span></li>
-                    <li><span class="tag-select" tag="日韩">日韩</span></li>
-                    <li><span class="tag-select" tag="港台">港台</span></li>
-                    <li><span class="tag-select" tag="国语">国语</span></li>
+                    <li>
+                        <a href="/MusicAdmin/index">
+                            <i class="glyphicon glyphicon-globe"></i>
+                            <span class="font-bold">音乐厅</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html">
+                            <i class="glyphicon glyphicon-music"></i>
+                            <span class="font-bold">听音乐</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html">
+                            <i class="glyphicon glyphicon-globe"></i>
+                            <span class="font-bold">享心情</span>
+                        </a>
+                    </li>
 
                 </ul>
             </div>
@@ -72,9 +115,16 @@
 
 <script type="text/javascript">
 
-
         yabe.gcs("/public/js/login.js", function () {
             $(document).ready(function(){
+
+                $(".menu-nav").find("a").unbind().hover(function(){
+                     $(this).find("i").hide();
+                },
+                function(){
+                    $(this).find("i").show();
+                });
+
                 yabe.LoginRegister.init.doInit($('.header'));
             })
         })

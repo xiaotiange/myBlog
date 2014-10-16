@@ -240,6 +240,23 @@ var repeat = localStorage.repeat || 0,
                 });
             });
 
+            $(".plus-tag").unbind().click(function(){
+                var thisObj = $(this);
+                if(thisObj.hasClass("glyphicon-plus-sign")){
+                    thisObj.removeClass("glyphicon-plus-sign").addClass("glyphicon-ok-sign").addClass("ok-sign-color");
+                }else{
+                    thisObj.removeClass("ok-sign-color").removeClass("glyphicon-ok-sign").addClass("glyphicon-plus-sign");
+                }
+            });
+            $(".heart-tag").unbind().click(function(){
+                var thisObj = $(this);
+                if(thisObj.hasClass("red")){
+                    thisObj.removeClass("red");
+                }else{
+                    thisObj.addClass("red");
+                }
+            });
+
             var closeOtherPlay = function(i){
                 $('#playlist li').each(function(){
                     var _i = $(this).index();

@@ -34,8 +34,8 @@ public class Application extends CheckUserLogin {
     }
     
     public static void index() {
-
-        render("/home.html");
+        render("/music/music.html");
+        //render("/home.html");
     }
     
     public static void postComment(Long postId, String author,String content, String code,String randomID) {
