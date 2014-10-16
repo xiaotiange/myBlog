@@ -100,6 +100,7 @@ var repeat = localStorage.repeat || 0,
                     currentTrack = i;
                 }
 
+                closeOtherPlay(currentTrack);
                 loadMusic(currentTrack);
                 if (isPlaying == true) play();
             }
@@ -231,7 +232,6 @@ var repeat = localStorage.repeat || 0,
                             pause();
                         }
                     }else{
-                        closeOtherPlay();
                         $(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
                         container.find(".music-play-div").addClass("isPlaying");
                         switchTrack(_i);
@@ -240,15 +240,20 @@ var repeat = localStorage.repeat || 0,
                 });
             });
 
-            var closeOtherPlay = function(){
+            var closeOtherPlay = function(i){
                 $('#playlist li').each(function(){
+                    var _i = $(this).index();
 
-                    var thisObj = $(this).find(".music-play-div");
-                    if(thisObj.hasClass("isPlaying")){
-                        thisObj.removeClass("isPlaying");
-                        thisObj.find(".play-music").removeClass("glyphicon-pause").addClass("glyphicon-play");
-                        thisObj.hide();
+                    if(_i == i){
 
+                    }else{
+                        var thisObj = $(this).find(".music-play-div");
+                        if(thisObj.hasClass("isPlaying")){
+                            thisObj.removeClass("isPlaying");
+                            thisObj.find(".play-music").removeClass("glyphicon-pause").addClass("glyphicon-play");
+                            thisObj.hide();
+
+                        }
                     }
 
                 });
