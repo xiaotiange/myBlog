@@ -124,12 +124,12 @@ a:hover{
 .menu-nav{
     float: left;
     width: 70px;
-    border-right: 2px solid #999;
+
     height: 100%;
     margin-left: 0px;
     text-align: center;
     z-index: 99999;
-    background: #333;
+    background: #222;
 }
 .menu-nav ul{
     padding: 0;
@@ -193,7 +193,7 @@ a:hover{
 
 .my-music-div{
     height: 100%;
-    background: #fff;
+    background: #f0f0f0;
     overflow-x: hidden;
     overflow-y: auto;
 }

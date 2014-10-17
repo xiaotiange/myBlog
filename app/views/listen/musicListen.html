@@ -1,0 +1,61 @@
+#{extends 'index.html' /}
+#{set title:"听音乐"/}
+
+
+<style type="text/css">
+    .listen-music-container{
+        width: 100%;
+
+    }
+    .player{
+        width: 30%;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    .cover{
+        width: 300px;
+        height: 300px;
+    }
+    .cover img{
+        width: 100%;
+        height: 100%;
+    }
+
+</style>
+
+<div class="listen-music-container">
+    <div id="playlist">
+        <div class="music-title">
+            <span class="left" style="width: 30%">歌名</span>
+            <span class="left" style="width: 30%">歌手</span>
+            <span class="left" style="width: 30%">专辑</span>
+            <span class="left" style="width: 10%">操作</span>
+        </div>
+        <ul class="my-music-ul">
+
+        </ul>
+    </div>
+</div>
+
+
+<script type="text/x-jquery-tmpl" id="listenMusicLiTmpl">
+    <li class="glyphicon playing glyphicon-music" title="双击播放">
+        <span class="left" style="width:30%;"><a href="/MusicAdmin/DetailsInfo?musicId={{= id}}" target="_blank">{{= songTitle }}</a> </span>
+        <span class="singer left" style="width:30%">{{= singer}}</span>
+        <span class="album left" style="width:30%">{{= album}}</span>
+
+        <span class="left" style="width:10%">
+            <span class="left glyphicon glyphicon-trash remove"  data-toggle="tooltip"  title="删除">&nbsp;</span>
+        *{<a class="left" href="/MusicAdmin/getMusic?musicId={{= id}}" data-toggle="tooltip" title="下载" target="_blank">
+            <span class="glyphicon glyphicon-download-alt download"></span></a>}*
+        <span class="left glyphicon glyphicon-plus plus" style="font-size:13px;padding-top:11px;"   data-toggle="tooltip" title="添加">&nbsp;</span>
+        <span class="left glyphicon glyphicon-heart heart"  data-toggle="tooltip" title="喜欢">&nbsp;</span>
+
+        </span>
+
+    </li>
+</script>
+
+<script src="/public/js/music/toListen.js"></script>
+

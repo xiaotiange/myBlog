@@ -1,0 +1,128 @@
+#{extends 'index.html' /}
+#{set title:"我的小屋"/}
+
+<link rel="stylesheet" href="@{'public/css/music.css'}" />
+<link rel="stylesheet" href="/public/css/myMusic.css">
+
+<style type="text/css">
+  .grout-music-container{
+      width: 100%;
+      height: 100%;
+  }
+  .assort-tag{
+      width: 11%;
+      height: 100%;
+      float: left;
+      background:#191f23;
+      overflow-x: hidden;
+      overflow-y: auto;
+  }
+  .assort-tag-ul{
+      width: 100%;
+      height: 100%;
+
+      padding: 0;
+  }
+  .assort-tag-ul li{
+      width: 100%;
+      height: 45px;
+      display: block;
+      list-style: none;
+      text-align: center;
+      vertical-align: middle;
+      padding-top: 10px;
+  }
+  .assort-tag-ul li:hover{
+     background: #222;
+     color: #ffffff;
+  }
+  .isSelect{
+      background: #222;
+      color: #ffffff;
+  }
+    .play-list{
+        width: 85%;
+        background: #e0e0e0;
+        float: right;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+</style>
+
+
+<div class="grout-music-container">
+    <div class="assort-tag">
+        <ul class="assort-tag-ul">
+            <li class="tag-select" tags="k-pop">k-pop</li>
+            <li class="tag-select" tags="blues">blues</li>
+            <li class="tag-select" tags="classical">classical</li>
+            <li class="tag-select" tags="hip-pop">hip-pop</li>
+            <li class="tag-select" tags="R&B">R&B</li>
+            <li class="tag-select" tags="爵士">爵士</li>
+            <li class="tag-select" tags="中国风">中国风</li>
+            <li class="tag-select" tags="摇滚">摇滚</li>
+            <li class="tag-select" tags="雷鬼">雷鬼</li>
+            <li class="tag-select" tags="说唱">说唱</li>
+            <li class="tag-select" tags="抒情">抒情</li>
+            <li class="tag-select" tags="动感">动感</li>
+            <li class="tag-select" tags="轻音乐">轻音乐</li>
+            <li class="tag-select" tags="国语">国语</li>
+            <li class="tag-select" tags="日韩">日韩</li>
+            <li class="tag-select" tags="欧美">欧美</li>
+            <li class="tag-select" tags="粤语">粤语</li>
+        </ul>
+    </div>
+
+
+
+    <div class="play-list">
+
+        <div id="playlist">
+
+            <ul class="my-music-ul" style="margin-top: 15px;">
+
+            </ul>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+<script type="text/x-jquery-tmpl" id="groupMusicLiTmpl">
+    <li class="unit">
+        <div class="info" style="width:100%;height:100%;margin:0 auto;">
+            <div class="img-div" style="width:100%;height:240px;">
+                <img src="{{= imgPath}}" width="100%" height="100%" alt="{{= songTitle}}">
+                <div class="music-play-div">
+                    <div class="top-target-tag">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </div>
+                    <div class="play">
+                        <span class="play-music glyphicon glyphicon-play" style="font-size:30px;"></span>
+                    </div>
+                    <div class="target-tag">
+                        <span class="plus-tag glyphicon glyphicon-plus-sign left" style="font-size:12px;"></span>
+                        <span class="heart-tag glyphicon glyphicon-heart right" style="font-size:12px;"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="song-info" style="overflow:hidden;">
+                <span class="songTitle">{{= songTitle}}</span>
+                <span class="singer">{{= singer}}</span>
+            </div>
+        </div>
+
+    </li>
+</script>
+
+
+<script src="/public/js/groupMusic.js"></script>
+

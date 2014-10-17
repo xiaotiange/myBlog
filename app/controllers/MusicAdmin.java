@@ -34,6 +34,9 @@ public class MusicAdmin extends CheckUserLogin {
         Music music = Music.findById(musicId);
         render("/music/musicDetails.html",music);
     }
+    public static void groupMusic(){
+        render("/group/groupMusic.html");
+    }
     public static void uploadMusic(File musicFile) throws IOException, TagException, ReadOnlyFileException, InvalidAudioFrameException{
         if(musicFile==null){
             render("/music/upload.html"); 
@@ -170,7 +173,13 @@ public class MusicAdmin extends CheckUserLogin {
     }
     
     public static void queryChooseMusic(String tags){
-        List<Music> musicList = Music.findTaggedWith(tags);
+        
+        List<Music> musicList = new ArrayList<Music>();
+        if(StringUtils.isEmpty(tags)){
+           musicList = Music.findAll(); 
+        }else{
+            musicList = Music.findTaggedWith(tags);
+        }     
         
         ControllerUtils.renderResultJson(musicList);
     }

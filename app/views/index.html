@@ -39,6 +39,46 @@
         width: 70px;
         padding: 0 5px;
     }
+    .player{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .ctrl{
+        width: 100%;
+        background: #e0e0e0;
+        height: 100%;
+
+    }
+    .control-left{
+        float: left;
+        width: 10%;
+        padding-top: 10px;
+        padding-left: 15px;
+        font-size: 25px;
+    }
+    .progress{
+        padding-top: 20px;
+        width: 75%;
+        float: left;
+        height: 30px;
+        background: #ddd;
+    }
+    .timer{
+        display: block;
+        height: 20px;
+        line-height: 20px;
+        color: #333;
+    }
+    .slider{
+        float: left;
+        width: 70%;
+    }
+    .volume{
+
+        padding-top: 15px;
+        width: 15%;
+    }
 </style>
 
 <div class="container">
@@ -82,21 +122,27 @@
             <div class="menu-nav">
                 <ul>
                     <li>
-                        <a href="/MusicAdmin/index">
+                        <a href="/MusicAdmin/index" >
                             <i class="glyphicon glyphicon-globe"></i>
                             <span class="font-bold">音乐厅</span>
                         </a>
                     </li>
                     <li>
-                        <a href="index.html">
+                        <a href="/MusicAdmin/groupMusic" >
+                            <i class="glyphicon glyphicon-th-list"></i>
+                            <span class="font-bold">分类</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/MusicListen/listenMusic" >
                             <i class="glyphicon glyphicon-music"></i>
                             <span class="font-bold">听音乐</span>
                         </a>
                     </li>
                     <li>
                         <a href="index.html">
-                            <i class="glyphicon glyphicon-globe"></i>
-                            <span class="font-bold">享心情</span>
+                            <i class="glyphicon glyphicon-heart"></i>
+                            <span class="font-bold">收藏</span>
                         </a>
                     </li>
 
@@ -109,7 +155,40 @@
     </div>
 
     <div class="footer">
+        <div class="player" style="background: #fff;display: none;">
 
+            <div class="ctrl">
+                <div class="control">
+                    <div class="control-left">
+                        <div class="rewind glyphicon glyphicon-step-backward"></div>
+                        <div class="playback glyphicon glyphicon-pause"></div>
+                        <div class="fastforward glyphicon glyphicon-step-forward"></div>
+                    </div>
+                    <div class="progress">
+                        <div class="slider">
+                            <div class="loaded"></div>
+                            <div class="pace"></div>
+                        </div>
+                        <div class="timer left">0:00</div>
+                        <div class="right">
+                            <div class="repeat-all glyphicon glyphicon-retweet" data-toggle="tooltip" title="全部循环"></div>
+                            <div class="repeat-once glyphicon glyphicon-repeat" data-toggle="tooltip" title="单曲循环"><span class="repeat-tip">1</span></div>
+                            <div class="shuffle glyphicon glyphicon-random" data-toggle="tooltip" title="随机播放"></div>
+                        </div>
+                    </div>
+                    <div class="volume right">
+                        <div class="glyphicon glyphicon-volume-up mute left"></div>
+                        <div class="slider left">
+                            <div class="pace"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <audio class="audio" autoplay>
+
+            </audio>
+        </div>
     </div>
 </div>
 

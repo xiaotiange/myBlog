@@ -59,8 +59,6 @@ p.view{
     width: 100%;
     border-top: 2px solid #fff;
     overflow: hidden;
-    background: #fff;
-    color:#fff;
     font-size: 16px;
     margin:0px auto;
     list-style-type: none;
@@ -74,12 +72,13 @@ p.view{
 #playlist ul{
     overflow: hidden;
     margin-left: 0;
+    padding-left: 20px;
 }
 
 #playlist ul li{
     width: 200px;
     height: 300px;
-    margin-left: 10px;
+    margin-left: 15px;
     margin-top: 10px;
     overflow: hidden;
     display: inline-block;
