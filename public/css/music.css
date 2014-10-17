@@ -77,8 +77,8 @@ p.view{
 }
 
 #playlist ul li{
-    width: 230px;
-    height: 400px;
+    width: 200px;
+    height: 300px;
     margin-left: 10px;
     margin-top: 10px;
     overflow: hidden;
@@ -86,8 +86,8 @@ p.view{
 }
 .music-play-div{
     position: relative;
-    margin-top: -340px;
-    height: 340px;
+    margin-top: -240px;
+    height: 240px;
     background: rgba(0,0,0,0.75);
     color: #ffffff;
     text-align: left;
@@ -100,7 +100,7 @@ p.view{
 .music-play-div .play{
     height: 40px;
     overflow: hidden;
-    margin-top: 150px;
+    margin-top: 100px;
     text-align: center;
 }
 
@@ -115,6 +115,12 @@ p.view{
     color: #333;
     margin: 0;
     padding: 0;
+}
+.top-target-tag{
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 10px;
 }
 .target-tag{
     position: absolute;
