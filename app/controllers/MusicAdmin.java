@@ -155,7 +155,7 @@ public class MusicAdmin extends CheckUserLogin {
         User user = checkUser();
         List<Music> musicList = new ArrayList<Music>();
         if(StringUtils.isEmpty(tags)){
-           musicList = Music.findListByUserId(user.id); 
+           musicList = Music.find("byUserId order by id desc", user.id).fetch();
         }else{
             musicList = Music.findMyMusicTaggedWith(user.id, tags);
         }     
@@ -166,7 +166,7 @@ public class MusicAdmin extends CheckUserLogin {
     
     public static void queryMusic(){
 
-        List<Music> musicList = Music.all().from(0).fetch(50);
+        List<Music> musicList =  Music.find("order by id desc").from(0).fetch(50);
         
         ControllerUtils.renderResultJson(musicList);
         
@@ -175,8 +175,8 @@ public class MusicAdmin extends CheckUserLogin {
     public static void queryChooseMusic(String tags){
         
         List<Music> musicList = new ArrayList<Music>();
-        if(StringUtils.isEmpty(tags)){
-           musicList = Music.findAll(); 
+        if(StringUtils.isEmpty(tags)){           
+           musicList = Music.find("order by id desc").fetch();
         }else{
             musicList = Music.findTaggedWith(tags);
         }     
