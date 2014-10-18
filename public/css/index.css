@@ -114,7 +114,6 @@ a:hover{
     left: 0;
     right: 0;
     z-index: -1;
-    border-top: 2px solid red;
     width: 100%;
     background: #efefef;
     max-height: 100%;
