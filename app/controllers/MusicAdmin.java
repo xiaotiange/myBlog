@@ -183,7 +183,7 @@ public class MusicAdmin extends CheckUserLogin {
     }
     
     private static String getSearchStr(){
-        return "filaName like ? or songTitle like ? or singer like ? or album like ?";
+        return "filaName like ? or songTitle like ? or singer like ? or album like ? order by id desc";
     }
     public static void queryChooseMusic(String tags){
         
