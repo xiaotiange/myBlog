@@ -18,6 +18,13 @@
         margin-top: 15px;
         color: #fff;
     }
+    .search-div{
+        height: 30px;
+        width: 200px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+    }
+
 </style>
 
 <div class="container">
@@ -26,30 +33,35 @@
                 <span class="logo-img glyphicon glyphicon-headphones"></span>
             </div>
 
-             <div class="main">
+            <div class="main-nav">
+                <ul>
+                    <li>
+                        <div class="search-div">
 
-                 <div class="main-nav">
-                     <ul>
-                         <li><a href="/MusicAdmin/uploadMusic">音乐分享</a></li>
-                         <li><a class="to-my-home" href="javascript:void(0)">我的音乐</a></li>
-                     </ul>
-                 </div>
-                 <div class="right-nav">
-                     <ul>
-                         <li class="user-nav">
-                             <div class="has-login" style="display:none;">
-                                 <a href="/UserCenter/RefreshHeadPhoto"><img src="/public/img/logo.png" width="60px" height="60px" class="user-head-photo" alt="嗨音乐"></a>
-                                 <ul class="exit-btn" style="padding: 0;display: none;">
-                                     <li><a href="/ALLogin/doLogout">退出</a></li>
-                                 </ul>
-                             </div>
-                             <div class="not-login" style="display: none;">
-                                 <a class="light-btn to-login-btn">登录</a>
-                             </div>
-                         </li>
-                     </ul>
-                 </div>
-             </div>
+                        </div>
+                    </li>
+                    <li><a href="/MusicAdmin/uploadMusic">音乐分享</a></li>
+                    <li><a class="to-my-home" href="javascript:void(0)">我的音乐</a></li>
+
+                </ul>
+            </div>
+
+
+            <div class="right-nav">
+                <ul>
+                    <li class="user-nav">
+                        <div class="has-login" style="display:none;">
+                            <a href="/UserCenter/RefreshHeadPhoto"><img src="/public/img/logo.png" width="60px" height="60px" class="user-head-photo" alt="嗨音乐"></a>
+                            <ul class="exit-btn" style="padding: 0;display: none;">
+                                <li><a href="/ALLogin/doLogout">退出</a></li>
+                            </ul>
+                        </div>
+                        <div class="not-login" style="display: none;">
+                            <a class="light-btn to-login-btn">登录</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     *{<div class="back-image"></div>  }*
 
