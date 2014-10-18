@@ -40,15 +40,19 @@
         padding: 0 5px;
     }
     .player{
-        width: 100%;
         height: 100%;
         overflow: hidden;
+        position: absolute;
+        left: 70px;
+        right: 0px;
     }
     .ctrl{
         width: 100%;
-        background: #e0e0e0;
         height: 100%;
 
+    }
+    .control{
+      height: 100%;
     }
     .control-left{
         float: left;
@@ -58,10 +62,10 @@
         font-size: 25px;
     }
     .progress{
-        padding-top: 20px;
+        padding-top: 15px;
         width: 75%;
         float: left;
-        height: 30px;
+        height: 100%;
         background: #ddd;
     }
     .timer{
@@ -70,15 +74,84 @@
         line-height: 20px;
         color: #333;
     }
-    .slider{
-        float: left;
-        width: 70%;
+    .progress .control-right{
+        float: right;
+        margin-right: 10px;
+        margin-top: -10px;
+    }
+    .progress .slider{
+        width: 90%;
     }
     .volume{
-
+        height: 100%;
         padding-top: 15px;
+        padding-left: 5px;
+        background: #ccc;
         width: 15%;
     }
+    .volume .mute{
+        margin-top: 8px;
+    }
+    .volume .slider{
+        width: 80%;
+        margin-top: 15px;
+    }
+
+     .slider {
+         background: #fff;
+         height: 8px;
+         position: relative;
+         cursor: pointer;
+         -moz-border-radius: 0;
+         -webkit-border-radius: 0;
+         -o-border-radius: 0;
+         -ms-border-radius: 0;
+         -khtml-border-radius: 0;
+         border-radius: 0;
+         border-bottom: 1px solid #fff;
+     }
+     .progress{
+         -moz-border-radius: 0;
+         -webkit-border-radius: 0;
+         -o-border-radius: 0;
+         -ms-border-radius: 0;
+         -khtml-border-radius: 0;
+         border-radius: 0;
+     }
+     .slider:hover a, .slider.enable a {
+         color: green;
+         opacity: 1;
+     }
+     .slider a {
+         background: #fff;
+         margin-left: -2.5px;
+         position: absolute;
+         opacity: 0;
+         width: 8px;
+         height: 8px;
+         -moz-border-radius: 0;
+         -webkit-border-radius: 0;
+         -o-border-radius: 0;
+         -ms-border-radius: 0;
+         -khtml-border-radius: 0;
+         border-radius: 0;
+
+     }
+     .slider .loaded, .slider .pace {
+         position: absolute;
+         height: 100%;
+         opacity: 1;
+         -moz-border-radius: 0;
+         -webkit-border-radius: 0;
+         -o-border-radius: 0;
+         -ms-border-radius: 0;
+         -khtml-border-radius: 0;
+         border-radius: 0;
+         background: #fff;
+     }
+     .slider .pace {
+         background: #2cc185;
+     }
 </style>
 
 <div class="container">
@@ -155,7 +228,7 @@
     </div>
 
     <div class="footer">
-        <div class="player" style="background: #fff;display: none;">
+        <div class="player" style="background: #fff;">
 
             <div class="ctrl">
                 <div class="control">
@@ -170,7 +243,7 @@
                             <div class="pace"></div>
                         </div>
                         <div class="timer left">0:00</div>
-                        <div class="right">
+                        <div class="control-right">
                             <div class="repeat-all glyphicon glyphicon-retweet" data-toggle="tooltip" title="全部循环"></div>
                             <div class="repeat-once glyphicon glyphicon-repeat" data-toggle="tooltip" title="单曲循环"><span class="repeat-tip">1</span></div>
                             <div class="shuffle glyphicon glyphicon-random" data-toggle="tooltip" title="随机播放"></div>
