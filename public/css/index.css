@@ -321,6 +321,10 @@ a:hover{
     margin-right: 10px;
     margin-top: -10px;
 }
+.control-right .once,.control-right .all,
+.control-right .enable{
+    corlor:green;
+}
 .progress .slider{
     width: 90%;
 }
