@@ -121,34 +121,6 @@ a:hover{
     overflow: hidden;;
 }
 
-.menu-nav{
-    float: left;
-    width: 70px;
-
-    height: 100%;
-    margin-left: 0px;
-    text-align: center;
-    z-index: 99999;
-    background: #222;
-}
-.menu-nav ul{
-    padding: 0;
-}
-.menu-nav ul li{
-    display: block;
-    list-style-type: none;
-}
-.menu-nav ul li:hover{
-
-}
-.menu-nav ul li a{
-    color: #2cc185;
-    font-size: 13px;
-    text-decoration: none;
-}
-.menu-nav ul li a:hover{
-    color: #ffffff;
-}
 
 .my-music-div{
     width: 85%;
@@ -245,4 +217,190 @@ a:hover{
 }
 .ok-sign-color{
     color: #4cb6cb
+}
+
+.menu-nav{
+    float: left;
+    width: 70px;
+
+    height: 100%;
+    margin-left: 0px;
+    text-align: center;
+    z-index: 99999;
+    background: #222;
+}
+.menu-nav ul{
+    padding: 0;
+}
+.menu-nav ul li{
+    display: block;
+    list-style-type: none;
+}
+.menu-nav ul li:hover{
+
+}
+
+
+.menu-nav ul li a{
+    color: #2cc185;
+    text-decoration: none;
+    position: relative;
+    padding: 0;
+    text-align: center;
+    height: 50px;
+    width:70px;
+    overflow-y: hidden;
+    border: none;
+    display: block;
+    margin-top:0px;
+}
+.menu-nav ul li a:hover{
+    color: #ffffff;
+}
+
+.menu-nav ul li a i{
+    width: auto;
+    float: none;
+    display: block;
+    font-size: 15px;
+    margin: 0;
+    line-height: 50px;
+    border: none !important;
+    -webkit-transition: margin-top 0.2s;
+    transition: margin-top 0.2s;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.menu-nav ul li a span {
+    background: rgba(255,255,255,0.05);
+    display: table-cell;
+    vertical-align: middle;
+    height: 50px;
+    width: 70px;
+    padding: 0 5px;
+}
+.player{
+    height: 100%;
+    position: absolute;
+    left: 70px;
+    right: 0px;
+}
+.ctrl{
+    width: 100%;
+    height: 100%;
+
+}
+.control{
+    height: 100%;
+}
+.control-left{
+    float: left;
+    width: 10%;
+    padding-top: 10px;
+    padding-left: 15px;
+    font-size: 25px;
+}
+.progress{
+    padding-top: 15px;
+    width: 75%;
+    float: left;
+    height: 100%;
+    background: #ddd;
+}
+.timer{
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    color: #333;
+}
+.progress .control-right{
+    float: right;
+    margin-right: 10px;
+    margin-top: -10px;
+}
+.progress .slider{
+    width: 90%;
+}
+.volume{
+    height: 100%;
+    padding-top: 15px;
+    padding-left: 5px;
+    background: #ccc;
+    width: 15%;
+}
+.volume .mute{
+    margin-top: 8px;
+}
+.volume .slider{
+    width: 80%;
+    margin-top: 15px;
+}
+
+.slider {
+    background: #fff;
+    height: 8px;
+    position: relative;
+    cursor: pointer;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    -o-border-radius: 0;
+    -ms-border-radius: 0;
+    -khtml-border-radius: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #fff;
+}
+.progress{
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    -o-border-radius: 0;
+    -ms-border-radius: 0;
+    -khtml-border-radius: 0;
+    border-radius: 0;
+    margin: 0;
+}
+.slider:hover a, .slider.enable a {
+    color: green;
+    opacity: 1;
+}
+.slider a {
+    background: #fff;
+    margin-left: -2.5px;
+    position: absolute;
+    opacity: 0;
+    width: 8px;
+    height: 8px;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    -o-border-radius: 0;
+    -ms-border-radius: 0;
+    -khtml-border-radius: 0;
+    border-radius: 0;
+
+}
+.slider .loaded, .slider .pace {
+    position: absolute;
+    height: 100%;
+    opacity: 1;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    -o-border-radius: 0;
+    -ms-border-radius: 0;
+    -khtml-border-radius: 0;
+    border-radius: 0;
+    background: #fff;
+}
+.slider .pace {
+    background: #2cc185;
+}
+.player .glyphicon{
+    cursor: pointer;
+}
+.header-div{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 70px;
+    height: 60px;
+
 }
