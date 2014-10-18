@@ -27,8 +27,11 @@ public class MusicAdmin extends CheckUserLogin {
         render("/group/groupMusic.html");
       //  render("musiclisten.html");
     }
-    public static void index(){
-        render("/music/music.html");
+    public static void index(String songinfo){
+        if(StringUtils.isEmpty(songinfo)){
+            render("/music/music.html"); 
+        }
+        render("/music/music.html",songinfo);
     }
     public static void DetailsInfo(Long musicId){
         Music music = Music.findById(musicId);
@@ -164,14 +167,24 @@ public class MusicAdmin extends CheckUserLogin {
         
     }
     
-    public static void queryMusic(){
-
-        List<Music> musicList =  Music.find("order by id desc").from(0).fetch(50);
+    public static void queryMusic(String songinfo){
+        List<Music> musicList = new ArrayList<Music>();
+         if(StringUtils.isEmpty(songinfo)){
+             musicList =  Music.find("order by id desc").from(0).fetch(50);
+         }else{
+             String str = getSearchStr();
+             String info = "%"+songinfo+"%";
+             musicList =  Music.find(str,info,info,info,info).fetch(); 
+         }
+       
         
         ControllerUtils.renderResultJson(musicList);
         
     }
     
+    private static String getSearchStr(){
+        return "filaName like ? or songTitle like ? or singer like ? or album like ?";
+    }
     public static void queryChooseMusic(String tags){
         
         List<Music> musicList = new ArrayList<Music>();

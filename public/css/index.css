@@ -2,6 +2,9 @@
     width: 100%;
     padding: 0px;
 }
+ul{
+    padding: 0;
+}
 ul li{
     list-style-type: none;
 }
@@ -40,9 +43,6 @@ a:hover{
     margin:0 20px;
     padding: 15px 0;
 }
-.main-nav ul li:hover{
-    background: #f0f0f0;
-}
 
 .main-nav ul li a{
     color: white;
@@ -59,13 +59,12 @@ a:hover{
 
 .right-nav ul li{
     min-width: 150px;
-    color: #ffffff;
     font-size: 25px;
 
 }
 
 .right-nav ul li a{
-    color: #fff;
+    color: #999;
     text-decoration: none;
     font-size: 20px;
 }
@@ -100,7 +99,6 @@ a:hover{
     border: 2px solid #2cc185;
     font-size: 20px;
     text-align: center;
-    background: #333;
     height: 30px;
     line-height: 30px;
     padding: 5px 15px;

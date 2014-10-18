@@ -3,12 +3,14 @@
 	var playlist=[];
 
     var loadingMusic = function(){
+        var songinfo = $(".search-info").val();
+
         var ulObj = $(".my-music-ul");
 
         $.ajax({
             type: 'post',
             url: '/MusicAdmin/queryMusic',
-            data: {},
+            data: {songinfo:songinfo},
             success: function (dataJson) {
 
                 if(dataJson.isOk==false){

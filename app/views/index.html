@@ -21,10 +21,26 @@
     .search-div{
         height: 30px;
         width: 200px;
-        border-radius: 10px;
+        border-radius: 15px;
         border: 1px solid #ccc;
+        overflow: hidden;
+        position: relative;
     }
-
+    .search-div-input{
+        width: 100%;
+        height: 100%;
+        background: none;
+        border: 0;
+        padding: 5px 30px;
+    }
+    .search-div-icon{
+        position: absolute;
+        left: 7px;
+        top:7px;
+        cursor: pointer;
+        color: #999;
+        font-size: 13px;
+    }
 </style>
 
 <div class="container">
@@ -37,12 +53,10 @@
                 <ul>
                     <li>
                         <div class="search-div">
-
+                          <span class="search-div-icon glyphicon glyphicon-search"></span>
+                          <input type="text" class="search-div-input" placeholder="输入歌手、专辑">
                         </div>
                     </li>
-                    <li><a href="/MusicAdmin/uploadMusic">音乐分享</a></li>
-                    <li><a class="to-my-home" href="javascript:void(0)">我的音乐</a></li>
-
                 </ul>
             </div>
 
@@ -94,6 +108,19 @@
                             <span class="font-bold">收藏</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/MusicAdmin/uploadMusic">
+                            <i class="glyphicon glyphicon-cloud"></i>
+                            <span class="font-bold">分享</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="to-my-home">
+                            <i class="glyphicon glyphicon-home"></i>
+                            <span class="font-bold">小屋子</span>
+                        </a>
+                    </li>
+
 
                 </ul>
             </div>
@@ -155,6 +182,33 @@
                 function(){
                     $(this).find("i").show();
                 });
+
+                $(".search-div-input").unbind().focus(function(){
+                     $(".search-div").width(250);
+                });
+
+
+                $(".search-div-input").blur(function(){
+                    $(".search-div").width(200);
+                });
+
+                $(".search-div-input").unbind().keydown(function(e){
+                      if(e.keyCode == 13){
+                          toSearsh();
+                      }
+                });
+
+                $(".search-div-icon").unbind().click(function(){
+                    toSearsh();
+                });
+
+                var toSearsh = function(){
+                    var info = $(".search-div-input").val().trim();
+                    if(info==""){
+                        window.location.href = "/MusicAdmin/index";
+                    }
+                    window.location.href = "/MusicAdmin/index?songinfo="+info;
+                }
 
                 yabe.LoginRegister.init.doInit($('.header'));
             })
