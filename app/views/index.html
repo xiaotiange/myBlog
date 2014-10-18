@@ -152,6 +152,17 @@
      .slider .pace {
          background: #2cc185;
      }
+     .player .glyphicon{
+         cursor: pointer;
+     }
+    .header-div{
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        width: 70px;
+        height: 60px;
+
+    }
 </style>
 
 <div class="container">
@@ -175,7 +186,7 @@
                          <li class="user-nav">
                              <div class="has-login" style="display:none;">
                                  <a href="/UserCenter/RefreshHeadPhoto"><img src="/public/img/logo.png" width="60px" height="60px" class="user-head-photo" alt="嗨音乐"></a>
-                                 <ul class="exit-btn" style="display: none;">
+                                 <ul class="exit-btn" style="padding: 0;display: none;">
                                      <li><a href="/ALLogin/doLogout">退出</a></li>
                                  </ul>
                              </div>
@@ -228,6 +239,9 @@
     </div>
 
     <div class="footer">
+        <div class="header-div">
+            <a href="/UserCenter/RefreshHeadPhoto"><img src="/public/img/logo.png" width="50px" height="50px" style="margin: 5px 10px;" class="user-head-photo" alt="嗨音乐"></a>
+        </div>
         <div class="player" style="background: #fff;">
 
             <div class="ctrl">

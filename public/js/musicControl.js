@@ -263,6 +263,7 @@ var repeat = localStorage.repeat || 0,
 
                     if(_i == i){
                         var thisObj = $(this).find(".music-play-div");
+                        thisObj.show();
                         if(thisObj.hasClass("isPlaying")){
 
                         }else{

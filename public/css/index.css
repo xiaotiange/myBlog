@@ -179,8 +179,6 @@ a:hover{
     text-align: right;
 }
 .user-head-photo{
-  width:60px;
-  height: 60px;
     -moz-border-radius: 30px;
     -webkit-border-radius: 30px;
     -o-border-radius:  30px;
@@ -191,12 +189,6 @@ a:hover{
 
 }
 
-.my-music-div{
-    height: 100%;
-    background: #f0f0f0;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
 /*  music info details*/
 
 .tag-tab{
@@ -249,6 +241,7 @@ a:hover{
     right: 0;
     left: 0;
     background: #108d4e;
+    border-bottom: 2px solid #333;
 }
 .ok-sign-color{
     color: #4cb6cb

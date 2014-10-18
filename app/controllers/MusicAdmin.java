@@ -24,7 +24,7 @@ public class MusicAdmin extends CheckUserLogin {
     private static final Logger log = LoggerFactory.getLogger(MusicAdmin.class);
    
     public static void myHouse(){
-       render("/music/myMusic.html");
+        render("/group/groupMusic.html");
       //  render("musiclisten.html");
     }
     public static void index(){
