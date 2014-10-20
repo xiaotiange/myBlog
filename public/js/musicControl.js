@@ -336,7 +336,7 @@ var repeat = localStorage.repeat || 0,
                 hideRepeat();
 
             });
-            $('.remove').unbind().click(function(){
+            $('.remove-icon').unbind().click(function(){
                 var arrayId = $(this).parent().index();
                 playlist.splice(arrayId,1);
                 $(this).parent().remove();

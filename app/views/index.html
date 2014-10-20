@@ -54,7 +54,7 @@
                     <li>
                         <div class="search-div">
                           <span class="search-div-icon glyphicon glyphicon-search"></span>
-                          <input type="text" class="search-div-input" placeholder="输入歌手、专辑">
+                          <input type="text" class="search-div-input" placeholder="输入歌手、专辑...">
                         </div>
                     </li>
                 </ul>
@@ -120,7 +120,12 @@
                             <span class="font-bold">小屋子</span>
                         </a>
                     </li>
-
+                    <li>
+                        <a class="to-my-home">
+                            <i class="glyphicon glyphicon-trash"></i>
+                            <span class="font-bold">删除</span>
+                        </a>
+                    </li>
 
                 </ul>
             </div>
@@ -183,7 +188,7 @@
                     $(this).find("i").show();
                 });
 
-                $(".search-div-input").unbind().focus(function(){
+                $(".search-div-input").focus(function(){
                      $(".search-div").width(250);
                 });
 
