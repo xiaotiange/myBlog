@@ -295,7 +295,6 @@ a:hover{
 }
 .control{
     height: 100%;
-    position: relative;
     overflow: hidden;
 }
 .control-left{

@@ -25,6 +25,7 @@ var repeat = localStorage.repeat || 0,
                 audio.play();
                 $('.playback').removeClass('glyphicon-play');
                 $('.playback').addClass('playing glyphicon-pause');
+                $('.playback').attr("title","暂停");
                 timeout = setInterval(updateProgress, 500);
                 isPlaying = true;
             }
@@ -33,6 +34,7 @@ var repeat = localStorage.repeat || 0,
                 audio.pause();
                 $('.playback').removeClass('playing glyphicon-pause');
                 $('.playback').addClass('glyphicon-play');
+                $('.playback').attr("title","播放");
                 clearInterval(updateProgress);
                 isPlaying = false;
             }
