@@ -312,7 +312,6 @@ a:hover{
 
 }
 .progress{
-    padding-top: 15px;
     width: 80%;
     float: left;
     height: 100%;
@@ -325,16 +324,14 @@ a:hover{
     color: #333;
 }
 .progress .progress-right{
-    float: right;
     margin-right: 10px;
-    margin-top: -10px;
 }
 .progress-right .once,.progress-right .all,
 .progress-right .enable{
     corlor:green;
 }
 .progress .slider{
-    width: 90%;
+    width: 100%;
 }
 .volume{
     height: 100%;
