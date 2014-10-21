@@ -1,0 +1,75 @@
+#{extends 'index.html' /}
+#{set title:"歌曲删除"/}
+
+<link rel="stylesheet" href="@{'public/css/music.css'}" />
+<link rel="stylesheet" href="/public/css/myMusic.css">
+<style type="text/css">
+   .remove-btn{
+       cursor: pointer;
+       color: #ff2650;
+   }
+
+</style>
+
+
+<div class="my-music-div">
+
+
+    <div id="playlist">
+
+        <ul class="my-music-ul" style="margin-top: 15px;">
+
+        </ul>
+
+
+    </div>
+</div>
+<div class="my-music-info">
+
+</div>
+
+
+<script type="text/x-jquery-tmpl" id="myMusicLiTmpl">
+    <li class="unit">
+        <div class="info" style="width:100%;height:100%;margin:0 auto;">
+            <div class="img-div" style="width:100%;height:240px;">
+                <img src="{{= imgPath}}" width="100%" height="100%" alt="{{= songTitle}}">
+                <div class="music-play-div">
+                    <div class="top-target-tag">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+
+                    </div>
+                    <div class="play">
+                        <span class="remove-btn glyphicon glyphicon-remove" musicId="{{= id}}" style="font-size:30px;"></span>
+                    </div>
+                    <div class="target-tag">
+                        <span class="plus-tag glyphicon glyphicon-plus-sign left" style="font-size:12px;"></span>
+                        <span class="heart-tag glyphicon glyphicon-heart right" style="font-size:12px;"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="song-info" style="overflow:hidden;">
+                <span class="songTitle">{{= songTitle}}</span>
+                <span class="singer">{{= singer}}</span>
+            </div>
+        </div>
+
+    </li>
+</script>
+
+<script type="text/javascript">
+
+            $(document).ready(function() {
+                yabe.gcs("/public/js/deleteMusic.js?_v=1", function () {
+
+                     yabe.DeleteMusic.init.doInit($('.my-music-div'));
+                });
+            })
+
+</script>
+
+

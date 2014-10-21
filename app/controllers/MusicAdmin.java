@@ -40,6 +40,9 @@ public class MusicAdmin extends CheckUserLogin {
     public static void groupMusic(){
         render("/group/groupMusic.html");
     }
+    public static void deleteMusic(){
+        render("/delete/deleteMusic.html");
+    }
     public static void uploadMusic(File musicFile) throws IOException, TagException, ReadOnlyFileException, InvalidAudioFrameException{
         if(musicFile==null){
             render("/music/upload.html"); 
@@ -196,10 +199,12 @@ public class MusicAdmin extends CheckUserLogin {
         
         ControllerUtils.renderResultJson(musicList);
     }
-
-    public static void deleteMusic(Long musicId){
-        Music music = Music.findById(musicId);
+    
+    public static void doDeleteMusic(Long musicId){
+        log.error("id: "+musicId );
+        Music music = Music.find("byId", musicId).first();      
         if(music == null){
+            log.error("找不到该歌曲");
             ControllerUtils.renderError("找不到该歌曲");       
         }
             
@@ -209,6 +214,7 @@ public class MusicAdmin extends CheckUserLogin {
             file.delete();
         }
         
+        music.delete();
         ControllerUtils.renderSuccess("删除成功");   
         
     }
