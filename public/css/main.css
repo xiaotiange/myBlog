@@ -179,3 +179,44 @@ body {
     text-align: center;
     color: #b4bbbf;
 }
+
+
+.tm-paging-container {
+    font-size: 12px;
+}
+.tm-paging-container .paging-nav {
+    display: inline-block;
+    *display: inline; /* zoom: 1; */ /* height: 16px; */
+    width: 24px;
+    text-decoration: none;
+    margin: 0px 2px;
+    font-weight: bold;
+    text-align: center;
+    padding: 4px 0px;
+}
+.tm-paging-container .paging-link {
+    background: #4cb6cb;
+    color: #7f7f7f;
+    cursor: pointer;
+}
+.tm-paging-container .paging-link:hover {
+    background: #2cc185;
+}
+.tm-paging-container .paging-select {
+    background: #2cc185;
+    color: #fff;
+    cursor: default;
+}
+.tm-paging-container .paging-size-link {
+    background: #4cb6cb;
+    color: #7f7f7f;
+    cursor: pointer;
+}
+.tm-paging-container .paging-size-link:hover {
+    background: #2cc185;
+}
+.tm-paging-container .paging-size-select {
+    background: #2cc185;
+    color: #fff;
+    cursor: default;
+}

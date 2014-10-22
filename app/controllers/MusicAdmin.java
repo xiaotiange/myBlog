@@ -17,6 +17,11 @@ import org.jaudiotagger.tag.TagException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import result.ALResult;
+
+import com.ciaosir.client.pojo.PageOffset;
+import com.ciaosir.client.utils.JsonUtil;
+
 import action.MusicAction;
 
 public class MusicAdmin extends CheckUserLogin {
@@ -170,19 +175,28 @@ public class MusicAdmin extends CheckUserLogin {
         
     }
     
-    public static void queryMusic(String songinfo){
+    public static void queryMusic(String songinfo,
+            int pn, int ps){
+        
+        PageOffset po = new PageOffset(pn, ps);
+        
         List<Music> musicList = new ArrayList<Music>();
+        int count = 0;
          if(StringUtils.isEmpty(songinfo)){
-             musicList =  Music.find("order by id desc").from(0).fetch(50);
+             musicList =  Music.find("order by id desc ").from(po.getOffset()).fetch(po.getPs());
+             count = (int) Music.count();
          }else{
              String str = getSearchStr();
              String info = "%"+songinfo+"%";
-             musicList =  Music.find(str,info,info,info,info).fetch(); 
+             musicList =  Music.find(str,info,info,info,info).from(po.getOffset()).fetch(po.getPs());
+             count = (int)Music.count(str,info,info,info,info);
          }
        
-        
-        ControllerUtils.renderResultJson(musicList);
-        
+         ALResult<List<Music>> res = new ALResult<List<Music>>(musicList,
+                 count, po);
+         
+         renderJSON(JsonUtil.getJson(res));
+       
     }
     
     private static String getSearchStr(){
