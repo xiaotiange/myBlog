@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import models.Music;
 import models.Tag;
@@ -175,27 +178,28 @@ public class MusicAdmin extends CheckUserLogin {
         
     }
     
-    public static void queryMusic(String songinfo,
-            int pn, int ps){
+    public static void queryMusic(String songinfo){
         
-        PageOffset po = new PageOffset(pn, ps);
+    //    PageOffset po = new PageOffset(pn, ps);
         
         List<Music> musicList = new ArrayList<Music>();
-        int count = 0;
+        List<User> userList = new ArrayList<User>();
+       
+ 
          if(StringUtils.isEmpty(songinfo)){
-             musicList =  Music.find("order by id desc ").from(po.getOffset()).fetch(po.getPs());
-             count = (int) Music.count();
+             musicList =  Music.find("order by id desc ").fetch(50);  
+             userList = Music.find("select id,email from User where id in( select userId from Music)").fetch();
          }else{
              String str = getSearchStr();
              String info = "%"+songinfo+"%";
-             musicList =  Music.find(str,info,info,info,info).from(po.getOffset()).fetch(po.getPs());
-             count = (int)Music.count(str,info,info,info,info);
+             musicList =  Music.find(str,info,info,info,info).fetch();         
+           //  count = (int)Music.count(str,info,info,info,info);
          }
-       
-         ALResult<List<Music>> res = new ALResult<List<Music>>(musicList,
-                 count, po);
          
-         renderJSON(JsonUtil.getJson(res));
+    
+       
+         Object[] res = new Object[] { musicList, userList };
+         ControllerUtils.renderResultJson(res);
        
     }
     

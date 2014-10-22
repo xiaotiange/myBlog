@@ -29,6 +29,23 @@ public class UserCenter extends CheckUserLogin {
        
     }
     
+    public static void getUserImg(Long userId){
+         User user = User.findByUserId(userId);
+         
+         if(user == null){
+             return;
+         }
+        
+        File file = UserCenterAction.getHeaderImage(user.headerImage);
+        
+        if (file == null) {
+            return;
+        }
+        
+        renderBinary(file);
+       
+    }
+    
     
     public static void RefreshHeadPhoto(File image_file){
         

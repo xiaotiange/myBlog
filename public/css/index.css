@@ -133,10 +133,11 @@ a:hover{
 
 .my-music-info{
     float: left;
-    height: 100%;
+    height: 15%;
     background: #e0e0e0;
     border-left: 2px solid #999;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /*login & register page*/

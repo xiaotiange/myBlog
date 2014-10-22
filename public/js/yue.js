@@ -387,7 +387,12 @@
                             return;
                         }
 
-                        if (Ali.AliUtil.util.judgeAjaxResult(data) == false) {
+                        var isSuccess = data.isOk;
+                        if (isSuccess === undefined) {
+                            isSuccess = data.success;
+                        }
+
+                        if (isSuccess == false) {
                             return;
                         }
 
@@ -528,7 +533,7 @@
                 tmPagingSizeCookie = "SmallPageSize_" + tmPagingSizeCookie;
             }
             var cookiePageSize = $.cookie(tmPagingSizeCookie);
-            if (cookiePageSize == null || cookiePageSize <= 0) {
+            if (cookiePageSize === undefined || cookiePageSize == null || cookiePageSize <= 0) {
                 pageSize = getPageSize();
             } else {
                 pageSize = cookiePageSize;
@@ -546,7 +551,7 @@
             if (isSelfDefinePageSize() == true) {
                 tmPagingSizeCookie = "SelfDefinePageSize_" + tmPagingSizeCookie;
                 cookiePageSize = $.cookie(tmPagingSizeCookie);
-                if (cookiePageSize == null || cookiePageSize <= 0) {
+                if (cookiePageSize === undefined || cookiePageSize == null || cookiePageSize <= 0) {
                     pageSize = getPageSize();
                 } else {
                     pageSize = cookiePageSize;

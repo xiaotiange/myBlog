@@ -4,27 +4,40 @@
 <link rel="stylesheet" href="@{'public/css/music.css'}" />
 <link rel="stylesheet" href="/public/css/myMusic.css">
 <style type="text/css">
-
+    .share-music-user{
+        width: 100%;
+        overflow: hidden;
+    }
+   .user-unit{
+        width: 100%;
+        height: 100px;
+        display: block;
+        margin-bottom: 20px;
+   }
 
 </style>
+  <div class="music-div">
+  #{if songinfo}
+      <input class="search-info" type="hidden" value="${songinfo}">
+  #{/if}
+      <div class="my-music-div">
 
-     #{if songinfo}
-         <input class="search-info" type="hidden" value="${songinfo}">
-     #{/if}
-    <div class="my-music-div">
+          <div id="playlist">
 
-        <div id="playlist">
+              <ul class="my-music-ul" style="margin-top: 15px;">
 
-            <ul class="my-music-ul" style="margin-top: 15px;">
+              </ul>
 
-            </ul>
+              <div id="paging-div" style="text-align:center;margin-top:8px;"></div>
+          </div>
+      </div>
+      <div class="my-music-info">
+          <ul class="share-music-user" style="margin-top: 15px;">
 
-            <div class="paging-div" style="text-align:center;margin-top:8px;"></div>
-        </div>
-    </div>
-    <div class="my-music-info">
+          </ul>
+      </div>
+  </div>
 
-    </div>
 
 
 <script type="text/x-jquery-tmpl" id="myMusicLiTmpl">
@@ -60,5 +73,25 @@
 </script>
 
 
-<script src="/public/js/music/getMusic.js"></script>
+<script type="text/x-jquery-tmpl" id="ShareMusicUserLiTmpl">
+    <li class="user-unit">
+        <div class="header-image">
+            <img src="/UserCenter/getUserImg?userId='+{{= id}}+'" width="60px" height="60px" class="user-head-photo" alt="嗨音乐">
+            <p>by {{= email}}</p>
+        </div>
+    </li>
+</script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        yabe.gcs("/public/js/music/getMusic.js", function () {
+
+            yabe.LoadingMusic.init.doInit($('.music-div'));
+        });
+    })
+
+</script>
+
 

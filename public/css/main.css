@@ -182,7 +182,7 @@ body {
 
 
 .tm-paging-container {
-    font-size: 12px;
+    font-size: 14px;
 }
 .tm-paging-container .paging-nav {
     display: inline-block;
@@ -196,7 +196,7 @@ body {
 }
 .tm-paging-container .paging-link {
     background: #4cb6cb;
-    color: #7f7f7f;
+    color: #fff;
     cursor: pointer;
 }
 .tm-paging-container .paging-link:hover {
@@ -209,7 +209,7 @@ body {
 }
 .tm-paging-container .paging-size-link {
     background: #4cb6cb;
-    color: #7f7f7f;
+    color: #fff;
     cursor: pointer;
 }
 .tm-paging-container .paging-size-link:hover {
