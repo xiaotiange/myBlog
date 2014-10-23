@@ -325,12 +325,9 @@ a:hover{
     color: #333;
 }
 .progress .progress-right{
-    margin-right: 10px;
+    color: #999;
 }
-.progress-right .once,.progress-right .all,
-.progress-right .enable{
-    corlor:green;
-}
+
 .progress .slider{
     width: 100%;
 }

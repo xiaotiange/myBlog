@@ -4,7 +4,7 @@
 
     var param = {};
     var loadingMusic = function(){
-        var ulObj = $(".my-music-ul");
+        var ulObj = $(".listen-music-ul");
 
         $.ajax({
             type: 'post',

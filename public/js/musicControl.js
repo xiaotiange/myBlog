@@ -124,7 +124,7 @@ var repeat = localStorage.repeat || 0,
                 playCounts++;
                 if (continous == true) isPlaying = true;
                 if (repeat == 1){
-                    play();
+                    switchTrack(currentTrack);
                 } else {
                     if (shuffle === 'true'){
                         shufflePlay();
@@ -287,54 +287,57 @@ var repeat = localStorage.repeat || 0,
 
             if (shuffle === 'true') $('.shuffle').addClass('enable');
             if (repeat == 1){
-                $('.repeat-once').addClass('once');
+                $('.repeat-once').addClass('once green');
             } else if (repeat == 2){
-                $('.repeat-all').addClass('all');
+                $('.repeat-all').addClass('all green');
             }
 
             $('.repeat-all').unbind().click(function(){
-                if ($(this).hasClass('all')){
+                if ($(this).hasClass('all green')){
                     repeat = localStorage.repeat = 0;
-                    $(this).removeClass('all');
+                    $(this).removeClass('all green');
                 } else {
                     repeat = localStorage.repeat = 2;
-                    $(this).addClass('all');
+                    $(this).addClass('all green');
                 }
-                $('.repeat-once').removeClass('once');
+                $('.repeat-once').removeClass('once green');
+
                 hideShuffle();
             });
 
             $('.repeat-once').unbind().click(function(){
-                if ($(this).hasClass('once')){
+                if ($(this).hasClass('once green')){
                     repeat = localStorage.repeat = 0;
-                    $(this).removeClass('once');
+                    $(this).removeClass('once green');
                 }else {
                     repeat = localStorage.repeat = 1;
-                    $(this).addClass('once');
+                    $(this).addClass('once green');
                 }
-                $('.repeat-all').removeClass('all');
+                $('.repeat-all').removeClass('all green');
+
                 hideShuffle();
             });
             var hideShuffle = function(){
-                if ($('.shuffle').hasClass('enable')){
+                if ($('.shuffle').hasClass('enable green')){
                     shuffle = localStorage.shuffle = 'false';
-                    $('.shuffle').removeClass('enable');
+                    $('.shuffle').removeClass('enable green');
                 }
             }
             var hideRepeat = function(){
                 repeat = localStorage.repeat = 0;
-                $('.repeat-all').removeClass('all');
-                $('.repeat-once').removeClass('once');
+                $('.repeat-all').removeClass('all green');
+                $('.repeat-once').removeClass('once green');
             }
 
             $('.shuffle').unbind().click(function(){
-                if ($(this).hasClass('enable')){
+                if ($(this).hasClass('enable green')){
                     shuffle = localStorage.shuffle = 'false';
-                    $(this).removeClass('enable');
+                    $(this).removeClass('enable green');
                 } else {
                     shuffle = localStorage.shuffle = 'true';
-                    $(this).addClass('enable');
+                    $(this).addClass('enable green');
                 }
+
                 hideRepeat();
 
             });
