@@ -158,7 +158,7 @@ var repeat = localStorage.repeat || 0,
                 newaudio.html(shtml);
 
                 if(item.imgPath ===undefined ||item.imgPath ==null || item.imgPath ==""){
-                    $('.cover').html('<img src="/public/img/logo.png" alt="'+item.album+'">');
+                    $('.cover').html('<img src="/public/img/logo.jpg" alt="'+item.album+'">');
                 }else{
                     $('.cover').html('<img src = "/MusicAdmin/getMusicImage?musicId='+item.id+'" alt="'+item.album+'">');
                 }

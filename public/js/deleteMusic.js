@@ -44,7 +44,7 @@ yabe.Util.isValidMail = isValidMail;
 
                     $(musicJsonArray).each(function(index, item) {
                         if(item.imgPath ===undefined ||item.imgPath ==null || item.imgPath ==""){
-                            item.imgPath = "/public/img/logo.png";
+                            item.imgPath = "/public/img/logo.jpg";
                         }else{
                             item.imgPath = "/MusicAdmin/getMusicImage?musicId="+item.id;
                         }

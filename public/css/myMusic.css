@@ -25,13 +25,6 @@ a {
   text-decoration: none;
 }
 
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
-}
 
 .clear {
   clear: both;
@@ -48,11 +41,7 @@ a {
   user-select: none;
 }
 
-.repeat-tip{
-    position: absolute;
-    top: 2px;
-    left: 5px;
-}
+
 
 .music-title{
     height: 30px;

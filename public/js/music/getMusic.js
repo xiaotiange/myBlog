@@ -48,7 +48,7 @@ var yabe = yabe || {};
 
                     $(musicJsonArray).each(function(index, item) {
                         if(item.imgPath ===undefined ||item.imgPath ==null || item.imgPath ==""){
-                            item.imgPath = "/public/img/logo.png";
+                            item.imgPath = "/public/img/logo.jpg";
                         }else{
                             item.imgPath = "/MusicAdmin/getMusicImage?musicId="+item.id;
                         }
@@ -148,7 +148,7 @@ var yabe = yabe || {};
                 var headerImage = userInfo[2];
                 var imgLink = "";
                 if(headerImage == null || headerImage == ""){
-                    imgLink = "/public/img/logo.png";
+                    imgLink = "/public/img/logo.jpg";
                 }else{
                     imgLink = "/UserCenter/getUserImg?userId="+userInfo[0];
                 }
