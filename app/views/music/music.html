@@ -14,13 +14,21 @@
         display: block;
         margin-bottom: 20px;
    }
+   .header-image{
+       text-align: center;
+   }
+   .user-photo{
 
+
+   }
 </style>
-  <div class="music-div">
-  #{if songinfo}
-      <input class="search-info" type="hidden" value="${songinfo}">
-  #{/if}
+
+
       <div class="my-music-div">
+
+      #{if songinfo}
+          <input class="search-info" type="hidden" value="${songinfo}">
+      #{/if}
 
           <div id="playlist">
 
@@ -36,7 +44,7 @@
 
           </ul>
       </div>
-  </div>
+
 
 
 
@@ -76,7 +84,7 @@
 <script type="text/x-jquery-tmpl" id="ShareMusicUserLiTmpl">
     <li class="user-unit">
         <div class="header-image">
-            <img src="/UserCenter/getUserImg?userId='+{{= id}}+'" width="60px" height="60px" class="user-head-photo" alt="嗨音乐">
+            <img src="{{= imgLink}}" width="60px" height="60px" class="user-photo" alt="嗨音乐">
             <p>by {{= email}}</p>
         </div>
     </li>
@@ -88,7 +96,7 @@
     $(document).ready(function() {
         yabe.gcs("/public/js/music/getMusic.js", function () {
 
-            yabe.LoadingMusic.init.doInit($('.music-div'));
+            yabe.LoadingMusic.init.doInit($(".my-music-div"));
         });
     })
 

@@ -188,11 +188,14 @@ public class MusicAdmin extends CheckUserLogin {
  
          if(StringUtils.isEmpty(songinfo)){
              musicList =  Music.find("order by id desc ").fetch(50);  
-             userList = Music.find("select id,email from User where id in( select userId from Music)").fetch();
+             userList = Music.find("select id,email,headerImage from User where id in( select userId from Music)").fetch();
          }else{
              String str = getSearchStr();
              String info = "%"+songinfo+"%";
-             musicList =  Music.find(str,info,info,info,info).fetch();         
+             musicList =  Music.find(str,info,info,info,info).fetch();    
+             userList = Music.find("select id,email,headerImage from User" +
+             		" where id in( select userId from Music where filaName" +
+             		" like ? or songTitle like ? or singer like ? or album like ? )",info,info,info,info).fetch();
            //  count = (int)Music.count(str,info,info,info,info);
          }
          

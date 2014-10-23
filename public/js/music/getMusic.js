@@ -17,6 +17,7 @@ var yabe = yabe || {};
             var songinfo = container.find(".search-info").val();
             var paramData = {};
             paramData.songinfo = songinfo;
+
             $.ajax({
                 type: 'post',
                 url: '/MusicAdmin/queryMusic',
@@ -58,7 +59,7 @@ var yabe = yabe || {};
 
                     ulObj.html(liObjs);
 
-                    LoadingMusic.show.doShowUser(container, userJsonArray);
+                    LoadingMusic.show.doShowUser(userJsonArray);
 
                     yabe.MusicControl.control.staticEvent(playlist);
 
@@ -125,8 +126,8 @@ var yabe = yabe || {};
 
     LoadingMusic.show = LoadingMusic.show || {};
     LoadingMusic.show = $.extend({
-        doShowUser: function(container, userJsonArray){
-
+        doShowUser: function(userJsonArray){
+            var container = $(".my-music-info");
             var ulObj = container.find(".share-music-user");
 
             if (userJsonArray === undefined || userJsonArray == null || userJsonArray.length <= 0) {
@@ -140,6 +141,19 @@ var yabe = yabe || {};
 
                 return;
             }
+
+            $(userJsonArray).each(function(index, userInfo){
+                userJsonArray[index].userId = userInfo[0];
+                userJsonArray[index].email = userInfo[1];
+                var headerImage = userInfo[2];
+                var imgLink = "";
+                if(headerImage == null || headerImage == ""){
+                    imgLink = "/public/img/logo.png";
+                }else{
+                    imgLink = "/UserCenter/getUserImg?userId="+userInfo[0];
+                }
+                userJsonArray[index].imgLink = imgLink;
+            });
 
             var liObjs = $("#ShareMusicUserLiTmpl").tmpl(userJsonArray);
             ulObj.html(liObjs);
