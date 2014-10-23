@@ -109,7 +109,15 @@ public class MusicAction {
             try {
                 mp3file = new MP3File(sourceFile);
                 AbstractID3v2Tag tag = mp3file.getID3v2Tag();  
+                if(tag == null){
+                    return "";
+                }
+                
                 AbstractID3v2Frame frame = (AbstractID3v2Frame) tag.getFrame("APIC");  
+                if(frame == null){
+                    return "";
+                }
+                
                 FrameBodyAPIC body = (FrameBodyAPIC) frame.getBody();  
                 byte[] imageData = body.getImageData();  
                  
@@ -136,34 +144,39 @@ public class MusicAction {
     
               
     }
-    public static HashMap getMusicInfo(File file){
-        MyID3v2 info = new MyID3v2();
-        byte bytes[] = null;
-
-            try {
-                bytes = info.readID3v2Tail(file, false, false);
-                if (bytes == null)
-                    bytes = info.readID3v2Head(file, false);
-                
-                MyID3v2Read parser = new MyID3v2Read(null,new ByteArrayInputStream(bytes), false);
-                while (!parser.isComplete())
-                {
-                    parser.iteration();
-                }
-                Vector<MyID3v2FrameText> frames = parser.getTags();          
-                HashMap<String, String> map = new HashMap<String,String>();
-                
-                for(int i=0;i<frames.size();i++){
-                    MyID3v2FrameText text = frames.get(i);
-                    map.put(text.frameID, text.value);
-                }
-                
-               return map;
-            } catch (IOException e) {
-                log.error(e.getMessage(), e);
-                return null;
-            }
+    public static HashMap getMusicInfo(File sourceFile){
+       
+        MP3File mp3file = null;
+        HashMap<String, String> map = new HashMap<String,String>();
+        try {
+            mp3file = new MP3File(sourceFile);
+            AbstractID3v2Tag tag = mp3file.getID3v2Tag();  
             
+            String[] tagArray = {"TPE1","TALB","TIT2","TYER"};
+            for(String tagStr : tagArray){
+                AbstractID3v2Frame text =  (AbstractID3v2Frame) tag.getFrame(tagStr);
+                if(text == null){
+                    map.put(tagStr, null);
+                }else{
+                    map.put(tagStr, text.getContent());
+                }
+            }
+
+            return map;
+        } catch (IOException e) {              
+            log.error(e.getMessage(), e);
+            return null;
+        } catch (TagException e) {
+            log.error(e.getMessage(), e);
+            return null;
+        } catch (ReadOnlyFileException e) {
+            log.error(e.getMessage(), e);
+            return null;
+        } catch (InvalidAudioFrameException e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+
     }
 
     private static String getAbsolutePath(String relativePath) {

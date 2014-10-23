@@ -113,7 +113,7 @@ public class MusicAdmin extends CheckUserLogin {
                 music.tags.add(Tag.findOrCreateByName(tag));
             }
         }
-        log.error(music.tags.toString());
+        log.info(music.tags.toString());
         music.songTitle = songTitle;
         music.singer = singer;
         music.album = album;
