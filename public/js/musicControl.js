@@ -102,7 +102,6 @@ var repeat = localStorage.repeat || 0,
                     currentTrack = i;
                 }
 
-                closeOtherPlay(currentTrack);
                 loadMusic(currentTrack);
                 if (isPlaying == true) play();
             }
@@ -166,6 +165,10 @@ var repeat = localStorage.repeat || 0,
                 $('.tag').html('<strong>'+item.songTitle+'</strong><span class="artist">'+item.singer+'</span><span class="album">《'+item.album+'》</span>');
 
                 $('#playlist li').eq(i).find('.music-play-div').addClass('isPlaying');
+                $('.first-div-ul li').eq(i).find('.play-music').addClass('isPlaying').removeClass("glyphicon-play").addClass("glyphicon-pause");
+
+                closeOtherPlay(i);
+
                 audio = newaudio[0];
                 audio.volume = $('.mute').hasClass('enable') ? 0 : volume;
                 audio.addEventListener('progress', beforeLoad, false);
@@ -214,12 +217,56 @@ var repeat = localStorage.repeat || 0,
                     switchTrack(++currentTrack);
                 }
             });
-            $('#playlist li').each(function(){
+
+            /******************&**************/
+            /******************&
+             * musicListen.html
+             *
+             * **************/
+
+            $('.first-div-ul li').each(function(){
                 $(this).unbind().dblclick(function(){
                     var _i = $(this).index()
                     switchTrack(_i);
                 });
             });
+
+            $('.first-div-ul li').each(function(){
+                var container = $(this);
+                var _i = $(this).index()
+                container.find(".play-music").unbind().click(function(){
+                    if($(this).hasClass("isPlaying")){
+                        if($(this).hasClass("glyphicon-play")){
+                            $(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
+                            play();
+                        }else{
+                            $(this).removeClass("glyphicon-pause").addClass("glyphicon-play");
+                            pause();
+                        }
+                    }else{
+                        $(this).addClass("isPlaying");
+                        $(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
+                        switchTrack(_i);
+                    }
+                });
+            });
+
+            $('.second-div-ul li').each(function(){
+                $(this).unbind().dblclick(function(){
+                    var _i = $(this).index()
+                    switchTrack(_i);
+                });
+            });
+
+            $('.second-div-ul li').each(function(){
+                var container = $(this);
+                var _i = $(this).index()
+                container.find(".play-music").unbind().click(function(){
+                    switchTrack(_i);
+                });
+            });
+            /******************&**************/
+            /******************&**************/
 
             $('#playlist li').each(function(){
                 var container = $(this);
@@ -280,6 +327,27 @@ var repeat = localStorage.repeat || 0,
                             thisObj.find(".play-music").removeClass("glyphicon-pause").addClass("glyphicon-play");
                             thisObj.hide();
 
+                        }
+                    }
+
+                });
+
+                $('.first-div-ul li').each(function(){
+                    var _i = $(this).index();
+                    var thisObj = $(this).find(".play-music");
+
+                    if(_i == i){
+                        if(thisObj.hasClass("isPlaying")){
+
+                        }else{
+                            thisObj.addClass("isPlaying");
+
+                        }
+                        thisObj.removeClass("glyphicon-play").addClass("glyphicon-pause");
+                    }else{
+                        if(thisObj.hasClass("isPlaying")){
+                            thisObj.removeClass("isPlaying");
+                            thisObj.removeClass("glyphicon-pause").addClass("glyphicon-play");
                         }
                     }
 
