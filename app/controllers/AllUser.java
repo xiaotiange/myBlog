@@ -15,9 +15,18 @@ public class AllUser extends CheckUserLogin {
         if(user==null){
             ControllerUtils.renderError("尚未登录"); 
         }
-        
+        hideUserInfo(user);
         ControllerUtils.renderResultJson(user);
         
+    }
+    
+    private static User hideUserInfo(User user){
+        if(user == null){
+            return null;
+        }
+        
+        user.password = "***";
+        return user;
     }
 
 }

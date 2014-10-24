@@ -41,6 +41,9 @@ $(document).ready(function() {
                           $(".user-head-photo").attr("src","/UserCenter/getHeaderImg");
                         }
 
+                        if(userJson.isAdmin == true){
+                            $(".delete-submit-li").show();
+                        }
 
                         UserLoginInfo.show.doshow();
                     } else {

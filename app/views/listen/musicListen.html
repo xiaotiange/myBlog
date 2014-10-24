@@ -3,6 +3,13 @@
 
 
 <style type="text/css">
+
+    .header{
+        background: #3b464d;
+    }
+    input[type="text"]{
+        color: #ddd;
+    }
     .listen-music-container{
         width: 100%;
         height: 100%;
@@ -13,40 +20,130 @@
         overflow: hidden;
         color: white;
     }
+    .first-div,.second-div,.third-div{
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        float: left;
+    }
+    .first-div{
+        width: 40%;
+        background: #191f23;
+    }
+    .second-div{
+        width: 30%;
+        background: #222;
+    }
+    .third-div{
+        width: 30%;
+        background: #222;
+    }
+    .first-div-image,.img-full,
+    .first-div-ul {
+        width: 100%;
+    }
+
+    .first-div-ul,.second-div-ul{
+      overflow: hidden;
+    }
+
+    .first-div-li,.second-div-li {
+        position: relative;
+        display: block;
+        padding: 15px 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);;
+        color: #627b8c;
+    }
+    .first-div-li:hover {
+        background: rgba(255,255,255,0.05);;
+    }
+    .second-div-li:hover {
+        background: rgba(0,0,0,0.25);;
+    }
+    .second--div-ul a{
+        color: #627b8c;
+    }
+
+    span.glyphicon{
+        margin-right: 5px;
+        cursor: pointer;
+    }
+    span.glyphicon:hover, .second--div-ul a:hover{
+       color: #ddd;
+        text-decoration: none;
+    }
+    .third-div div{
+        width: 100%;
+        height: 250px;
+        border-bottom: 1px solid #999;
+    }
 </style>
 
 <div class="listen-music-container">
-    <div id="playlist">
-        <div class="music-title">
-            <span class="left" style="width: 30%">歌名</span>
-            <span class="left" style="width: 30%">歌手</span>
-            <span class="left" style="width: 30%">专辑</span>
-            <span class="left" style="width: 10%">操作</span>
-        </div>
-        <ul class="listen-music-ul">
+        <div class="first-div">
+            <div class="first-div-image" style="height: 300px;overflow: hidden;">
+               <img class="img-full" src="/public/img/logo.jpg" alt="">
+            </div>
 
-        </ul>
-    </div>
+           <ul class="first-div-ul">
+
+           </ul>
+        </div>
+        <div class="second-div">
+            <ul class="second-div-ul">
+
+            </ul>
+        </div>
+        <div class="third-div">
+            <div class="TOP-10">
+                <img class="img-full" src="/public/img/20014340.jpg" alt="">
+            </div>
+            <div class="TOP-10">
+                <img class="img-full" src="/public/img/logo.jpg" alt="">
+            </div>
+        </div>
 </div>
 
 
-<script type="text/x-jquery-tmpl" id="listenMusicLiTmpl">
-    <li class="glyphicon playing glyphicon-music" title="双击播放">
-        <span class="left" style="width:30%;"><a href="/MusicAdmin/DetailsInfo?musicId={{= id}}" target="_blank">{{= songTitle }}</a> </span>
-        <span class="singer left" style="width:30%">{{= singer}}</span>
-        <span class="album left" style="width:30%">{{= album}}</span>
+<script type="text/x-jquery-tmpl" id="firstMusicLiTmpl">
+    <li class="first-div-li" >
+        <span class="glyphicon glyphicon-play"  data-toggle="tooltip"  title="播放">&nbsp;</span>
+        <span class="" >{{= songTitle }}</span> --
+        <span class="singer " >{{= singer}}</span>
 
-        <span class="left" style="width:10%">
-            <span class="left glyphicon glyphicon-trash remove"  data-toggle="tooltip"  title="删除">&nbsp;</span>
-        *{<a class="left" href="/MusicAdmin/getMusic?musicId={{= id}}" data-toggle="tooltip" title="下载" target="_blank">
-            <span class="glyphicon glyphicon-download-alt download"></span></a>}*
-        <span class="left glyphicon glyphicon-plus plus" style="font-size:13px;padding-top:11px;"   data-toggle="tooltip" title="添加">&nbsp;</span>
-        <span class="left glyphicon glyphicon-heart heart"  data-toggle="tooltip" title="喜欢">&nbsp;</span>
-
-        </span>
+        <span class="right glyphicon glyphicon-trash remove"  data-toggle="tooltip"  title="删除">&nbsp;</span>
+        <span class="right glyphicon glyphicon-plus plus" style="font-size:13px;" data-toggle="tooltip" title="添加">&nbsp;</span>
+        <span class="right glyphicon glyphicon-heart heart"  data-toggle="tooltip" title="喜欢">&nbsp;</span>
 
     </li>
 </script>
+
+<script type="text/x-jquery-tmpl" id="secondMusicLiTmpl">
+    <li class="second-div-li" >
+        <div style="width: 50px;display: inline-block;float: left;">
+            <img width="40px" height="40px" src="{{= imgPath}}" alt="">
+        </div>
+        <div style="width: auto;display: inline-block;">
+            <span class="song-title" ><a>{{= songTitle }}</a></span><br/>
+            <span class="share-user" >by {{= singer}}</span>
+        </div>
+
+        <span class="right glyphicon glyphicon-play" style="margin: 10px;font-size: 16px;">&nbsp;</span>
+
+    </li>
+</script>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        yabe.gcs("/public/js/music/toListen.js", function () {
+
+            yabe.ToListen.init.doInit($(".listen-music-container"));
+        });
+    })
+
+</script>
+
 
 
 

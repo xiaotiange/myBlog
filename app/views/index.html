@@ -1,7 +1,6 @@
 #{extends 'webmain.html' /}
 #{set title:"嗨音乐" /}
 
-<link rel="stylesheet" type="text/css" href="/public/home/css/tabs.css" />
 <link rel="stylesheet" type="text/css" href="/public/css/index.css" />
 <script src="/public/js/musicControl.js" type="text/javascript" charset="utf-8"></script>
 <style type="text/css">
@@ -121,7 +120,7 @@
                             <span class="font-bold">小屋子</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="delete-submit-li" style="display: none;">
                         <a href="/MusicAdmin/deleteMusic">
                             <i class="glyphicon glyphicon-trash"></i>
                             <span class="font-bold">删除</span>
@@ -191,12 +190,12 @@
                     $(this).find("i").show();
                 });
 
-                $(".search-div-input").focus(function(){
+                $(".search-div-input").unbind().focus(function(){
                      $(".search-div").width(250);
                 });
 
 
-                $(".search-div-input").blur(function(){
+                $(".search-div-input").unbind().blur(function(){
                     $(".search-div").width(200);
                 });
 

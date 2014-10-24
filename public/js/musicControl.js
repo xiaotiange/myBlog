@@ -270,7 +270,9 @@ var repeat = localStorage.repeat || 0,
 
                         }else{
                             thisObj.addClass("isPlaying");
+
                         }
+                        thisObj.find(".play-music").removeClass("glyphicon-play").addClass("glyphicon-pause");
                     }else{
                         var thisObj = $(this).find(".music-play-div");
                         if(thisObj.hasClass("isPlaying")){

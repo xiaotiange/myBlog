@@ -1,10 +1,4 @@
 
-body {
-  background: #333;
-  color: #2cc185;
-    font-size: 16px;
-}
-
 :focus{
     outline:none;
 }
@@ -42,10 +36,4 @@ a {
 }
 
 
-
-.music-title{
-    height: 30px;
-    margin-left: 40px;
-    padding: 5px;
-}
 

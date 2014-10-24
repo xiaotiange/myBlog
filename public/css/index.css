@@ -160,7 +160,7 @@ a:hover{
     -ms-border-radius:  30px;
     -khtml-border-radius: 30px;
     border-radius: 50%;
-  border: 2px solid #2cc185;
+  border: 2px solid #fff;
 
 }
 
@@ -425,4 +425,15 @@ a:hover{
 }
 .left{
     float: left;
+}
+.glyphicon::before {
+    z-index: 10;
+    vertical-align: middle;
+    text-transform: none;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 1.3em;
+    speak: none;
+    -webkit-backface-visibility: hidden;
+    font-family: 'Glyphicons Halflings';
 }

@@ -1,65 +1,86 @@
-(function($){
-    // Settings
-    var playlist=[];
 
-    var param = {};
-    var loadingMusic = function(){
-        var ulObj = $(".listen-music-ul");
+var yabe = yabe || {};
 
-        $.ajax({
-            type: 'post',
-            url: '/MusicAdmin/queryMusic',
-            data: param,
-            success: function (dataJson) {
+((function ($, window) {
 
-                if(dataJson.isOk==false){
-                    alert(dataJson.msg);
-                    return;
-                }
-                var musicJsonArray = dataJson.res;
-                playlist =  musicJsonArray.slice(0);
 
-                ulObj.html("");
-                if (musicJsonArray === undefined || musicJsonArray == null || musicJsonArray.length <= 0) {
-                    var trHtml = '' +
-                        '<li style="text-align: center;vertical-align: middle;font-size: 16px;padding-top: 8px;">' +
-                        "亲还没有自己的音乐哦！去上传吧，去标记吧，去收藏吧！" +
-                        '</li>' +
-                        '';
+    yabe.ToListen = {};
+    yabe.ToListen = yabe.ToListen || {};
+    var ToListen = yabe.ToListen;
 
-                    ulObj.html(trHtml);
+    ToListen.init = ToListen.init || {};
+    ToListen.init = $.extend({
+        doInit: function(container) {
+            var playlist=[];
 
-                    return;
-                }
+            var firstObj = container.find(".first-div-ul");
+            var secondObj = container.find(".second-div-ul");
 
-                $(musicJsonArray).each(function(index, item) {
-                    if(item.imgPath ===undefined ||item.imgPath ==null || item.imgPath ==""){
-                        item.imgPath = "/public/img/logo.jpg";
-                    }else{
-                        item.imgPath = "/MusicAdmin/getMusicImage?musicId="+item.id;
+            var paramData = {};
+            paramData.songinfo = "";
+
+            $.ajax({
+                type: 'post',
+                url: '/MusicAdmin/queryMusic',
+                data: paramData,
+                success: function (dataJson) {
+
+                    if(dataJson.isOk==false){
+                        alert(dataJson.msg);
+                        return;
                     }
 
-                });
+                    var musicJsonArray = dataJson.res[0];
+                    var userJsonArray = dataJson.res[1];
+                    playlist =  musicJsonArray.slice(0);
 
-                var liObjs = $("#myMusicLiTmpl").tmpl(musicJsonArray);
+                    firstObj.html("");
+                    secondObj.html("");
 
-                ulObj.html(liObjs);
+                    if (musicJsonArray === undefined || musicJsonArray == null || musicJsonArray.length <= 0) {
+                        var trHtml = '' +
+                            '<li style="text-align: center;vertical-align: middle;font-size: 16px;padding-top: 8px;color:red;">' +
+                            "现在暂时还没有音乐，亲可以试试第一个上传哦！" +
+                            '</li>' +
+                            '';
 
-                yabe.MusicControl.control.staticEvent(playlist);
+                        firstObj.html(trHtml);
 
-            }
-        });
+                        return;
+                    }
 
-    }
+                    var firstliObjs = $("#firstMusicLiTmpl").tmpl(musicJsonArray);
 
-    param.tags = "";
-    loadingMusic();
 
-    $('.tag-select').unbind().click(function(){
-        var tags = $(this).attr("tag");
-        param.tags = tags;
+                    $(musicJsonArray).each(function(index, item) {
+                        if(item.imgPath ===undefined ||item.imgPath ==null || item.imgPath ==""){
+                            item.imgPath = "/public/img/logo.jpg";
+                        }else{
+                            item.imgPath = "/MusicAdmin/getMusicImage?musicId="+item.id;
+                        }
 
-        loadingMusic();
-    });
+                    });
 
-})(jQuery);
+                    var secondliObjs = $("#secondMusicLiTmpl").tmpl(musicJsonArray);
+
+                    firstObj.html(firstliObjs);
+                    secondObj.html(secondliObjs);
+
+                    yabe.MusicControl.control.staticEvent(playlist);
+
+                }
+            });
+
+        }
+    }, ToListen.init);
+
+    ToListen.show = ToListen.show || {};
+    ToListen.show = $.extend({
+        doShowUser: function(userJsonArray){
+
+
+        }
+    }, ToListen.show);
+
+})(jQuery,window));
+
