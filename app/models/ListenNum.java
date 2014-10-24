@@ -1,5 +1,6 @@
 package models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import play.data.validation.Required;
@@ -12,7 +13,15 @@ public class ListenNum extends Model {
     public Long musicId;
     
     @Required
-    public Long listenCount;
+    public int listenCount;
+    
+    @Required
+    @Column(columnDefinition = "int default 0")
+    public int heartCount;
+    
+    @Required
+    @Column(columnDefinition = "int default 0")
+    public int addCount;
     
     @Required
     public Long firstListenTs;
@@ -24,10 +33,12 @@ public class ListenNum extends Model {
         super();
     }
     
-    public ListenNum(Long musicId, Long listenCount, Long firstListenTs){
+    public ListenNum(Long musicId, int listenCount,
+            int heartCount,int addCount, Long firstListenTs){
         super();
         this.musicId = musicId;
         this.listenCount = listenCount;
+        this.addCount = addCount;
         this.firstListenTs = firstListenTs;
         this.lastListenTs = firstListenTs;
     }
@@ -37,14 +48,44 @@ public class ListenNum extends Model {
         
         if(listenLog == null){
             Long firstListenTs = System.currentTimeMillis();
-            Long listenCount = (long) 1;
-            listenLog = new ListenNum(musicId, listenCount, firstListenTs);
+            int listenCount = 1;
+            listenLog = new ListenNum(musicId, listenCount,0,0, firstListenTs);
         }else{
             listenLog.listenCount += 1;
             listenLog.lastListenTs = System.currentTimeMillis();
         }
         
         listenLog.save();
+    }
+    
+    public static void addHeartLog(Long musicId){
+        ListenNum heartLog = ListenNum.find("byMusicId", musicId).first();
+        
+        if(heartLog == null){
+            Long firstListenTs = System.currentTimeMillis();
+            int heartCount = 1;
+            heartLog = new ListenNum(musicId, 0 , heartCount, 0 , firstListenTs);
+        }else{
+            heartLog.heartCount += 1;
+            heartLog.lastListenTs = System.currentTimeMillis();
+        }
+        
+        heartLog.save();
+    }
+    
+    public static void addMusicLog(Long musicId){
+        ListenNum addLog = ListenNum.find("byMusicId", musicId).first();
+        
+        if(addLog == null){
+            Long firstListenTs = System.currentTimeMillis();
+            int addCount = 1;
+            addLog = new ListenNum(musicId, 0 , 0, addCount , firstListenTs);
+        }else{
+            addLog.heartCount += 1;
+            addLog.lastListenTs = System.currentTimeMillis();
+        }
+        
+        addLog.save();
     }
 
 }

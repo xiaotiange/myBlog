@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import models.ListenLog;
 import models.ListenNum;
 import models.Music;
 import models.Tag;
@@ -135,6 +136,11 @@ public class MusicAdmin extends CheckUserLogin {
         }
         
         ListenNum.addListenLog(musicId);
+        
+        User user =  connect();
+        if(user != null && user.id != null){
+            ListenLog.addListenLog(musicId, user.id);
+        }
         
         renderBinary(file, music.filaName);
         
