@@ -1,82 +1,9 @@
 #{extends 'index.html' /}
 #{set title:"听音乐"/}
 
-
+<link rel="stylesheet" href="/public/css/musicListen.css">
 <style type="text/css">
 
-    .header{
-        background: #3b464d;
-    }
-    input[type="text"]{
-        color: #ddd;
-    }
-    .listen-music-container{
-        width: 100%;
-        height: 100%;
-        background: #333;
-        position: absolute;
-        left: 70px;
-        right: 0px;
-        overflow: hidden;
-        color: white;
-    }
-    .first-div,.second-div,.third-div{
-        height: 100%;
-        overflow-x: hidden;
-        overflow-y: auto;
-        float: left;
-    }
-    .first-div{
-        width: 40%;
-        background: #191f23;
-    }
-    .second-div{
-        width: 30%;
-        background: #222;
-    }
-    .third-div{
-        width: 30%;
-        background: #222;
-    }
-    .first-div-image,.img-full,
-    .first-div-ul {
-        width: 100%;
-    }
-
-    .first-div-ul,.second-div-ul{
-      overflow: hidden;
-    }
-
-    .first-div-li,.second-div-li {
-        position: relative;
-        display: block;
-        padding: 15px 10px;
-        border-bottom: 1px solid rgba(255,255,255,0.05);;
-        color: #627b8c;
-    }
-    .first-div-li:hover {
-        background: rgba(255,255,255,0.05);;
-    }
-    .second-div-li:hover {
-        background: rgba(0,0,0,0.25);;
-    }
-    .second--div-ul a{
-        color: #627b8c;
-    }
-
-    span.glyphicon{
-        margin-right: 5px;
-        cursor: pointer;
-    }
-    span.glyphicon:hover, .second--div-ul a:hover{
-       color: #ddd;
-        text-decoration: none;
-    }
-    .third-div div{
-        width: 100%;
-        height: 250px;
-        border-bottom: 1px solid #999;
-    }
 </style>
 
 <div class="listen-music-container">
