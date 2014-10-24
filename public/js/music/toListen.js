@@ -59,6 +59,14 @@ var yabe = yabe || {};
                             item.imgPath = "/MusicAdmin/getMusicImage?musicId="+item.id;
                         }
 
+                        $(userJsonArray).each(function(index, userInfo){
+                            if(item.userId == userInfo[0]){
+                                item.userName = userInfo[3];
+                                return false;
+                            }
+                        });
+
+
                     });
 
                     var secondliObjs = $("#secondMusicLiTmpl").tmpl(musicJsonArray);
