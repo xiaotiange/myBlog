@@ -31,7 +31,13 @@
     .control,.logo{
         background: #108d4e;
     }
-
+    .badge{
+        background: #108d4e;
+        float: right;
+        margin-right: 10px;
+        margin-top: 10px;
+        font-size: 14px;
+    }
 </style>
 
 <div class="listen-music-container">
@@ -115,8 +121,8 @@
             <span class="share-user" >by {{= userName}}</span>
         </div>
 
-        <span class="right glyphicon glyphicon-play play-music" style="margin: 10px;font-size: 16px;">&nbsp;</span>
 
+        <span class="badge">{{= heartCount}}</span>
     </li>
 </script>
 

@@ -31,7 +31,13 @@
     .control,.logo{
         background: #108d4e;
     }
-
+    .badge{
+        background: #108d4e;
+        float: right;
+        margin-right: 10px;
+        margin-top: 10px;
+        font-size: 14px;
+    }
 </style>
 
 <div class="listen-music-container">
@@ -100,22 +106,24 @@
         <span class="" >{{= songTitle }}</span> --
         <span class="singer " >{{= singer}}</span>
 
-        <span class="right glyphicon glyphicon-trash remove-heart"  data-toggle="tooltip"  title="删除">&nbsp;</span>
+        <span class="right glyphicon glyphicon-trash remove-icon"  data-toggle="tooltip"  title="删除">&nbsp;</span>
 
     </li>
 </script>
 
 <script type="text/x-jquery-tmpl" id="secondMusicLiTmpl">
-    <li class="second-div-li" >
+    <li class="second-div-li active" >
+
         <div style="width: 50px;display: inline-block;float: left;">
             <img width="40px" height="40px" src="{{= imgPath}}" alt="">
         </div>
         <div style="width: auto;display: inline-block;">
             <span class="song-title" ><a>{{= songTitle }}</a></span><br/>
-            <span class="share-user" >by {{= userName}}</span>
+            <span class="share-user" >by {{= username}}</span>
         </div>
 
-        <span class="right glyphicon glyphicon-play play-music" style="margin: 10px;font-size: 16px;">&nbsp;</span>
+
+        <span class="badge">{{= heartCount}}</span>
 
     </li>
 </script>

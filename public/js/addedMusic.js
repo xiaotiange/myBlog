@@ -31,7 +31,7 @@ var yabe = yabe || {};
                     }
 
                     var musicJsonArray = dataJson.res[0];
-                    var userJsonArray = dataJson.res[1];
+                    var popularMusicJsonArray = dataJson.res[1];
                     playlist =  musicJsonArray.slice(0);
 
                     firstObj.html("");
@@ -45,34 +45,25 @@ var yabe = yabe || {};
                             '';
 
                         firstObj.html(trHtml);
-                        secondObj.html(trHtml);
 
-                        return;
+                    }else{
+                        var firstliObjs = $("#firstMusicLiTmpl").tmpl(musicJsonArray);
+                        firstObj.html(firstliObjs);
                     }
 
-                    var firstliObjs = $("#firstMusicLiTmpl").tmpl(musicJsonArray);
 
 
-                    $(musicJsonArray).each(function(index, item) {
+                    $(popularMusicJsonArray).each(function(index, item) {
                         if(item.imgPath ===undefined ||item.imgPath ==null || item.imgPath ==""){
-                            item.imgPath = "/public/img/logo.jpg";
+                            popularMusicJsonArray[index].imgPath= "/public/img/logo.jpg";
                         }else{
-                            item.imgPath = "/MusicAdmin/getMusicImage?musicId="+item.id;
+                            popularMusicJsonArray[index].imgPath = "/MusicAdmin/getMusicImage?musicId="+item.id;
                         }
-
-                        $(userJsonArray).each(function(index, userInfo){
-                            if(item.userId == userInfo[0]){
-                                item.userName = userInfo[3];
-                                return false;
-                            }
-                        });
-
 
                     });
 
-                    var secondliObjs = $("#secondMusicLiTmpl").tmpl(musicJsonArray);
+                    var secondliObjs = $("#secondMusicLiTmpl").tmpl(popularMusicJsonArray);
 
-                    firstObj.html(firstliObjs);
                     secondObj.html(secondliObjs);
 
                     yabe.MusicControl.control.staticEvent(playlist);

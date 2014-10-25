@@ -14,9 +14,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import play.db.Model;
+import play.db.jpa.GenericModel;
+import play.db.jpa.JPA;
+
 import com.ciaosir.client.CommonUtils;
 
 import result.ALResult;
+import weibo4j.model.Query;
 
 public class LogAdmin extends CheckUserLogin{
     
@@ -52,21 +57,20 @@ public class LogAdmin extends CheckUserLogin{
         if(user == null){
             ControllerUtils.renderError("先去登录吧亲！");
         }
-        
+       
          List<Music> musicList = Music.find("select  m from Music m where id in(select musicId from" +
-         		" HeartMusic where userId = ? order by createTs desc)  ", user.id).fetch();
+         		" HeartMusic where userId = ? order by createTs desc)  ", user.id).fetch();       
+   
+         List<Music> popularMusicList = Music.find("select  m from Music m where heartCount > 0 order by heartCount desc ").fetch();
          
-         List<User> userList = new ArrayList<User>();
-         userList = Music.find("select id,email,headerImage,fullname from User" +
-                 " where id in( select userId from Music where id in(select musicId from" +
-                " HeartMusic where userId = ? ))", user.id).fetch();
-        
-         Object[] res = new Object[] { musicList, userList };
+         Object[] res = new Object[] { musicList,popularMusicList };
          ControllerUtils.renderResultJson(res);
         
         ControllerUtils.renderResultJson(musicList);
               
     }
+    
+    private static String selectParam = " m.id, n.listenCount, n.heartCount, n.addCount, m.songTitle,m.username,m.filePath ";
     
     public static void queryMyAddedMusic(){
         User user = connect();
@@ -77,12 +81,9 @@ public class LogAdmin extends CheckUserLogin{
          List<Music> musicList = Music.find("select  m from Music m where id in(select musicId from" +
                 " AddToMeLog where userId = ? order by createTs desc)  ", user.id).fetch();
          
-         List<User> userList = new ArrayList<User>();
-         userList = Music.find("select id,email,headerImage,fullname from User" +
-                 " where id in( select userId from Music where id in(select musicId from" +
-                " AddToMeLog where userId = ? ))", user.id).fetch();
+         List<Music> popularMusicList = Music.find("select  m from Music m where addCount > 0 order by addCount desc ").fetch();
         
-         Object[] res = new Object[] { musicList, userList };
+         Object[] res = new Object[] { musicList, popularMusicList };
          ControllerUtils.renderResultJson(res);
               
     }

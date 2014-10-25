@@ -30,14 +30,15 @@ var yabe = yabe || {};
                         return;
                     }
 
-                    var musicJsonArray = dataJson.res[0];
-                    var userJsonArray = dataJson.res[1];
-                    playlist =  musicJsonArray.slice(0);
+                    var myMusicJsonArray = dataJson.res[0];
+                    var popularMusicJsonArray = dataJson.res[1];
+
+                    playlist =  myMusicJsonArray.slice(0);
 
                     firstObj.html("");
                     secondObj.html("");
 
-                    if (musicJsonArray === undefined || musicJsonArray == null || musicJsonArray.length <= 0) {
+                    if (myMusicJsonArray === undefined || myMusicJsonArray == null || myMusicJsonArray.length <= 0) {
                         var trHtml = '' +
                             '<li style="text-align: center;vertical-align: middle;font-size: 16px;padding-top: 8px;color:red;">' +
                             "亲还没有收藏过音乐，先去收藏吧！" +
@@ -45,34 +46,29 @@ var yabe = yabe || {};
                             '';
 
                         firstObj.html(trHtml);
-                        secondObj.html(trHtml);
 
-                        return;
+                    }else{
+                        var firstliObjs = $("#firstMusicLiTmpl").tmpl(myMusicJsonArray);
+                        firstObj.html(firstliObjs);
                     }
 
-                    var firstliObjs = $("#firstMusicLiTmpl").tmpl(musicJsonArray);
 
 
-                    $(musicJsonArray).each(function(index, item) {
+                    $(popularMusicJsonArray).each(function(index, item) {
+
+
                         if(item.imgPath ===undefined ||item.imgPath ==null || item.imgPath ==""){
-                            item.imgPath = "/public/img/logo.jpg";
+                            popularMusicJsonArray[index].imgPath= "/public/img/logo.jpg";
                         }else{
-                            item.imgPath = "/MusicAdmin/getMusicImage?musicId="+item.id;
+                            popularMusicJsonArray[index].imgPath = "/MusicAdmin/getMusicImage?musicId="+item.id;
                         }
-
-                        $(userJsonArray).each(function(index, userInfo){
-                            if(item.userId == userInfo[0]){
-                                item.userName = userInfo[3];
-                                return false;
-                            }
-                        });
 
 
                     });
 
-                    var secondliObjs = $("#secondMusicLiTmpl").tmpl(musicJsonArray);
+                    var secondliObjs = $("#secondMusicLiTmpl").tmpl(popularMusicJsonArray);
 
-                    firstObj.html(firstliObjs);
+
                     secondObj.html(secondliObjs);
 
                     yabe.MusicControl.control.staticEvent(playlist);

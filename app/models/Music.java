@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
@@ -42,6 +43,17 @@ public class Music extends Model {
     
     @Required
     public String  album;
+    
+    @Required
+    public int listenCount;
+    
+    @Required
+    @Column(columnDefinition = "int default 0")
+    public int heartCount;
+    
+    @Required
+    @Column(columnDefinition = "int default 0")
+    public int addCount;
     
     @Required
     public String  year;
