@@ -342,19 +342,13 @@ var repeat = localStorage.repeat || 0,
 
             $(".plus-tag").unbind().click(function(){
                 var thisObj = $(this);
-                if(thisObj.hasClass("glyphicon-plus-sign")){
-                    thisObj.removeClass("glyphicon-plus-sign").addClass("glyphicon-ok-sign").addClass("ok-sign-color");
-                }else{
-                    thisObj.removeClass("ok-sign-color").removeClass("glyphicon-ok-sign").addClass("glyphicon-plus-sign");
-                }
+                MusicControl.submit.doAddSubmit(thisObj);
+
             });
             $(".heart-tag").unbind().click(function(){
                 var thisObj = $(this);
-                if(thisObj.hasClass("red")){
-                    thisObj.removeClass("red");
-                }else{
-                    thisObj.addClass("red");
-                }
+                MusicControl.submit.doHeartSubmit(thisObj);
+
             });
 
 
@@ -431,6 +425,61 @@ var repeat = localStorage.repeat || 0,
 
         }
     }, MusicControl.control);
+
+    MusicControl.submit = MusicControl.submit || {};
+    MusicControl.submit = $.extend({
+        doAddSubmit: function(thisObj) {
+
+            var musicId = thisObj.attr("musicId");
+
+            var paramData = {};
+            paramData.musicId = musicId;
+
+            $.ajax({
+                type: 'post',
+                url: '/LogAdmin/addMyMusic',
+                data: paramData,
+                success: function (dataJson) {
+                    if(dataJson.isOk==false){
+                        alert(dataJson.msg);
+                        return;
+                    }
+
+                    if(thisObj.hasClass("glyphicon-plus-sign")){
+                        thisObj.removeClass("glyphicon-plus-sign").addClass("glyphicon-ok-sign").addClass("ok-sign-color");
+                    }
+
+                }
+            });
+
+        },
+        doHeartSubmit: function(thisObj){
+            var musicId = thisObj.attr("musicId");
+            var paramData = {};
+            paramData.musicId = musicId;
+
+            $.ajax({
+                type: 'post',
+                url: '/LogAdmin/heartMyMusic',
+                data: paramData,
+                success: function (dataJson) {
+                    if(dataJson.isOk==false){
+                        alert(dataJson.msg);
+                        return;
+                    }
+
+                    if(thisObj.hasClass("red")){
+
+                    }else{
+                        thisObj.addClass("red");
+                    }
+
+
+                }
+            });
+
+        }
+    }, MusicControl.submit);
 
 })(jQuery,window));
 

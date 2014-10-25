@@ -40,11 +40,6 @@ $(document).ready(function() {
                         }else{
                           $(".user-head-photo").attr("src","/UserCenter/getHeaderImg");
                         }
-
-                        if(userJson.isAdmin == true){
-                            $(".delete-submit-li").show();
-                        }
-
                         UserLoginInfo.show.doshow();
                     } else {
                         container.find('.not-login').show();

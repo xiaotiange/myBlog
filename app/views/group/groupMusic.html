@@ -14,6 +14,9 @@
       height: 100%;
       float: left;
       overflow-x: hidden;
+      overflow-y: hidden;
+  }
+  .assort-tag:hover{
       overflow-y: auto;
   }
   .assort-tag-ul{
@@ -39,12 +42,15 @@
       background: #fff;
       color: #333;
   }
-    .play-list{
-        background: #e0e0e0;
-        height: 100%;
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
+  .play-list{
+      background: #e0e0e0;
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: hidden;
+  }
+  .play-list:hover{
+      overflow-y: auto;
+  }
 
 </style>
 
@@ -106,8 +112,8 @@
                         <span class="play-music glyphicon glyphicon-play" style="font-size:30px;"></span>
                     </div>
                     <div class="target-tag">
-                        <span class="plus-tag glyphicon glyphicon-plus-sign left" style="font-size:12px;"></span>
-                        <span class="heart-tag glyphicon glyphicon-heart right" style="font-size:12px;"></span>
+                        <span class="plus-tag glyphicon glyphicon-plus-sign left" musicId="{{= id}}"  style="font-size:12px;"></span>
+                        <span class="heart-tag glyphicon glyphicon-heart right" musicId="{{= id}}"  style="font-size:12px;"></span>
                     </div>
                 </div>
             </div>

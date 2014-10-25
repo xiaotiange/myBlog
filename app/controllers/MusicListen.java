@@ -6,4 +6,12 @@ public class MusicListen extends CheckUserLogin {
         render("/listen/musicListen.html");
     }
     
+    public static void listenHeartedMusic(){
+        render("/heart/heartMusic.html");
+    }
+    
+    public static void listenAddedMusic(){
+        render("/add/addedMusic.html");
+    }
+    
 }

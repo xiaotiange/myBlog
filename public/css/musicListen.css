@@ -44,7 +44,7 @@ input[type="text"]{
     width: 100%;
 }
 
-.first-div-ul,.second-div-ul{
+.second-div-ul{
     overflow: hidden;
 }
 

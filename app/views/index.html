@@ -43,6 +43,15 @@
 
 </style>
 
+%{
+user = controllers.AllUser.tryGetUser();
+userRole =  controllers.AllUser.tryGetUserRole();
+
+isLogin = user == "" ? false : true;
+
+}%
+
+
 <div class="container">
         <div class="header">
             <div class="logo">
@@ -102,8 +111,9 @@
                             <span class="font-bold">听音乐</span>
                         </a>
                     </li>
+                    #{if isLogin == true}
                     <li>
-                        <a href="index.html">
+                        <a href="/MusicListen/listenHeartedMusic">
                             <i class="glyphicon glyphicon-heart"></i>
                             <span class="font-bold">收藏</span>
                         </a>
@@ -115,17 +125,35 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/MusicListen/listenAddedMusic">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <span class="font-bold">临时列表</span>
+                        </a>
+                    </li>
+                    #{/if}
+
+                    <li>
                         <a class="to-my-home">
                             <i class="glyphicon glyphicon-home"></i>
                             <span class="font-bold">小屋子</span>
                         </a>
                     </li>
-                    <li class="delete-submit-li" style="display: none;">
-                        <a href="/MusicAdmin/deleteMusic">
-                            <i class="glyphicon glyphicon-trash"></i>
-                            <span class="font-bold">删除</span>
+                    *{
+                    <li>
+                        <a class="/MusicListen/listenAddedMusic">
+                            <i class="glyphicon glyphicon-flag"></i>
+                            <span class="font-bold">最常听</span>
                         </a>
                     </li>
+                      }*
+                     #{if userRole == true}
+                         <li class="delete-submit-li">
+                             <a href="/MusicAdmin/deleteMusic">
+                                 <i class="glyphicon glyphicon-trash"></i>
+                                 <span class="font-bold">删除</span>
+                             </a>
+                         </li>
+                    #{/if}
 
                 </ul>
             </div>

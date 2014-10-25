@@ -1,0 +1,136 @@
+#{extends 'index.html' /}
+#{set title:"临时列表"/}
+
+<link rel="stylesheet" href="/public/css/musicListen.css">
+<style type="text/css">
+    .third-div div img{
+        height: 250px;
+    }
+    .third-div div .event-link{
+        height: 250px;
+        position: relative;
+        margin-top: -250px;
+        background: rgba(0,0,0,0.75);
+        padding: 20px;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+    .third-div div .event-link span{
+        display: block;
+        color: #627b8c;
+    }
+    .title{
+        font-weight: 700;
+        font-size: 24px;
+    }
+    .to-page-link{
+        float: right;
+        margin-bottom: 10px;
+    }
+    .control,.logo{
+        background: #108d4e;
+    }
+
+</style>
+
+<div class="listen-music-container">
+    <div class="first-div">
+        <div class="first-div-image" style="height: 300px;overflow: hidden;">
+            <img class="img-full" src="/public/img/logo.jpg" alt="">
+        </div>
+
+        <ul class="first-div-ul">
+
+        </ul>
+    </div>
+    <div class="second-div">
+        <ul class="second-div-ul">
+
+        </ul>
+    </div>
+    <div class="third-div">
+        <div class="TOP-10">
+            <img class="img-full" src="/public/img/20014340.jpg" alt="">
+            <div class="event-link">
+                <span class="title" style="color: #4cb6cb;">Find</span>
+                <span class="script">search the music you like</span>
+                <span class="to-page-link glyphicon glyphicon-arrow-right"></span>
+            </div>
+        </div>
+        <div class="TOP-10">
+            <img class="img-full" src="/public/img/m_001.jpg" alt="">
+            <div class="event-link">
+                <span class="title" style="color: #fad733;">Listen</span>
+                <span class="script">Listen music in your heart</span>
+                <span class="to-page-link glyphicon glyphicon-arrow-right"></span>
+            </div>
+        </div>
+        <div class="TOP-10">
+            <img class="img-full" src="/public/img/m_002.jpg" alt="">
+            <div class="event-link">
+                <span class="title" style="color: #1ab667">Share</span>
+                <span class="script">Share the good songs</span>
+                <span class="to-page-link glyphicon glyphicon-arrow-right"></span>
+            </div>
+        </div>
+        <div class="TOP-10">
+            <img class="img-full" src="/public/img/m_003.jpg" alt="">
+            <div class="event-link">
+                <span class="title" style="color: #fff;">2014</span>
+                <span class="script">Find,Listen & Share</span>
+                <span class="to-page-link glyphicon glyphicon-arrow-right"></span>
+            </div>
+        </div>
+        <div class="TOP-10">
+            <img class="img-full" src="/public/img/m_004.jpg" alt="">
+            <div class="event-link">
+                <span class="title" style="color: #f47f7f">TOP10</span>
+                <span class="script">Select songs</span>
+                <span class="to-page-link glyphicon glyphicon-arrow-right"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/x-jquery-tmpl" id="firstMusicLiTmpl">
+    <li class="first-div-li" >
+        <span class="play-music glyphicon glyphicon-play"  data-toggle="tooltip"  title="播放">&nbsp;</span>
+        <span class="" >{{= songTitle }}</span> --
+        <span class="singer " >{{= singer}}</span>
+
+        <span class="right glyphicon glyphicon-trash remove-heart"  data-toggle="tooltip"  title="删除">&nbsp;</span>
+
+    </li>
+</script>
+
+<script type="text/x-jquery-tmpl" id="secondMusicLiTmpl">
+    <li class="second-div-li" >
+        <div style="width: 50px;display: inline-block;float: left;">
+            <img width="40px" height="40px" src="{{= imgPath}}" alt="">
+        </div>
+        <div style="width: auto;display: inline-block;">
+            <span class="song-title" ><a>{{= songTitle }}</a></span><br/>
+            <span class="share-user" >by {{= userName}}</span>
+        </div>
+
+        <span class="right glyphicon glyphicon-play play-music" style="margin: 10px;font-size: 16px;">&nbsp;</span>
+
+    </li>
+</script>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        yabe.gcs("/public/js/addedMusic.js", function () {
+
+            yabe.AddedMusic.init.doInit($(".listen-music-container"));
+        });
+    })
+
+</script>
+
+
+
+
