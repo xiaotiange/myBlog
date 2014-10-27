@@ -12,9 +12,10 @@ import java.util.Set;
 import models.ListenLog;
 import models.ListenNum;
 import models.Music;
+import models.SearchLog;
 import models.Tag;
 import models.User;
-import models.logs.SearchLog;
+
 
 import org.apache.commons.lang3.StringUtils;
 import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
