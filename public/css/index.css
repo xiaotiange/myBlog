@@ -125,7 +125,9 @@ a:hover{
 
 
 .my-music-div{
-    width: 85%;
+    position: absolute;
+    left: 70px;
+    right: 220px;
     height:100%;
     float: left;
     overflow-x: hidden;
@@ -136,6 +138,8 @@ a:hover{
 }
 
 .my-music-info{
+    float: right;
+    width: 220px;
     height: 100%;
     background: #e0e0e0;
     border-left: 2px solid #999;

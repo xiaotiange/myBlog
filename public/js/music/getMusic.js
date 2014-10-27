@@ -153,6 +153,7 @@ var yabe = yabe || {};
                     imgLink = "/UserCenter/getUserImg?userId="+userInfo[0];
                 }
                 userJsonArray[index].imgLink = imgLink;
+                userJsonArray[index].username = userInfo[3];
             });
 
             var liObjs = $("#ShareMusicUserLiTmpl").tmpl(userJsonArray);

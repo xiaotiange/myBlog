@@ -14,6 +14,7 @@ import models.ListenNum;
 import models.Music;
 import models.Tag;
 import models.User;
+import models.logs.SearchLog;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
@@ -197,6 +198,7 @@ public class MusicAdmin extends CheckUserLogin {
              musicList =  Music.find("order by id desc ").fetch(50);  
              userList = Music.find("select id,email,headerImage,fullname from User where id in( select userId from Music)").fetch();
          }else{
+             SearchLog.addSearchLog(songinfo);
              String str = getSearchStr();
              String info = "%"+songinfo+"%";
              musicList =  Music.find(str,info,info,info,info).fetch();    

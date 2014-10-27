@@ -228,6 +228,18 @@ var repeat = localStorage.repeat || 0,
                 audio.addEventListener('ended', ended, false);
             }
 
+            var hideShuffle = function(){
+                if ($('.shuffle').hasClass('enable green')){
+                    shuffle = localStorage.shuffle = 'false';
+                    $('.shuffle').removeClass('enable green');
+                }
+            }
+            var hideRepeat = function(){
+                repeat = localStorage.repeat = 0;
+                $('.repeat-all').removeClass('all green');
+                $('.repeat-once').removeClass('once green');
+            }
+
             loadMusic(currentTrack);
 
             $(".img-div").unbind().hover(function(){
@@ -385,17 +397,6 @@ var repeat = localStorage.repeat || 0,
 
                 hideShuffle();
             });
-            var hideShuffle = function(){
-                if ($('.shuffle').hasClass('enable green')){
-                    shuffle = localStorage.shuffle = 'false';
-                    $('.shuffle').removeClass('enable green');
-                }
-            }
-            var hideRepeat = function(){
-                repeat = localStorage.repeat = 0;
-                $('.repeat-all').removeClass('all green');
-                $('.repeat-once').removeClass('once green');
-            }
 
             $('.shuffle').unbind().click(function(){
                 if ($(this).hasClass('enable green')){
