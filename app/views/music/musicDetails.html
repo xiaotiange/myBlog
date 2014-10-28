@@ -1,9 +1,20 @@
 #{extends 'index.html' /}
 #{set title:"嗨音乐"/}
 
+<link rel="stylesheet" href="@{'public/css/music.css'}" />
+
 <style type="text/css">
     .music-info{
+        width: 960px;
+        margin: 0 auto;
         background: #fff;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    .title{
+      text-align: center;
+      border-bottom: 1px solid #2cc185;
     }
 </style>
 
@@ -33,7 +44,6 @@
         <table class="info-table">
             <tr>
                 #{if music.tags}
-                    <td><span class="title">标签</span></td>
                     #{list items:music.tags, as:'tag'}
                         <td><span class="tag-tab avtive-tab" tag="${tag}">${tag}</span></td>
                     #{/list}
@@ -41,7 +51,6 @@
             </tr>
             <tr>
 
-                <td><span class="title">修改标签</span></td>
                 <td><span class="tag-tab music-tag-tab" tag="日韩">日韩</span></td>
                 <td><span class="tag-tab music-tag-tab" tag="欧美">欧美</span></td>
                 <td><span class="tag-tab music-tag-tab" tag="国语">国语</span> </td>
@@ -50,10 +59,49 @@
                 <td><span class="other-tag-tab" style="display: none;color: #333;">
                     <input type="text" class="tags-input">(请用逗号隔开)</span>
                 </td>
+                <td style="padding-top: 10px;"> <span class='big-btn save-submit-btn'>保存</span></td>
+            </tr>
+
+        </table>
+        <div class="title" style="margin-bottom: 15px;">专辑封面</div>
+        <table class="info-table" width="940px;">
+            <tr>
+                #{if music.id != null}
+                    <td width="200px">
+                        <img src="/MusicAdmin/getMusicImage?musicId=${music.id}" alt="">
+                    </td>
+                    <td style="padding-top: 10px;" width="500px">
+                        <span class='big-btn change-album-btn'>换封面</span></br>
+
+                        <form action="@@{UpLoad.RefreshMusicPhoto()}" method="post" style="display: none;" enctype="multipart/form-data">
+
+                            <div style="text-align: center;"><span class="red"></span></div>
+                            <div class="input-div" style="">
+                                <input type='text' name='musicId' id='textfield' class='file-name' value="${music.id}" />
+                                <p class='view'>浏览</p>
+                                <input type="file" name="musicFile" class="file" id="music-photo" size="28" onchange="document.getElementById('textfield').value=this.value" />
+                            </div>
+
+                        </form>
+                    </td>
+                    <td width="250px">
+                        <p class="img">
+                            <img id="preview" name="imageFile"/>
+                        </p>
+                    </td>
+
+                #{/if}
+
+
+                #{else}
+                    <p>当前歌曲暂无封面照片，请上传！</p>
+                #{/else}
             </tr>
             <tr>
 
-                <td colspan="6" style="padding-top: 10px;"> <span class='big-btn save-submit-btn'>保存</span></td>
+                <td colspan="3" style="text-align: center;border-top: 1px solid #ddd;padding: 10px;">
+                    <span class='big-btn save-update-album-btn'>保存</span></td>
+                </td>
             </tr>
         </table>
     </div>
@@ -78,6 +126,10 @@
         }
     });
 
+    $(".change-album-btn").unbind().click(function(){
+        $(this).hide();
+        $("form").show();
+    });
     $('.save-submit-btn').unbind().click(function(){
         var container = $('.music-info');
         var paramData = {};
@@ -126,6 +178,12 @@
         });
 
     });
+
+    $(document).ready(function() {
+        yabe.gcs("/public/js/ShowPhoto.js", function () {
+            yabe.ShowPhoto.init.doInit($(".music-info"))
+        });
+    })
 
 
 

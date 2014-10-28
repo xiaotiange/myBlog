@@ -4,7 +4,7 @@ var yabe = yabe || {};
 ((function ($, window) {
 
 
-    yabe.LoadingMusic = {};
+     yabe.LoadingMusic = {};
     yabe.LoadingMusic = yabe.LoadingMusic || {};
     var LoadingMusic = yabe.LoadingMusic;
 

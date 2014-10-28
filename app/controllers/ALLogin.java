@@ -1,5 +1,8 @@
 package controllers;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import org.apache.commons.lang3.StringUtils;
 
 import com.ciaosir.client.utils.JsonUtil;
@@ -15,6 +18,8 @@ import result.ALResult;
 import utils.PlayUtil;
 
 public class ALLogin extends ControllerUtils {
+    
+    private static String HiLoginRemember = "_hi_login_remember_";    
 
     public static void index(String requestUrl){
         String randomID=Codec.UUID();
@@ -26,11 +31,22 @@ public class ALLogin extends ControllerUtils {
         render("/allogin/register.html", randomID, url);
     }
     
-    public static void doLogin(String username, String password){
+    public static void doLogin(String username, String password, boolean isRemember){
        // checkCaptcha(code, randomID); 
         
         String ip = ControllerUtils.getRemoteIp();        
         ALResult<ALSession> loginRes = UserLoginRegAction.userLogin(username, password, ip);
+        
+        //记住用户名30天
+        if(isRemember) {
+            try {
+                  response.setCookie(HiLoginRemember, URLEncoder.encode(username, "utf-8"), "30d");
+                   } catch (UnsupportedEncodingException e) {
+                                 e.printStackTrace();
+                }
+        } else {
+                   response.removeCookie(HiLoginRemember);
+        }
         
         trySetCookie(loginRes);  
         renderALResult(loginRes);

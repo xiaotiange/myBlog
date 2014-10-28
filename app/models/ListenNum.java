@@ -59,6 +59,7 @@ public class ListenNum extends Model {
         }
         
         listenLog.save();
+        music.save();
     }
     
     public static void addHeartLog(Long musicId){

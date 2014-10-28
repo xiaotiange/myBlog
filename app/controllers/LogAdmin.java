@@ -27,6 +27,8 @@ public class LogAdmin extends CheckUserLogin{
     
     private static final Logger log = LoggerFactory.getLogger(LogAdmin.class);
     
+    private static final int topLimit = 10;
+    
     //收藏
     public static void heartMyMusic(Long musicId){
          User user = connect();
@@ -59,9 +61,9 @@ public class LogAdmin extends CheckUserLogin{
         }
        
          List<Music> musicList = Music.find("select  m from Music m where id in(select musicId from" +
-         		" HeartMusic where userId = ? order by createTs desc)  ", user.id).fetch();       
+         		" HeartMusic where userId = ? order by createTs desc )  ", user.id).fetch();       
    
-         List<Music> popularMusicList = Music.find("select  m from Music m where heartCount > 0 order by heartCount desc ").fetch();
+         List<Music> popularMusicList = Music.find("select  m from Music m where heartCount > 0 order by heartCount desc ").fetch(10);
          
          Object[] res = new Object[] { musicList,popularMusicList };
          ControllerUtils.renderResultJson(res);
@@ -81,7 +83,7 @@ public class LogAdmin extends CheckUserLogin{
          List<Music> musicList = Music.find("select  m from Music m where id in(select musicId from" +
                 " AddToMeLog where userId = ? order by createTs desc)  ", user.id).fetch();
          
-         List<Music> popularMusicList = Music.find("select  m from Music m where addCount > 0 order by addCount desc ").fetch();
+         List<Music> popularMusicList = Music.find("select  m from Music m where addCount > 0 order by addCount desc ").fetch(10);
         
          Object[] res = new Object[] { musicList, popularMusicList };
          ControllerUtils.renderResultJson(res);

@@ -146,12 +146,6 @@ public class MusicAdmin extends CheckUserLogin {
         
         renderBinary(file, music.filaName);
         
-        /*
-         * 前端下载链接：
-         *  <a href="/MusicAdmin/downloadMusic" target="_blank" style="color: green;">下载>></a>
-         *  前端歌曲链接：
-         *  <source source="/MusicAdmin/getMusic?musicId=musicId" type="audio/mp3">
-         */
     }
     
     public static void getMusicImage(Long musicId) {

@@ -38,6 +38,14 @@
         margin-top: 10px;
         font-size: 14px;
     }
+    .second-div .added-title{
+        background: rgba(0,0,0,0.05);
+        padding: 10px;
+
+        color: #627b8c;
+        font-size: 20px;
+        font-weight: 700;
+    }
 </style>
 
 <div class="listen-music-container">
@@ -51,6 +59,9 @@
         </ul>
     </div>
     <div class="second-div">
+        <div class="added-title">
+            <span>添加 TOP10 榜单</span>
+        </div>
         <ul class="second-div-ul">
 
         </ul>
@@ -112,17 +123,17 @@
 </script>
 
 <script type="text/x-jquery-tmpl" id="secondMusicLiTmpl">
-    <li class="second-div-li" >
+    <li class="second-div-li active" >
+
         <div style="width: 50px;display: inline-block;float: left;">
             <img width="40px" height="40px" src="{{= imgPath}}" alt="">
         </div>
         <div style="width: auto;display: inline-block;">
-            <span class="song-title" ><a>{{= songTitle }}</a></span><br/>
-            <span class="share-user" >by {{= userName}}</span>
+            <span class="song-title" ><a href="/MusicAdmin/DetailsInfo?musicId={{= id}}">{{= songTitle }}</a></span><br/>
+            <span class="share-user" >by {{= username}}</span>
         </div>
 
-
-        <span class="badge">{{= heartCount}}</span>
+        <span class="badge">{{= addCount}}</span>
     </li>
 </script>
 

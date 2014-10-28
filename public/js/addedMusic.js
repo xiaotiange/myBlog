@@ -54,15 +54,19 @@ var yabe = yabe || {};
 
 
                     $(popularMusicJsonArray).each(function(index, item) {
+
+
                         if(item.imgPath ===undefined ||item.imgPath ==null || item.imgPath ==""){
                             popularMusicJsonArray[index].imgPath= "/public/img/logo.jpg";
                         }else{
                             popularMusicJsonArray[index].imgPath = "/MusicAdmin/getMusicImage?musicId="+item.id;
                         }
 
+
                     });
 
                     var secondliObjs = $("#secondMusicLiTmpl").tmpl(popularMusicJsonArray);
+
 
                     secondObj.html(secondliObjs);
 
