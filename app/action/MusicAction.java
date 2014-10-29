@@ -100,7 +100,19 @@ public class MusicAction {
     }
     */
     
-
+    public static boolean changeMusicCover(File sourceFile,String imgpath){
+        
+        int index = imgpath.indexOf(sourceFile.getName());
+        String imagePath = imgpath.subSequence(0, index)+sourceFile.getName()+".jpg";
+        File targetFile = new File(imagePath);
+      
+        File imgFile = saveFile(sourceFile, targetFile);
+        if(imgFile == null){
+            return false;
+        }
+         return true;     
+    }
+    
     public static String getMusicImage(File sourceFile,String imgpath){
 
         MP3File mp3file = null;
@@ -190,23 +202,13 @@ public class MusicAction {
         return absolutePth;
     }
     
-    
- private static File copyToFolder(File folder,File musicFile, String username) {
-        
-        
-        File targetFile = new File(folder, genFileName(username));
-        
-        while (targetFile.exists()) {
-            targetFile = new File(folder, genFileName(username)
-                    + "_" + new Random().nextInt(100000));
-        }
-        
-        
+private static File saveFile(File file, File targetFile) {
+             
         InputStream inBuff = null;
         OutputStream outBuff = null;
         try {
             // 新建文件输入流并对它进行缓冲
-            inBuff = new BufferedInputStream(new FileInputStream(musicFile));
+            inBuff = new BufferedInputStream(new FileInputStream(file));
 
             // 新建文件输出流并对它进行缓冲
             outBuff = new BufferedOutputStream(new FileOutputStream(targetFile));
@@ -241,6 +243,21 @@ public class MusicAction {
             }
                 
         }
+        
+        return targetFile;
+        
+    }   
+ private static File copyToFolder(File folder,File musicFile, String username) {
+        
+        
+        File targetFile = new File(folder, genFileName(username));
+        
+        while (targetFile.exists()) {
+            targetFile = new File(folder, genFileName(username)
+                    + "_" + new Random().nextInt(100000));
+        }
+        
+        targetFile = saveFile(musicFile, targetFile);
         
         return targetFile;
         
