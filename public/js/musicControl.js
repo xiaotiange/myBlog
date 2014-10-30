@@ -206,13 +206,6 @@ var repeat = localStorage.repeat || 0,
                 var shtml = '<source src = "/MusicAdmin/getMusic?musicId='+item.id+'" type="audio/mpeg">'
                 newaudio.html(shtml);
 
-                if(item.imgPath ===undefined ||item.imgPath ==null || item.imgPath ==""){
-                    $('.cover').html('<img src="/public/img/logo.jpg" alt="'+item.album+'">');
-                }else{
-                    $('.cover').html('<img src = "/MusicAdmin/getMusicImage?musicId='+item.id+'" alt="'+item.album+'">');
-                }
-
-                $('.tag').html('<strong>'+item.songTitle+'</strong><span class="artist">'+item.singer+'</span><span class="album">《'+item.album+'》</span>');
 
 
                 $('#playlist li').eq(i).find('.music-play-div').addClass('isPlaying');
@@ -228,6 +221,8 @@ var repeat = localStorage.repeat || 0,
                 audio.addEventListener('ended', ended, false);
             }
 
+            loadMusic(currentTrack);
+
             var hideShuffle = function(){
                 if ($('.shuffle').hasClass('enable green')){
                     shuffle = localStorage.shuffle = 'false';
@@ -239,8 +234,6 @@ var repeat = localStorage.repeat || 0,
                 $('.repeat-all').removeClass('all green');
                 $('.repeat-once').removeClass('once green');
             }
-
-            loadMusic(currentTrack);
 
             $(".img-div").unbind().hover(function(){
                 var parent = $(this).parent();

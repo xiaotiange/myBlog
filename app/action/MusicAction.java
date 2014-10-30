@@ -100,17 +100,15 @@ public class MusicAction {
     }
     */
     
-    public static boolean changeMusicCover(File sourceFile,String imgpath){
+    public static File changeMusicCover(File sourceFile,String imgpath,String fileName){
         
-        int index = imgpath.indexOf(sourceFile.getName());
-        String imagePath = imgpath.subSequence(0, index)+sourceFile.getName()+".jpg";
+        int index = imgpath.indexOf(fileName);
+        String imagePath = imgpath.subSequence(0, index)+fileName+".jpg";
         File targetFile = new File(imagePath);
       
         File imgFile = saveFile(sourceFile, targetFile);
-        if(imgFile == null){
-            return false;
-        }
-         return true;     
+      
+        return imgFile;
     }
     
     public static String getMusicImage(File sourceFile,String imgpath){

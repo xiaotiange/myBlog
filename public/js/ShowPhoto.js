@@ -11,7 +11,7 @@ var yabe = yabe || {};
     ShowPhoto.init = ShowPhoto.init || {};
     ShowPhoto.init = $.extend({
         doInit: function(container) {
-            container.find('#music-photo').unbind().change(function(){
+            container.find('#coverImg').unbind().change(function(){
                 ShowPhoto.show.doShowImage(container);
             });
 
@@ -26,10 +26,10 @@ var yabe = yabe || {};
         doShowImage: function(container){
 
             $('#preview').remove();
-            var newImg = '<img id="preview" name="imageFile"/>';
+            var newImg = '<img id="preview" height="250px" name="imageFile"/>';
             $('.img').html(newImg);
 
-            var oFile = container.find('#music-photo')[0].files[0];
+            var oFile = container.find('#coverImg')[0].files[0];
 
             var rFilter = /^(image\/jpeg|image\/png)$/i;
             if (! rFilter.test(oFile.type)) {
