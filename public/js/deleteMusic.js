@@ -27,7 +27,7 @@ yabe.Util.isValidMail = isValidMail;
                         alert(dataJson.msg);
                         return;
                     }
-                    var musicJsonArray = dataJson.res;
+                    var musicJsonArray = dataJson.res[0];
 
                     ulObj.html("");
                     if (musicJsonArray === undefined || musicJsonArray == null || musicJsonArray.length <= 0) {

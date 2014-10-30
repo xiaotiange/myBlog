@@ -90,7 +90,7 @@ public class UpLoad extends CheckUserLogin {
             }
         }
          
-        music.filePath = coverImg.getAbsolutePath();
+        music.imgPath = coverImg.getAbsolutePath();
         music.save();
 
         errMessage="恭喜亲，封面更换成功！";
