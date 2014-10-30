@@ -83,8 +83,8 @@ public class UpLoad extends CheckUserLogin {
             render("/music/musicDetails.html",errMessage,music);  
         }
         
-        if(StringUtils.isEmpty(music.filePath)){
-            File preFile = new File(music.filePath);
+        if(!StringUtils.isEmpty(music.imgPath)){
+            File preFile = new File(music.imgPath);
             if(preFile.exists()){
                 preFile.delete();
             }
