@@ -92,61 +92,6 @@ var repeat = localStorage.repeat || 0,
                 }
             });
 
-            // Switch track
-            var switchTrack = function(i){
-                if (i < 0){
-                    track = currentTrack = playlist.length - 1;
-                } else if (i >= playlist.length){
-                    track = currentTrack = 0;
-                } else {
-                    currentTrack = i;
-                }
-
-                loadMusic(currentTrack);
-                if (isPlaying == true) play();
-            }
-
-
-            // Shuffle
-            var shufflePlay = function(){
-                var time = new Date(),
-                    lastTrack = currentTrack;
-                currentTrack = time.getTime() % playlist.length;
-                if (lastTrack == currentTrack) ++currentTrack;
-                switchTrack(currentTrack);
-            }
-
-            // Fire when track ended
-            var ended = function(){
-                pause();
-                audio.currentTime = 0;
-                playCounts++;
-                if (continous == true) isPlaying = true;
-                if (repeat == 1){
-                    switchTrack(currentTrack);
-                } else {
-                    if (shuffle === 'true'){
-                        shufflePlay();
-                    } else {
-                        if (repeat == 2){
-                            switchTrack(++currentTrack);
-                        } else {
-                            if (currentTrack < playlist.length) switchTrack(++currentTrack);
-                        }
-                    }
-                }
-            }
-
-            var beforeLoad = function(){
-                var endVal = this.seekable && this.seekable.length ? this.seekable.end(0) : 0;
-                $('.progress .loaded').css('width', (100 / (this.duration || 1) * endVal) +'%');
-            }
-
-            // Fire when track loaded completely
-            var afterLoad = function(){
-                if (autoplay == true) play();
-            }
-
             var closeOtherPlay = function(i){
 
                 $('#playlist li').each(function(){
@@ -197,6 +142,37 @@ var repeat = localStorage.repeat || 0,
 
             };
 
+            // Fire when track ended
+            var ended = function(){
+                pause();
+                audio.currentTime = 0;
+                playCounts++;
+                if (continous == true) isPlaying = true;
+                if (repeat == 1){
+                    switchTrack(currentTrack);
+                } else {
+                    if (shuffle === 'true'){
+                        shufflePlay();
+                    } else {
+                        if (repeat == 2){
+                            switchTrack(++currentTrack);
+                        } else {
+                            if (currentTrack < playlist.length) switchTrack(++currentTrack);
+                        }
+                    }
+                }
+            }
+
+            var beforeLoad = function(){
+                var endVal = this.seekable && this.seekable.length ? this.seekable.end(0) : 0;
+                $('.progress .loaded').css('width', (100 / (this.duration || 1) * endVal) +'%');
+            }
+
+            // Fire when track loaded completely
+            var afterLoad = function(){
+                if (autoplay == true) play();
+            }
+
             // Load track
             var loadMusic = function(i){
                 var item = playlist[i];
@@ -220,6 +196,32 @@ var repeat = localStorage.repeat || 0,
                 audio.addEventListener('canplay', afterLoad, false);
                 audio.addEventListener('ended', ended, false);
             }
+
+
+            // Switch track
+            var switchTrack = function(i){
+                if (i < 0){
+                    track = currentTrack = playlist.length - 1;
+                } else if (i >= playlist.length){
+                    track = currentTrack = 0;
+                } else {
+                    currentTrack = i;
+                }
+
+                loadMusic(currentTrack);
+                if (isPlaying == true) play();
+            }
+
+
+            // Shuffle
+            var shufflePlay = function(){
+                var time = new Date(),
+                    lastTrack = currentTrack;
+                currentTrack = time.getTime() % playlist.length;
+                if (lastTrack == currentTrack) ++currentTrack;
+                switchTrack(currentTrack);
+            }
+
 
             loadMusic(currentTrack);
 
@@ -358,7 +360,7 @@ var repeat = localStorage.repeat || 0,
 
 
 
-            if (shuffle === 'true') $('.shuffle').addClass('enable');
+            if (shuffle === 'true') $('.shuffle').addClass('enable green');
             if (repeat == 1){
                 $('.repeat-once').addClass('once green');
             } else if (repeat == 2){
