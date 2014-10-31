@@ -26,7 +26,7 @@ var yabe = yabe || {};
         doShowImage: function(container){
 
             $('#preview').remove();
-            var newImg = '<img id="preview" height="250px" name="imageFile"/>';
+            var newImg = '<img id="preview" style="width: 350px" name="imageFile"/>';
             $('.img').html(newImg);
 
             var oFile = container.find('#coverImg')[0].files[0];

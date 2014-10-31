@@ -42,7 +42,7 @@ function clearInfo() {
 var fileSelectHandler = function() {
 
     $('#preview').remove();
-    var newImg = '<img id="preview" name="imageFile"/>';
+    var newImg = '<img id="preview" style="height: 400px"  name="imageFile"/>';
     $('.img').html(newImg);
     // get selected file
     var oFile = $('#image_file')[0].files[0];

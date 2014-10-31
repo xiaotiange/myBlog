@@ -222,6 +222,12 @@ var repeat = localStorage.repeat || 0,
                 switchTrack(currentTrack);
             }
 
+            if (shuffle === 'true') $('.shuffle').addClass('enable green');
+            if (repeat == 1){
+                $('.repeat-once').addClass('once green');
+            } else if (repeat == 2){
+                $('.repeat-all').addClass('all green');
+            }
 
             loadMusic(currentTrack);
 
@@ -359,13 +365,6 @@ var repeat = localStorage.repeat || 0,
             });
 
 
-
-            if (shuffle === 'true') $('.shuffle').addClass('enable green');
-            if (repeat == 1){
-                $('.repeat-once').addClass('once green');
-            } else if (repeat == 2){
-                $('.repeat-all').addClass('all green');
-            }
 
             $('.repeat-all').unbind().click(function(){
                 if ($(this).hasClass('all green')){

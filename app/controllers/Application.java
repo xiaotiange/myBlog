@@ -25,19 +25,18 @@ public class Application extends CheckUserLogin {
 //        renderArgs.put("blogBaseline", Play.configuration.getProperty("blog.baseline"));
 //    }
     
-    private static final Logger log = LoggerFactory.getLogger(Application.class);
-            
+   /*         
     public static void show(Long id){
         Post post=Post.findById(id);
         String randomID=Codec.UUID();
         render(post,randomID);
     }
-    
+    */
     public static void index() {
         render("/music/music.html");
         //render("/home.html");
     }
-    
+    /*
     public static void postComment(Long postId, String author,String content, String code,String randomID) {
         
         User user = connect();
@@ -69,4 +68,5 @@ public class Application extends CheckUserLogin {
         List<Post> posts = Post.findTaggedWith(tag);
         render(tag, posts);
         }
+        */
 }

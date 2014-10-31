@@ -2,11 +2,14 @@ package models;
 
 import javax.persistence.Entity;
 
+
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
-@Entity
+@Entity(name = SearchLog.TABLE_NAME)
 public class SearchLog extends Model {
+    
+    public final static String TABLE_NAME = "search_log";
     
     @Required
     public String keyword;
@@ -27,6 +30,7 @@ public class SearchLog extends Model {
     public SearchLog(String keyword){
         super();
         this.searchCount = 1;
+        this.keyword = keyword;
         this.firstSearchTs = System.currentTimeMillis();
         this.lastSearchTs = this.firstSearchTs;
     }

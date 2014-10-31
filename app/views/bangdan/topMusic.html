@@ -1,0 +1,156 @@
+#{extends 'index.html' /}
+#{set title:"临时列表"/}
+
+<style type="text/css">
+    .top-music-container{
+        position: absolute;
+        right: 0px;
+        left: 70px;
+        bottom: 0px;
+        top:0;
+        background: #fff;
+        overflow: hidden;
+        background: url("/public/img/music/music_3.jpg") no-repeat center -200px;
+    }
+    .top-div{
+        width: 25%;
+        float: left;
+        overflow: hidden;
+        background: rgba(0,0,0,0.75);
+        border-left: 1px solid #fff;
+        height: 100%;
+        overflow: hidden;
+    }
+    .top-div:hover{
+       overflow-y: auto;
+    }
+    .top-div ul{
+        width: 90%;
+        margin: 0 auto;
+        height: 100%;
+    }
+    .top-div ul li{
+        height: 70px;
+
+    }
+    .title-div{
+        margin: 10px auto;
+        width: 90%;
+    }
+    .top-title,.listen-btn{
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .listen-btn{
+        cursor: pointer;
+    }
+    .listen-btn:hover{
+        opacity: 0.7;
+    }
+    .music-user-info{
+        margin-left: 10px;
+        width: auto;
+        display: inline-block;
+        font-size: 16px;
+    }
+    .music-user-info span{
+        height: 30px;
+        line-height: 30px;
+    }
+    .top-index{
+        font-size: 25px;
+        margin-top: 15px;
+        font-weight: 700;
+        text-align: center;
+        width: 30px;
+    }
+</style>
+
+<div class="top-music-container">
+    <div class="top-div first-div" style="color: #fff;">
+        <div class="event-link">
+            <div class="title-div">
+                <span class="top-title" >Listen TOP</span>
+            </div>
+            <ul class="first-div-ul">
+
+            </ul>
+            <div class="title-div" style="text-align: center">
+                <span class="listen-btn" order="first" >全部收听</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="top-div second-div" style="color: #fad733;">
+        <div class="event-link">
+            <div class="title-div">
+                <span class="top-title" >Heart TOP</span>
+            </div>
+            <ul class="second-div-ul">
+
+            </ul>
+
+            <div class="title-div" style="text-align: center">
+                <span class="listen-btn" order="second" >全部收听</span>
+            </div>
+
+        </div>
+    </div>
+    <div class="top-div third-div" style="color: #1ab667">
+        <div class="event-link">
+            <div class="title-div">
+                <span class="top-title" >Add TOP</span>
+            </div>
+            <ul class="third-div-ul">
+
+            </ul>
+
+            <div class="title-div" style="text-align: center">
+                <span class="listen-btn" order="third" >全部收听</span>
+            </div>
+
+        </div>
+    </div>
+    <div class="top-div four-div" style="color: #f47f7f">
+        <div class="event-link">
+            <div class="title-div">
+                <span class="top-title" >New Songs</span>
+            </div>
+            <ul class="four-div-ul">
+
+            </ul>
+
+            <div class="title-div" style="text-align: center">
+                <span class="listen-btn" order="four" >全部收听</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/x-jquery-tmpl" id="topMusicLiTmpl">
+    <li class="music-div-li" >
+        <div style="width: 60px;display: inline-block;float: left;">
+            <img width="55px" height="55px" src="{{= imgPath}}" alt="">
+        </div>
+        <div class="music-user-info">
+            <span class="song-title" ><a href="/MusicAdmin/index?songinfo={{= songTitle}}">{{= songTitle }}</a></span><br/>
+            <span class="share-user" >by {{= username}}</span>
+        </div>
+
+        <span class="top-index right">{{= index}}</span>
+
+    </li>
+</script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        yabe.gcs("/public/js/topmusic.js", function () {
+            yabe.GenTopMusic.init.doInit($(".top-music-container"));
+        });
+    })
+
+</script>
+
