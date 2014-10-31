@@ -198,7 +198,7 @@ var repeat = localStorage.repeat || 0,
                 audio.addEventListener('canplay', afterLoad, false);
                 audio.addEventListener('ended', ended, false);
                 
-                if (isPlaying == true) play();
+              
             }
 
 
@@ -213,7 +213,7 @@ var repeat = localStorage.repeat || 0,
                 }
 
                 loadMusic(currentTrack);
-              
+                if (isPlaying == true) play();
             }
 
 
