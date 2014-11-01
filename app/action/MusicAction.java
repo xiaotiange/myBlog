@@ -136,20 +136,19 @@ public class MusicAction {
 
                 fos = new FileOutputStream(imagePath);  
                 fos.write(imageData);  
-                fos.close();
                 return imagePath;
-            } catch (IOException e) {              
+            } catch (Exception e) {              
                 log.error(e.getMessage(), e);
                 return "";
-            } catch (TagException e) {
-                log.error(e.getMessage(), e);
-                return "";
-            } catch (ReadOnlyFileException e) {
-                log.error(e.getMessage(), e);
-                return "";
-            } catch (InvalidAudioFrameException e) {
-                log.error(e.getMessage(), e);
-                return "";
+            }finally{
+                // 关闭流
+                if (fos != null) {
+                    try {
+                        fos.close();
+                    } catch (Exception ex) {
+                        log.error(ex.getMessage(), ex);
+                    }
+                }
             }
     
               

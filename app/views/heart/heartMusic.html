@@ -46,6 +46,14 @@
         font-size: 20px;
         font-weight: 700;
     }
+    .heart-tip{
+        margin-top: 10px;
+
+    }
+    .heart-tip span{
+        margin-left: 8px;
+        margin-top: 10px;
+    }
 </style>
 
 <div class="listen-music-container">
@@ -134,7 +142,7 @@
         </div>
 
 
-        <span class="badge">{{= heartCount}}</span>
+        <span class="heart-tip glyphicon glyphicon-thumbs-up right"><span>{{= heartCount}}</span></span>
 
     </li>
 </script>

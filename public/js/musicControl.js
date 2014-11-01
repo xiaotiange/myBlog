@@ -107,13 +107,13 @@ var repeat = localStorage.repeat || 0,
 
                         }
                         thisObj.find(".play-music").removeClass("glyphicon-play").addClass("glyphicon-pause");
+                        $(this).find(".isplay-tip").show();
                     }else{
                         var thisObj = $(this).find(".music-play-div");
                         if(thisObj.hasClass("isPlaying")){
                             thisObj.removeClass("isPlaying");
                             thisObj.find(".play-music").removeClass("glyphicon-pause").addClass("glyphicon-play");
                             thisObj.hide();
-
                         }
                     }
 
@@ -131,10 +131,12 @@ var repeat = localStorage.repeat || 0,
 
                         }
                         thisObj.removeClass("glyphicon-play").addClass("glyphicon-pause");
+                        $(this).find(".isplay-tip").show();
                     }else{
                         if(thisObj.hasClass("isPlaying")){
                             thisObj.removeClass("isPlaying");
                             thisObj.removeClass("glyphicon-pause").addClass("glyphicon-play");
+                            $(this).find(".isplay-tip").hide();
                         }
                     }
 

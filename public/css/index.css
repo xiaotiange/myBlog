@@ -456,3 +456,9 @@ a:hover{
     -webkit-backface-visibility: hidden;
     font-family: 'Glyphicons Halflings';
 }
+.isplay-tip{
+    position: absolute;
+    top:-10px;
+    left: 20px;
+    display: none;
+}
