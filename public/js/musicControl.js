@@ -92,40 +92,7 @@ var repeat = localStorage.repeat || 0,
                 }
             });
 
-          
-
-            // Fire when track ended
-            var ended = function(){
-                pause();
-                audio.currentTime = 0;
-                playCounts++;
-                if (continous == true) isPlaying = true;
-                if (repeat == 1){
-                    switchTrack(currentTrack);
-                } else {
-                    if (shuffle === 'true'){
-                        shufflePlay();
-                    } else {
-                        if (repeat == 2){
-                            switchTrack(++currentTrack);
-                        } else {
-                            if (currentTrack < playlist.length) switchTrack(++currentTrack);
-                        }
-                    }
-                }
-            }
-
-            var beforeLoad = function(){
-                var endVal = this.seekable && this.seekable.length ? this.seekable.end(0) : 0;
-                $('.progress .loaded').css('width', (100 / (this.duration || 1) * endVal) +'%');
-            }
-
-            // Fire when track loaded completely
-            var afterLoad = function(){
-                if (autoplay == true) play();
-            }
-
-  var closeOtherPlay = function(i){
+            var closeOtherPlay = function(i){
 
                 $('#playlist li').each(function(){
                     var _i = $(this).index();
@@ -175,6 +142,17 @@ var repeat = localStorage.repeat || 0,
 
             };
 
+
+            var beforeLoad = function(){
+                var endVal = this.seekable && this.seekable.length ? this.seekable.end(0) : 0;
+                $('.progress .loaded').css('width', (100 / (this.duration || 1) * endVal) +'%');
+            }
+
+            // Fire when track loaded completely
+            var afterLoad = function(){
+                if (autoplay == true) play();
+            }
+
             // Load track
             var loadMusic = function(i){
                 var item = playlist[i];
@@ -197,8 +175,6 @@ var repeat = localStorage.repeat || 0,
                 audio.addEventListener('durationchange', beforeLoad, false);
                 audio.addEventListener('canplay', afterLoad, false);
                 audio.addEventListener('ended', ended, false);
-                
-              
             }
 
 
@@ -226,9 +202,30 @@ var repeat = localStorage.repeat || 0,
                 switchTrack(currentTrack);
             }
 
-            if (shuffle === 'true'){
-               $('.shuffle').addClass('enable green');        
-            }else if (repeat == 1){
+
+            // Fire when track ended
+            var ended = function(){
+                pause();
+                audio.currentTime = 0;
+                playCounts++;
+                if (continous == true) isPlaying = true;
+                if (repeat == 1){
+                    switchTrack(currentTrack);
+                } else {
+                    if (shuffle === 'true'){
+                        shufflePlay();
+                    } else {
+                        if (repeat == 2){
+                            switchTrack(++currentTrack);
+                        } else {
+                            if (currentTrack < playlist.length) switchTrack(++currentTrack);
+                        }
+                    }
+                }
+            }
+
+            if (shuffle === 'true') $('.shuffle').addClass('enable green');
+            if (repeat == 1){
                 $('.repeat-once').addClass('once green');
             } else if (repeat == 2){
                 $('.repeat-all').addClass('all green');
@@ -249,9 +246,9 @@ var repeat = localStorage.repeat || 0,
             }
 
             $(".img-div").unbind().hover(function(){
-                var parent = $(this).parent();
-                parent.find(".music-play-div").show();
-                   },
+                    var parent = $(this).parent();
+                    parent.find(".music-play-div").show();
+                },
                 function(){
                     var parent = $(this).parent();
                     var thisdiv = parent.find(".music-play-div");

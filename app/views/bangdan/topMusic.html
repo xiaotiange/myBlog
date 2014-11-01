@@ -72,6 +72,14 @@
         text-align: center;
         width: 30px;
     }
+    .song-title a{
+        display: block;
+        width: 150px;
+        height: 30px;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        overflow:hidden;
+    }
 </style>
 
 <div class="top-music-container">
@@ -142,7 +150,7 @@
             <img width="55px" height="55px" src="{{= imgPath}}" alt="">
         </div>
         <div class="music-user-info">
-            <span class="song-title" ><a href="/MusicAdmin/index?songinfo={{= songTitle}}">{{= songTitle }}</a></span><br/>
+            <span class="song-title" ><a href="/MusicAdmin/index?songinfo={{= songTitle}}" title="{{= songTitle}}">{{= songTitle }}</a></span><br/>
             <span class="share-user" >by {{= username}}</span>
         </div>
 
