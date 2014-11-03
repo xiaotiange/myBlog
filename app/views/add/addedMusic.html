@@ -54,7 +54,7 @@
             <img class="img-full" src="/public/img/logo.jpg" alt="">
         </div>
 
-        <ul class="first-div-ul">
+        <ul class="first-div-ul playlist-ul">
 
         </ul>
     </div>
@@ -113,6 +113,16 @@
 
 <script type="text/x-jquery-tmpl" id="firstMusicLiTmpl">
     <li class="first-div-li" >
+        <div class="isplay-tip">
+              <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
+                    <span class="bar1 a1 bg-primary lter"></span>
+                    <span class="bar2 a2 bg-info lt"></span>
+                    <span class="bar3 a3 bg-success"></span>
+                    <span class="bar4 a4 bg-warning dk"></span>
+                    <span class="bar5 a5 bg-danger dker"></span>
+              </span>
+        </div>
+
         <span class="play-music glyphicon glyphicon-play"  data-toggle="tooltip"  title="播放">&nbsp;</span>
         <span class="" >{{= songTitle }}</span> --
         <span class="singer " >{{= singer}}</span>

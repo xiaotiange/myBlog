@@ -92,6 +92,7 @@ var repeat = localStorage.repeat || 0,
                 }
             });
 
+
             var closeOtherPlay = function(i){
 
                 $('#playlist li').each(function(){
@@ -119,7 +120,7 @@ var repeat = localStorage.repeat || 0,
 
                 });
 
-                $('.first-div-ul li').each(function(){
+                $('.playlist-ul li').each(function(){
                     var _i = $(this).index();
                     var thisObj = $(this).find(".play-music");
 
@@ -138,9 +139,11 @@ var repeat = localStorage.repeat || 0,
                             thisObj.removeClass("glyphicon-pause").addClass("glyphicon-play");
                             $(this).find(".isplay-tip").hide();
                         }
+                        $(this).find(".isplay-tip").hide();
                     }
 
                 });
+
 
             };
 

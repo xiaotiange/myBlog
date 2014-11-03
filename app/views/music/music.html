@@ -45,6 +45,11 @@
         -webkit-border-radius: 20px;
         -moz-border-radius: 20px;
     }
+    .isplay-tip {
+        position: absolute;
+        top: 10px;
+        left: 150px;
+    }
 
 </style>
 
@@ -96,6 +101,16 @@
                     <div class="target-tag">
                         <span class="plus-tag glyphicon glyphicon-plus-sign left" musicId="{{= id}}" style="font-size:12px;"></span>
                         <span class="heart-tag glyphicon glyphicon-heart right" musicId="{{= id}}" style="font-size:12px;"></span>
+                    </div>
+
+                    <div class="isplay-tip">
+              <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
+                    <span class="bar1 a1 bg-primary lter"></span>
+                    <span class="bar2 a2 bg-info lt"></span>
+                    <span class="bar3 a3 bg-success"></span>
+                    <span class="bar4 a4 bg-warning dk"></span>
+                    <span class="bar5 a5 bg-danger dker"></span>
+              </span>
                     </div>
                 </div>
             </div>
