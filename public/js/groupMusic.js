@@ -45,7 +45,8 @@
 
                 ulObj.html(liObjs);
 
-                yabe.MusicControl.control.staticEvent(playlist);
+                var container = $(".grout-music-container");
+                yabe.MusicControl.control.staticEvent(container,playlist);
 
             }
         });

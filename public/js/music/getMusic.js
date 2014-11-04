@@ -61,7 +61,7 @@ var yabe = yabe || {};
 
                     LoadingMusic.show.doShowUser(userJsonArray);
 
-                    yabe.MusicControl.control.staticEvent(playlist);
+                    yabe.MusicControl.control.staticEvent(container,playlist);
 
                 }
             });

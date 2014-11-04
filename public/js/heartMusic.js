@@ -71,7 +71,7 @@ var yabe = yabe || {};
 
                     secondObj.html(secondliObjs);
 
-                    yabe.MusicControl.control.staticEvent(playlist);
+                    yabe.MusicControl.control.staticEvent(container,playlist);
 
                 }
             });

@@ -68,15 +68,21 @@ var yabe = yabe || {};
 
                         if(order == "first"){
                             playlist =  firstJsonArray.slice(0);
+                            thisObj = container.find(".first-div");
                         }else if(order == "second"){
                             playlist =  secondJsonArray.slice(0);
+                            thisObj = container.find(".second-div");
                         }else if(order == "third"){
                             playlist =  thirdJsonArray.slice(0);
+                            thisObj = container.find(".third-div");
                         }else{
                             playlist =  fourJsonArray.slice(0);
+                            thisObj = container.find(".four-div");
                         }
 
-                        yabe.MusicControl.control.staticEvent(playlist);
+                        container.find(".isplay-tip").hide();
+
+                        yabe.MusicControl.control.staticEvent(thisObj,playlist);
                     });
 
 

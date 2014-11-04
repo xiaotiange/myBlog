@@ -18,15 +18,6 @@ body {
 .h6 {
   margin: 0;
 }
-a {
-  color: #545a5f;
-  text-decoration: none;
-}
-a:hover,
-a:focus {
-  color: #303437;
-  text-decoration: none;
-}
 label {
   font-weight: normal;
 }
@@ -530,11 +521,6 @@ a.list-group-item:focus {
 }
 .navbar-fixed-top.header-md + * {
   padding-top: 60px;
-}
-.header,
-.footer {
-  min-height: 50px;
-  padding: 0 15px;
 }
 .header > p,
 .footer > p {

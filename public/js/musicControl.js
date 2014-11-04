@@ -15,7 +15,7 @@ var repeat = localStorage.repeat || 0,
 
     MusicControl.control = MusicControl.control || {};
     MusicControl.control = $.extend({
-        staticEvent: function(playlist) {
+        staticEvent: function(container,playlist) {
             var time = new Date(),
                 currentTrack = shuffle === 'true' ? time.getTime() % playlist.length : 0,
                 trigger = false,
@@ -120,7 +120,7 @@ var repeat = localStorage.repeat || 0,
 
                 });
 
-                $('.playlist-ul li').each(function(){
+                container.find('.playlist-ul li').each(function(){
                     var _i = $(this).index();
                     var thisObj = $(this).find(".play-music");
 
@@ -305,7 +305,7 @@ var repeat = localStorage.repeat || 0,
             $('.first-div-ul li').each(function(){
                 var container = $(this);
                 var _i = $(this).index()
-                container.find(".play-music").unbind().click(function(){
+                $(".play-music").unbind().click(function(){
                     if($(this).hasClass("isPlaying")){
                         if($(this).hasClass("glyphicon-play")){
                             $(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
@@ -332,7 +332,7 @@ var repeat = localStorage.repeat || 0,
             $('.second-div-ul li').each(function(){
                 var container = $(this);
                 var _i = $(this).index()
-                container.find(".play-music").unbind().click(function(){
+                $(".play-music").unbind().click(function(){
                     switchTrack(_i);
                 });
             });
@@ -342,8 +342,8 @@ var repeat = localStorage.repeat || 0,
             $('#playlist li').each(function(){
                 var container = $(this);
                 var _i = $(this).index()
-                container.find(".play-music").unbind().click(function(){
-                    if(container.find(".music-play-div").hasClass("isPlaying")){
+                $(".play-music").unbind().click(function(){
+                    if($(".music-play-div").hasClass("isPlaying")){
                         if($(this).hasClass("glyphicon-play")){
                             $(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
                             play();
@@ -353,7 +353,7 @@ var repeat = localStorage.repeat || 0,
                         }
                     }else{
                         $(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
-                        container.find(".music-play-div").addClass("isPlaying");
+                        $(".music-play-div").addClass("isPlaying");
                         switchTrack(_i);
                     }
 
