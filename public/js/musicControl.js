@@ -170,7 +170,7 @@ var repeat = localStorage.repeat || 0,
 
 
                 $('#playlist li').eq(i).find('.music-play-div').addClass('isPlaying');
-                $('.first-div-ul li').eq(i).find('.play-music').addClass('isPlaying').removeClass("glyphicon-play").addClass("glyphicon-pause");
+                container.find('.first-div-ul li').eq(i).find('.play-music').addClass('isPlaying').removeClass("glyphicon-play").addClass("glyphicon-pause");
 
                 closeOtherPlay(i);
 
@@ -250,7 +250,7 @@ var repeat = localStorage.repeat || 0,
                 $('.repeat-once').removeClass('once green');
             }
 
-            $(".img-div").unbind().hover(function(){
+            container.find(".img-div").unbind().hover(function(){
                     var parent = $(this).parent();
                     parent.find(".music-play-div").show();
                 },
@@ -295,17 +295,17 @@ var repeat = localStorage.repeat || 0,
              *
              * **************/
 
-            $('.first-div-ul li').each(function(){
+            container.find('.first-div-ul li').each(function(){
                 $(this).unbind().dblclick(function(){
                     var _i = $(this).index()
                     switchTrack(_i);
                 });
             });
 
-            $('.first-div-ul li').each(function(){
+            container.find('.first-div-ul li').each(function(){
                 var container = $(this);
                 var _i = $(this).index()
-                $(".play-music").unbind().click(function(){
+                container.find(".play-music").unbind().click(function(){
                     if($(this).hasClass("isPlaying")){
                         if($(this).hasClass("glyphicon-play")){
                             $(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
@@ -322,28 +322,28 @@ var repeat = localStorage.repeat || 0,
                 });
             });
 
-            $('.second-div-ul li').each(function(){
+            container.find('.second-div-ul li').each(function(){
                 $(this).unbind().dblclick(function(){
                     var _i = $(this).index()
                     switchTrack(_i);
                 });
             });
 
-            $('.second-div-ul li').each(function(){
+            container.find('.second-div-ul li').each(function(){
                 var container = $(this);
                 var _i = $(this).index()
-                $(".play-music").unbind().click(function(){
+                container.find(".play-music").unbind().click(function(){
                     switchTrack(_i);
                 });
             });
             /******************&**************/
             /******************&**************/
 
-            $('#playlist li').each(function(){
+            container.find('#playlist li').each(function(){
                 var container = $(this);
                 var _i = $(this).index()
-                $(".play-music").unbind().click(function(){
-                    if($(".music-play-div").hasClass("isPlaying")){
+                container.find(".play-music").unbind().click(function(){
+                    if(container.find(".music-play-div").hasClass("isPlaying")){
                         if($(this).hasClass("glyphicon-play")){
                             $(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
                             play();
@@ -353,7 +353,7 @@ var repeat = localStorage.repeat || 0,
                         }
                     }else{
                         $(this).removeClass("glyphicon-play").addClass("glyphicon-pause");
-                        $(".music-play-div").addClass("isPlaying");
+                        container.find(".music-play-div").addClass("isPlaying");
                         switchTrack(_i);
                     }
 
