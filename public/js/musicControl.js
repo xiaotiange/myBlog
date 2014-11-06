@@ -111,6 +111,7 @@ var repeat = localStorage.repeat || 0,
                         $(this).find(".isplay-tip").show();
                     }else{
                         var thisObj = $(this).find(".music-play-div");
+                        $(this).find(".isplay-tip").hide();
                         if(thisObj.hasClass("isPlaying")){
                             thisObj.removeClass("isPlaying");
                             thisObj.find(".play-music").removeClass("glyphicon-pause").addClass("glyphicon-play");
@@ -172,7 +173,6 @@ var repeat = localStorage.repeat || 0,
                 $('#playlist li').eq(i).find('.music-play-div').addClass('isPlaying');
                 container.find('.first-div-ul li').eq(i).find('.play-music').addClass('isPlaying').removeClass("glyphicon-play").addClass("glyphicon-pause");
 
-                closeOtherPlay(i);
 
                 audio = newaudio[0];
                 audio.volume = $('.mute').hasClass('enable') ? 0 : volume;
@@ -180,6 +180,8 @@ var repeat = localStorage.repeat || 0,
                 audio.addEventListener('durationchange', beforeLoad, false);
                 audio.addEventListener('canplay', afterLoad, false);
                 audio.addEventListener('ended', ended, false);
+
+                closeOtherPlay(i);
             }
 
 
@@ -360,12 +362,12 @@ var repeat = localStorage.repeat || 0,
                 });
             });
 
-            $(".plus-tag").unbind().click(function(){
+            container.find(".plus-tag").unbind().click(function(){
                 var thisObj = $(this);
                 MusicControl.submit.doAddSubmit(thisObj);
 
             });
-            $(".heart-tag").unbind().click(function(){
+            container.find(".heart-tag").unbind().click(function(){
                 var thisObj = $(this);
                 MusicControl.submit.doHeartSubmit(thisObj);
 

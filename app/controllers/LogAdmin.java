@@ -71,8 +71,7 @@ public class LogAdmin extends CheckUserLogin{
         ControllerUtils.renderResultJson(musicList);
               
     }
-    
-    private static String selectParam = " m.id, n.listenCount, n.heartCount, n.addCount, m.songTitle,m.username,m.filePath ";
+
     
     public static void queryMyAddedMusic(){
         User user = connect();
