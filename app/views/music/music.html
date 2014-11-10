@@ -2,7 +2,6 @@
 #{set title:"我的小屋"/}
 
 <link rel="stylesheet" href="@{'public/css/music.css'}" />
-<link rel="stylesheet" href="/public/css/myMusic.css">
 <style type="text/css">
     .share-music-user{
         width: 100%;
@@ -50,7 +49,23 @@
         top: 10px;
         left: 150px;
     }
-
+    .clear{
+        clear: both;
+    }
+    #playlist{
+        overflow: hidden;
+    }
+    .my-music-ul{
+        overflow: hidden;
+        position: relative;
+        margin: 0;
+    }
+    .unit{
+        float: left;
+        width: 20%;
+        margin: 0;
+        padding: 0;
+    }
 </style>
 
 
@@ -62,11 +77,10 @@
 
           <div id="playlist">
 
-              <ul class="my-music-ul" style="margin-top: 15px;">
+              <ul class="my-music-ul" style="display: none;">
 
               </ul>
 
-              <div id="paging-div" style="text-align:center;margin-top:8px;"></div>
           </div>
       </div>
       <div class="my-music-info">
@@ -84,7 +98,7 @@
 <script type="text/x-jquery-tmpl" id="myMusicLiTmpl">
     <li class="unit">
         <div class="info" style="width:100%;height:100%;margin:0 auto;">
-            <div class="img-div" style="width:100%;height:240px;">
+            <div class="img-div" style="width:100%;height:100%;">
                 <img src="{{= imgPath}}" width="100%" height="100%" alt="{{= songTitle}}">
                 <div class="music-play-div">
                     <div class="top-target-tag">
@@ -114,7 +128,7 @@
                     </div>
                 </div>
             </div>
-            <div class="song-info" style="overflow:hidden;">
+            <div class="song-info" style="display:none">
                 <span class="songTitle">{{= songTitle}}</span>
                 <span class="singer">{{= singer}}</span>
             </div>

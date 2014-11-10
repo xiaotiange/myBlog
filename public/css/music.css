@@ -63,21 +63,12 @@ p.view{
     list-style-type: none;
     overflow: hidden;
 }
-.my-music-ul{
-    width: 100%;
-}
-
 #playlist ul{
     overflow: hidden;
     margin-left: 0;
-    padding-left: 20px;
 }
 
 #playlist ul li{
-    width: 200px;
-    height: 300px;
-    margin-left: 15px;
-    margin-top: 10px;
     overflow: hidden;
     display: inline-block;
 }
