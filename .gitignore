@@ -23,4 +23,5 @@ zrb
 *.ipr
 logs
 .idea
+test-result
 

@@ -164,9 +164,9 @@ var repeat = localStorage.repeat || 0,
                 var item = playlist[i];
 
                 var	newaudio = $('.audio');
-                newaudio.html("");
-                var shtml = '<source src = "/MusicAdmin/getMusic?musicId='+item.id+'" type="audio/mpeg">'
-                newaudio.html(shtml);
+                newaudio.attr("src","/MusicAdmin/getMusic?musicId="+item.id);
+               // var shtml = '<source src = "/MusicAdmin/getMusic?musicId='+item.id+'" type="audio/mpeg">'
+               // newaudio.html(shtml);
 
 
 
