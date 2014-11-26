@@ -168,8 +168,6 @@ var repeat = localStorage.repeat || 0,
                // var shtml = '<source src = "/MusicAdmin/getMusic?musicId='+item.id+'" type="audio/mpeg">'
                // newaudio.html(shtml);
 
-
-
                 $('#playlist li').eq(i).find('.music-play-div').addClass('isPlaying');
                 container.find('.first-div-ul li').eq(i).find('.play-music').addClass('isPlaying').removeClass("glyphicon-play").addClass("glyphicon-pause");
 
