@@ -3,6 +3,26 @@
     var playlist=[];
 
     var param = {};
+    var loadingTags = function(){
+        var ulObj = $(".assort-tag-ul");
+
+        $.ajax({
+            type: 'post',
+            url: '/MusicListen/queryMusicTags',
+            data: param,
+            success: function (dataJson) {
+
+                var tagJsonArray = dataJson.res;
+
+                var liObjs = $("#groupMusicTagsLiTmpl").tmpl(tagJsonArray);
+
+                ulObj.html(liObjs);
+
+            }
+        });
+
+    }
+
     var loadingMusic = function(){
         var ulObj = $(".my-music-ul");
 
@@ -45,6 +65,15 @@
 
                 ulObj.html(liObjs);
 
+                $('.tag-select').unbind().click(function(){
+                    var tags = $(this).attr("tags");
+                    param.tags = tags;
+                    $(".assort-tag-ul").find('.tag-select').removeClass("isSelect");
+                    $(this).addClass("isSelect");
+
+                    loadingMusic();
+                });
+
                 var container = $(".grout-music-container");
                 yabe.MusicControl.control.staticEvent(container,playlist);
 
@@ -53,16 +82,10 @@
 
     }
 
+    loadingTags();
     param.tags = "";
     loadingMusic();
 
-    $('.tag-select').unbind().click(function(){
-        var tags = $(this).attr("tags");
-        param.tags = tags;
-        $(".assort-tag-ul").find('.tag-select').removeClass("isSelect");
-        $(this).addClass("isSelect");
 
-        loadingMusic();
-    });
 
 })(jQuery);

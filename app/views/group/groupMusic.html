@@ -73,23 +73,7 @@
 <div class="grout-music-container">
     <div class="assort-tag">
         <ul class="assort-tag-ul">
-            <li class="tag-select" tags="k-pop">k-pop</li>
-            <li class="tag-select" tags="blues">blues</li>
-            <li class="tag-select" tags="classical">classical</li>
-            <li class="tag-select" tags="hip-pop">hip-pop</li>
-            <li class="tag-select" tags="R&B">R&B</li>
-            <li class="tag-select" tags="爵士">爵士</li>
-            <li class="tag-select" tags="中国风">中国风</li>
-            <li class="tag-select" tags="摇滚">摇滚</li>
-            <li class="tag-select" tags="雷鬼">雷鬼</li>
-            <li class="tag-select" tags="说唱">说唱</li>
-            <li class="tag-select" tags="抒情">抒情</li>
-            <li class="tag-select" tags="动感">动感</li>
-            <li class="tag-select" tags="轻音乐">轻音乐</li>
-            <li class="tag-select" tags="国语">国语</li>
-            <li class="tag-select" tags="日韩">日韩</li>
-            <li class="tag-select" tags="欧美">欧美</li>
-            <li class="tag-select" tags="粤语">粤语</li>
+
         </ul>
     </div>
 
@@ -109,6 +93,9 @@
     </div>
 </div>
 
+<script type="text/x-jquery-tmpl" id="groupMusicTagsLiTmpl">
+    <li class="tag-select" tags="{{= name}}">{{= name}}</li>
+</script>
 
 <script type="text/x-jquery-tmpl" id="groupMusicLiTmpl">
     <li class="unit">
