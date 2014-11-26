@@ -132,6 +132,7 @@ var yabe = yabe || {};
     LoadingMusic.show = $.extend({
         showRecStyle: function(container,width){
             width = width *0.2;
+
             container.find(".unit").each(function(index){
 
                 $(this).height(width);
@@ -141,7 +142,13 @@ var yabe = yabe || {};
 
                     var height = $(this).height();
                     $(this).height(2*height);
+
                 }
+
+                var marwidth =  $(this).height();
+                $(this).find(".music-play-div").css({"height":marwidth,"margin-top":(0-marwidth)});
+                $(this).find(".play").css({"margin-top":(marwidth/2-40)});
+
 
                 if(index == 6 || index == 9 || index == 14){
                     $(this).addClass("clear");
@@ -158,6 +165,8 @@ var yabe = yabe || {};
 
 
                 }
+
+
             });
         },
         doShowUser: function(userJsonArray){

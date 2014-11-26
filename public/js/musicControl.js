@@ -100,7 +100,7 @@ var repeat = localStorage.repeat || 0,
 
                     if(_i == i){
                         var thisObj = $(this).find(".music-play-div");
-                        thisObj.show();
+                        thisObj.css({"background":"rgba(0,0,0,0.25)"});
                         if(thisObj.hasClass("isPlaying")){
 
                         }else{
@@ -115,7 +115,7 @@ var repeat = localStorage.repeat || 0,
                         if(thisObj.hasClass("isPlaying")){
                             thisObj.removeClass("isPlaying");
                             thisObj.find(".play-music").removeClass("glyphicon-pause").addClass("glyphicon-play");
-                            thisObj.hide();
+                            thisObj.css({"background":"rgba(0,0,0,0.75)"});
                         }
                     }
 
@@ -254,7 +254,7 @@ var repeat = localStorage.repeat || 0,
 
             container.find(".img-div").unbind().hover(function(){
                     var parent = $(this).parent();
-                    parent.find(".music-play-div").show();
+                    parent.find(".music-play-div").css({"background":"rgba(0,0,0,0.25)"});
                 },
                 function(){
                     var parent = $(this).parent();
@@ -262,7 +262,7 @@ var repeat = localStorage.repeat || 0,
                     if(thisdiv.hasClass("isPlaying")){
 
                     }else{
-                        parent.find(".music-play-div").hide();
+                        parent.find(".music-play-div").css({"background":"rgba(0,0,0,0.75)"});
                     }
 
                 });
