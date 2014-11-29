@@ -159,6 +159,25 @@ var repeat = localStorage.repeat || 0,
                 if (autoplay == true) play();
             }
 
+
+            // Fire when track ended
+            var ended = function(){
+                pause();
+                audio.currentTime = 0;
+                playCounts++;
+                if (continous == true) isPlaying = true;
+                if (repeat == 1){
+                    switchTrack(currentTrack);
+                } else {
+                    if (shuffle === 'true'){
+                        shufflePlay();
+                    } else {
+                        switchTrack(++currentTrack);
+                    }
+                }
+            }
+
+
             // Load track
             var loadMusic = function(i){
                 var item = playlist[i];
@@ -207,23 +226,6 @@ var repeat = localStorage.repeat || 0,
                 switchTrack(currentTrack);
             }
 
-
-            // Fire when track ended
-            var ended = function(){
-                pause();
-                audio.currentTime = 0;
-                playCounts++;
-                if (continous == true) isPlaying = true;
-                if (repeat == 1){
-                    switchTrack(currentTrack);
-                } else {
-                    if (shuffle === 'true'){
-                        shufflePlay();
-                    } else {
-                        switchTrack(++currentTrack);
-                    }
-                }
-            }
 
             if (shuffle === 'true') $('.shuffle').addClass('enable green');
             if (repeat == 1){
