@@ -172,7 +172,7 @@ public class MusicAdmin extends CheckUserLogin {
         User user = checkUser();
         List<Music> musicList = new ArrayList<Music>();
         if(StringUtils.isEmpty(tags)){
-           musicList = Music.find("byUserId order by id desc", user.id).fetch();
+           musicList = Music.find("byUserId order by id desc", user.id).fetch(21);
         }else{
             musicList = Music.findMyMusicTaggedWith(user.id, tags);
         }     
@@ -217,7 +217,7 @@ public class MusicAdmin extends CheckUserLogin {
         
         List<Music> musicList = new ArrayList<Music>();
         if(StringUtils.isEmpty(tags)){           
-           musicList = Music.find("order by id desc").fetch();
+           musicList = Music.find("order by id desc").fetch(20);
         }else{
             musicList = Music.findTaggedWith(tags);
         }     
