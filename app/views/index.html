@@ -145,7 +145,7 @@ isLogin = user == "" ? false : true;
                             <span class="font-bold">最常听</span>
                         </a>
                     </li>
-                      }*
+
                      #{if userRole == true}
                          <li class="delete-submit-li">
                              <a href="/MusicAdmin/deleteMusic">
@@ -154,7 +154,7 @@ isLogin = user == "" ? false : true;
                              </a>
                          </li>
                     #{/if}
-
+                      }*
                 </ul>
             </div>
 
@@ -201,7 +201,7 @@ isLogin = user == "" ? false : true;
                 </div>
 
             </div>
-            <audio class="audio" preload="preload">
+            <audio class="audio" autoplay>
             </audio>
         </div>
     </div>

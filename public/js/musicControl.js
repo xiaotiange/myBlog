@@ -220,11 +220,7 @@ var repeat = localStorage.repeat || 0,
                     if (shuffle === 'true'){
                         shufflePlay();
                     } else {
-                        if (repeat == 2){
-                            switchTrack(++currentTrack);
-                        } else {
-                            if (currentTrack < playlist.length) switchTrack(++currentTrack);
-                        }
+                        switchTrack(++currentTrack);
                     }
                 }
             }
