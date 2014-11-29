@@ -217,7 +217,7 @@ public class MusicAdmin extends CheckUserLogin {
         
         List<Music> musicList = new ArrayList<Music>();
         if(StringUtils.isEmpty(tags)){           
-           musicList = Music.find("order by id desc").fetch(20);
+           musicList = Music.find("order by id desc").fetch(21);
         }else{
             musicList = Music.findTaggedWith(tags);
         }     
