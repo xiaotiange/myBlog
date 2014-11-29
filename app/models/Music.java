@@ -84,7 +84,7 @@ public class Music extends Model {
     
     public static List<Music> findTaggedWith(String... tags) {
         return Music.find(
-                "select distinct m from Music m join m.tags as t where t.name in (:tags)  group by m.id, m.userId having count(t.id) = :size "
+                "select distinct m from Music m join m.tags as t where t.name in (:tags)  group by m.id, m.userId order by id desc having count(t.id) = :size "
                 ).bind("tags", tags).bind("size", tags.length).fetch();
     }
 
