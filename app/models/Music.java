@@ -103,10 +103,12 @@ public class Music extends Model {
         this.imgPath = imgPath;
         this.userId = userId;
         this.tags = new TreeSet<Tag>();
-        this.songTitle = map.get(musicInfo.songTitle);
-        this.singer = map.get(musicInfo.singer);
-        this.album = map.get(musicInfo.album);
-        this.year = map.get(musicInfo.year);
+        if(map != null){
+            this.songTitle = map.get(musicInfo.songTitle);
+            this.singer = map.get(musicInfo.singer);
+            this.album = map.get(musicInfo.album);
+            this.year = map.get(musicInfo.year); 
+        }    
         this.createTs =  System.currentTimeMillis();
     }
     
