@@ -45,10 +45,7 @@ public class MusicAdmin extends CheckUserLogin {
         }
         render("/music/music.html",songinfo);
     }
-    public static void DetailsInfo(Long musicId){
-        Music music = Music.findById(musicId);
-        render("/music/musicDetails.html",music);
-    }
+
     public static void groupMusic(){
         render("/group/groupMusic.html");
     }

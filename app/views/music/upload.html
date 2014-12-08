@@ -10,7 +10,7 @@
 <div class="my-music-div">
         <div class="title">音乐上传</div>
         <div class="add-music-form">
-            <form action="@@{MusicAdmin.uploadMusic()}" method="post" enctype="multipart/form-data">
+            <form action="/MusicAdmin/DetailsInfo" method="post" enctype="multipart/form-data">
             #{if message}
                 <div style="text-align: center;"><span class="red">${message}</span></div>
             #{/if}
