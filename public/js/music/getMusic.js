@@ -135,6 +135,10 @@ var yabe = yabe || {};
 
             container.find(".unit").each(function(index){
                 $(this).height(width);
+
+                var marwidth =  $(this).height();
+                $(this).find(".music-play-div").css({"height":marwidth,"margin-top":(0-marwidth)});
+                $(this).find(".play").css({"margin-top":(marwidth/2-40)});
             });
         },
         doShowUser: function(userJsonArray){
