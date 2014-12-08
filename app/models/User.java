@@ -54,16 +54,7 @@ public class User extends Model {
         return user;
     }
     
-    public  static User saveUser(User user, String headerImage){
-        String path = user.headerImage;
-        if(path ==null || StringUtils.isEmpty(path.trim())){
-          
-        }else{
-            File file = new File(path);
-            if(file.exists()){
-             file.delete();
-            }
-        }    
+    public  static User saveUser(User user, String headerImage){  
         user.headerImage = headerImage;
         user.save();
         return user;

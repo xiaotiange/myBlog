@@ -9,8 +9,11 @@ import models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.jd.open.api.sdk.internal.util.StringUtil;
+
 import action.MusicAction;
 import action.UserCenterAction;
+import antlr.StringUtils;
 
 public class UserCenter extends CheckUserLogin {
     
@@ -58,6 +61,13 @@ public class UserCenter extends CheckUserLogin {
         
         if(image_file==null){
             render("/music/header.html");  
+        }
+        
+        if(StringUtil.isEmpty(user.headerImage) == false){
+            File file = new File(user.headerImage);
+            if(file.exists()){
+                file.delete();
+            }         
         }
                
         image_file = UserCenterAction.saveHeaderImage(image_file, user.id);
