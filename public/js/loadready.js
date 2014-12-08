@@ -35,10 +35,10 @@ $(document).ready(function() {
                         var headerimg = userJson.headerImage;
                         container.find('.has-login .user-name').html(userName);
 
-                        if(headerimg === undefined || headerimg=="" || headerimg==null){
+                        if(headerimg === undefined || headerimg == "" || headerimg == null){
                             $(".user-head-photo").attr("src","/public/img/logo.jpg");
                         }else{
-                          $(".user-head-photo").attr("/UserCenter/getUserImg?userId="+userJson.id);
+                          $(".user-head-photo").attr("src","/UserCenter/getUserImg?userId="+userJson.id);
                         }
                         UserLoginInfo.show.doshow();
                     } else {
