@@ -134,39 +134,7 @@ var yabe = yabe || {};
             width = width *0.2;
 
             container.find(".unit").each(function(index){
-
                 $(this).height(width);
-
-                if(index == 0 || index == 5 || index == 11){
-                    $(this).css("width","40%");
-
-                    var height = $(this).height();
-                    $(this).height(2*height);
-
-                }
-
-                var marwidth =  $(this).height();
-                $(this).find(".music-play-div").css({"height":marwidth,"margin-top":(0-marwidth)});
-                $(this).find(".play").css({"margin-top":(marwidth/2-40)});
-
-
-                if(index == 6 || index == 9 || index == 14){
-                    $(this).addClass("clear");
-                }
-
-                if(index == 6 || index == 7 || index == 8 || index == 14 || index == 15){
-                    var height = 0 - $(this).height();
-                    $(this).css("margin-top",height);
-                    if(index < 10){
-                        $(this).css("margin-left",width*(index - 6));
-                    }else{
-                        $(this).css("margin-left",width*(index - 14));
-                    }
-
-
-                }
-
-
             });
         },
         doShowUser: function(userJsonArray){
