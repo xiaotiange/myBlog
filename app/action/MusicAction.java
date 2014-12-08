@@ -161,6 +161,10 @@ public class MusicAction {
             mp3file = new MP3File(sourceFile);
             AbstractID3v2Tag tag = mp3file.getID3v2Tag();  
             
+            if(tag == null){
+                log.error("can not get music cover info!!!");
+                return null;
+            }
             String[] tagArray = {"TPE1","TALB","TIT2","TYER"};
             for(String tagStr : tagArray){
                 AbstractID3v2Frame text =  (AbstractID3v2Frame) tag.getFrame(tagStr);
