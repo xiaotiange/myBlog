@@ -38,7 +38,7 @@ $(document).ready(function() {
                         if(headerimg === undefined || headerimg=="" || headerimg==null){
                             $(".user-head-photo").attr("src","/public/img/logo.jpg");
                         }else{
-                          $(".user-head-photo").attr("src","/UserCenter/getHeaderImg");
+                          $(".user-head-photo").attr("/UserCenter/getUserImg?userId="+userJson.id);
                         }
                         UserLoginInfo.show.doshow();
                     } else {
