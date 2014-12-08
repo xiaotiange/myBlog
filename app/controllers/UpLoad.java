@@ -82,8 +82,11 @@ public class UpLoad extends CheckUserLogin {
       
          String imgPath = music.filePath;     
          File musicFile = new File(imgPath);
+         int index = imgPath.indexOf(musicFile.getName());
          
-         coverImg = MusicAction.changeMusicCover(coverImg, imgPath,musicFile.getName());
+         String imgName = coverImg.getName();
+         
+         coverImg = MusicAction.changeMusicCover(coverImg, imgPath, index, imgName);
         
         if(coverImg==null){
             errMessage="对不起，添加失败！";
