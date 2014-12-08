@@ -190,7 +190,7 @@ public class MusicAdmin extends CheckUserLogin {
        
  
          if(StringUtils.isEmpty(songinfo)){
-             musicList =  Music.find("order by id desc ").fetch(25);  
+             musicList =  Music.find("order by id desc ").fetch(20);  
              userList = Music.find("select id,email,headerImage,fullname from User where id in( select userId from Music)").fetch();
          }else{
              SearchLog.addSearchLog(songinfo);
