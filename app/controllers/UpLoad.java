@@ -72,16 +72,6 @@ public class UpLoad extends CheckUserLogin {
             log.error(errMessage);
             render("/music/musicDetails.html",errMessage,music);  
         }
-      
-         String imgPath = music.filePath;     
-         File musicFile = new File(imgPath);
-         coverImg = MusicAction.changeMusicCover(coverImg, imgPath,musicFile.getName());
-        
-        if(coverImg==null){
-            errMessage="对不起，添加失败！";
-            log.error(errMessage);
-            render("/music/musicDetails.html",errMessage,music);  
-        }
         
         if(!StringUtils.isEmpty(music.imgPath)){
             File preFile = new File(music.imgPath);
@@ -89,6 +79,17 @@ public class UpLoad extends CheckUserLogin {
                 preFile.delete();
             }
         }
+      
+         String imgPath = music.filePath;     
+         File musicFile = new File(imgPath);
+         
+         coverImg = MusicAction.changeMusicCover(coverImg, imgPath,musicFile.getName());
+        
+        if(coverImg==null){
+            errMessage="对不起，添加失败！";
+            log.error(errMessage);
+            render("/music/musicDetails.html",errMessage,music);  
+        }  
          
         music.imgPath = coverImg.getAbsolutePath();
         music.save();
