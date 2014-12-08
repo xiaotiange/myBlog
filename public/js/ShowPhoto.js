@@ -38,7 +38,7 @@ var yabe = yabe || {};
             }
 
             // check for file size
-            if (oFile.size > 250 * 1024) {
+            if (oFile.size > 750 * 750) {
                 $('.error').html('文件太大！').show();
                 return;
             }
