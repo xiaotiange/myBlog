@@ -246,16 +246,23 @@ public class MusicAdmin extends CheckUserLogin {
     }
     
     
-    public static void queryChooseMusic(String tags){
+    public static void queryChooseMusic(String tags, int pn, int ps){
+        PageOffset po = new PageOffset(pn, ps);
+        int offset = po.getOffset();
         
         List<Music> musicList = new ArrayList<Music>();
-        if(StringUtils.isEmpty(tags)){           
-           musicList = Music.find("order by id desc").fetch(21);
-        }else{
-            musicList = Music.findTaggedWith(tags);
-        }     
+        int count = 0;
         
-        ControllerUtils.renderResultJson(musicList);
+        if(StringUtils.isEmpty(tags)){           
+           musicList = Music.find("order by id desc").from(offset).fetch(ps);  
+           count = (int) Music.count();
+        }else{
+            musicList = Music.findTaggedWith(po,tags);
+            count = Music.countMusicWithTags(tags);
+        }    
+        
+        ALResult res = new ALResult(musicList, count, po);
+        ControllerUtils.renderALResult(res);
     }
     
     

@@ -13,6 +13,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.ciaosir.client.pojo.PageOffset;
+
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
@@ -82,10 +84,23 @@ public class Music extends Model {
                 ).bind("tags", tags).bind("userId", userId).bind("size", tags.length).fetch();
     }
     
-    public static List<Music> findTaggedWith(String... tags) {
+    public static List<Music> findTaggedWith(PageOffset po, String... tags) {
+        int offset = po.getOffset();
+        int ps = po.getPs();
+        
         return Music.find(
                 "select distinct m from Music m join m.tags as t where t.name in (:tags)  group by m.id, m.userId having count(t.id) = :size "
+                ).bind("tags", tags).bind("size", tags.length).from(offset).fetch(ps);
+    }
+    
+    public static int countMusicWithTags(String... tags){
+     
+        List<Music>  musicList= Music.find(
+                "select distinct m from Music m join m.tags as t where t.name in (:tags)  group by m.id, m.userId having count(t.id) = :size "
                 ).bind("tags", tags).bind("size", tags.length).fetch();
+                
+        int count = musicList.size();
+        return count;
     }
 
     public Music(String songTitle,String singer, String album,String fileName) {

@@ -85,7 +85,7 @@
             <ul class="my-music-ul" style="margin-top: 15px;">
 
             </ul>
-
+            <div id="paging-div" style="text-align: center;margin: 30px auto;"></div>
 
         </div>
 
@@ -136,6 +136,15 @@
     </li>
 </script>
 
+<script type="text/javascript">
 
-<script src="/public/js/groupMusic.js"></script>
+    $(document).ready(function() {
+        yabe.gcs("/public/js/groupMusic.js", function () {
+
+            yabe.GroupMusic.init.doInit($(".grout-music-container"));
+        });
+    })
+
+</script>
+
 

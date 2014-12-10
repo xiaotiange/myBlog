@@ -195,15 +195,16 @@ body {
     padding: 4px 0px;
 }
 .tm-paging-container .paging-link {
-    background: #4cb6cb;
+    background: #4ec7a2;
     color: #fff;
     cursor: pointer;
 }
 .tm-paging-container .paging-link:hover {
-    background: #2cc185;
+    background: #109b57;
+    color: #fff;
 }
 .tm-paging-container .paging-select {
-    background: #2cc185;
+    background: #109b57;
     color: #fff;
     cursor: default;
 }

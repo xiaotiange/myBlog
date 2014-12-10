@@ -31,13 +31,15 @@
   .control,.logo{
       background: #108d4e;
   }
-
+  .first-div-image{
+      background: url("/public/img/logo.jpg") center no-repeat;
+  }
 </style>
 
 <div class="listen-music-container">
         <div class="first-div">
-            <div class="first-div-image" style="height: 300px;overflow: hidden;">
-               <img class="img-full" src="/public/img/logo.jpg" alt="">
+            <div class="first-div-image" style="width: 100%;height:300px;overflow: hidden;">
+
             </div>
 
            <ul class="first-div-ul playlist-ul">
@@ -127,7 +129,7 @@
             <span class="share-user" >by {{= fullname}}</span>
         </div>
 
-        <span class="right glyphicon glyphicon-play play-music" style="margin: 10px;font-size: 16px;">&nbsp;</span>
+      *{  <span class="right glyphicon glyphicon-play play-music" style="margin: 10px;font-size: 16px;">&nbsp;</span>   }*
 
     </li>
 </script>
