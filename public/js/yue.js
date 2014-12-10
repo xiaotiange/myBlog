@@ -24,13 +24,6 @@
             //每页多少条
 
             function getPageSizeOption() {
-                /*var html = '每页&nbsp;<select style="width: 60px;" class="paging-size-select">' +
-                 '   <option value="10" selected="selected">10</option> ' +
-                 '   <option value="20">20</option> ' +
-                 '   <option value="50">50</option> ' +
-                 '   <option value="100">100</option> ' +
-                 '</select>&nbsp;条&nbsp;';
-                 return html;*/
 
                 var pageSizeArray = param.selfPageSizeArray;
                 if (pageSizeArray === undefined || pageSizeArray == null || pageSizeArray.length <= 0) {
@@ -39,7 +32,6 @@
                         '<span class="small-pagesize-span"><span class="paging-size5 paging-size-span paging-nav paging-size-link" style="font-weight: bold;cursor: pointer;">5</span>|&nbsp;</span>' +
                         '<span class="paging-size10 paging-size-span paging-nav paging-size-link" style="font-weight: bold;cursor: pointer;">10</span>|&nbsp;' +
                         '<span class="paging-size20 paging-size-span paging-nav paging-size-link" style="font-weight: bold;cursor: pointer;">20</span>|&nbsp;' +
-                        //'<span class="paging-size50 paging-size-span" style="font-weight: bold;color: blue;cursor: pointer;">50</span>&nbsp;|&nbsp;' +
                         '<span class="paging-size50 paging-size-span paging-nav paging-size-link" style="font-weight: bold;cursor: pointer;">50</span>' +
                         '条&nbsp;';
                     return html;
@@ -66,13 +58,6 @@
 
             //设置选择每页多少条的事件
             function setPageSizeOptionEvent(obj) {
-                /*obj.find(".paging-size-select").change(function () {
-                 var newPageSize = $(this).val();
-                 pageSize = newPageSize;
-                 //保存到cookie
-                 $.cookie(tmPagingSizeCookie, newPageSize, {expires: 365, path:'/'});
-                 createView(1);
-                 });*/
                 obj.find(".paging-size-span").click(function () {
                     var newPageSize = $(this).html();
                     pageSize = newPageSize;
@@ -85,8 +70,6 @@
 
             //设置当前的pageSize
             function setCurrentPageSizeOption(obj, curretPageSize) {
-                //obj.find(".paging-size-select").val(pageSize);
-
                 var className = "paging-size" + curretPageSize;
                 //obj.find("." + className).css("color", "#a10000");
                 if (getIsUseSmallPageSize() == false) {
@@ -123,8 +106,8 @@
                             return false;
                         }},
                     info:{
-                        next:'下一页',
-                        prev:'上一页',
+                        next:' >>>',
+                        prev:'<<< ',
                         next_on:true,
                         prev_on:true,
                         msg_on:true,
@@ -244,6 +227,8 @@
                 }
 
                 function getMsg() {
+                    return false;
+
                     var input = "<input type='text' class='jumpTo' value='" + currPage + "' >";
                     var str;
                     if (options.info && options.info.msg_on == false) {
@@ -270,22 +255,22 @@
 
             function isCode(val) {
                 if (val < 1) {
-                    TM.Alert.load('输入值不能小于1');
+                   // TM.Alert.load('输入值不能小于1');
 
-                    //alert("输入值不能小于1");
+                    alert("输入值不能小于1");
                     return false;
                 }
                 var patrn = /^[0-9]{1,8}$/;
                 if (!patrn.exec(val)) {
-                    TM.Alert.load('请输入正确的数字');
+                    //TM.Alert.load('请输入正确的数字');
 
-                    //alert("请输入正确的数字");
+                    alert("请输入正确的数字");
                     return false;
                 }
                 if (val > pageCount) {
-                    TM.Alert.load('输入值不能大于总页数');
+                    //TM.Alert.load('输入值不能大于总页数');
 
-                    //alert("输入值不能大于总页数");
+                    alert("输入值不能大于总页数");
                     return false;
                 }
                 return true;
@@ -348,12 +333,6 @@
                     if (keycode == 13) {
                         var page = $(this).val();
                         if (isCode(page)) {
-//                            obj.find("a").unbind("click");
-//                            obj.find("a").each(function() {
-//                                $(this).click(function() {
-//                                    return false;
-//                                })
-//                            });
                             createView(page);
                         }
                     }
@@ -404,30 +383,23 @@
                             });
                             updateView(data.count);
                             return true;
-//                                } else {
-////                                alert(data.message);
-//                                    return false;
-//                                }
+
                         }
                         else {
                             $('#loadingImg').parents('tr').remove();
 
                             if(data.message){
-                                TM.Alert.load(data.message);
+                                alert(data.message);
                             }
-                            //alert(data.message);
+
                         }
 
                     }
 
                     if (isUseJsonp() == true) {
 
-                        TM.Loading.init.show();
-                        /*if (varUrl.indexOf("?") >= 0) {
-                         varUrl += "&pn=" + param.pn + "&ps=" + param.ps;
-                         } else {
-                         varUrl += "?pn=" + param.pn + "&ps=" + param.ps;
-                         }*/
+                       // TM.Loading.init.show();
+
                         $.ajax({
                             type: "get",
                             url: varUrl,
@@ -437,11 +409,12 @@
 
                                 ajaxEndCallback(data);
 
-                                TM.Loading.init.hidden();
+                             //   TM.Loading.init.hidden();
                             },
                             error: function(){
                                 updateView();
-                                TM.Loading.init.hidden();
+
+                              //  TM.Loading.init.hidden();
                             }
                         });
                     } else {
@@ -471,21 +444,16 @@
 
             function checkParam() {
                 if (currPage < 1) {
-                    TM.Alert.load('配置参数错误\n错误代码:-1');
+                   // TM.Alert.load('配置参数错误\n错误代码:-1');
 
-                    //alert("配置参数错误\n错误代码:-1");
+                    alert("配置参数错误\n错误代码:-1");
                     return false;
                 }
-                /*if (currPage > pageCount) {
-                 TM.Alert.load('配置参数错误\n错误代码:-2');
 
-                 //alert("配置参数错误\n错误代码:-2");
-                 return false;
-                 }*/
                 if (pageSize < 2) {
-                    TM.Alert.load('配置参数错误\n错误代码:-3');
+                    //TM.Alert.load('配置参数错误\n错误代码:-3');
 
-                    //alert("配置参数错误\n错误代码:-3");
+                    alert("配置参数错误\n错误代码:-3");
                     return false;
                 }
                 return true;
@@ -502,8 +470,6 @@
 
                     switch (options.dataType) {
                         case"json":
-//                        data =$.parseJSON(data);
-//                         resultPageCount = eval("data." + pageCountId);
                             formData = options.data;
                             resultPageCount = formData.pnCount;
                             break;
@@ -547,7 +513,7 @@
             else
                 pageSize = 50;
 
-            //天猫联盟中，降权分页
+
             if (isSelfDefinePageSize() == true) {
                 tmPagingSizeCookie = "SelfDefinePageSize_" + tmPagingSizeCookie;
                 cookiePageSize = $.cookie(tmPagingSizeCookie);

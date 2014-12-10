@@ -24,10 +24,13 @@ import org.jaudiotagger.tag.TagException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import play.db.jpa.NoTransaction;
+
 import result.ALResult;
 
 import com.ciaosir.client.pojo.PageOffset;
 import com.ciaosir.client.utils.JsonUtil;
+import com.jd.open.api.sdk.internal.util.StringUtil;
 
 import action.MusicAction;
 
@@ -35,10 +38,12 @@ public class MusicAdmin extends CheckUserLogin {
     
     private static final Logger log = LoggerFactory.getLogger(MusicAdmin.class);
    
+    
     public static void myHouse(){
         render("/group/groupMusic.html");
-      //  render("musiclisten.html");
     }
+    
+    
     public static void index(String songinfo){
         if(StringUtils.isEmpty(songinfo)){
             render("/music/music.html"); 
@@ -46,13 +51,19 @@ public class MusicAdmin extends CheckUserLogin {
         render("/music/music.html",songinfo);
     }
 
+    
     public static void groupMusic(){
         render("/group/groupMusic.html");
     }
+    
+    
     public static void deleteMusic(){
         render("/delete/deleteMusic.html");
     }
-    public static void uploadMusic(File musicFile) throws IOException, TagException, ReadOnlyFileException, InvalidAudioFrameException{
+    
+    
+    public static void uploadMusic(File musicFile) throws IOException, 
+    TagException, ReadOnlyFileException, InvalidAudioFrameException{
         if(musicFile==null){
             render("/music/upload.html"); 
         }
@@ -93,6 +104,7 @@ public class MusicAdmin extends CheckUserLogin {
             
     }
     
+    
     public static void updateMusic(Long musicId,String tags,
             String songTitle, String singer, String fileName, String album){
         User user = checkUser();      
@@ -114,6 +126,7 @@ public class MusicAdmin extends CheckUserLogin {
                 music.tags.add(Tag.findOrCreateByName(tag));
             }
         }
+        
         log.info(music.tags.toString());
         music.songTitle = songTitle;
         music.singer = singer;
@@ -121,10 +134,9 @@ public class MusicAdmin extends CheckUserLogin {
         music.filaName = fileName;
         music.save();
         
-        if(music==null) ControllerUtils.renderError("修改错误，请重试！");
-        
         ControllerUtils.renderSuccess("修改成功！");
     }
+    
     
     public static void getMusic(Long musicId) {
         Music music = Music.findById(musicId);
@@ -132,8 +144,7 @@ public class MusicAdmin extends CheckUserLogin {
         
         if (file == null) {
             return;
-        }
-        
+        }        
         ListenNum.addListenLog(musicId);
         
         User user =  connect();
@@ -145,10 +156,10 @@ public class MusicAdmin extends CheckUserLogin {
         
     }
     
+    
     public static void getMusicImage(Long musicId) {
         Music music = Music.findById(musicId);        
-        File file = MusicAction.getMusicImgFile(music);
-        
+        File file = MusicAction.getMusicImgFile(music);      
         if (file == null) {
             return;
         }
@@ -164,6 +175,7 @@ public class MusicAdmin extends CheckUserLogin {
         return user;
     } 
     
+    
     public static void queryMyChooseMusic(String tags){
         
         User user = checkUser();
@@ -177,39 +189,63 @@ public class MusicAdmin extends CheckUserLogin {
         ControllerUtils.renderResultJson(musicList);
         
     }
-    
-    public static void queryMusic(String songinfo){
+
+    public static void querySharedUser(String songinfo){
+        List<User> userList = new ArrayList<User>();
+
+        if(StringUtil.isEmpty(songinfo)){
+            userList = User.findAll();
+        }else{
+            String info = "%"+songinfo+"%";
+            userList = User.find("select id,email,headerImage,fullname from User" +
+          " where id in( select userId from Music where filaName" +
+          " like ? or songTitle like ? or singer like ? or album like ? )",info,info,info,info).fetch();
+        }
         
-    //    PageOffset po = new PageOffset(pn, ps);
+        if(userList.size() > 0){
+            for(User user : userList){
+                user.isAdmin = false;
+                user.password = "";
+            }
+            
+        }
+        
+        ControllerUtils.renderResultJson(userList);
+        
+    }
+    
+    
+    public static void queryMusic(String songinfo,
+            int pn, int ps){
+        
+        PageOffset po = new PageOffset(pn, ps);
+        int offset = po.getOffset();
         
         List<Music> musicList = new ArrayList<Music>();
-        List<User> userList = new ArrayList<User>();
-       
- 
+        int count = 0;
+               
          if(StringUtils.isEmpty(songinfo)){
-             musicList =  Music.find("order by id desc ").fetch(20);  
-             userList = Music.find("select id,email,headerImage,fullname from User where id in( select userId from Music)").fetch();
+             musicList =  Music.find("order by id desc ").from(offset).fetch(ps);  
+             count = (int) Music.count();
          }else{
              SearchLog.addSearchLog(songinfo);
              String str = getSearchStr();
              String info = "%"+songinfo+"%";
-             musicList =  Music.find(str,info,info,info,info).fetch();    
-             userList = Music.find("select id,email,headerImage,fullname from User" +
-             		" where id in( select userId from Music where filaName" +
-             		" like ? or songTitle like ? or singer like ? or album like ? )",info,info,info,info).fetch();
-           //  count = (int)Music.count(str,info,info,info,info);
+             
+             musicList =  Music.find(str,info,info,info,info).from(offset).fetch(ps);  
+             count = (int) Music.count(str,info,info,info,info);
          }
-         
-    
-       
-         Object[] res = new Object[] { musicList, userList };
-         ControllerUtils.renderResultJson(res);
+
+         ALResult res = new ALResult(musicList, count, po);
+         ControllerUtils.renderALResult(res);
        
     }
     
     private static String getSearchStr(){
         return "filaName like ? or songTitle like ? or singer like ? or album like ? order by id desc";
     }
+    
+    
     public static void queryChooseMusic(String tags){
         
         List<Music> musicList = new ArrayList<Music>();
@@ -222,23 +258,20 @@ public class MusicAdmin extends CheckUserLogin {
         ControllerUtils.renderResultJson(musicList);
     }
     
+    
+    
     public static void doDeleteMusic(Long musicId){
-        log.error("id: "+musicId );
         Music music = Music.find("byId", musicId).first();      
         if(music == null){
             log.error("找不到该歌曲");
             ControllerUtils.renderError("找不到该歌曲");       
         }
             
-        File file = MusicAction.getMusicFile(music.filePath);
-        
-        if(file.exists()){
-            file.delete();
-        }
-        
+        File file = MusicAction.getMusicFile(music.filePath);       
+        if(file.exists())  file.delete();   
         music.delete();
-        ControllerUtils.renderSuccess("删除成功");   
         
+        ControllerUtils.renderSuccess("删除成功");         
     }
     
 }
