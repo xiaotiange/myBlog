@@ -26,7 +26,7 @@ public class Music extends Model {
     public Long userId;
     
     @Required
-    public String username;
+    public String username;   
     
     @Required
     public String filaName;
@@ -38,13 +38,13 @@ public class Music extends Model {
     public Long  createTs;//添加歌曲时间
     
     @Required
-    public String  songTitle;
+    public String  songTitle;//歌名
     
     @Required
     public String  singer;
     
     @Required
-    public String  album;
+    public String  album;//专辑
     
     @Required
     public int listenCount;
@@ -62,10 +62,20 @@ public class Music extends Model {
     
     @ManyToMany(cascade=CascadeType.PERSIST)
     public Set<Tag> tags;
+     
+    public String  imgPath;//封面
     
     
-    public String  imgPath;
+    private String userPhoto;//用户头像 
     
+    public String getUserPhoto() {
+        return userPhoto;
+    }
+
+    public void setUserPhoto(String userPhoto) {
+        this.userPhoto = userPhoto;
+    }
+
     public static class musicInfo {
         private static final String songTitle = "TIT2";//歌名标识
         private static final String singer = "TPE1";//歌手标识

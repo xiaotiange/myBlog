@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 
 import com.jd.open.api.sdk.internal.util.StringUtil;
 
+import config.TMConfigs;
+
 import action.MusicAction;
 import action.UserCenterAction;
 import antlr.StringUtils;
@@ -25,7 +27,8 @@ public class UserCenter extends CheckUserLogin {
         File file = UserCenterAction.getHeaderImage(user.headerImage);
         
         if (file == null) {
-            return;
+            File imgfile = new File(TMConfigs.configDir, "touxiang.jpg");            
+            renderBinary(imgfile);
         }
         
         renderBinary(file);
@@ -42,7 +45,8 @@ public class UserCenter extends CheckUserLogin {
         File file = UserCenterAction.getHeaderImage(user.headerImage);
         
         if (file == null) {
-            return;
+            File imgfile = new File(TMConfigs.configDir, "touxiang.jpg");            
+            renderBinary(imgfile);
         }
         
         renderBinary(file);

@@ -32,14 +32,14 @@
       background: #108d4e;
   }
   .first-div-image{
-      background: url("/public/img/logo.jpg") center no-repeat;
+      background: url("/public/img/m_001.jpg") center no-repeat;
   }
 </style>
 
 <div class="listen-music-container">
         <div class="first-div">
-            <div class="first-div-image" style="width: 100%;height:300px;overflow: hidden;">
-
+            <div class="first-div-image" style="width: 100%;height:250px;overflow: hidden;">
+                <div style="width: 100%;height: 100%;background: rgba(0,0,0,0.5);"></div>
             </div>
 
            <ul class="first-div-ul playlist-ul">
@@ -122,14 +122,14 @@
 <script type="text/x-jquery-tmpl" id="secondMusicLiTmpl">
     <li class="second-div-li" >
         <div style="width: 50px;display: inline-block;float: left;">
-            <img width="40px" height="40px" src="{{= imgPath}}" alt="">
+            <img width="40px" height="40px" src="/UserCenter/getUserImg?userId={{= userId}}" alt="">
         </div>
         <div style="width: auto;display: inline-block;">
             <span class="song-title" ><a target="_blank" href="/UpLoad/DetailsInfo?musicId={{= id}}">{{= songTitle}}</a></span><br/>
-            <span class="share-user" >by {{= fullname}}</span>
+            <span class="share-user" >by {{= username}}</span>
         </div>
 
-      *{  <span class="right glyphicon glyphicon-play play-music" style="margin: 10px;font-size: 16px;">&nbsp;</span>   }*
+        <span class="right glyphicon glyphicon-play play-music" style="margin: 10px;font-size: 16px;">&nbsp;</span>
 
     </li>
 </script>
